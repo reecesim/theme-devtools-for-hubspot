@@ -1,0 +1,8 @@
+Theme Dev Tools for HubSpot
+Copyright 2026 Reece Sim
+
+This plugin is licensed under the Apache License, Version 2.0 (Apache-2.0); see LICENSE.
+
+skills/hubl-authoring/ was adapted by the same author, Reece Sim, from his private HubL authoring guidance, and is granted under the same licence.
+
+The renderer bundled in vendor/renderer/ carries its own notice, including the third-party packages inside it: see vendor/renderer/NOTICE.

@@ -1,0 +1,14 @@
+{
+  "name": "theme-devtools-for-hubspot",
+  "owner": {
+    "name": "Reece Sim"
+  },
+  "description": "Theme Dev Tools for HubSpot, by ThemeSpot: turn any design into an editable HubSpot HubL theme, check it against the design on a local renderer, and deploy it with the HubSpot CLI.",
+  "plugins": [
+    {
+      "name": "theme-devtools-for-hubspot",
+      "source": "./",
+      "description": "Turn a design from Claude Design, ChatGPT or another tool into an editable HubSpot HubL theme, check it against the design on a local renderer, and deploy it with the HubSpot CLI."
+    }
+  ]
+}

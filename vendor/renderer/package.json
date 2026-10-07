@@ -1,0 +1,13 @@
+{
+  "name": "themespot-renderer",
+  "version": "1.0.101",
+  "description": "Renders HubSpot CMS themes written in HubL to HTML, locally.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "themespot-render": "./themespot-render.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
