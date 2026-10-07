@@ -1,382 +1,4202 @@
 #!/usr/bin/env node
-import{createRequire}from"node:module";const require=createRequire(import.meta.url);
-var Ym=Object.create;var Bl=Object.defineProperty;var Xm=Object.getOwnPropertyDescriptor;var Zm=Object.getOwnPropertyNames;var Qm=Object.getPrototypeOf,eg=Object.prototype.hasOwnProperty;var At=(e=>typeof require<"u"?require:typeof Proxy<"u"?new Proxy(e,{get:(t,n)=>(typeof require<"u"?require:t)[n]}):e)(function(e){if(typeof require<"u")return require.apply(this,arguments);throw Error('Dynamic require of "'+e+'" is not supported')});var be=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports);var tg=(e,t,n,s)=>{if(t&&typeof t=="object"||typeof t=="function")for(let r of Zm(t))!eg.call(e,r)&&r!==n&&Bl(e,r,{get:()=>t[r],enumerable:!(s=Xm(t,r))||s.enumerable});return e};var es=(e,t,n)=>(n=e!=null?Ym(Qm(e)):{},tg(t||!e||!e.__esModule?Bl(n,"default",{value:e,enumerable:!0}):n,e));var ft=be((WT,_c)=>{"use strict";var os=Array.prototype,gr=Object.prototype,Lg={"&":"&amp;",'"':"&quot;","'":"&#39;","<":"&lt;",">":"&gt;","\\":"&#92;"},Cg=/[&"'<>\\]/g,ye=_c.exports={};function $i(e,t){return gr.hasOwnProperty.call(e,t)}ye.hasOwnProp=$i;function Pg(e){return Lg[e]}function $g(e,t,n){if(n.Update||(n=new ye.TemplateError(n)),n.Update(e),!t){var s=n;n=new Error(s.message),n.name=s.name}return n}ye._prettifyError=$g;function mr(e,t,n){var s,r;e instanceof Error&&(r=e,e=r.name+": "+r.message),Object.setPrototypeOf?(s=new Error(e),Object.setPrototypeOf(s,mr.prototype)):(s=this,Object.defineProperty(s,"message",{enumerable:!1,writable:!0,value:e})),Object.defineProperty(s,"name",{value:"Template render error"}),Error.captureStackTrace&&Error.captureStackTrace(s,this.constructor);var i;if(r){var o=Object.getOwnPropertyDescriptor(r,"stack");i=o&&(o.get||function(){return o.value}),i||(i=function(){return r.stack})}else{var a=new Error(e).stack;i=function(){return a}}return Object.defineProperty(s,"stack",{get:function(){return i.call(s)}}),Object.defineProperty(s,"cause",{value:r}),s.lineno=t,s.colno=n,s.firstUpdate=!0,s.Update=function(c){var u="("+(c||"unknown path")+")";return this.firstUpdate&&(this.lineno&&this.colno?u+=" [Line "+this.lineno+", Column "+this.colno+"]":this.lineno&&(u+=" [Line "+this.lineno+"]")),u+=`
- `,this.firstUpdate&&(u+=" "),this.message=u+(this.message||""),this.firstUpdate=!1,this},s}Object.setPrototypeOf?Object.setPrototypeOf(mr.prototype,Error.prototype):mr.prototype=Object.create(Error.prototype,{constructor:{value:mr}});ye.TemplateError=mr;function Fg(e){return e.replace(Cg,Pg)}ye.escape=Fg;function uc(e){return gr.toString.call(e)==="[object Function]"}ye.isFunction=uc;function dc(e){return gr.toString.call(e)==="[object Array]"}ye.isArray=dc;function pc(e){return gr.toString.call(e)==="[object String]"}ye.isString=pc;function hc(e){return gr.toString.call(e)==="[object Object]"}ye.isObject=hc;function Ig(e){return e?typeof e=="string"?e.split("."):[e]:[]}function fc(e){var t=Ig(e);return function(s){for(var r=s,i=0;i<t.length;i++){var o=t[i];if($i(r,o))r=r[o];else return}return r}}ye.getAttrGetter=fc;function Dg(e,t,n){for(var s={},r=uc(t)?t:fc(t),i=0;i<e.length;i++){var o=e[i],a=r(o,i);if(a===void 0&&n===!0)throw new TypeError('groupby: attribute "'+t+'" resolved to undefined');(s[a]||(s[a]=[])).push(o)}return s}ye.groupBy=Dg;function mc(e){return Array.prototype.slice.call(e)}ye.toArray=mc;function Mg(e){var t=[];if(!e)return t;for(var n=e.length,s=mc(arguments).slice(1),r=-1;++r<n;)gc(s,e[r])===-1&&t.push(e[r]);return t}ye.without=Mg;function jg(e,t){for(var n="",s=0;s<t;s++)n+=e;return n}ye.repeat=jg;function Ug(e,t,n){if(e!=null){if(os.forEach&&e.forEach===os.forEach)e.forEach(t,n);else if(e.length===+e.length)for(var s=0,r=e.length;s<r;s++)t.call(n,e[s],s,e)}}ye.each=Ug;function Bg(e,t){var n=[];if(e==null)return n;if(os.map&&e.map===os.map)return e.map(t);for(var s=0;s<e.length;s++)n[n.length]=t(e[s],s);return e.length===+e.length&&(n.length=e.length),n}ye.map=Bg;function Hg(e,t,n){var s=-1;function r(){s++,s<e.length?t(e[s],s,r,n):n()}r()}ye.asyncIter=Hg;function Gg(e,t,n){var s=_r(e||{}),r=s.length,i=-1;function o(){i++;var a=s[i];i<r?t(a,e[a],i,r,o):n()}o()}ye.asyncFor=Gg;function gc(e,t,n){return Array.prototype.indexOf.call(e||[],t,n)}ye.indexOf=gc;function _r(e){var t=[];for(var n in e)$i(e,n)&&t.push(n);return t}ye.keys=_r;function Wg(e){return _r(e).map(function(t){return[t,e[t]]})}ye._entries=Wg;function Kg(e){return _r(e).map(function(t){return e[t]})}ye._values=Kg;function qg(e,t){return e=e||{},_r(t).forEach(function(n){e[n]=t[n]}),e}ye._assign=ye.extend=qg;function Vg(e,t){if(dc(t)||pc(t))return t.indexOf(e)!==-1;if(hc(t))return e in t;throw new Error('Cannot use "in" operator to search for "'+e+'" in unexpected types.')}ye.inOperator=Vg});var vc=be((KT,Sc)=>{"use strict";var as,Jg=typeof setImmediate=="function";Sc.exports=yc;function yc(e){Nt.length||(wc(),Fi=!0),Nt[Nt.length]=e}var Nt=[],Fi=!1,Ot=0,zg=1024;function bc(){for(;Ot<Nt.length;){var e=Ot;if(Ot=Ot+1,Nt[e].call(),Ot>zg){for(var t=0,n=Nt.length-Ot;t<n;t++)Nt[t]=Nt[t+Ot];Nt.length-=Ot,Ot=0}}Nt.length=0,Ot=0,Fi=!1}yc.requestFlush=wc;function wc(){var e=process.domain;e&&(as||(as=At("domain")),as.active=process.domain=null),Fi&&Jg?setImmediate(bc):process.nextTick(bc),e&&(as.active=process.domain=e)}});var Tc=be((qT,xc)=>{"use strict";var Ec=vc(),Ii=[];xc.exports=Yg;function Yg(e){var t;Ii.length?t=Ii.pop():t=new Rc,t.task=e,t.domain=process.domain,Ec(t)}function Rc(){this.task=null,this.domain=null}Rc.prototype.call=function(){this.domain&&this.domain.enter();var e=!0;try{this.task.call(),e=!1,this.domain&&this.domain.exit()}finally{e&&Ec.requestFlush(),this.task=null,this.domain=null,Ii.push(this)}}});var Ac=be((kc,ls)=>{(function(e){"use strict";var t=function(){var o=Array.prototype.slice.call(arguments);typeof o[0]=="function"&&o[0].apply(null,o.splice(1))},n=function(o){typeof setImmediate=="function"?setImmediate(o):typeof process<"u"&&process.nextTick?process.nextTick(o):setTimeout(o,0)},s=function(o){var a=function(l){var c=function(){return o.length&&o[l].apply(null,arguments),c.next()};return c.next=function(){return l<o.length-1?a(l+1):null},c};return a(0)},r=Array.isArray||function(o){return Object.prototype.toString.call(o)==="[object Array]"},i=function(o,a,l){var c=l?n:t;if(a=a||function(){},!r(o)){var u=new Error("First argument to waterfall must be an array of functions");return a(u)}if(!o.length)return a();var d=function(p){return function(m){if(m)a.apply(null,arguments),a=function(){};else{var g=Array.prototype.slice.call(arguments,1),y=p.next();y?g.push(d(y)):g.push(a),c(function(){p.apply(null,g)})}}};d(s(o))()};typeof define<"u"&&define.amd?define([],function(){return i}):typeof ls<"u"&&ls.exports?ls.exports=i:e.waterfall=i})(kc)});var Mi=be((VT,nu)=>{"use strict";var Oc=ft(),Nc=` 
-	\r\xA0`,Lc="()[]{}%*-+~/#,:|.<>=!",Xg="0123456789",Zg="{%",Qg="%}",e_="{{",t_="}}",n_="{#",r_="#}",Cc="string",Pc="whitespace",$c="data",Fc="block-start",Ic="block-end",Dc="variable-start",Mc="variable-end",jc="comment",Uc="left-paren",Bc="right-paren",Hc="left-bracket",Gc="right-bracket",Wc="left-curly",Kc="right-curly",qc="operator",Vc="comma",Jc="colon",zc="tilde",Yc="pipe",Xc="int",Zc="float",Qc="boolean",Di="none",eu="symbol",s_="special",tu="regex";function Je(e,t,n,s){return{type:e,value:t,lineno:n,colno:s}}var i_=(function(){function e(n,s){this.str=n,this.index=0,this.len=n.length,this.lineno=0,this.colno=0,this.in_code=!1,s=s||{};var r=s.tags||{};this.tags={BLOCK_START:r.blockStart||Zg,BLOCK_END:r.blockEnd||Qg,VARIABLE_START:r.variableStart||e_,VARIABLE_END:r.variableEnd||t_,COMMENT_START:r.commentStart||n_,COMMENT_END:r.commentEnd||r_},this.trimBlocks=!!s.trimBlocks,this.lstripBlocks=!!s.lstripBlocks}var t=e.prototype;return t.nextToken=function(){var s=this.lineno,r=this.colno,i;if(this.in_code){var o=this.current();if(this.isFinished())return null;if(o==='"'||o==="'")return Je(Cc,this._parseString(o),s,r);if(i=this._extract(Nc))return Je(Pc,i,s,r);if((i=this._extractString(this.tags.BLOCK_END))||(i=this._extractString("-"+this.tags.BLOCK_END)))return this.in_code=!1,this.trimBlocks&&(o=this.current(),o===`
-`?this.forward():o==="\r"&&(this.forward(),o=this.current(),o===`
-`?this.forward():this.back())),Je(Ic,i,s,r);if((i=this._extractString(this.tags.VARIABLE_END))||(i=this._extractString("-"+this.tags.VARIABLE_END)))return this.in_code=!1,Je(Mc,i,s,r);if(o==="r"&&this.str.charAt(this.index+1)==="/"){this.forwardN(2);for(var a="";!this.isFinished();)if(this.current()==="/"&&this.previous()!=="\\"){this.forward();break}else a+=this.current(),this.forward();for(var l=["g","i","m","y"],c="";!this.isFinished();){var u=l.indexOf(this.current())!==-1;if(u)c+=this.current(),this.forward();else break}return Je(tu,{body:a,flags:c},s,r)}else if(Lc.indexOf(o)!==-1){this.forward();var d=["==","===","!=","!==","<=",">=","//","**"],p=o+this.current(),m;switch(Oc.indexOf(d,p)!==-1&&(this.forward(),o=p,Oc.indexOf(d,p+this.current())!==-1&&(o=p+this.current(),this.forward())),o){case"(":m=Uc;break;case")":m=Bc;break;case"[":m=Hc;break;case"]":m=Gc;break;case"{":m=Wc;break;case"}":m=Kc;break;case",":m=Vc;break;case":":m=Jc;break;case"~":m=zc;break;case"|":m=Yc;break;default:m=qc}return Je(m,o,s,r)}else if(i=this._extractUntil(Nc+Lc),i.match(/^[-+]?[0-9]+$/))if(this.current()==="."){this.forward();var g=this._extract(Xg);return Je(Zc,i+"."+g,s,r)}else return Je(Xc,i,s,r);else{if(i.match(/^(true|false)$/))return Je(Qc,i,s,r);if(i==="none")return Je(Di,i,s,r);if(i==="null")return Je(Di,i,s,r);if(i)return Je(eu,i,s,r);throw new Error("Unexpected value while parsing: "+i)}}else{var y=this.tags.BLOCK_START.charAt(0)+this.tags.VARIABLE_START.charAt(0)+this.tags.COMMENT_START.charAt(0)+this.tags.COMMENT_END.charAt(0);if(this.isFinished())return null;if((i=this._extractString(this.tags.BLOCK_START+"-"))||(i=this._extractString(this.tags.BLOCK_START)))return this.in_code=!0,Je(Fc,i,s,r);if((i=this._extractString(this.tags.VARIABLE_START+"-"))||(i=this._extractString(this.tags.VARIABLE_START)))return this.in_code=!0,Je(Dc,i,s,r);i="";var E,x=!1;for(this._matches(this.tags.COMMENT_START)&&(x=!0,i=this._extractString(this.tags.COMMENT_START));(E=this._extractUntil(y))!==null;)if(i+=E,(this._matches(this.tags.BLOCK_START)||this._matches(this.tags.VARIABLE_START)||this._matches(this.tags.COMMENT_START))&&!x){if(this.lstripBlocks&&this._matches(this.tags.BLOCK_START)&&this.colno>0&&this.colno<=i.length){var R=i.slice(-this.colno);if(/^\s+$/.test(R)&&(i=i.slice(0,-this.colno),!i.length))return this.nextToken()}break}else if(this._matches(this.tags.COMMENT_END)){if(!x)throw new Error("unexpected end of comment");i+=this._extractString(this.tags.COMMENT_END);break}else i+=this.current(),this.forward();if(E===null&&x)throw new Error("expected end of comment, got end of file");return Je(x?jc:$c,i,s,r)}},t._parseString=function(s){this.forward();for(var r="";!this.isFinished()&&this.current()!==s;){var i=this.current();if(i==="\\"){switch(this.forward(),this.current()){case"n":r+=`
-`;break;case"t":r+="	";break;case"r":r+="\r";break;default:r+=this.current()}this.forward()}else r+=i,this.forward()}return this.forward(),r},t._matches=function(s){if(this.index+s.length>this.len)return null;var r=this.str.slice(this.index,this.index+s.length);return r===s},t._extractString=function(s){return this._matches(s)?(this.forwardN(s.length),s):null},t._extractUntil=function(s){return this._extractMatching(!0,s||"")},t._extract=function(s){return this._extractMatching(!1,s)},t._extractMatching=function(s,r){if(this.isFinished())return null;var i=r.indexOf(this.current());if(s&&i===-1||!s&&i!==-1){var o=this.current();this.forward();for(var a=r.indexOf(this.current());(s&&a===-1||!s&&a!==-1)&&!this.isFinished();)o+=this.current(),this.forward(),a=r.indexOf(this.current());return o}return""},t._extractRegex=function(s){var r=this.currentStr().match(s);return r?(this.forwardN(r[0].length),r):null},t.isFinished=function(){return this.index>=this.len},t.forwardN=function(s){for(var r=0;r<s;r++)this.forward()},t.forward=function(){this.index++,this.previous()===`
-`?(this.lineno++,this.colno=0):this.colno++},t.backN=function(s){for(var r=0;r<s;r++)this.back()},t.back=function(){if(this.index--,this.current()===`
-`){this.lineno--;var s=this.src.lastIndexOf(`
-`,this.index-1);s===-1?this.colno=this.index:this.colno=this.index-s}else this.colno--},t.current=function(){return this.isFinished()?"":this.str.charAt(this.index)},t.currentStr=function(){return this.isFinished()?"":this.str.substr(this.index)},t.previous=function(){return this.str.charAt(this.index-1)},e})();nu.exports={lex:function(t,n){return new i_(t,n)},TOKEN_STRING:Cc,TOKEN_WHITESPACE:Pc,TOKEN_DATA:$c,TOKEN_BLOCK_START:Fc,TOKEN_BLOCK_END:Ic,TOKEN_VARIABLE_START:Dc,TOKEN_VARIABLE_END:Mc,TOKEN_COMMENT:jc,TOKEN_LEFT_PAREN:Uc,TOKEN_RIGHT_PAREN:Bc,TOKEN_LEFT_BRACKET:Hc,TOKEN_RIGHT_BRACKET:Gc,TOKEN_LEFT_CURLY:Wc,TOKEN_RIGHT_CURLY:Kc,TOKEN_OPERATOR:qc,TOKEN_COMMA:Vc,TOKEN_COLON:Jc,TOKEN_TILDE:zc,TOKEN_PIPE:Yc,TOKEN_INT:Xc,TOKEN_FLOAT:Zc,TOKEN_BOOLEAN:Qc,TOKEN_NONE:Di,TOKEN_SYMBOL:eu,TOKEN_SPECIAL:s_,TOKEN_REGEX:tu}});var Mn=be((JT,au)=>{"use strict";function ru(e,t){for(var n=0;n<t.length;n++){var s=t[n];s.enumerable=s.enumerable||!1,s.configurable=!0,"value"in s&&(s.writable=!0),Object.defineProperty(e,o_(s.key),s)}}function Ui(e,t,n){return t&&ru(e.prototype,t),n&&ru(e,n),Object.defineProperty(e,"prototype",{writable:!1}),e}function o_(e){var t=a_(e,"string");return typeof t=="symbol"?t:String(t)}function a_(e,t){if(typeof e!="object"||e===null)return e;var n=e[Symbol.toPrimitive];if(n!==void 0){var s=n.call(e,t||"default");if(typeof s!="object")return s;throw new TypeError("@@toPrimitive must return a primitive value.")}return(t==="string"?String:Number)(e)}function iu(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,ji(e,t)}function ji(e,t){return ji=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(s,r){return s.__proto__=r,s},ji(e,t)}var l_=At("events"),su=ft();function c_(e,t){return typeof e!="function"||typeof t!="function"?t:function(){var s=this.parent;this.parent=e;var r=t.apply(this,arguments);return this.parent=s,r}}function ou(e,t,n){n=n||{},su.keys(n).forEach(function(r){n[r]=c_(e.prototype[r],n[r])});var s=(function(r){iu(i,r);function i(){return r.apply(this,arguments)||this}return Ui(i,[{key:"typename",get:function(){return t}}]),i})(e);return su._assign(s.prototype,n),s}var u_=(function(){function e(){this.init.apply(this,arguments)}var t=e.prototype;return t.init=function(){},e.extend=function(s,r){return typeof s=="object"&&(r=s,s="anonymous"),ou(this,s,r)},Ui(e,[{key:"typename",get:function(){return this.constructor.name}}]),e})(),d_=(function(e){iu(t,e);function t(){var s,r;return r=e.call(this)||this,(s=r).init.apply(s,arguments),r}var n=t.prototype;return n.init=function(){},t.extend=function(r,i){return typeof r=="object"&&(i=r,r="anonymous"),ou(this,r,i)},Ui(t,[{key:"typename",get:function(){return this.constructor.name}}]),t})(l_);au.exports={Obj:u_,EmitterObj:d_}});var yr=be((zT,gu)=>{"use strict";function lu(e,t){for(var n=0;n<t.length;n++){var s=t[n];s.enumerable=s.enumerable||!1,s.configurable=!0,"value"in s&&(s.writable=!0),Object.defineProperty(e,p_(s.key),s)}}function Hi(e,t,n){return t&&lu(e.prototype,t),n&&lu(e,n),Object.defineProperty(e,"prototype",{writable:!1}),e}function p_(e){var t=h_(e,"string");return typeof t=="symbol"?t:String(t)}function h_(e,t){if(typeof e!="object"||e===null)return e;var n=e[Symbol.toPrimitive];if(n!==void 0){var s=n.call(e,t||"default");if(typeof s!="object")return s;throw new TypeError("@@toPrimitive must return a primitive value.")}return(t==="string"?String:Number)(e)}function cs(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,Bi(e,t)}function Bi(e,t){return Bi=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(s,r){return s.__proto__=r,s},Bi(e,t)}var f_=Mn(),m_=f_.Obj;function cu(e,t,n){e instanceof t&&n.push(e),e instanceof de&&e.findAll(t,n)}var de=(function(e){cs(t,e);function t(){return e.apply(this,arguments)||this}var n=t.prototype;return n.init=function(r,i){for(var o=arguments,a=this,l=arguments.length,c=new Array(l>2?l-2:0),u=2;u<l;u++)c[u-2]=arguments[u];this.lineno=r,this.colno=i,this.fields.forEach(function(d,p){var m=o[p+2];m===void 0&&(m=null),a[d]=m})},n.findAll=function(r,i){var o=this;return i=i||[],this instanceof Lt?this.children.forEach(function(a){return cu(a,r,i)}):this.fields.forEach(function(a){return cu(o[a],r,i)}),i},n.iterFields=function(r){var i=this;this.fields.forEach(function(o){r(i[o],o)})},t})(m_),Gi=(function(e){cs(t,e);function t(){return e.apply(this,arguments)||this}return Hi(t,[{key:"typename",get:function(){return"Value"}},{key:"fields",get:function(){return["value"]}}]),t})(de),Lt=(function(e){cs(t,e);function t(){return e.apply(this,arguments)||this}var n=t.prototype;return n.init=function(r,i,o){e.prototype.init.call(this,r,i,o||[])},n.addChild=function(r){this.children.push(r)},Hi(t,[{key:"typename",get:function(){return"NodeList"}},{key:"fields",get:function(){return["children"]}}]),t})(de),g_=Lt.extend("Root"),uu=Gi.extend("Literal"),__=Gi.extend("Symbol"),b_=Lt.extend("Group"),y_=Lt.extend("Array"),w_=de.extend("Pair",{fields:["key","value"]}),du=Lt.extend("Dict"),S_=de.extend("LookupVal",{fields:["target","val"]}),pu=de.extend("If",{fields:["cond","body","else_"]}),v_=pu.extend("IfAsync"),E_=de.extend("InlineIf",{fields:["cond","body","else_"]}),Wi=de.extend("For",{fields:["arr","name","body","else_"]}),R_=Wi.extend("AsyncEach"),x_=Wi.extend("AsyncAll"),hu=de.extend("Macro",{fields:["name","args","body"]}),T_=hu.extend("Caller"),k_=de.extend("Import",{fields:["template","target","withContext"]}),A_=(function(e){cs(t,e);function t(){return e.apply(this,arguments)||this}var n=t.prototype;return n.init=function(r,i,o,a,l){e.prototype.init.call(this,r,i,o,a||new Lt,l)},Hi(t,[{key:"typename",get:function(){return"FromImport"}},{key:"fields",get:function(){return["template","names","withContext"]}}]),t})(de),fu=de.extend("FunCall",{fields:["name","args"]}),mu=fu.extend("Filter"),O_=mu.extend("FilterAsync",{fields:["name","args","symbol"]}),N_=du.extend("KeywordArgs"),L_=de.extend("Block",{fields:["name","body"]}),C_=de.extend("Super",{fields:["blockName","symbol"]}),P_=de.extend("TemplateRef",{fields:["template"]}),$_=P_.extend("Extends"),F_=de.extend("Include",{fields:["template","ignoreMissing"]}),I_=de.extend("Set",{fields:["targets","value"]}),D_=de.extend("Switch",{fields:["expr","cases","default"]}),M_=de.extend("Case",{fields:["cond","body"]}),j_=Lt.extend("Output"),U_=de.extend("Capture",{fields:["body"]}),B_=uu.extend("TemplateData"),Ki=de.extend("UnaryOp",{fields:["target"]}),et=de.extend("BinOp",{fields:["left","right"]}),H_=et.extend("In"),G_=et.extend("Is"),W_=et.extend("Or"),K_=et.extend("And"),q_=Ki.extend("Not"),V_=et.extend("Add"),J_=et.extend("Concat"),z_=et.extend("Sub"),Y_=et.extend("Mul"),X_=et.extend("Div"),Z_=et.extend("FloorDiv"),Q_=et.extend("Mod"),eb=et.extend("Pow"),tb=Ki.extend("Neg"),nb=Ki.extend("Pos"),rb=de.extend("Compare",{fields:["expr","ops"]}),sb=de.extend("CompareOperand",{fields:["expr","type"]}),qi=de.extend("CallExtension",{init:function(t,n,s,r){this.parent(),this.extName=t.__name||t,this.prop=n,this.args=s||new Lt,this.contentArgs=r||[],this.autoescape=t.autoescape},fields:["extName","prop","args","contentArgs"]}),ib=qi.extend("CallExtensionAsync");function jn(e,t,n){var s=e.split(`
-`);s.forEach(function(r,i){r&&(n&&i>0||!n)&&process.stdout.write(" ".repeat(t));var o=i===s.length-1?"":`
-`;process.stdout.write(""+r+o)})}function br(e,t){if(t=t||0,jn(e.typename+": ",t),e instanceof Lt)jn(`
-`),e.children.forEach(function(r){br(r,t+2)});else if(e instanceof qi)jn(e.extName+"."+e.prop+`
-`),e.args&&br(e.args,t+2),e.contentArgs&&e.contentArgs.forEach(function(r){br(r,t+2)});else{var n=[],s=null;e.iterFields(function(r,i){r instanceof de?n.push([i,r]):(s=s||{},s[i]=r)}),s?jn(JSON.stringify(s,null,2)+`
-`,null,!0):jn(`
-`),n.forEach(function(r){var i=r[0],o=r[1];jn("["+i+"] =>",t+2),br(o,t+4)})}}gu.exports={Node:de,Root:g_,NodeList:Lt,Value:Gi,Literal:uu,Symbol:__,Group:b_,Array:y_,Pair:w_,Dict:du,Output:j_,Capture:U_,TemplateData:B_,If:pu,IfAsync:v_,InlineIf:E_,For:Wi,AsyncEach:R_,AsyncAll:x_,Macro:hu,Caller:T_,Import:k_,FromImport:A_,FunCall:fu,Filter:mu,FilterAsync:O_,KeywordArgs:N_,Block:L_,Super:C_,Extends:$_,Include:F_,Set:I_,Switch:D_,Case:M_,LookupVal:S_,BinOp:et,In:H_,Is:G_,Or:W_,And:K_,Not:q_,Add:V_,Concat:J_,Sub:z_,Mul:Y_,Div:X_,FloorDiv:Z_,Mod:Q_,Pow:eb,Neg:tb,Pos:nb,Compare:rb,CompareOperand:sb,CallExtension:qi,CallExtensionAsync:ib,printNodes:br}});var zi=be((YT,bu)=>{"use strict";function ob(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,Ji(e,t)}function Ji(e,t){return Ji=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(s,r){return s.__proto__=r,s},Ji(e,t)}var j=Mi(),$=yr(),ab=Mn().Obj,Vi=ft(),_u=(function(e){ob(t,e);function t(){return e.apply(this,arguments)||this}var n=t.prototype;return n.init=function(r){this.tokens=r,this.peeked=null,this.breakOnBlocks=null,this.dropLeadingWhitespace=!1,this.extensions=[]},n.nextToken=function(r){var i;if(this.peeked)if(!r&&this.peeked.type===j.TOKEN_WHITESPACE)this.peeked=null;else return i=this.peeked,this.peeked=null,i;if(i=this.tokens.nextToken(),!r)for(;i&&i.type===j.TOKEN_WHITESPACE;)i=this.tokens.nextToken();return i},n.peekToken=function(){return this.peeked=this.peeked||this.nextToken(),this.peeked},n.pushToken=function(r){if(this.peeked)throw new Error("pushToken: can only push one token on between reads");this.peeked=r},n.error=function(r,i,o){if(i===void 0||o===void 0){var a=this.peekToken()||{};i=a.lineno,o=a.colno}return i!==void 0&&(i+=1),o!==void 0&&(o+=1),new Vi.TemplateError(r,i,o)},n.fail=function(r,i,o){throw this.error(r,i,o)},n.skip=function(r){var i=this.nextToken();return!i||i.type!==r?(this.pushToken(i),!1):!0},n.expect=function(r){var i=this.nextToken();return i.type!==r&&this.fail("expected "+r+", got "+i.type,i.lineno,i.colno),i},n.skipValue=function(r,i){var o=this.nextToken();return!o||o.type!==r||o.value!==i?(this.pushToken(o),!1):!0},n.skipSymbol=function(r){return this.skipValue(j.TOKEN_SYMBOL,r)},n.advanceAfterBlockEnd=function(r){var i;return r||(i=this.peekToken(),i||this.fail("unexpected end of file"),i.type!==j.TOKEN_SYMBOL&&this.fail("advanceAfterBlockEnd: expected symbol token or explicit name to be passed"),r=this.nextToken().value),i=this.nextToken(),i&&i.type===j.TOKEN_BLOCK_END?i.value.charAt(0)==="-"&&(this.dropLeadingWhitespace=!0):this.fail("expected block end in "+r+" statement"),i},n.advanceAfterVariableEnd=function(){var r=this.nextToken();r&&r.type===j.TOKEN_VARIABLE_END?this.dropLeadingWhitespace=r.value.charAt(r.value.length-this.tokens.tags.VARIABLE_END.length-1)==="-":(this.pushToken(r),this.fail("expected variable end"))},n.parseFor=function(){var r=this.peekToken(),i,o;this.skipSymbol("for")?(i=new $.For(r.lineno,r.colno),o="endfor"):this.skipSymbol("asyncEach")?(i=new $.AsyncEach(r.lineno,r.colno),o="endeach"):this.skipSymbol("asyncAll")?(i=new $.AsyncAll(r.lineno,r.colno),o="endall"):this.fail("parseFor: expected for{Async}",r.lineno,r.colno),i.name=this.parsePrimary(),i.name instanceof $.Symbol||this.fail("parseFor: variable name expected for loop");var a=this.peekToken().type;if(a===j.TOKEN_COMMA){var l=i.name;for(i.name=new $.Array(l.lineno,l.colno),i.name.addChild(l);this.skip(j.TOKEN_COMMA);){var c=this.parsePrimary();i.name.addChild(c)}}return this.skipSymbol("in")||this.fail('parseFor: expected "in" keyword for loop',r.lineno,r.colno),i.arr=this.parseExpression(),this.advanceAfterBlockEnd(r.value),i.body=this.parseUntilBlocks(o,"else"),this.skipSymbol("else")&&(this.advanceAfterBlockEnd("else"),i.else_=this.parseUntilBlocks(o)),this.advanceAfterBlockEnd(),i},n.parseMacro=function(){var r=this.peekToken();this.skipSymbol("macro")||this.fail("expected macro");var i=this.parsePrimary(!0),o=this.parseSignature(),a=new $.Macro(r.lineno,r.colno,i,o);return this.advanceAfterBlockEnd(r.value),a.body=this.parseUntilBlocks("endmacro"),this.advanceAfterBlockEnd(),a},n.parseCall=function(){var r=this.peekToken();this.skipSymbol("call")||this.fail("expected call");var i=this.parseSignature(!0)||new $.NodeList,o=this.parsePrimary();this.advanceAfterBlockEnd(r.value);var a=this.parseUntilBlocks("endcall");this.advanceAfterBlockEnd();var l=new $.Symbol(r.lineno,r.colno,"caller"),c=new $.Caller(r.lineno,r.colno,l,i,a),u=o.args.children;u[u.length-1]instanceof $.KeywordArgs||u.push(new $.KeywordArgs);var d=u[u.length-1];return d.addChild(new $.Pair(r.lineno,r.colno,l,c)),new $.Output(r.lineno,r.colno,[o])},n.parseWithContext=function(){var r=this.peekToken(),i=null;return this.skipSymbol("with")?i=!0:this.skipSymbol("without")&&(i=!1),i!==null&&(this.skipSymbol("context")||this.fail("parseFrom: expected context after with/without",r.lineno,r.colno)),i},n.parseImport=function(){var r=this.peekToken();this.skipSymbol("import")||this.fail("parseImport: expected import",r.lineno,r.colno);var i=this.parseExpression();this.skipSymbol("as")||this.fail('parseImport: expected "as" keyword',r.lineno,r.colno);var o=this.parseExpression(),a=this.parseWithContext(),l=new $.Import(r.lineno,r.colno,i,o,a);return this.advanceAfterBlockEnd(r.value),l},n.parseFrom=function(){var r=this.peekToken();this.skipSymbol("from")||this.fail("parseFrom: expected from");var i=this.parseExpression();this.skipSymbol("import")||this.fail("parseFrom: expected import",r.lineno,r.colno);for(var o=new $.NodeList,a;;){var l=this.peekToken();if(l.type===j.TOKEN_BLOCK_END){o.children.length||this.fail("parseFrom: Expected at least one import name",r.lineno,r.colno),l.value.charAt(0)==="-"&&(this.dropLeadingWhitespace=!0),this.nextToken();break}o.children.length>0&&!this.skip(j.TOKEN_COMMA)&&this.fail("parseFrom: expected comma",r.lineno,r.colno);var c=this.parsePrimary();if(c.value.charAt(0)==="_"&&this.fail("parseFrom: names starting with an underscore cannot be imported",c.lineno,c.colno),this.skipSymbol("as")){var u=this.parsePrimary();o.addChild(new $.Pair(c.lineno,c.colno,c,u))}else o.addChild(c);a=this.parseWithContext()}return new $.FromImport(r.lineno,r.colno,i,o,a)},n.parseBlock=function(){var r=this.peekToken();this.skipSymbol("block")||this.fail("parseBlock: expected block",r.lineno,r.colno);var i=new $.Block(r.lineno,r.colno);i.name=this.parsePrimary(),i.name instanceof $.Symbol||this.fail("parseBlock: variable name expected",r.lineno,r.colno),this.advanceAfterBlockEnd(r.value),i.body=this.parseUntilBlocks("endblock"),this.skipSymbol("endblock"),this.skipSymbol(i.name.value);var o=this.peekToken();return o||this.fail("parseBlock: expected endblock, got end of file"),this.advanceAfterBlockEnd(o.value),i},n.parseExtends=function(){var r="extends",i=this.peekToken();this.skipSymbol(r)||this.fail("parseTemplateRef: expected "+r);var o=new $.Extends(i.lineno,i.colno);return o.template=this.parseExpression(),this.advanceAfterBlockEnd(i.value),o},n.parseInclude=function(){var r="include",i=this.peekToken();this.skipSymbol(r)||this.fail("parseInclude: expected "+r);var o=new $.Include(i.lineno,i.colno);return o.template=this.parseExpression(),this.skipSymbol("ignore")&&this.skipSymbol("missing")&&(o.ignoreMissing=!0),this.advanceAfterBlockEnd(i.value),o},n.parseIf=function(){var r=this.peekToken(),i;this.skipSymbol("if")||this.skipSymbol("elif")||this.skipSymbol("elseif")?i=new $.If(r.lineno,r.colno):this.skipSymbol("ifAsync")?i=new $.IfAsync(r.lineno,r.colno):this.fail("parseIf: expected if, elif, or elseif",r.lineno,r.colno),i.cond=this.parseExpression(),this.advanceAfterBlockEnd(r.value),i.body=this.parseUntilBlocks("elif","elseif","else","endif");var o=this.peekToken();switch(o&&o.value){case"elseif":case"elif":i.else_=this.parseIf();break;case"else":this.advanceAfterBlockEnd(),i.else_=this.parseUntilBlocks("endif"),this.advanceAfterBlockEnd();break;case"endif":i.else_=null,this.advanceAfterBlockEnd();break;default:this.fail("parseIf: expected elif, else, or endif, got end of file")}return i},n.parseSet=function(){var r=this.peekToken();this.skipSymbol("set")||this.fail("parseSet: expected set",r.lineno,r.colno);for(var i=new $.Set(r.lineno,r.colno,[]),o;(o=this.parsePrimary())&&(i.targets.push(o),!!this.skip(j.TOKEN_COMMA)););return this.skipValue(j.TOKEN_OPERATOR,"=")?(i.value=this.parseExpression(),this.advanceAfterBlockEnd(r.value)):this.skip(j.TOKEN_BLOCK_END)?(i.body=new $.Capture(r.lineno,r.colno,this.parseUntilBlocks("endset")),i.value=null,this.advanceAfterBlockEnd()):this.fail("parseSet: expected = or block end in set tag",r.lineno,r.colno),i},n.parseSwitch=function(){var r="switch",i="endswitch",o="case",a="default",l=this.peekToken();!this.skipSymbol(r)&&!this.skipSymbol(o)&&!this.skipSymbol(a)&&this.fail('parseSwitch: expected "switch," "case" or "default"',l.lineno,l.colno);var c=this.parseExpression();this.advanceAfterBlockEnd(r),this.parseUntilBlocks(o,a,i);var u=this.peekToken(),d=[],p;do{this.skipSymbol(o);var m=this.parseExpression();this.advanceAfterBlockEnd(r);var g=this.parseUntilBlocks(o,a,i);d.push(new $.Case(u.line,u.col,m,g)),u=this.peekToken()}while(u&&u.value===o);switch(u.value){case a:this.advanceAfterBlockEnd(),p=this.parseUntilBlocks(i),this.advanceAfterBlockEnd();break;case i:this.advanceAfterBlockEnd();break;default:this.fail('parseSwitch: expected "case," "default" or "endswitch," got EOF.')}return new $.Switch(l.lineno,l.colno,c,d,p)},n.parseStatement=function(){var r=this.peekToken(),i;if(r.type!==j.TOKEN_SYMBOL&&this.fail("tag name expected",r.lineno,r.colno),this.breakOnBlocks&&Vi.indexOf(this.breakOnBlocks,r.value)!==-1)return null;switch(r.value){case"raw":return this.parseRaw();case"verbatim":return this.parseRaw("verbatim");case"if":case"ifAsync":return this.parseIf();case"for":case"asyncEach":case"asyncAll":return this.parseFor();case"block":return this.parseBlock();case"extends":return this.parseExtends();case"include":return this.parseInclude();case"set":return this.parseSet();case"macro":return this.parseMacro();case"call":return this.parseCall();case"import":return this.parseImport();case"from":return this.parseFrom();case"filter":return this.parseFilterStatement();case"switch":return this.parseSwitch();default:if(this.extensions.length)for(var o=0;o<this.extensions.length;o++){var a=this.extensions[o];if(Vi.indexOf(a.tags||[],r.value)!==-1)return a.parse(this,$,j)}this.fail("unknown block tag: "+r.value,r.lineno,r.colno)}return i},n.parseRaw=function(r){r=r||"raw";for(var i="end"+r,o=new RegExp("([\\s\\S]*?){%\\s*("+r+"|"+i+")\\s*(?=%})%}"),a=1,l="",c=null,u=this.advanceAfterBlockEnd();(c=this.tokens._extractRegex(o))&&a>0;){var d=c[0],p=c[1],m=c[2];m===r?a+=1:m===i&&(a-=1),a===0?(l+=p,this.tokens.backN(d.length-p.length)):l+=d}return new $.Output(u.lineno,u.colno,[new $.TemplateData(u.lineno,u.colno,l)])},n.parsePostfix=function(r){for(var i,o=this.peekToken();o;){if(o.type===j.TOKEN_LEFT_PAREN)r=new $.FunCall(o.lineno,o.colno,r,this.parseSignature());else if(o.type===j.TOKEN_LEFT_BRACKET)i=this.parseAggregate(),i.children.length>1&&this.fail("invalid index"),r=new $.LookupVal(o.lineno,o.colno,r,i.children[0]);else if(o.type===j.TOKEN_OPERATOR&&o.value==="."){this.nextToken();var a=this.nextToken();a.type!==j.TOKEN_SYMBOL&&this.fail("expected name as lookup value, got "+a.value,a.lineno,a.colno),i=new $.Literal(a.lineno,a.colno,a.value),r=new $.LookupVal(o.lineno,o.colno,r,i)}else break;o=this.peekToken()}return r},n.parseExpression=function(){var r=this.parseInlineIf();return r},n.parseInlineIf=function(){var r=this.parseOr();if(this.skipSymbol("if")){var i=this.parseOr(),o=r;r=new $.InlineIf(r.lineno,r.colno),r.body=o,r.cond=i,this.skipSymbol("else")?r.else_=this.parseOr():r.else_=null}return r},n.parseOr=function(){for(var r=this.parseAnd();this.skipSymbol("or");){var i=this.parseAnd();r=new $.Or(r.lineno,r.colno,r,i)}return r},n.parseAnd=function(){for(var r=this.parseNot();this.skipSymbol("and");){var i=this.parseNot();r=new $.And(r.lineno,r.colno,r,i)}return r},n.parseNot=function(){var r=this.peekToken();return this.skipSymbol("not")?new $.Not(r.lineno,r.colno,this.parseNot()):this.parseIn()},n.parseIn=function(){for(var r=this.parseIs();;){var i=this.nextToken();if(!i)break;var o=i.type===j.TOKEN_SYMBOL&&i.value==="not";if(o||this.pushToken(i),this.skipSymbol("in")){var a=this.parseIs();r=new $.In(r.lineno,r.colno,r,a),o&&(r=new $.Not(r.lineno,r.colno,r))}else{o&&this.pushToken(i);break}}return r},n.parseIs=function(){var r=this.parseCompare();if(this.skipSymbol("is")){var i=this.skipSymbol("not"),o=this.parseCompare();r=new $.Is(r.lineno,r.colno,r,o),i&&(r=new $.Not(r.lineno,r.colno,r))}return r},n.parseCompare=function(){for(var r=["==","===","!=","!==","<",">","<=",">="],i=this.parseConcat(),o=[];;){var a=this.nextToken();if(a)if(r.indexOf(a.value)!==-1)o.push(new $.CompareOperand(a.lineno,a.colno,this.parseConcat(),a.value));else{this.pushToken(a);break}else break}return o.length?new $.Compare(o[0].lineno,o[0].colno,i,o):i},n.parseConcat=function(){for(var r=this.parseAdd();this.skipValue(j.TOKEN_TILDE,"~");){var i=this.parseAdd();r=new $.Concat(r.lineno,r.colno,r,i)}return r},n.parseAdd=function(){for(var r=this.parseSub();this.skipValue(j.TOKEN_OPERATOR,"+");){var i=this.parseSub();r=new $.Add(r.lineno,r.colno,r,i)}return r},n.parseSub=function(){for(var r=this.parseMul();this.skipValue(j.TOKEN_OPERATOR,"-");){var i=this.parseMul();r=new $.Sub(r.lineno,r.colno,r,i)}return r},n.parseMul=function(){for(var r=this.parseDiv();this.skipValue(j.TOKEN_OPERATOR,"*");){var i=this.parseDiv();r=new $.Mul(r.lineno,r.colno,r,i)}return r},n.parseDiv=function(){for(var r=this.parseFloorDiv();this.skipValue(j.TOKEN_OPERATOR,"/");){var i=this.parseFloorDiv();r=new $.Div(r.lineno,r.colno,r,i)}return r},n.parseFloorDiv=function(){for(var r=this.parseMod();this.skipValue(j.TOKEN_OPERATOR,"//");){var i=this.parseMod();r=new $.FloorDiv(r.lineno,r.colno,r,i)}return r},n.parseMod=function(){for(var r=this.parsePow();this.skipValue(j.TOKEN_OPERATOR,"%");){var i=this.parsePow();r=new $.Mod(r.lineno,r.colno,r,i)}return r},n.parsePow=function(){for(var r=this.parseUnary();this.skipValue(j.TOKEN_OPERATOR,"**");){var i=this.parseUnary();r=new $.Pow(r.lineno,r.colno,r,i)}return r},n.parseUnary=function(r){var i=this.peekToken(),o;return this.skipValue(j.TOKEN_OPERATOR,"-")?o=new $.Neg(i.lineno,i.colno,this.parseUnary(!0)):this.skipValue(j.TOKEN_OPERATOR,"+")?o=new $.Pos(i.lineno,i.colno,this.parseUnary(!0)):o=this.parsePrimary(),r||(o=this.parseFilter(o)),o},n.parsePrimary=function(r){var i=this.nextToken(),o,a=null;if(i?i.type===j.TOKEN_STRING?o=i.value:i.type===j.TOKEN_INT?o=parseInt(i.value,10):i.type===j.TOKEN_FLOAT?o=parseFloat(i.value):i.type===j.TOKEN_BOOLEAN?i.value==="true"?o=!0:i.value==="false"?o=!1:this.fail("invalid boolean: "+i.value,i.lineno,i.colno):i.type===j.TOKEN_NONE?o=null:i.type===j.TOKEN_REGEX&&(o=new RegExp(i.value.body,i.value.flags)):this.fail("expected expression, got end of file"),o!==void 0?a=new $.Literal(i.lineno,i.colno,o):i.type===j.TOKEN_SYMBOL?a=new $.Symbol(i.lineno,i.colno,i.value):(this.pushToken(i),a=this.parseAggregate()),r||(a=this.parsePostfix(a)),a)return a;throw this.error("unexpected token: "+i.value,i.lineno,i.colno)},n.parseFilterName=function(){for(var r=this.expect(j.TOKEN_SYMBOL),i=r.value;this.skipValue(j.TOKEN_OPERATOR,".");)i+="."+this.expect(j.TOKEN_SYMBOL).value;return new $.Symbol(r.lineno,r.colno,i)},n.parseFilterArgs=function(r){if(this.peekToken().type===j.TOKEN_LEFT_PAREN){var i=this.parsePostfix(r);return i.args.children}return[]},n.parseFilter=function(r){for(;this.skip(j.TOKEN_PIPE);){var i=this.parseFilterName();r=new $.Filter(i.lineno,i.colno,i,new $.NodeList(i.lineno,i.colno,[r].concat(this.parseFilterArgs(r))))}return r},n.parseFilterStatement=function(){var r=this.peekToken();this.skipSymbol("filter")||this.fail("parseFilterStatement: expected filter");var i=this.parseFilterName(),o=this.parseFilterArgs(i);this.advanceAfterBlockEnd(r.value);var a=new $.Capture(i.lineno,i.colno,this.parseUntilBlocks("endfilter"));this.advanceAfterBlockEnd();var l=new $.Filter(i.lineno,i.colno,i,new $.NodeList(i.lineno,i.colno,[a].concat(o)));return new $.Output(i.lineno,i.colno,[l])},n.parseAggregate=function(){var r=this.nextToken(),i;switch(r.type){case j.TOKEN_LEFT_PAREN:i=new $.Group(r.lineno,r.colno);break;case j.TOKEN_LEFT_BRACKET:i=new $.Array(r.lineno,r.colno);break;case j.TOKEN_LEFT_CURLY:i=new $.Dict(r.lineno,r.colno);break;default:return null}for(;;){var o=this.peekToken().type;if(o===j.TOKEN_RIGHT_PAREN||o===j.TOKEN_RIGHT_BRACKET||o===j.TOKEN_RIGHT_CURLY){this.nextToken();break}if(i.children.length>0&&(this.skip(j.TOKEN_COMMA)||this.fail("parseAggregate: expected comma after expression",r.lineno,r.colno)),i instanceof $.Dict){var a=this.parsePrimary();this.skip(j.TOKEN_COLON)||this.fail("parseAggregate: expected colon after dict key",r.lineno,r.colno);var l=this.parseExpression();i.addChild(new $.Pair(a.lineno,a.colno,a,l))}else{var c=this.parseExpression();i.addChild(c)}}return i},n.parseSignature=function(r,i){var o=this.peekToken();if(!i&&o.type!==j.TOKEN_LEFT_PAREN){if(r)return null;this.fail("expected arguments",o.lineno,o.colno)}o.type===j.TOKEN_LEFT_PAREN&&(o=this.nextToken());for(var a=new $.NodeList(o.lineno,o.colno),l=new $.KeywordArgs(o.lineno,o.colno),c=!1;;){if(o=this.peekToken(),!i&&o.type===j.TOKEN_RIGHT_PAREN){this.nextToken();break}else if(i&&o.type===j.TOKEN_BLOCK_END)break;if(c&&!this.skip(j.TOKEN_COMMA))this.fail("parseSignature: expected comma after expression",o.lineno,o.colno);else{var u=this.parseExpression();this.skipValue(j.TOKEN_OPERATOR,"=")?l.addChild(new $.Pair(u.lineno,u.colno,u,this.parseExpression())):a.addChild(u)}c=!0}return l.children.length&&a.addChild(l),a},n.parseUntilBlocks=function(){for(var r=this.breakOnBlocks,i=arguments.length,o=new Array(i),a=0;a<i;a++)o[a]=arguments[a];this.breakOnBlocks=o;var l=this.parse();return this.breakOnBlocks=r,l},n.parseNodes=function(){for(var r,i=[];r=this.nextToken();)if(r.type===j.TOKEN_DATA){var o=r.value,a=this.peekToken(),l=a&&a.value;this.dropLeadingWhitespace&&(o=o.replace(/^\s*/,""),this.dropLeadingWhitespace=!1),a&&(a.type===j.TOKEN_BLOCK_START&&l.charAt(l.length-1)==="-"||a.type===j.TOKEN_VARIABLE_START&&l.charAt(this.tokens.tags.VARIABLE_START.length)==="-"||a.type===j.TOKEN_COMMENT&&l.charAt(this.tokens.tags.COMMENT_START.length)==="-")&&(o=o.replace(/\s*$/,"")),i.push(new $.Output(r.lineno,r.colno,[new $.TemplateData(r.lineno,r.colno,o)]))}else if(r.type===j.TOKEN_BLOCK_START){this.dropLeadingWhitespace=!1;var c=this.parseStatement();if(!c)break;i.push(c)}else if(r.type===j.TOKEN_VARIABLE_START){var u=this.parseExpression();this.dropLeadingWhitespace=!1,this.advanceAfterVariableEnd(),i.push(new $.Output(r.lineno,r.colno,[u]))}else r.type===j.TOKEN_COMMENT?this.dropLeadingWhitespace=r.value.charAt(r.value.length-this.tokens.tags.COMMENT_END.length-1)==="-":this.fail("Unexpected token at top-level: "+r.type,r.lineno,r.colno);return i},n.parse=function(){return new $.NodeList(0,0,this.parseNodes())},n.parseAsRoot=function(){return new $.Root(0,0,this.parseNodes())},t})(ab);bu.exports={parse:function(t,n,s){var r=new _u(j.lex(t,s));return n!==void 0&&(r.extensions=n),r.parseAsRoot()},Parser:_u}});var Su=be((XT,wu)=>{"use strict";var te=yr(),lb=ft(),cb=0;function yu(){return"hole_"+cb++}function Yi(e,t){for(var n=null,s=0;s<e.length;s++){var r=t(e[s]);r!==e[s]&&(n||(n=e.slice()),n[s]=r)}return n||e}function tn(e,t,n){if(!(e instanceof te.Node))return e;if(!n){var s=t(e);if(s&&s!==e)return s}if(e instanceof te.NodeList){var r=Yi(e.children,function(c){return tn(c,t,n)});r!==e.children&&(e=new te[e.typename](e.lineno,e.colno,r))}else if(e instanceof te.CallExtension){var i=tn(e.args,t,n),o=Yi(e.contentArgs,function(c){return tn(c,t,n)});(i!==e.args||o!==e.contentArgs)&&(e=new te[e.typename](e.extName,e.prop,i,o))}else{var a=e.fields.map(function(c){return e[c]}),l=Yi(a,function(c){return tn(c,t,n)});l!==a&&(e=new te[e.typename](e.lineno,e.colno),l.forEach(function(c,u){e[e.fields[u]]=c}))}return n&&t(e)||e}function Xi(e,t){return tn(e,t,!0)}function wr(e,t,n){var s=[],r=Xi(n?e[n]:e,function(i){var o;return i instanceof te.Block?i:((i instanceof te.Filter&&lb.indexOf(t,i.name.value)!==-1||i instanceof te.CallExtensionAsync)&&(o=new te.Symbol(i.lineno,i.colno,yu()),s.push(new te.FilterAsync(i.lineno,i.colno,i.name,i.args,o))),o)});return n?e[n]=r:e=r,s.length?(s.push(e),new te.NodeList(e.lineno,e.colno,s)):e}function ub(e,t){return Xi(e,function(n){return n instanceof te.Output?wr(n,t):n instanceof te.Set?wr(n,t,"value"):n instanceof te.For?wr(n,t,"arr"):n instanceof te.If?wr(n,t,"cond"):n instanceof te.CallExtension?wr(n,t,"args"):void 0})}function db(e){return tn(e,function(t){if(t instanceof te.Block){var n=!1,s=yu();t.body=tn(t.body,function(r){if(r instanceof te.FunCall&&r.name.value==="super")return n=!0,new te.Symbol(r.lineno,r.colno,s)}),n&&t.body.children.unshift(new te.Super(0,0,t.name,new te.Symbol(0,0,s)))}})}function pb(e){return Xi(e,function(t){if(!(!(t instanceof te.If)&&!(t instanceof te.For))){var n=!1;if(tn(t,function(s){if(s instanceof te.FilterAsync||s instanceof te.IfAsync||s instanceof te.AsyncEach||s instanceof te.AsyncAll||s instanceof te.CallExtensionAsync)return n=!0,s}),n){if(t instanceof te.If)return new te.IfAsync(t.lineno,t.colno,t.cond,t.body,t.else_);if(t instanceof te.For&&!(t instanceof te.AsyncAll))return new te.AsyncEach(t.lineno,t.colno,t.arr,t.name,t.body,t.else_)}}})}function hb(e,t){return pb(db(ub(e,t)))}function fb(e,t){return hb(e,t||[])}wu.exports={transform:fb}});var Un=be((ZT,xu)=>{"use strict";var ct=ft(),vu=Array.from,mb=typeof Symbol=="function"&&Symbol.iterator&&typeof vu=="function",gb=(function(){function e(n,s){this.variables=Object.create(null),this.parent=n,this.topLevel=!1,this.isolateWrites=s}var t=e.prototype;return t.set=function(s,r,i){var o=s.split("."),a=this.variables,l=this;if(i&&(l=this.resolve(o[0],!0))){l.set(s,r);return}for(var c=0;c<o.length-1;c++){var u=o[c];a[u]||(a[u]={}),a=a[u]}a[o[o.length-1]]=r},t.get=function(s){var r=this.variables[s];return r!==void 0?r:null},t.lookup=function(s){var r=this.parent,i=this.variables[s];return i!==void 0?i:r&&r.lookup(s)},t.resolve=function(s,r){var i=r&&this.isolateWrites?void 0:this.parent,o=this.variables[s];return o!==void 0?this:i&&i.resolve(s)},t.push=function(s){return new e(this,s)},t.pop=function(){return this.parent},e})();function _b(e,t,n){return function(){for(var r=arguments.length,i=new Array(r),o=0;o<r;o++)i[o]=arguments[o];var a=Ru(i),l,c=yb(i);if(a>e.length)l=i.slice(0,e.length),i.slice(l.length,a).forEach(function(p,m){m<t.length&&(c[t[m]]=p)}),l.push(c);else if(a<e.length){l=i.slice(0,a);for(var u=a;u<e.length;u++){var d=e[u];l.push(c[d]),delete c[d]}l.push(c)}else l=i;return n.apply(this,l)}}function bb(e){return e.__keywords=!0,e}function Eu(e){return e&&Object.prototype.hasOwnProperty.call(e,"__keywords")}function yb(e){var t=e.length;if(t){var n=e[t-1];if(Eu(n))return n}return{}}function Ru(e){var t=e.length;if(t===0)return 0;var n=e[t-1];return Eu(n)?t-1:t}function Bt(e){if(typeof e!="string")return e;this.val=e,this.length=e.length}Bt.prototype=Object.create(String.prototype,{length:{writable:!0,configurable:!0,value:0}});Bt.prototype.valueOf=function(){return this.val};Bt.prototype.toString=function(){return this.val};function wb(e,t){return e instanceof Bt?new Bt(t):t.toString()}function Sb(e){var t=typeof e;return t==="string"?new Bt(e):t!=="function"?e:function(s){var r=e.apply(this,arguments);return typeof r=="string"?new Bt(r):r}}function vb(e,t){return e=e??"",t&&!(e instanceof Bt)&&(e=ct.escape(e.toString())),e}function Eb(e,t,n){if(e==null)throw new ct.TemplateError("attempted to output null or undefined value",t+1,n+1);return e}function Rb(e,t){if(e!=null)return typeof e[t]=="function"?function(){for(var n=arguments.length,s=new Array(n),r=0;r<n;r++)s[r]=arguments[r];return e[t].apply(e,s)}:e[t]}function xb(e,t,n,s){if(e){if(typeof e!="function")throw new Error("Unable to call `"+t+"`, which is not a function")}else throw new Error("Unable to call `"+t+"`, which is undefined or falsey");return e.apply(n,s)}function Tb(e,t,n){var s=t.lookup(n);return s!==void 0?s:e.lookup(n)}function kb(e,t,n){return e.lineno?e:new ct.TemplateError(e,t,n)}function Ab(e,t,n,s){if(ct.isArray(e)){var r=e.length;ct.asyncIter(e,function(o,a,l){switch(t){case 1:n(o,a,r,l);break;case 2:n(o[0],o[1],a,r,l);break;case 3:n(o[0],o[1],o[2],a,r,l);break;default:o.push(a,r,l),n.apply(this,o)}},s)}else ct.asyncFor(e,function(o,a,l,c,u){n(o,a,l,c,u)},s)}function Ob(e,t,n,s){var r=0,i,o;function a(m,g){r++,o[m]=g,r===i&&s(null,o.join(""))}if(ct.isArray(e))if(i=e.length,o=new Array(i),i===0)s(null,"");else for(var l=0;l<e.length;l++){var c=e[l];switch(t){case 1:n(c,l,i,a);break;case 2:n(c[0],c[1],l,i,a);break;case 3:n(c[0],c[1],c[2],l,i,a);break;default:c.push(l,i,a),n.apply(this,c)}}else{var u=ct.keys(e||{});if(i=u.length,o=new Array(i),i===0)s(null,"");else for(var d=0;d<u.length;d++){var p=u[d];n(p,e[p],d,i,a)}}}function Nb(e){return typeof e!="object"||e===null||ct.isArray(e)?e:mb&&Symbol.iterator in e?vu(e):e}xu.exports={Frame:gb,makeMacro:_b,makeKeywordArgs:bb,numArgs:Ru,suppressValue:vb,ensureDefined:Eb,memberLookup:Rb,contextOrFrameLookup:Tb,callWrap:xb,handleError:kb,isArray:ct.isArray,keys:ct.keys,SafeString:Bt,copySafeness:wb,markSafe:Sb,asyncEach:Ab,asyncAll:Ob,inOperator:ct.inOperator,fromIterator:Nb}});var us=be((QT,ku)=>{"use strict";function Lb(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,Qi(e,t)}function Qi(e,t){return Qi=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(s,r){return s.__proto__=r,s},Qi(e,t)}var Cb=zi(),Pb=Su(),J=yr(),$b=ft(),Fb=$b.TemplateError,Ib=Un(),Zi=Ib.Frame,Db=Mn(),Mb=Db.Obj,jb={"==":"==","===":"===","!=":"!=","!==":"!==","<":"<",">":">","<=":"<=",">=":">="},Tu=(function(e){Lb(t,e);function t(){return e.apply(this,arguments)||this}var n=t.prototype;return n.init=function(r,i){this.templateName=r,this.codebuf=[],this.lastId=0,this.buffer=null,this.bufferStack=[],this._scopeClosers="",this.inBlock=!1,this.throwOnUndefined=i},n.fail=function(r,i,o){throw i!==void 0&&(i+=1),o!==void 0&&(o+=1),new Fb(r,i,o)},n._pushBuffer=function(){var r=this._tmpid();return this.bufferStack.push(this.buffer),this.buffer=r,this._emit("var "+this.buffer+' = "";'),r},n._popBuffer=function(){this.buffer=this.bufferStack.pop()},n._emit=function(r){this.codebuf.push(r)},n._emitLine=function(r){this._emit(r+`
-`)},n._emitLines=function(){for(var r=this,i=arguments.length,o=new Array(i),a=0;a<i;a++)o[a]=arguments[a];o.forEach(function(l){return r._emitLine(l)})},n._emitFuncBegin=function(r,i){this.buffer="output",this._scopeClosers="",this._emitLine("function "+i+"(env, context, frame, runtime, cb) {"),this._emitLine("var lineno = "+r.lineno+";"),this._emitLine("var colno = "+r.colno+";"),this._emitLine("var "+this.buffer+' = "";'),this._emitLine("try {")},n._emitFuncEnd=function(r){r||this._emitLine("cb(null, "+this.buffer+");"),this._closeScopeLevels(),this._emitLine("} catch (e) {"),this._emitLine("  cb(runtime.handleError(e, lineno, colno));"),this._emitLine("}"),this._emitLine("}"),this.buffer=null},n._addScopeLevel=function(){this._scopeClosers+="})"},n._closeScopeLevels=function(){this._emitLine(this._scopeClosers+";"),this._scopeClosers=""},n._withScopedSyntax=function(r){var i=this._scopeClosers;this._scopeClosers="",r.call(this),this._closeScopeLevels(),this._scopeClosers=i},n._makeCallback=function(r){var i=this._tmpid();return"function("+i+(r?","+r:"")+`) {
-if(`+i+") { cb("+i+"); return; }"},n._tmpid=function(){return this.lastId++,"t_"+this.lastId},n._templateName=function(){return this.templateName==null?"undefined":JSON.stringify(this.templateName)},n._compileChildren=function(r,i){var o=this;r.children.forEach(function(a){o.compile(a,i)})},n._compileAggregate=function(r,i,o,a){var l=this;o&&this._emit(o),r.children.forEach(function(c,u){u>0&&l._emit(","),l.compile(c,i)}),a&&this._emit(a)},n._compileExpression=function(r,i){this.assertType(r,J.Literal,J.Symbol,J.Group,J.Array,J.Dict,J.FunCall,J.Caller,J.Filter,J.LookupVal,J.Compare,J.InlineIf,J.In,J.Is,J.And,J.Or,J.Not,J.Add,J.Concat,J.Sub,J.Mul,J.Div,J.FloorDiv,J.Mod,J.Pow,J.Neg,J.Pos,J.Compare,J.NodeList),this.compile(r,i)},n.assertType=function(r){for(var i=arguments.length,o=new Array(i>1?i-1:0),a=1;a<i;a++)o[a-1]=arguments[a];o.some(function(l){return r instanceof l})||this.fail("assertType: invalid type: "+r.typename,r.lineno,r.colno)},n.compileCallExtension=function(r,i,o){var a=this,l=r.args,c=r.contentArgs,u=typeof r.autoescape=="boolean"?r.autoescape:!0;if(o||this._emit(this.buffer+" += runtime.suppressValue("),this._emit('env.getExtension("'+r.extName+'")["'+r.prop+'"]('),this._emit("context"),(l||c)&&this._emit(","),l&&(l instanceof J.NodeList||this.fail("compileCallExtension: arguments must be a NodeList, use `parser.parseSignature`"),l.children.forEach(function(p,m){a._compileExpression(p,i),(m!==l.children.length-1||c.length)&&a._emit(",")})),c.length&&c.forEach(function(p,m){if(m>0&&a._emit(","),p){a._emitLine("function(cb) {"),a._emitLine("if(!cb) { cb = function(err) { if(err) { throw err; }}}");var g=a._pushBuffer();a._withScopedSyntax(function(){a.compile(p,i),a._emitLine("cb(null, "+g+");")}),a._popBuffer(),a._emitLine("return "+g+";"),a._emitLine("}")}else a._emit("null")}),o){var d=this._tmpid();this._emitLine(", "+this._makeCallback(d)),this._emitLine(this.buffer+" += runtime.suppressValue("+d+", "+u+" && env.opts.autoescape);"),this._addScopeLevel()}else this._emit(")"),this._emit(", "+u+` && env.opts.autoescape);
-`)},n.compileCallExtensionAsync=function(r,i){this.compileCallExtension(r,i,!0)},n.compileNodeList=function(r,i){this._compileChildren(r,i)},n.compileLiteral=function(r){if(typeof r.value=="string"){var i=r.value.replace(/\\/g,"\\\\");i=i.replace(/"/g,'\\"'),i=i.replace(/\n/g,"\\n"),i=i.replace(/\r/g,"\\r"),i=i.replace(/\t/g,"\\t"),i=i.replace(/\u2028/g,"\\u2028"),this._emit('"'+i+'"')}else r.value===null?this._emit("null"):this._emit(r.value.toString())},n.compileSymbol=function(r,i){var o=r.value,a=i.lookup(o);a?this._emit(a):this._emit('runtime.contextOrFrameLookup(context, frame, "'+o+'")')},n.compileGroup=function(r,i){this._compileAggregate(r,i,"(",")")},n.compileArray=function(r,i){this._compileAggregate(r,i,"[","]")},n.compileDict=function(r,i){this._compileAggregate(r,i,"{","}")},n.compilePair=function(r,i){var o=r.key,a=r.value;o instanceof J.Symbol?o=new J.Literal(o.lineno,o.colno,o.value):o instanceof J.Literal&&typeof o.value=="string"||this.fail("compilePair: Dict keys must be strings or names",o.lineno,o.colno),this.compile(o,i),this._emit(": "),this._compileExpression(a,i)},n.compileInlineIf=function(r,i){this._emit("("),this.compile(r.cond,i),this._emit("?"),this.compile(r.body,i),this._emit(":"),r.else_!==null?this.compile(r.else_,i):this._emit('""'),this._emit(")")},n.compileIn=function(r,i){this._emit("runtime.inOperator("),this.compile(r.left,i),this._emit(","),this.compile(r.right,i),this._emit(")")},n.compileIs=function(r,i){var o=r.right.name?r.right.name.value:r.right.value;this._emit('env.getTest("'+o+'").call(context, '),this.compile(r.left,i),r.right.args&&(this._emit(","),this.compile(r.right.args,i)),this._emit(") === true")},n._binOpEmitter=function(r,i,o){this.compile(r.left,i),this._emit(o),this.compile(r.right,i)},n.compileOr=function(r,i){return this._binOpEmitter(r,i," || ")},n.compileAnd=function(r,i){return this._binOpEmitter(r,i," && ")},n.compileAdd=function(r,i){return this._binOpEmitter(r,i," + ")},n.compileConcat=function(r,i){return this._binOpEmitter(r,i,' + "" + ')},n.compileSub=function(r,i){return this._binOpEmitter(r,i," - ")},n.compileMul=function(r,i){return this._binOpEmitter(r,i," * ")},n.compileDiv=function(r,i){return this._binOpEmitter(r,i," / ")},n.compileMod=function(r,i){return this._binOpEmitter(r,i," % ")},n.compileNot=function(r,i){this._emit("!"),this.compile(r.target,i)},n.compileFloorDiv=function(r,i){this._emit("Math.floor("),this.compile(r.left,i),this._emit(" / "),this.compile(r.right,i),this._emit(")")},n.compilePow=function(r,i){this._emit("Math.pow("),this.compile(r.left,i),this._emit(", "),this.compile(r.right,i),this._emit(")")},n.compileNeg=function(r,i){this._emit("-"),this.compile(r.target,i)},n.compilePos=function(r,i){this._emit("+"),this.compile(r.target,i)},n.compileCompare=function(r,i){var o=this;this.compile(r.expr,i),r.ops.forEach(function(a){o._emit(" "+jb[a.type]+" "),o.compile(a.expr,i)})},n.compileLookupVal=function(r,i){this._emit("runtime.memberLookup(("),this._compileExpression(r.target,i),this._emit("),"),this._compileExpression(r.val,i),this._emit(")")},n._getNodeName=function(r){switch(r.typename){case"Symbol":return r.value;case"FunCall":return"the return value of ("+this._getNodeName(r.name)+")";case"LookupVal":return this._getNodeName(r.target)+'["'+this._getNodeName(r.val)+'"]';case"Literal":return r.value.toString();default:return"--expression--"}},n.compileFunCall=function(r,i){this._emit("(lineno = "+r.lineno+", colno = "+r.colno+", "),this._emit("runtime.callWrap("),this._compileExpression(r.name,i),this._emit(', "'+this._getNodeName(r.name).replace(/"/g,'\\"')+'", context, '),this._compileAggregate(r.args,i,"[","])"),this._emit(")")},n.compileFilter=function(r,i){var o=r.name;this.assertType(o,J.Symbol),this._emit('env.getFilter("'+o.value+'").call(context, '),this._compileAggregate(r.args,i),this._emit(")")},n.compileFilterAsync=function(r,i){var o=r.name,a=r.symbol.value;this.assertType(o,J.Symbol),i.set(a,a),this._emit('env.getFilter("'+o.value+'").call(context, '),this._compileAggregate(r.args,i),this._emitLine(", "+this._makeCallback(a)),this._addScopeLevel()},n.compileKeywordArgs=function(r,i){this._emit("runtime.makeKeywordArgs("),this.compileDict(r,i),this._emit(")")},n.compileSet=function(r,i){var o=this,a=[];r.targets.forEach(function(l){var c=l.value,u=i.lookup(c);u==null&&(u=o._tmpid(),o._emitLine("var "+u+";")),a.push(u)}),r.value?(this._emit(a.join(" = ")+" = "),this._compileExpression(r.value,i),this._emitLine(";")):(this._emit(a.join(" = ")+" = "),this.compile(r.body,i),this._emitLine(";")),r.targets.forEach(function(l,c){var u=a[c],d=l.value;o._emitLine('frame.set("'+d+'", '+u+", true);"),o._emitLine("if(frame.topLevel) {"),o._emitLine('context.setVariable("'+d+'", '+u+");"),o._emitLine("}"),d.charAt(0)!=="_"&&(o._emitLine("if(frame.topLevel) {"),o._emitLine('context.addExport("'+d+'", '+u+");"),o._emitLine("}"))})},n.compileSwitch=function(r,i){var o=this;this._emit("switch ("),this.compile(r.expr,i),this._emit(") {"),r.cases.forEach(function(a,l){o._emit("case "),o.compile(a.cond,i),o._emit(": "),o.compile(a.body,i),a.body.children.length&&o._emitLine("break;")}),r.default&&(this._emit("default:"),this.compile(r.default,i)),this._emit("}")},n.compileIf=function(r,i,o){var a=this;this._emit("if("),this._compileExpression(r.cond,i),this._emitLine(") {"),this._withScopedSyntax(function(){a.compile(r.body,i),o&&a._emit("cb()")}),r.else_?(this._emitLine(`}
-else {`),this._withScopedSyntax(function(){a.compile(r.else_,i),o&&a._emit("cb()")})):o&&(this._emitLine(`}
-else {`),this._emit("cb()")),this._emitLine("}")},n.compileIfAsync=function(r,i){this._emit("(function(cb) {"),this.compileIf(r,i,!0),this._emit("})("+this._makeCallback()),this._addScopeLevel()},n._emitLoopBindings=function(r,i,o,a){var l=this,c=[{name:"index",val:o+" + 1"},{name:"index0",val:o},{name:"revindex",val:a+" - "+o},{name:"revindex0",val:a+" - "+o+" - 1"},{name:"first",val:o+" === 0"},{name:"last",val:o+" === "+a+" - 1"},{name:"length",val:a}];c.forEach(function(u){l._emitLine('frame.set("loop.'+u.name+'", '+u.val+");")})},n.compileFor=function(r,i){var o=this,a=this._tmpid(),l=this._tmpid(),c=this._tmpid();if(i=i.push(),this._emitLine("frame = frame.push();"),this._emit("var "+c+" = "),this._compileExpression(r.arr,i),this._emitLine(";"),this._emit("if("+c+") {"),this._emitLine(c+" = runtime.fromIterator("+c+");"),r.name instanceof J.Array){this._emitLine("var "+a+";"),this._emitLine("if(runtime.isArray("+c+")) {"),this._emitLine("var "+l+" = "+c+".length;"),this._emitLine("for("+a+"=0; "+a+" < "+c+".length; "+a+"++) {"),r.name.children.forEach(function(E,x){var R=o._tmpid();o._emitLine("var "+R+" = "+c+"["+a+"]["+x+"];"),o._emitLine('frame.set("'+E+'", '+c+"["+a+"]["+x+"]);"),i.set(r.name.children[x].value,R)}),this._emitLoopBindings(r,c,a,l),this._withScopedSyntax(function(){o.compile(r.body,i)}),this._emitLine("}"),this._emitLine("} else {");var u=r.name.children,d=u[0],p=u[1],m=this._tmpid(),g=this._tmpid();i.set(d.value,m),i.set(p.value,g),this._emitLine(a+" = -1;"),this._emitLine("var "+l+" = runtime.keys("+c+").length;"),this._emitLine("for(var "+m+" in "+c+") {"),this._emitLine(a+"++;"),this._emitLine("var "+g+" = "+c+"["+m+"];"),this._emitLine('frame.set("'+d.value+'", '+m+");"),this._emitLine('frame.set("'+p.value+'", '+g+");"),this._emitLoopBindings(r,c,a,l),this._withScopedSyntax(function(){o.compile(r.body,i)}),this._emitLine("}"),this._emitLine("}")}else{var y=this._tmpid();i.set(r.name.value,y),this._emitLine("var "+l+" = "+c+".length;"),this._emitLine("for(var "+a+"=0; "+a+" < "+c+".length; "+a+"++) {"),this._emitLine("var "+y+" = "+c+"["+a+"];"),this._emitLine('frame.set("'+r.name.value+'", '+y+");"),this._emitLoopBindings(r,c,a,l),this._withScopedSyntax(function(){o.compile(r.body,i)}),this._emitLine("}")}this._emitLine("}"),r.else_&&(this._emitLine("if (!"+l+") {"),this.compile(r.else_,i),this._emitLine("}")),this._emitLine("frame = frame.pop();")},n._compileAsyncLoop=function(r,i,o){var a=this,l=this._tmpid(),c=this._tmpid(),u=this._tmpid(),d=o?"asyncAll":"asyncEach";if(i=i.push(),this._emitLine("frame = frame.push();"),this._emit("var "+u+" = runtime.fromIterator("),this._compileExpression(r.arr,i),this._emitLine(");"),r.name instanceof J.Array){var p=r.name.children.length;this._emit("runtime."+d+"("+u+", "+p+", function("),r.name.children.forEach(function(y){a._emit(y.value+",")}),this._emit(l+","+c+",next) {"),r.name.children.forEach(function(y){var E=y.value;i.set(E,E),a._emitLine('frame.set("'+E+'", '+E+");")})}else{var m=r.name.value;this._emitLine("runtime."+d+"("+u+", 1, function("+m+", "+l+", "+c+",next) {"),this._emitLine('frame.set("'+m+'", '+m+");"),i.set(m,m)}this._emitLoopBindings(r,u,l,c),this._withScopedSyntax(function(){var y;o&&(y=a._pushBuffer()),a.compile(r.body,i),a._emitLine("next("+l+(y?","+y:"")+");"),o&&a._popBuffer()});var g=this._tmpid();this._emitLine("}, "+this._makeCallback(g)),this._addScopeLevel(),o&&this._emitLine(this.buffer+" += "+g+";"),r.else_&&(this._emitLine("if (!"+u+".length) {"),this.compile(r.else_,i),this._emitLine("}")),this._emitLine("frame = frame.pop();")},n.compileAsyncEach=function(r,i){this._compileAsyncLoop(r,i)},n.compileAsyncAll=function(r,i){this._compileAsyncLoop(r,i,!0)},n._compileMacro=function(r,i){var o=this,a=[],l=null,c="macro_"+this._tmpid(),u=i!==void 0;r.args.children.forEach(function(E,x){x===r.args.children.length-1&&E instanceof J.Dict?l=E:(o.assertType(E,J.Symbol),a.push(E))});var d=[].concat(a.map(function(E){return"l_"+E.value}),["kwargs"]),p=a.map(function(E){return'"'+E.value+'"'}),m=(l&&l.children||[]).map(function(E){return'"'+E.key.value+'"'}),g;u?g=i.push(!0):g=new Zi,this._emitLines("var "+c+" = runtime.makeMacro(","["+p.join(", ")+"], ","["+m.join(", ")+"], ","function ("+d.join(", ")+") {","var callerFrame = frame;","frame = "+(u?"frame.push(true);":"new runtime.Frame();"),"kwargs = kwargs || {};",'if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {','frame.set("caller", kwargs.caller); }'),a.forEach(function(E){o._emitLine('frame.set("'+E.value+'", l_'+E.value+");"),g.set(E.value,"l_"+E.value)}),l&&l.children.forEach(function(E){var x=E.key.value;o._emit('frame.set("'+x+'", '),o._emit('Object.prototype.hasOwnProperty.call(kwargs, "'+x+'")'),o._emit(' ? kwargs["'+x+'"] : '),o._compileExpression(E.value,g),o._emit(");")});var y=this._pushBuffer();return this._withScopedSyntax(function(){o.compile(r.body,g)}),this._emitLine("frame = "+(u?"frame.pop();":"callerFrame;")),this._emitLine("return new runtime.SafeString("+y+");"),this._emitLine("});"),this._popBuffer(),c},n.compileMacro=function(r,i){var o=this._compileMacro(r),a=r.name.value;i.set(a,o),i.parent?this._emitLine('frame.set("'+a+'", '+o+");"):(r.name.value.charAt(0)!=="_"&&this._emitLine('context.addExport("'+a+'");'),this._emitLine('context.setVariable("'+a+'", '+o+");"))},n.compileCaller=function(r,i){this._emit("(function (){");var o=this._compileMacro(r,i);this._emit("return "+o+";})()")},n._compileGetTemplate=function(r,i,o,a){var l=this._tmpid(),c=this._templateName(),u=this._makeCallback(l),d=o?"true":"false",p=a?"true":"false";return this._emit("env.getTemplate("),this._compileExpression(r.template,i),this._emitLine(", "+d+", "+c+", "+p+", "+u),l},n.compileImport=function(r,i){var o=r.target.value,a=this._compileGetTemplate(r,i,!1,!1);this._addScopeLevel(),this._emitLine(a+".getExported("+(r.withContext?"context.getVariables(), frame, ":"")+this._makeCallback(a)),this._addScopeLevel(),i.set(o,a),i.parent?this._emitLine('frame.set("'+o+'", '+a+");"):this._emitLine('context.setVariable("'+o+'", '+a+");")},n.compileFromImport=function(r,i){var o=this,a=this._compileGetTemplate(r,i,!1,!1);this._addScopeLevel(),this._emitLine(a+".getExported("+(r.withContext?"context.getVariables(), frame, ":"")+this._makeCallback(a)),this._addScopeLevel(),r.names.children.forEach(function(l){var c,u,d=o._tmpid();l instanceof J.Pair?(c=l.key.value,u=l.value.value):(c=l.value,u=c),o._emitLine("if(Object.prototype.hasOwnProperty.call("+a+', "'+c+'")) {'),o._emitLine("var "+d+" = "+a+"."+c+";"),o._emitLine("} else {"),o._emitLine(`cb(new Error("cannot import '`+c+`'")); return;`),o._emitLine("}"),i.set(u,d),i.parent?o._emitLine('frame.set("'+u+'", '+d+");"):o._emitLine('context.setVariable("'+u+'", '+d+");")})},n.compileBlock=function(r){var i=this._tmpid();this.inBlock||this._emit('(parentTemplate ? function(e, c, f, r, cb) { cb(""); } : '),this._emit('context.getBlock("'+r.name.value+'")'),this.inBlock||this._emit(")"),this._emitLine("(env, context, frame, runtime, "+this._makeCallback(i)),this._emitLine(this.buffer+" += "+i+";"),this._addScopeLevel()},n.compileSuper=function(r,i){var o=r.blockName.value,a=r.symbol.value,l=this._makeCallback(a);this._emitLine('context.getSuper(env, "'+o+'", b_'+o+", frame, runtime, "+l),this._emitLine(a+" = runtime.markSafe("+a+");"),this._addScopeLevel(),i.set(a,a)},n.compileExtends=function(r,i){var o=this._tmpid(),a=this._compileGetTemplate(r,i,!0,!1);this._emitLine("parentTemplate = "+a),this._emitLine("for(var "+o+" in parentTemplate.blocks) {"),this._emitLine("context.addBlock("+o+", parentTemplate.blocks["+o+"]);"),this._emitLine("}"),this._addScopeLevel()},n.compileInclude=function(r,i){this._emitLine("var tasks = [];"),this._emitLine("tasks.push("),this._emitLine("function(callback) {");var o=this._compileGetTemplate(r,i,!1,r.ignoreMissing);this._emitLine("callback(null,"+o+");});"),this._emitLine("});");var a=this._tmpid();this._emitLine("tasks.push("),this._emitLine("function(template, callback){"),this._emitLine("template.render(context.getVariables(), frame, "+this._makeCallback(a)),this._emitLine("callback(null,"+a+");});"),this._emitLine("});"),this._emitLine("tasks.push("),this._emitLine("function(result, callback){"),this._emitLine(this.buffer+" += result;"),this._emitLine("callback(null);"),this._emitLine("});"),this._emitLine("env.waterfall(tasks, function(){"),this._addScopeLevel()},n.compileTemplateData=function(r,i){this.compileLiteral(r,i)},n.compileCapture=function(r,i){var o=this,a=this.buffer;this.buffer="output",this._emitLine("(function() {"),this._emitLine('var output = "";'),this._withScopedSyntax(function(){o.compile(r.body,i)}),this._emitLine("return output;"),this._emitLine("})()"),this.buffer=a},n.compileOutput=function(r,i){var o=this,a=r.children;a.forEach(function(l){l instanceof J.TemplateData?l.value&&(o._emit(o.buffer+" += "),o.compileLiteral(l,i),o._emitLine(";")):(o._emit(o.buffer+" += runtime.suppressValue("),o.throwOnUndefined&&o._emit("runtime.ensureDefined("),o.compile(l,i),o.throwOnUndefined&&o._emit(","+r.lineno+","+r.colno+")"),o._emit(`, env.opts.autoescape);
-`))})},n.compileRoot=function(r,i){var o=this;i&&this.fail("compileRoot: root node can't have frame"),i=new Zi,this._emitFuncBegin(r,"root"),this._emitLine("var parentTemplate = null;"),this._compileChildren(r,i),this._emitLine("if(parentTemplate) {"),this._emitLine("parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);"),this._emitLine("} else {"),this._emitLine("cb(null, "+this.buffer+");"),this._emitLine("}"),this._emitFuncEnd(!0),this.inBlock=!0;var a=[],l=r.findAll(J.Block);l.forEach(function(c,u){var d=c.name.value;if(a.indexOf(d)!==-1)throw new Error('Block "'+d+'" defined more than once.');a.push(d),o._emitFuncBegin(c,"b_"+d);var p=new Zi;o._emitLine("var frame = frame.push(true);"),o.compile(c.body,p),o._emitFuncEnd()}),this._emitLine("return {"),l.forEach(function(c,u){var d="b_"+c.name.value;o._emitLine(d+": "+d+",")}),this._emitLine(`root: root
-};`)},n.compile=function(r,i){var o=this["compile"+r.typename];o?o.call(this,r,i):this.fail("compile: Cannot compile node: "+r.typename,r.lineno,r.colno)},n.getCode=function(){return this.codebuf.join("")},t})(Mb);ku.exports={compile:function(t,n,s,r,i){i===void 0&&(i={});var o=new Tu(r,i.throwOnUndefined),a=(s||[]).map(function(c){return c.preprocess}).filter(function(c){return!!c}),l=a.reduce(function(c,u){return u(c)},t);return o.compile(Pb.transform(Cb.parse(l,s,i),n,r)),o.getCode()},Compiler:Tu}});var Pu=be((ek,Cu)=>{"use strict";var se=ft(),Le=Un(),V=Cu.exports={};function Ct(e,t){return e==null||e===!1?t:e}V.abs=Math.abs;function eo(e){return e!==e}function Ub(e,t,n){var s,r=[],i=[];for(s=0;s<e.length;s++)s%t===0&&i.length&&(r.push(i),i=[]),i.push(e[s]);if(i.length){if(n)for(s=i.length;s<t;s++)i.push(n);r.push(i)}return r}V.batch=Ub;function Au(e){e=Ct(e,"");var t=e.toLowerCase();return Le.copySafeness(e,t.charAt(0).toUpperCase()+t.slice(1))}V.capitalize=Au;function Bb(e,t){if(e=Ct(e,""),t=t||80,e.length>=t)return e;var n=t-e.length,s=se.repeat(" ",n/2-n%2),r=se.repeat(" ",n/2);return Le.copySafeness(e,s+e+r)}V.center=Bb;function Hb(e,t,n){return n?e||t:e!==void 0?e:t}V.default=Hb;function Gb(e,t,n){if(!se.isObject(e))throw new se.TemplateError("dictsort filter: val must be an object");var s=[];for(var r in e)s.push([r,e[r]]);var i;if(n===void 0||n==="key")i=0;else if(n==="value")i=1;else throw new se.TemplateError("dictsort filter: You can only sort by either key or value");return s.sort(function(o,a){var l=o[i],c=a[i];return t||(se.isString(l)&&(l=l.toUpperCase()),se.isString(c)&&(c=c.toUpperCase())),l>c?1:l===c?0:-1}),s}V.dictsort=Gb;function Wb(e,t){return JSON.stringify(e,null,t)}V.dump=Wb;function Kb(e){return e instanceof Le.SafeString?e:(e=e??"",Le.markSafe(se.escape(e.toString())))}V.escape=Kb;function qb(e){return e instanceof Le.SafeString?e:(e=e??"",Le.markSafe(e.toString()))}V.safe=qb;function Vb(e){return e[0]}V.first=Vb;function Jb(e){return e=e??"",Le.markSafe(se.escape(e.toString()))}V.forceescape=Jb;function zb(e,t){return se.groupBy(e,t,this.env.opts.throwOnUndefined)}V.groupby=zb;function Yb(e,t,n){if(e=Ct(e,""),e==="")return"";t=t||4;var s=e.split(`
-`),r=se.repeat(" ",t),i=s.map(function(o,a){return a===0&&!n?o:""+r+o}).join(`
-`);return Le.copySafeness(e,i)}V.indent=Yb;function Xb(e,t,n){return t=t||"",n&&(e=se.map(e,function(s){return s[n]})),e.join(t)}V.join=Xb;function Zb(e){return e[e.length-1]}V.last=Zb;function Qb(e){var t=Ct(e,"");return t!==void 0?typeof Map=="function"&&t instanceof Map||typeof Set=="function"&&t instanceof Set?t.size:se.isObject(t)&&!(t instanceof Le.SafeString)?se.keys(t).length:t.length:0}V.length=Qb;function Ou(e){if(se.isString(e))return e.split("");if(se.isObject(e))return se._entries(e||{}).map(function(t){var n=t[0],s=t[1];return{key:n,value:s}});if(se.isArray(e))return e;throw new se.TemplateError("list filter: type not iterable")}V.list=Ou;function ey(e){return e=Ct(e,""),e.toLowerCase()}V.lower=ey;function ty(e){return e==null?"":Le.copySafeness(e,e.replace(/\r\n|\n/g,`<br />
-`))}V.nl2br=ty;function ny(e){return e[Math.floor(Math.random()*e.length)]}V.random=ny;function Nu(e){function t(n,s,r){s===void 0&&(s="truthy");var i=this,o=i.env.getTest(s);return se.toArray(n).filter(function(l){return o.call(i,l,r)===e})}return t}V.reject=Nu(!1);function ry(e,t){return e.filter(function(n){return!n[t]})}V.rejectattr=ry;V.select=Nu(!0);function sy(e,t){return e.filter(function(n){return!!n[t]})}V.selectattr=sy;function iy(e,t,n,s){var r=e;if(t instanceof RegExp)return e.replace(t,n);typeof s>"u"&&(s=-1);var i="";if(typeof t=="number")t=""+t;else if(typeof t!="string")return e;if(typeof e=="number"&&(e=""+e),typeof e!="string"&&!(e instanceof Le.SafeString))return e;if(t==="")return i=n+e.split("").join(n)+n,Le.copySafeness(e,i);var o=e.indexOf(t);if(s===0||o===-1)return e;for(var a=0,l=0;o>-1&&(s===-1||l<s);)i+=e.substring(a,o)+n,a=o+t.length,l++,o=e.indexOf(t,a);return a<e.length&&(i+=e.substring(a)),Le.copySafeness(r,i)}V.replace=iy;function oy(e){var t;return se.isString(e)?t=Ou(e):t=se.map(e,function(n){return n}),t.reverse(),se.isString(e)?Le.copySafeness(e,t.join("")):t}V.reverse=oy;function ay(e,t,n){t=t||0;var s=Math.pow(10,t),r;return n==="ceil"?r=Math.ceil:n==="floor"?r=Math.floor:r=Math.round,r(e*s)/s}V.round=ay;function ly(e,t,n){for(var s=Math.floor(e.length/t),r=e.length%t,i=[],o=0,a=0;a<t;a++){var l=o+a*s;a<r&&o++;var c=o+(a+1)*s,u=e.slice(l,c);n&&a>=r&&u.push(n),i.push(u)}return i}V.slice=ly;function cy(e,t,n){return n===void 0&&(n=0),t&&(e=se.map(e,function(s){return s[t]})),n+e.reduce(function(s,r){return s+r},0)}V.sum=cy;V.sort=Le.makeMacro(["value","reverse","case_sensitive","attribute"],[],function(t,n,s,r){var i=this,o=se.map(t,function(l){return l}),a=se.getAttrGetter(r);return o.sort(function(l,c){var u=r?a(l):l,d=r?a(c):c;if(i.env.opts.throwOnUndefined&&r&&(u===void 0||d===void 0))throw new TypeError('sort: attribute "'+r+'" resolved to undefined');return!s&&se.isString(u)&&se.isString(d)&&(u=u.toLowerCase(),d=d.toLowerCase()),u<d?n?1:-1:u>d?n?-1:1:0}),o});function uy(e){return Le.copySafeness(e,e)}V.string=uy;function dy(e,t){e=Ct(e,"");var n=/<\/?([a-z][a-z0-9]*)\b[^>]*>|<!--[\s\S]*?-->/gi,s=Lu(e.replace(n,"")),r="";return t?r=s.replace(/^ +| +$/gm,"").replace(/ +/g," ").replace(/(\r\n)/g,`
-`).replace(/\n\n\n+/g,`
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
+import {
+  CONTENT_FIXTURE_DIRECTORY,
+  CONTENT_FIXTURE_KINDS,
+  contentFixtureFile,
+  contentKindForModuleContentTypes,
+  contentKindForTemplateSource,
+  createAssetUrlRewriter,
+  createPageRenderer,
+  listContentStates,
+  loadContentState,
+  resolveContentState,
+  resolveThemeSettings,
+  unknownContentStateError
+} from "./chunks/chunk-XGUSAY2R.mjs";
+import {
+  parseSimpleKwargs
+} from "./chunks/chunk-DS7F6ODD.mjs";
+import {
+  CRM_OBJECT_FIXTURE_DIRECTORY,
+  FIELD_SCHEMA_DIR,
+  FIELD_SCHEMA_SUFFIX,
+  UNTYPED_FIXTURE_KINDS,
+  classifyModuleDir,
+  contentStateSchema,
+  crmObjectFixtureSchema,
+  decodeBase64Utf8,
+  describeContentId,
+  exampleFromEmbedded,
+  findUnresolvableContentLinks,
+  locateTemplate,
+  resolveInThemeCascade,
+  resolveModuleDir,
+  resolveThemeRoots,
+  themeRelativeDirectory
+} from "./chunks/chunk-ZOOMNTJN.mjs";
+import {
+  EMBEDDED_FIXTURES
+} from "./chunks/chunk-S62FVW6S.mjs";
+import {
+  renderThemeCssToFile
+} from "./chunks/chunk-ZH4AFS5M.mjs";
+import {
+  DIAGNOSTIC_CODES,
+  diagnostic
+} from "./chunks/chunk-W5TSNL56.mjs";
+import "./chunks/chunk-RZIZEC7B.mjs";
+import "./chunks/chunk-SECO6OCJ.mjs";
+import {
+  hubspotDefaultModuleSlug
+} from "./chunks/chunk-7ICA6BQD.mjs";
+import {
+  RendererError,
+  getHostFs,
+  hostFs,
+  resolveSafePath,
+  setHostFs
+} from "./chunks/chunk-TILBP2YO.mjs";
+import {
+  __name
+} from "./chunks/chunk-PPQVNGDG.mjs";
 
-`):r=s.replace(/\s+/gi," "),Le.copySafeness(e,r)}V.striptags=dy;function py(e){e=Ct(e,"");var t=e.split(" ").map(function(n){return Au(n)});return Le.copySafeness(e,t.join(" "))}V.title=py;function Lu(e){return Le.copySafeness(e,e.replace(/^\s*|\s*$/g,""))}V.trim=Lu;function hy(e,t,n,s){var r=e;if(e=Ct(e,""),t=t||255,e.length<=t)return e;if(n)e=e.substring(0,t);else{var i=e.lastIndexOf(" ",t);i===-1&&(i=t),e=e.substring(0,i)}return e+=s??"...",Le.copySafeness(r,e)}V.truncate=hy;function fy(e){return e=Ct(e,""),e.toUpperCase()}V.upper=fy;function my(e){var t=encodeURIComponent;if(se.isString(e))return t(e);var n=se.isArray(e)?e:se._entries(e);return n.map(function(s){var r=s[0],i=s[1];return t(r)+"="+t(i)}).join("&")}V.urlencode=my;var gy=/^(?:\(|<|&lt;)?(.*?)(?:\.|,|\)|\n|&gt;)?$/,_y=/^[\w.!#$%&'*+\-\/=?\^`{|}~]+@[a-z\d\-]+(\.[a-z\d\-]+)+$/i,by=/^https?:\/\/.*$/,yy=/^www\./,wy=/\.(?:org|net|com)(?:\:|\/|$)/;function Sy(e,t,n){eo(t)&&(t=1/0);var s=n===!0?' rel="nofollow"':"",r=e.split(/(\s+)/).filter(function(i){return i&&i.length}).map(function(i){var o=i.match(gy),a=o?o[1]:i,l=a.substr(0,t);return by.test(a)?'<a href="'+a+'"'+s+">"+l+"</a>":yy.test(a)?'<a href="http://'+a+'"'+s+">"+l+"</a>":_y.test(a)?'<a href="mailto:'+a+'">'+a+"</a>":wy.test(a)?'<a href="http://'+a+'"'+s+">"+l+"</a>":i});return r.join("")}V.urlize=Sy;function vy(e){e=Ct(e,"");var t=e?e.match(/\w+/g):null;return t?t.length:null}V.wordcount=vy;function Ey(e,t){var n=parseFloat(e);return eo(n)?t:n}V.float=Ey;var Ry=Le.makeMacro(["value","default","base"],[],function(t,n,s){s===void 0&&(s=10);var r=parseInt(t,s);return eo(r)?n:r});V.int=Ry;V.d=V.default;V.e=V.escape});var ds=be((tk,Fu)=>{"use strict";function xy(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,to(e,t)}function to(e,t){return to=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(s,r){return s.__proto__=r,s},to(e,t)}var $u=At("path"),Ty=Mn(),ky=Ty.EmitterObj;Fu.exports=(function(e){xy(t,e);function t(){return e.apply(this,arguments)||this}var n=t.prototype;return n.resolve=function(r,i){return $u.resolve($u.dirname(r),i)},n.isRelative=function(r){return r.indexOf("./")===0||r.indexOf("../")===0},t})(ky)});var Du=be((nk,Iu)=>{"use strict";function Ay(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,no(e,t)}function no(e,t){return no=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(s,r){return s.__proto__=r,s},no(e,t)}var Oy=ds(),Ny=(function(e){Ay(t,e);function t(s){var r;return r=e.call(this)||this,r.precompiled=s||{},r}var n=t.prototype;return n.getSource=function(r){return this.precompiled[r]?{src:{type:"code",obj:this.precompiled[r]},path:r}:null},t})(Oy);Iu.exports={PrecompiledLoader:Ny}});var ro=be(()=>{throw new Error("chokidar is not part of this build")});var Bu=be((ik,Uu)=>{"use strict";function Mu(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,so(e,t)}function so(e,t){return so=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(s,r){return s.__proto__=r,s},so(e,t)}var hs=At("fs"),ps=At("path"),ju=ds(),Ly=Du(),Cy=Ly.PrecompiledLoader,fs,Py=(function(e){Mu(t,e);function t(s,r){var i;if(i=e.call(this)||this,typeof r=="boolean"&&console.log("[nunjucks] Warning: you passed a boolean as the second argument to FileSystemLoader, but it now takes an options object. See http://mozilla.github.io/nunjucks/api.html#filesystemloader"),r=r||{},i.pathsToNames={},i.noCache=!!r.noCache,s?(s=Array.isArray(s)?s:[s],i.searchPaths=s.map(ps.normalize)):i.searchPaths=["."],r.watch){try{fs=ro()}catch{throw new Error("watch requires chokidar to be installed")}var o=i.searchPaths.filter(hs.existsSync),a=fs.watch(o);a.on("all",function(l,c){c=ps.resolve(c),l==="change"&&c in i.pathsToNames&&i.emit("update",i.pathsToNames[c],c)}),a.on("error",function(l){console.log("Watcher error: "+l)})}return i}var n=t.prototype;return n.getSource=function(r){for(var i=null,o=this.searchPaths,a=0;a<o.length;a++){var l=ps.resolve(o[a]),c=ps.resolve(o[a],r);if(c.indexOf(l)===0&&hs.existsSync(c)){i=c;break}}if(!i)return null;this.pathsToNames[i]=r;var u={src:hs.readFileSync(i,"utf-8"),path:i,noCache:this.noCache};return this.emit("load",r,u),u},t})(ju),$y=(function(e){Mu(t,e);function t(s){var r;if(r=e.call(this)||this,s=s||{},r.pathsToNames={},r.noCache=!!s.noCache,s.watch){try{fs=ro()}catch{throw new Error("watch requires chokidar to be installed")}r.watcher=fs.watch(),r.watcher.on("change",function(i){r.emit("update",r.pathsToNames[i],i)}),r.watcher.on("error",function(i){console.log("Watcher error: "+i)}),r.on("load",function(i,o){r.watcher.add(o.path)})}return r}var n=t.prototype;return n.getSource=function(r){if(/^\.?\.?(\/|\\)/.test(r)||/^[A-Z]:/.test(r))return null;var i;try{i=At.resolve(r)}catch{return null}this.pathsToNames[i]=r;var o={src:hs.readFileSync(i,"utf-8"),path:i,noCache:this.noCache};return this.emit("load",r,o),o},t})(ju);Uu.exports={FileSystemLoader:Py,PrecompiledLoader:Cy,NodeResolveLoader:$y}});var io=be((ak,Hu)=>{"use strict";Hu.exports=Bu()});var Gu=be(ie=>{"use strict";var Fy=Un().SafeString;function Iy(e){return typeof e=="function"}ie.callable=Iy;function Dy(e){return e!==void 0}ie.defined=Dy;function My(e,t){return e%t===0}ie.divisibleby=My;function jy(e){return e instanceof Fy}ie.escaped=jy;function Uy(e,t){return e===t}ie.equalto=Uy;ie.eq=ie.equalto;ie.sameas=ie.equalto;function By(e){return e%2===0}ie.even=By;function Hy(e){return!e}ie.falsy=Hy;function Gy(e,t){return e>=t}ie.ge=Gy;function Wy(e,t){return e>t}ie.greaterthan=Wy;ie.gt=ie.greaterthan;function Ky(e,t){return e<=t}ie.le=Ky;function qy(e,t){return e<t}ie.lessthan=qy;ie.lt=ie.lessthan;function Vy(e){return e.toLowerCase()===e}ie.lower=Vy;function Jy(e,t){return e!==t}ie.ne=Jy;function zy(e){return e===null}ie.null=zy;function Yy(e){return typeof e=="number"}ie.number=Yy;function Xy(e){return e%2===1}ie.odd=Xy;function Zy(e){return typeof e=="string"}ie.string=Zy;function Qy(e){return!!e}ie.truthy=Qy;function ew(e){return e===void 0}ie.undefined=ew;function tw(e){return e.toUpperCase()===e}ie.upper=tw;function nw(e){return typeof Symbol<"u"?!!e[Symbol.iterator]:Array.isArray(e)||typeof e=="string"}ie.iterable=nw;function rw(e){var t=e!=null&&typeof e=="object"&&!Array.isArray(e);return Set?t&&!(e instanceof Set):t}ie.mapping=rw});var Ku=be((ck,Wu)=>{"use strict";function sw(e){var t=-1;return{current:null,reset:function(){t=-1,this.current=null},next:function(){return t++,t>=e.length&&(t=0),this.current=e[t],this.current}}}function iw(e){e=e||",";var t=!0;return function(){var n=t?"":e;return t=!1,n}}function ow(){return{range:function(t,n,s){typeof n>"u"?(n=t,t=0,s=1):s||(s=1);var r=[];if(s>0)for(var i=t;i<n;i+=s)r.push(i);else for(var o=t;o>n;o+=s)r.push(o);return r},cycler:function(){return sw(Array.prototype.slice.call(arguments))},joiner:function(t){return iw(t)}}}Wu.exports=ow});var Vu=be((uk,qu)=>{"use strict";var aw=At("path");qu.exports=function(t,n){function s(r,i){if(this.name=r,this.path=r,this.defaultEngine=i.defaultEngine,this.ext=aw.extname(r),!this.ext&&!this.defaultEngine)throw new Error("No default engine was specified and no extension was provided.");this.ext||(this.name+=this.ext=(this.defaultEngine[0]!=="."?".":"")+this.defaultEngine)}return s.prototype.render=function(i,o){t.render(this.name,i,o)},n.set("view",s),n.set("nunjucksEnv",t),t}});var po=be((dk,ed)=>{"use strict";function lo(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,oo(e,t)}function oo(e,t){return oo=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(s,r){return s.__proto__=r,s},oo(e,t)}var lw=Tc(),cw=Ac(),De=ft(),uw=us(),dw=Pu(),co=io(),Ju=co.FileSystemLoader,zu=co.WebLoader,pw=co.PrecompiledLoader,hw=Gu(),fw=Ku(),Zu=Mn(),Qu=Zu.Obj,mw=Zu.EmitterObj,ms=Un(),gw=ms.handleError,Yu=ms.Frame,_w=Vu();function ao(e,t,n){lw(function(){e(t,n)})}var bw={type:"code",obj:{root:function(t,n,s,r,i){try{i(null,"")}catch(o){i(gw(o,null,null))}}}},uo=(function(e){lo(t,e);function t(){return e.apply(this,arguments)||this}var n=t.prototype;return n.init=function(r,i){var o=this;i=this.opts=i||{},this.opts.dev=!!i.dev,this.opts.autoescape=i.autoescape!=null?i.autoescape:!0,this.opts.throwOnUndefined=!!i.throwOnUndefined,this.opts.trimBlocks=!!i.trimBlocks,this.opts.lstripBlocks=!!i.lstripBlocks,this.loaders=[],r?this.loaders=De.isArray(r)?r:[r]:Ju?this.loaders=[new Ju("views")]:zu&&(this.loaders=[new zu("/views")]),typeof window<"u"&&window.nunjucksPrecompiled&&this.loaders.unshift(new pw(window.nunjucksPrecompiled)),this._initLoaders(),this.globals=fw(),this.filters={},this.tests={},this.asyncFilters=[],this.extensions={},this.extensionsList=[],De._entries(dw).forEach(function(a){var l=a[0],c=a[1];return o.addFilter(l,c)}),De._entries(hw).forEach(function(a){var l=a[0],c=a[1];return o.addTest(l,c)})},n._initLoaders=function(){var r=this;this.loaders.forEach(function(i){i.cache={},typeof i.on=="function"&&(i.on("update",function(o,a){i.cache[o]=null,r.emit("update",o,a,i)}),i.on("load",function(o,a){r.emit("load",o,a,i)}))})},n.invalidateCache=function(){this.loaders.forEach(function(r){r.cache={}})},n.addExtension=function(r,i){return i.__name=r,this.extensions[r]=i,this.extensionsList.push(i),this},n.removeExtension=function(r){var i=this.getExtension(r);i&&(this.extensionsList=De.without(this.extensionsList,i),delete this.extensions[r])},n.getExtension=function(r){return this.extensions[r]},n.hasExtension=function(r){return!!this.extensions[r]},n.addGlobal=function(r,i){return this.globals[r]=i,this},n.getGlobal=function(r){if(typeof this.globals[r]>"u")throw new Error("global not found: "+r);return this.globals[r]},n.addFilter=function(r,i,o){var a=i;return o&&this.asyncFilters.push(r),this.filters[r]=a,this},n.getFilter=function(r){if(!this.filters[r])throw new Error("filter not found: "+r);return this.filters[r]},n.addTest=function(r,i){return this.tests[r]=i,this},n.getTest=function(r){if(!this.tests[r])throw new Error("test not found: "+r);return this.tests[r]},n.resolveTemplate=function(r,i,o){var a=r.isRelative&&i?r.isRelative(o):!1;return a&&r.resolve?r.resolve(i,o):o},n.getTemplate=function(r,i,o,a,l){var c=this,u=this,d=null;if(r&&r.raw&&(r=r.raw),De.isFunction(o)&&(l=o,o=null,i=i||!1),De.isFunction(i)&&(l=i,i=!1),r instanceof Sr)d=r;else{if(typeof r!="string")throw new Error("template names must be a string: "+r);for(var p=0;p<this.loaders.length;p++){var m=this.loaders[p];if(d=m.cache[this.resolveTemplate(m,o,r)],d)break}}if(d)if(i&&d.compile(),l){l(null,d);return}else return d;var g,y=function(x,R){if(!R&&!x&&!a&&(x=new Error("template not found: "+r)),x)if(l){l(x);return}else throw x;var O;R?(O=new Sr(R.src,c,R.path,i),R.noCache||(R.loader.cache[r]=O)):O=new Sr(bw,c,"",i),l?l(null,O):g=O};return De.asyncIter(this.loaders,function(E,x,R,O){function k(C,I){C?O(C):I?(I.loader=E,O(null,I)):R()}r=u.resolveTemplate(E,o,r),E.async?E.getSource(r,k):k(null,E.getSource(r))},y),g},n.express=function(r){return _w(this,r)},n.render=function(r,i,o){De.isFunction(i)&&(o=i,i=null);var a=null;return this.getTemplate(r,function(l,c){if(l&&o)ao(o,l);else{if(l)throw l;a=c.render(i,o)}}),a},n.renderString=function(r,i,o,a){De.isFunction(o)&&(a=o,o={}),o=o||{};var l=new Sr(r,this,o.path);return l.render(i,a)},n.waterfall=function(r,i,o){return cw(r,i,o)},t})(mw),Xu=(function(e){lo(t,e);function t(){return e.apply(this,arguments)||this}var n=t.prototype;return n.init=function(r,i,o){var a=this;this.env=o||new uo,this.ctx=De.extend({},r),this.blocks={},this.exported=[],De.keys(i).forEach(function(l){a.addBlock(l,i[l])})},n.lookup=function(r){return r in this.env.globals&&!(r in this.ctx)?this.env.globals[r]:this.ctx[r]},n.setVariable=function(r,i){this.ctx[r]=i},n.getVariables=function(){return this.ctx},n.addBlock=function(r,i){return this.blocks[r]=this.blocks[r]||[],this.blocks[r].push(i),this},n.getBlock=function(r){if(!this.blocks[r])throw new Error('unknown block "'+r+'"');return this.blocks[r][0]},n.getSuper=function(r,i,o,a,l,c){var u=De.indexOf(this.blocks[i]||[],o),d=this.blocks[i][u+1],p=this;if(u===-1||!d)throw new Error('no super block available for "'+i+'"');d(r,p,a,l,c)},n.addExport=function(r){this.exported.push(r)},n.getExported=function(){var r=this,i={};return this.exported.forEach(function(o){i[o]=r.ctx[o]}),i},t})(Qu),Sr=(function(e){lo(t,e);function t(){return e.apply(this,arguments)||this}var n=t.prototype;return n.init=function(r,i,o,a){if(this.env=i||new uo,De.isObject(r))switch(r.type){case"code":this.tmplProps=r.obj;break;case"string":this.tmplStr=r.obj;break;default:throw new Error("Unexpected template object type "+r.type+"; expected 'code', or 'string'")}else if(De.isString(r))this.tmplStr=r;else throw new Error("src must be a string or an object describing the source");if(this.path=o,a)try{this._compile()}catch(l){throw De._prettifyError(this.path,this.env.opts.dev,l)}else this.compiled=!1},n.render=function(r,i,o){var a=this;typeof r=="function"?(o=r,r={}):typeof i=="function"&&(o=i,i=null);var l=!i;try{this.compile()}catch(g){var c=De._prettifyError(this.path,this.env.opts.dev,g);if(o)return ao(o,c);throw c}var u=new Xu(r||{},this.blocks,this.env),d=i?i.push(!0):new Yu;d.topLevel=!0;var p=null,m=!1;return this.rootRenderFunc(this.env,u,d,ms,function(g,y){if(!(m&&o&&typeof y<"u"))if(g&&(g=De._prettifyError(a.path,a.env.opts.dev,g),m=!0),o)l?ao(o,g,y):o(g,y);else{if(g)throw g;p=y}}),p},n.getExported=function(r,i,o){typeof r=="function"&&(o=r,r={}),typeof i=="function"&&(o=i,i=null);try{this.compile()}catch(c){if(o)return o(c);throw c}var a=i?i.push():new Yu;a.topLevel=!0;var l=new Xu(r||{},this.blocks,this.env);this.rootRenderFunc(this.env,l,a,ms,function(c){c?o(c,null):o(null,l.getExported())})},n.compile=function(){this.compiled||this._compile()},n._compile=function(){var r;if(this.tmplProps)r=this.tmplProps;else{var i=uw.compile(this.tmplStr,this.env.asyncFilters,this.env.extensionsList,this.path,this.env.opts),o=new Function(i);r=o()}this.blocks=this._getBlocks(r),this.rootRenderFunc=r.root,this.compiled=!0},n._getBlocks=function(r){var i={};return De.keys(r).forEach(function(o){o.slice(0,2)==="b_"&&(i[o.slice(2)]=r[o])}),i},t})(Qu);ed.exports={Environment:uo,Template:Sr}});var nd=be((pk,td)=>{"use strict";function yw(e,t){var n="";t=t||{};for(var s=0;s<e.length;s++){var r=JSON.stringify(e[s].name),i=e[s].template;n+="(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["+r+`] = (function() {
-`+i+`
-})();
-`,t.asFunction&&(n+="return function(ctx, cb) { return nunjucks.render("+r+`, ctx, cb); }
-`),n+=`})();
-`}return n}td.exports=yw});var ad=be((hk,od)=>{"use strict";var Bn=At("fs"),ho=At("path"),ww=ft(),Sw=ww._prettifyError,vw=us(),Ew=po(),mo=Ew.Environment,sd=nd();function rd(e,t){return Array.isArray(t)?t.some(function(n){return e.match(n)}):!1}function id(e,t){t=t||{},t.isString=!0;var n=t.env||new mo([]),s=t.wrapper||sd;if(!t.name)throw new Error('the "name" option is required when compiling a string');return s([fo(e,t.name,n)],t)}function Rw(e,t){t=t||{};var n=t.env||new mo([]),s=t.wrapper||sd;if(t.isString)return id(e,t);var r=Bn.existsSync(e)&&Bn.statSync(e),i=[],o=[];function a(u){Bn.readdirSync(u).forEach(function(d){var p=ho.join(u,d),m=p.substr(ho.join(e,"/").length),g=Bn.statSync(p);g&&g.isDirectory()?(m+="/",rd(m,t.exclude)||a(p)):rd(m,t.include)&&o.push(p)})}if(r.isFile())i.push(fo(Bn.readFileSync(e,"utf-8"),t.name||e,n));else if(r.isDirectory()){a(e);for(var l=0;l<o.length;l++){var c=o[l].replace(ho.join(e,"/"),"");try{i.push(fo(Bn.readFileSync(o[l],"utf-8"),c,n))}catch(u){if(t.force)console.error(u);else throw u}}}return s(i,t)}function fo(e,t,n){n=n||new mo([]);var s=n.asyncFilters,r=n.extensionsList,i;t=t.replace(/\\/g,"/");try{i=vw.compile(e,s,r,t,n.opts)}catch(o){throw Sw(t,!1,o)}return{name:t,template:i}}od.exports={precompile:Rw,precompileString:id}});var cd=be((fk,ld)=>{"use strict";function xw(){"use strict";var e=this.runtime,t=this.lib,n=this.compiler.Compiler,s=this.parser.Parser,r=this.nodes,i=this.lexer,o=e.contextOrFrameLookup,a=e.memberLookup,l,c;n&&(l=n.prototype.assertType),s&&(c=s.prototype.parseAggregate);function u(){e.contextOrFrameLookup=o,e.memberLookup=a,n&&(n.prototype.assertType=l),s&&(s.prototype.parseAggregate=c)}e.contextOrFrameLookup=function(R,O,k){var C=o.apply(this,arguments);if(C!==void 0)return C;switch(k){case"True":return!0;case"False":return!1;case"None":return null;default:return}};function d(x){return{index:x.index,lineno:x.lineno,colno:x.colno}}if(process.env.BUILD_TYPE!=="SLIM"&&r&&n&&s){var p=r.Node.extend("Slice",{fields:["start","stop","step"],init:function(R,O,k,C,I){k=k||new r.Literal(R,O,null),C=C||new r.Literal(R,O,null),I=I||new r.Literal(R,O,1),this.parent(R,O,k,C,I)}});n.prototype.assertType=function(R){R instanceof p||l.apply(this,arguments)},n.prototype.compileSlice=function(R,O){this._emit("("),this._compileExpression(R.start,O),this._emit("),("),this._compileExpression(R.stop,O),this._emit("),("),this._compileExpression(R.step,O),this._emit(")")},s.prototype.parseAggregate=function(){var R=this,O=d(this.tokens);O.colno--,O.index--;try{return c.apply(this)}catch(je){var k=d(this.tokens),C=function(){return t._assign(R.tokens,k),je};t._assign(this.tokens,O),this.peeked=!1;var I=this.peekToken();if(I.type!==i.TOKEN_LEFT_BRACKET)throw C();this.nextToken();for(var F=new p(I.lineno,I.colno),K=!1,le=0;le<=F.fields.length&&!this.skip(i.TOKEN_RIGHT_BRACKET);le++){if(le===F.fields.length)if(K)this.fail("parseSlice: too many slice components",I.lineno,I.colno);else break;if(this.skip(i.TOKEN_COLON))K=!0;else{var Se=F.fields[le];F[Se]=this.parseExpression(),K=this.skip(i.TOKEN_COLON)||K}}if(!K)throw C();return new r.Array(I.lineno,I.colno,[F])}}}function m(x,R,O,k){x=x||[],R===null&&(R=k<0?x.length-1:0),O===null?O=k<0?-1:x.length:O<0&&(O+=x.length),R<0&&(R+=x.length);for(var C=[],I=R;!(I<0||I>x.length||k>0&&I>=O||k<0&&I<=O);I+=k)C.push(e.memberLookup(x,I));return C}function g(x,R){return Object.prototype.hasOwnProperty.call(x,R)}var y={pop:function(R){if(R===void 0)return this.pop();if(R>=this.length||R<0)throw new Error("KeyError");return this.splice(R,1)},append:function(R){return this.push(R)},remove:function(R){for(var O=0;O<this.length;O++)if(this[O]===R)return this.splice(O,1);throw new Error("ValueError")},count:function(R){for(var O=0,k=0;k<this.length;k++)this[k]===R&&O++;return O},index:function(R){var O;if((O=this.indexOf(R))===-1)throw new Error("ValueError");return O},find:function(R){return this.indexOf(R)},insert:function(R,O){return this.splice(R,0,O)}},E={items:function(){return t._entries(this)},values:function(){return t._values(this)},keys:function(){return t.keys(this)},get:function(R,O){var k=this[R];return k===void 0&&(k=O),k},has_key:function(R){return g(this,R)},pop:function(R,O){var k=this[R];if(k===void 0&&O!==void 0)k=O;else{if(k===void 0)throw new Error("KeyError");delete this[R]}return k},popitem:function(){var R=t.keys(this);if(!R.length)throw new Error("KeyError");var O=R[0],k=this[O];return delete this[O],[O,k]},setdefault:function(R,O){return O===void 0&&(O=null),R in this||(this[R]=O),this[R]},update:function(R){return t._assign(this,R),null}};return E.iteritems=E.items,E.itervalues=E.values,E.iterkeys=E.keys,e.memberLookup=function(R,O,k){return arguments.length===4?m.apply(this,arguments):(R=R||{},t.isArray(R)&&g(y,O)?y[O].bind(R):t.isObject(R)&&g(E,O)?E[O].bind(R):a.apply(this,arguments))},u}ld.exports=xw});var vr=be((mk,fd)=>{"use strict";var dd=ft(),pd=po(),hd=pd.Environment,ud=pd.Template,Tw=ds(),nn=io(),gs=ad(),kw=us(),Aw=zi(),Ow=Mi(),Nw=Un(),Lw=yr(),Cw=cd(),Ht;function _s(e,t){t=t||{},dd.isObject(e)&&(t=e,e=null);var n;return nn.FileSystemLoader?n=new nn.FileSystemLoader(e,{watch:t.watch,noCache:t.noCache}):nn.WebLoader&&(n=new nn.WebLoader(e,{useCache:t.web&&t.web.useCache,async:t.web&&t.web.async})),Ht=new hd(n,t),t&&t.express&&Ht.express(t.express),Ht}fd.exports={Environment:hd,Template:ud,Loader:Tw,FileSystemLoader:nn.FileSystemLoader,NodeResolveLoader:nn.NodeResolveLoader,PrecompiledLoader:nn.PrecompiledLoader,WebLoader:nn.WebLoader,compiler:kw,parser:Aw,lexer:Ow,runtime:Nw,lib:dd,nodes:Lw,installJinjaCompat:Cw,configure:_s,reset:function(){Ht=void 0},compile:function(t,n,s,r){return Ht||_s(),new ud(t,n,s,r)},render:function(t,n,s){return Ht||_s(),Ht.render(t,n,s)},renderString:function(t,n,s){return Ht||_s(),Ht.renderString(t,n,s)},precompile:gs?gs.precompile:void 0,precompileString:gs?gs.precompileString:void 0}});import Cn from"path";import jl from"fs";function ng(e){if(!e||typeof e!="object")return"to bottom";let t=e.verticalSide?.toLowerCase(),n=e.horizontalSide?.toLowerCase(),s=[];return t&&s.push(t),n&&s.push(n),s.length>0?`to ${s.join(" ")}`:"to bottom"}function fn(e){if(!(!e||typeof e!="object")){if(Array.isArray(e)){for(let t of e)fn(t);return}if(Array.isArray(e.colors)&&e.side_or_corner&&!e.css){let t=ng(e.side_or_corner),n=e.colors.map(s=>{let r=s?.color;return r?`rgba(${r.r}, ${r.g}, ${r.b}, ${r.a??1})`:null}).filter(Boolean);n.length>0&&(e.css=`background-image: linear-gradient(${t}, ${n.join(", ")})`)}for(let t of Object.values(e))t&&typeof t=="object"&&fn(t)}}function Dn(e){if(typeof e!="string")return null;let t=e.trim().replace(/^#/,"");if(t.length===3&&(t=t.split("").map(i=>i+i).join("")),t.length!==6&&t.length!==8)return null;let n=parseInt(t.slice(0,2),16),s=parseInt(t.slice(2,4),16),r=parseInt(t.slice(4,6),16);return[n,s,r].some(Number.isNaN)?null:{r:n,g:s,b:r}}function Qe(e){if(typeof e=="number")return Number.isFinite(e)?e:null;if(typeof e=="string"){let t=e.trim();if(t==="")return null;let n=Number(t);return Number.isFinite(n)?n:null}return null}function Kl(e,t){return t===void 0?Math.log(e):t===2?Math.log2(e):t===10?Math.log10(e):Math.log(e)/Math.log(t)}function ql(e,t){let n=t===void 0?2:t;if(n===0)return NaN;let s=n===2?Math.sqrt(e):Math.pow(e,1/n),r=Math.round(s);return Math.pow(r,n)===e?r:s}function Vl(e,t,n){let s=n??rg(e);try{return new Intl.NumberFormat(t||"en-US",{minimumFractionDigits:0,maximumFractionDigits:Math.max(0,Math.min(20,s))}).format(e)}catch{return String(e)}}function rg(e){let t=String(e);if(t.includes("e")||t.includes("E"))return 20;let n=t.indexOf(".");return n===-1?0:t.length-n-1}var sg=["kB","MB","GB","TB","PB","EB","ZB","YB"],ig=["KiB","MiB","GiB","TiB","PiB","EiB","ZiB","YiB"];function Jl(e,t=!1){let n=t?1024:1e3,s=t?ig:sg;if(e===1)return"1 Byte";if(e<n)return`${Math.trunc(e)} Bytes`;let r=0;for(let i=0;i<s.length;i++)if(r=Math.pow(n,i+2),e<r||i===s.length-1)return`${(n*e/r).toFixed(1)} ${s[i]}`;return`${e} Bytes`}function zl(e,t){if(!Number.isFinite(t)||t<1)return e;let n=[],s="";for(let r of e.split(/\s+/))r!==""&&(s===""?s=r:s.length+1+r.length<=t?s+=` ${r}`:(n.push(s),s=r));return s!==""&&n.push(s),n.join(`
-`)}function Oi(e){return e.replace(/\{/g,"&#123;").replace(/\}/g,"&#125;")}function Yl(e){let t="";for(let n of e){let s=n.codePointAt(0);switch(n){case"\\":t+="\\\\";continue;case"'":t+="\\x27";continue;case'"':t+="\\x22";continue;case"<":t+="\\x3C";continue;case">":t+="\\x3E";continue;case"\b":t+="\\b";continue;case"	":t+="\\t";continue;case`
-`:t+="\\n";continue;case"\f":t+="\\f";continue;case"\r":t+="\\r";continue;case"\u2028":t+="\\u2028";continue;case"\u2029":t+="\\u2029";continue;default:break}s<32||s===127?t+=`\\u${s.toString(16).padStart(4,"0")}`:t+=n}return t}var og=Object.assign(Object.create(null),{amp:"&",lt:"<",gt:">",quot:'"',apos:"'",nbsp:"\xA0"});function Xl(e){return e.replace(/&(#x[0-9a-fA-F]+|#\d+|[a-zA-Z]+);/g,(t,n)=>{if(n[0]==="#"){let r=n[1]==="x"||n[1]==="X"?parseInt(n.slice(2),16):parseInt(n.slice(1),10);if(!Number.isFinite(r)||r<0||r>1114111)return t;try{return String.fromCodePoint(r)}catch{return t}}return og[n.toLowerCase()]??t})}function Ni(e){try{return decodeURIComponent(e.replace(/\+/g," "))}catch{return e}}var ag=[7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21],lg=(()=>{let e=new Int32Array(64);for(let t=0;t<64;t++)e[t]=Math.floor(Math.abs(Math.sin(t+1))*4294967296);return e})();function Zl(e){let t=new TextEncoder().encode(e),n=t.length*8,s=new Uint8Array(((t.length+8>>>6)+1)*64);s.set(t),s[t.length]=128;let r=new DataView(s.buffer);r.setUint32(s.length-8,n>>>0,!0),r.setUint32(s.length-4,Math.floor(n/4294967296),!0);let i=1732584193,o=-271733879,a=-1732584194,l=271733878,c=new Int32Array(16);for(let u=0;u<s.length;u+=64){for(let y=0;y<16;y++)c[y]=r.getInt32(u+y*4,!0);let d=i,p=o,m=a,g=l;for(let y=0;y<64;y++){let E,x;y<16?(E=p&m|~p&g,x=y):y<32?(E=g&p|~g&m,x=(5*y+1)%16):y<48?(E=p^m^g,x=(3*y+5)%16):(E=m^(p|~g),x=7*y%16);let R=E+d+lg[y]+c[x]|0,O=ag[y];d=g,g=m,m=p,p=p+(R<<O|R>>>32-O)|0}i=i+d|0,o=o+p|0,a=a+m|0,l=l+g|0}return ts(i)+ts(o)+ts(a)+ts(l)}function ts(e){let t="";for(let n=0;n<4;n++)t+=(e>>>n*8&255).toString(16).padStart(2,"0");return t}var mn=class extends Date{offsetMinutes;constructor(t,n=0){super(t),this.offsetMinutes=n}toString(){let t=new Date(this.getTime()+this.offsetMinutes*6e4),n=(s,r=2)=>String(s).padStart(r,"0");return`${n(t.getUTCFullYear(),4)}-${n(t.getUTCMonth()+1)}-${n(t.getUTCDate())} ${n(t.getUTCHours())}:${n(t.getUTCMinutes())}:${n(t.getUTCSeconds())}`}},cg=["january","february","march","april","may","june","july","august","september","october","november","december"];function ug(e){let t=e.toLowerCase(),n=cg.findIndex(s=>s===t||s.slice(0,3)===t);return n===-1?null:n+1}var In=(e,t)=>`(?<${e}>\\d{${t===1?"1,2":t}})`,dg={y:e=>e===2?"(?<year2>\\d{2})":`(?<year>\\d{${e===1?"1,4":e}})`,M:e=>e>=3?"(?<monthName>[A-Za-z]{3,12})":In("month",e),d:e=>In("day",e),H:e=>In("hour",e),h:e=>In("hour12",e),m:e=>In("minute",e),s:e=>In("second",e),S:e=>`(?<millis>\\d{${e===1?"1,3":e}})`,a:()=>"(?<meridiem>[AaPp][Mm])",X:e=>e>=3?"(?<offset>Z|[+-]\\d{2}:\\d{2})":"(?<offset>Z|[+-]\\d{2}(?::?\\d{2})?)",Z:()=>"(?<offset>[+-]\\d{4})",z:()=>"(?<offset>Z|[+-]\\d{2}:?\\d{2})"};function Hl(e){return e.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}function pg(e){let t="^",n=0;for(;n<e.length;){let s=e[n];if(s==="'"){let r=e.indexOf("'",n+1);if(r===-1)return null;let i=e.slice(n+1,r);t+=i===""?"'":Hl(i),n=r+1;continue}if(/[A-Za-z]/.test(s)){let r=1;for(;e[n+r]===s;)r+=1;let i=dg[s];if(!i)return null;let o=i(r);if(o===null)return null;t+=o,n+=r;continue}t+=Hl(s),n+=1}try{return new RegExp(`${t}$`)}catch{return null}}function Gl(e){if(!e||e==="Z")return 0;let t=/^([+-])(\d{2}):?(\d{2})?$/.exec(e);return t?(t[1]==="-"?-1:1)*(Number(t[2])*60+Number(t[3]??"0")):0}function hg(e){return e.replace(/([+-]\d{2})(\d{2})$/,"$1:$2")}function ns(e,t){if(e instanceof mn)return e;if(e instanceof Date)return Number.isNaN(e.getTime())?null:new mn(e.getTime(),0);if(typeof e=="number")return Number.isFinite(e)?new mn(e,0):null;if(typeof e!="string"||e.trim()==="")return null;let n=e.trim();if(t){let l=pg(t)?.exec(n)?.groups,c=l?.monthName===void 0?void 0:ug(l.monthName);if(l&&c!==null){let u=l.year!==void 0?Number(l.year):l.year2!==void 0?2e3+Number(l.year2):1970,d=l.hour!==void 0?Number(l.hour):0;if(l.hour12!==void 0){let y=Number(l.hour12)%12;d=/^p/i.test(l.meridiem??"")?y+12:y}let p=c??(l.month!==void 0?Number(l.month):1),m=Gl(l.offset),g=Date.UTC(u,p-1,l.day!==void 0?Number(l.day):1,d,l.minute!==void 0?Number(l.minute):0,l.second!==void 0?Number(l.second):0,l.millis!==void 0?Number(l.millis.slice(0,3).padEnd(3,"0")):0);return new mn(g-m*6e4,m)}}let s=Date.parse(hg(n));if(Number.isNaN(s))return null;let r=/([+-]\d{2}):?(\d{2})$/.exec(n),i=r?Gl(`${r[1]}:${r[2]}`):0;return new mn(s,i)}var fg=["HH","H","hh","h","mm","m","ss","s","SSS","a"];function mg(e,t){let n=new Intl.DateTimeFormat("en-US",{timeZone:t,hourCycle:"h23",hour:"2-digit",minute:"2-digit",second:"2-digit"}).formatToParts(e),s=r=>Number(n.find(i=>i.type===r)?.value??"0");return{hour:s("hour"),minute:s("minute"),second:s("second")}}function Ql(e,t="medium",n,s){let r=n||"UTC";if(["short","medium","long","full"].includes(t)){let d=!n&&(t==="long"||t==="full"),p=d?"medium":t;try{let m=new Intl.DateTimeFormat(s||"en-US",{timeStyle:p,timeZone:r}).format(e);return d?`${m} Z`:m}catch{return e.toISOString()}}let o;try{o=mg(e,r)}catch{o={hour:e.getUTCHours(),minute:e.getUTCMinutes(),second:e.getUTCSeconds()}}let a=d=>String(d).padStart(2,"0"),l=o.hour%12===0?12:o.hour%12,c="",u=0;for(;u<t.length;){let d=t[u];if(d==="'"){let m=t.indexOf("'",u+1);if(m===-1){c+=t.slice(u+1);break}let g=t.slice(u+1,m);c+=g===""?"'":g,u=m+1;continue}let p=fg.find(m=>t.startsWith(m,u));if(!p){c+=d,u+=1;continue}switch(p){case"HH":c+=a(o.hour);break;case"H":c+=String(o.hour);break;case"hh":c+=a(l);break;case"h":c+=String(l);break;case"mm":c+=a(o.minute);break;case"m":c+=String(o.minute);break;case"ss":c+=a(o.second);break;case"s":c+=String(o.second);break;case"SSS":c+=String(e.getUTCMilliseconds()).padStart(3,"0");break;case"a":c+=o.hour<12?"AM":"PM";break;default:c+=p;break}u+=p.length}return c}var gg="UTC";function Li(e,t){return new Intl.DateTimeFormat("en-US",{dateStyle:t,timeZone:gg}).format(e)}var Wl=["January","February","March","April","May","June","July","August","September","October","November","December"],_g=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];function ec(e,t){if(Number.isNaN(e.getTime()))return null;let n=(c,u)=>String(c).padStart(u,"0"),s=e.getUTCFullYear(),r=e.getUTCMonth(),i=e.getUTCDate(),o=e.getUTCHours(),a="",l=0;for(;l<t.length;){let c=t[l];if(c==="'"){let d=t.indexOf("'",l+1);if(d===-1)return null;let p=t.slice(l+1,d);a+=p===""?"'":p,l=d+1;continue}if(!/[A-Za-z]/.test(c)){a+=c,l+=1;continue}let u=1;for(;t[l+u]===c;)u+=1;switch(c){case"y":a+=u===2?n(s%100,2):n(s,u);break;case"M":u>=4?a+=Wl[r]:u===3?a+=Wl[r].slice(0,3):a+=n(r+1,u);break;case"d":a+=n(i,u);break;case"E":{let d=_g[e.getUTCDay()];a+=u>=4?d:d.slice(0,3);break}case"H":a+=n(o,u);break;case"h":a+=n(o%12===0?12:o%12,u);break;case"m":a+=n(e.getUTCMinutes(),u);break;case"s":a+=n(e.getUTCSeconds(),u);break;case"S":a+=n(e.getUTCMilliseconds(),3).slice(0,u).padEnd(u,"0");break;case"a":a+=o<12?"AM":"PM";break;default:return null}l+=u}return a}var rs=["top","right","bottom","left"],tc=["padding","margin"],nc=/^[a-z][a-z-]*$/i,bg=/^(?:[a-z]+|%)$/i;function rc(e){let t,n;if(typeof e=="number"||typeof e=="string")t=e;else if(e&&typeof e=="object"&&!Array.isArray(e))t=e.value,n=e.units;else return null;if(t==null||t==="")return null;let s=Number(t);if(!Number.isFinite(s))return null;if(n==null||n==="")return`${s}px`;let r=String(n).trim();return bg.test(r)?`${s}${r}`:null}function yg(e){let t=e.color,n="",s=e.opacity;if(typeof t=="string")n=t.trim();else if(t&&typeof t=="object"&&!Array.isArray(t)){let a=t;n=typeof a.color=="string"?a.color.trim():"",a.opacity!==null&&a.opacity!==void 0&&(s=a.opacity)}if(!n)return null;let r=Dn(n);if(!r)return nc.test(n)?n:null;let i=Number(s),o=Number.isFinite(i)?i/100:1;return`rgba(${r.r}, ${r.g}, ${r.b}, ${o})`}function wg(e,t){if(!t||typeof t!="object"||Array.isArray(t))return null;let n=[],s=t,r=rc(s.width);r!==null&&n.push(r);let i=typeof s.style=="string"?s.style.trim():"";i&&nc.test(i)&&n.push(i);let o=yg(s);return o!==null&&n.push(o),n.length===0?null:`border-${e}: ${n.join(" ")}`}function sc(e){return e.length>0?`${e.join("; ")};`:""}function Sg(e){if(!e||typeof e!="object"||Array.isArray(e))return"";let t=e,n=[];for(let s of tc){let r=t[s];if(!(!r||typeof r!="object"||Array.isArray(r)))for(let i of rs){let o=rc(r[i]);o!==null&&n.push(`${s}-${i}: ${o}`)}}return sc(n)}function vg(e){if(!e||typeof e!="object"||Array.isArray(e))return"";let t=e,n=[];for(let s of rs){let r=wg(s,t[s]);r!==null&&n.push(r)}return sc(n)}function Eg(e){return tc.some(t=>{let n=e[t];return!n||typeof n!="object"||Array.isArray(n)?!1:rs.some(s=>{let r=n[s];return typeof r=="number"?!0:!!r&&typeof r=="object"&&!Array.isArray(r)&&"value"in r})})}function Rg(e){return rs.some(t=>{let n=e[t];if(!n||typeof n!="object"||Array.isArray(n))return!1;let s=n;return"width"in s||"style"in s||"color"in s})}function gn(e,t=new WeakSet){if(!e||typeof e!="object"||t.has(e))return;if(t.add(e),Array.isArray(e)){for(let s of e)gn(s,t);return}let n=e;Eg(n)?n.css=Sg(n):Rg(n)&&(n.css=vg(n));for(let s of Object.values(n))s&&typeof s=="object"&&gn(s,t)}var ss={font:"",font_set:"DEFAULT",fallback:"sans-serif",size:16,size_unit:"px",color:"#000000",styles:{"font-weight":"400","font-style":"normal"},variant:"400"},xg={color:"",opacity:100};function Tg(e,t){let n=t.replace(/^theme\./,"").split("."),s=e;for(let r of n){if(s==null||typeof s!="object")return;s=s[r]}return s}function kg(e){let{type:t}=e,n=e.default,s=new Set(Object.keys(e.inherited_value?.property_value_paths??{}));switch(t){case"group":return ic(e.children||[]);case"font":{let r={};for(let[i,o]of Object.entries(ss))s.has(i)||(r[i]=i==="styles"?{...o}:o);if(n)for(let[i,o]of Object.entries(n))i==="styles"?r.styles={...r.styles??ss.styles,...o}:r[i]=o;if(r.styles||(r.styles={...ss.styles}),r.variant&&r.variant!==ss.variant){let i=String(r.variant),o=i.endsWith("italic"),a=o?i.replace("italic",""):i;a&&(r.styles["font-weight"]=a),o&&(r.styles["font-style"]="italic")}return r}case"color":{let r={};for(let[i,o]of Object.entries(xg))s.has(i)||(r[i]=o);return n&&Object.assign(r,n),r}case"choice":case"number":case"boolean":case"text":case"url":case"image":case"spacing":case"alignment":return n??null;case"gradient":case"border":case"background":case"logo":case"richtext":case"menu":case"simple_menu":case"form":case"hubdb_table":case"blog":case"link":case"cta":case"icon":case"video":return Ag(t,n);default:return n??null}}function is(){return{width:{value:0,units:"px"},style:"solid",color:{color:"",opacity:100}}}function Ag(e,t){switch(e){case"richtext":return t??"";case"menu":case"simple_menu":return t??[];case"gradient":{let n={colors:[],side_or_corner:{type:"SIDE_OR_CORNER",verticalSide:"BOTTOM",horizontalSide:null},css:"",...t??{}};return fn(n),n}case"link":return{url:{type:"EXTERNAL",href:"",content_id:null},open_in_new_tab:!1,no_follow:!1,...t??{}};case"icon":return{name:"",type:"SOLID",unicode:"",...t??{}};case"background":return{type:"color",color:{color:"",opacity:100},...t??{}};case"logo":return{src:"",alt:"",width:null,height:null,href:"",override_inherited_src:!1,...t??{}};case"border":return t??{top:is(),bottom:is(),left:is(),right:is()};case"form":return t??{form_id:"",response_type:"inline",message:""};default:return t??{}}}function ic(e){let t={};for(let n of e)t[n.name]=kg(n);return t}function oc(e,t,n=new Set,s=[]){for(let r of e){if(r.type==="group"&&r.children){oc(r.children,t,n,[...s,r.name]);continue}let i=r.inherited_value?.property_value_paths;if(!i)continue;let o=[...s,r.name],a=t;for(let p=0;p<o.length-1;p++){if(a[o[p]]==null)return;a=a[o[p]]}let l=o[o.length-1],c=a[l],u=new Set(Object.keys(r.default??{})),d=o.join(".");for(let[p,m]of Object.entries(i)){if(u.has(p)||n.has(`${d}.${p}`))continue;let g=Tg(t,m);g!==void 0&&typeof c=="object"&&c!==null&&(c[p]=g)}}}function ac(e,t,n){if(e!=null){if(typeof e!="object"||Array.isArray(e)){n.add(t.join("."));return}for(let s of Object.keys(e))ac(e[s],[...t,s],n)}}function Pi(e,t){let n=new Map,s=[];for(let r of e??[])n.set(r.name,Ci(r)),s.push(r.name);for(let r of t??[]){if(!n.has(r.name)){n.set(r.name,Ci(r)),s.push(r.name);continue}n.set(r.name,Og(n.get(r.name),r))}return s.map(r=>n.get(r))}function Og(e,t){let n={...e,...Ci(t)};return(e.children||t.children)&&(n.children=Pi(e.children??[],t.children??[])),n}function Ci(e){return JSON.parse(JSON.stringify(e))}function Ng(e){let t=[],n=typeof e.font=="string"?e.font.trim():"";if(n){let r=typeof e.fallback=="string"?e.fallback.trim():"";t.push(`font-family: ${r?`${n}, ${r}`:n}`)}let s=e.styles;if(s&&typeof s=="object")for(let[r,i]of Object.entries(s))i==null||String(i).trim()===""||t.push(`${r}: ${String(i).trim()}`);return t.join("; ")}function lc(e){if(!e||typeof e!="object"||Array.isArray(e))return;if(typeof e.font=="string"&&e.styles&&typeof e.styles=="object"){e.style=Ng(e);return}for(let n of Object.values(e))lc(n)}function fr(e,t){let n=ic(e),s=new Set;return t&&(ac(t,[],s),cc(n,t)),oc(e,n,s),lc(n),gn(n),n}function cc(e,t){for(let n of Object.keys(t))t[n]&&typeof t[n]=="object"&&!Array.isArray(t[n])&&e[n]&&typeof e[n]=="object"?cc(e[n],t[n]):e[n]=t[n]}var To=es(vr(),1);import oe from"path";import _n from"fs";var md={existsSync:e=>_n.existsSync(e),readFileSync:(e,t)=>_n.readFileSync(e,t),readdirSync:e=>_n.readdirSync(e),statSync:e=>_n.statSync(e),realpathSync:{native:e=>_n.realpathSync.native(e)},mkdirSync:(e,t)=>{_n.mkdirSync(e,t)},writeFileSync:(e,t,n)=>_n.writeFileSync(e,t,n??"utf-8")};var Gt=md;function go(e){Gt=e}function gd(){return Gt}var A={existsSync:e=>Gt.existsSync(e),readFileSync:(e,t)=>Gt.readFileSync(e,t),readdirSync:e=>Gt.readdirSync(e),statSync:e=>Gt.statSync(e),realpathSync:{native:e=>Gt.realpathSync.native(e)},mkdirSync:(e,t)=>Gt.mkdirSync(e,t),writeFileSync:(e,t,n)=>Gt.writeFileSync(e,t,n)};var _d=es(vr(),1);import Hn from"path";var Gn=class extends _d.default.Loader{searchPaths;noCache;pathsToNames;constructor(t=["."],n={}){super();let s=Array.isArray(t)?t:[t];this.searchPaths=s.map(r=>Hn.normalize(r)),this.noCache=!!n.noCache,this.pathsToNames={}}transform(t,n){return t}searchPathsFor(t){return this.searchPaths}resolve(t,n){return Hn.resolve(Hn.dirname(t),n)}isRelative(t){return t.indexOf("./")===0||t.indexOf("../")===0}getSource(t){let n=null;for(let r of this.searchPathsFor(t)){let i=Hn.resolve(r),o=Hn.resolve(r,t);if((o===i||o.startsWith(i+Hn.sep))&&A.existsSync(o)){try{if(A.statSync(o).isDirectory())continue}catch{continue}n=o;break}}if(!n)return null;this.pathsToNames[n]=t;let s={src:this.transform(A.readFileSync(n,"utf-8"),n),path:n,noCache:this.noCache};return this.emit("load",t,s),s}};import Wt from"path";var bd="THEME_REJECTED_PATH_TRAVERSAL",X=class extends Error{code;details;constructor(t,n,s){super(n),this.name="RendererError",this.code=t,this.details=s}},yd=new Map;function _o(e){return A.realpathSync.native(e)}function Pw(e){let t=Wt.resolve(e),n=yd.get(t);if(!n){try{n=_o(t)}catch{n=wd(t)}yd.set(t,n)}return n}function $w(e,t){let n=Wt.relative(e,t);return n===""||!n.startsWith("..")&&!Wt.isAbsolute(n)}function wd(e){let t=[],n=e;for(;!A.existsSync(n);){let r=Wt.dirname(n);if(r===n)break;t.unshift(Wt.basename(n)),n=r}let s=_o(n);return t.length>0?Wt.join(s,...t):s}function H(e,t,n={}){let s=Pw(e),r=Wt.isAbsolute(t)?Wt.resolve(t):Wt.resolve(s,t),i;try{i=_o(r)}catch{i=wd(r)}if(!$w(s,i)){let o=n.reference??t,a=n.sourceFile?` in ${n.sourceFile}`:"";throw new X(bd,`${bd}: rejected theme path reference ${JSON.stringify(o)}${a}`,{themeRoot:s,candidate:r,resolvedPath:i,reference:o,sourceFile:n.sourceFile})}return i}function Te(e,t){let n=e[t],s=t+1;for(;s<e.length;){if(e[s]==="\\"){s+=2;continue}if(e[s]===n)return s+1;s++}return e.length}var Er=String.raw`[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*|\[[^\]]*\])*`;function bo(e){if(!e.includes("{"))return e;let t="",n=null,s=[],r=[];for(let i=0;i<e.length;i++){let o=e[i];if(n){if(t+=o,o==="\\"){i+1<e.length&&(t+=e[++i]);continue}o===n&&(n=null);continue}if(o==='"'||o==="'"){n=o,t+=o;continue}if(o==="{"||o==="["||o==="("){let a=o==="{"&&s[s.length-1]==="{";a&&(t+="("),s.push(o),r.push(a),t+=o;continue}if(o==="}"||o==="]"||o===")"){t+=o,s.pop(),r.pop()&&(t+=")");continue}t+=o}return t}function yo(e){let t="",n=0;for(;n<e.length;){let s=e[n];if(s==='"'||s==="'"){let r=Te(e,n);t+=e.slice(n,r),n=r;continue}if(s==="&"&&e[n+1]==="&"){t+=" and ",n+=2;continue}if(s==="|"&&e[n+1]==="|"){t+=" or ",n+=2;continue}if(s==="!"&&e[n+1]!=="="){let r=vd(e,n+1);if(r===n+1){t+=s,n++;continue}t+=` not (${yo(e.slice(n+1,r))})`,n=r;continue}t+=s,n++}return t}function vd(e,t){let n=t;for(;n<e.length&&/\s/.test(e[n]);)n++;if(e[n]==="!"&&e[n+1]!=="=")return vd(e,n+1);if(e[n]==='"'||e[n]==="'")return Te(e,n);let s={"(":")","[":"]","{":"}"},r=i=>{if(!s[e[i]])return i;let a=0,l=i;for(;l<e.length;){let c=e[l];if(c==='"'||c==="'"){l=Te(e,l);continue}if(s[c])a++;else if((c===")"||c==="]"||c==="}")&&(a--,a===0))return l+1;l++}return e.length};if(s[e[n]])return r(n);if(!/[A-Za-z_$]/.test(e[n]??""))return t;for(;n<e.length&&/[\w$]/.test(e[n]);)n++;for(;;){if(e[n]==="."&&/[A-Za-z_$]/.test(e[n+1]??"")){for(n+=2;n<e.length&&/[\w$]/.test(e[n]);)n++;continue}if(e[n]==="["||e[n]==="("){let i=r(n);if(i===n)break;n=i;continue}break}return n}function Ed(e){let t=[],n=0,s=0;for(;s<e.length;){let r=e[s];if(r==='"'||r==="'"){s=Te(e,s);continue}if(r==="("||r==="["||r==="{"){n++,s++;continue}if(r===")"||r==="]"||r==="}"){n--,s++;continue}n===0&&(r==="?"||r===":")&&t.push({ch:r,pos:s}),s++}return t}function Fw(e,t){let n="",s=0;for(;s<e.length;){let r=e[s];if(r==='"'||r==="'"){let i=Te(e,s);n+=e.slice(s,i),s=i;continue}if(r==="("||r==="["||r==="{"){let i=r==="("?")":r==="["?"]":"}",o=0,a=s;for(;a<e.length;){let l=e[a];if(l==='"'||l==="'"){a=Te(e,a);continue}if(l==="("||l==="["||l==="{")o++;else if((l===")"||l==="]"||l==="}")&&(o--,o===0))break;a++}if(a>=e.length){n+=e.slice(s);break}n+=r+t(e.slice(s+1,a))+i,s=a+1;continue}n+=r,s++}return n}function Iw(e){let t="",n=0,s=0,r=0;for(;r<e.length;){let i=e[r];if(i==='"'||i==="'"){r=Te(e,r);continue}if(i==="("||i==="["||i==="{"){s++,r++;continue}if(i===")"||i==="]"||i==="}"){s--,r++;continue}s===0&&i===","&&(t+=`${Sd(e.slice(n,r))},`,n=r+1),r++}return t+Sd(e.slice(n))}var Dw=/^\s*[A-Za-z_$][\w$]*\s*=(?!=)/;function Sd(e){let t=Dw.exec(e);if(t)return t[0]+mt(e.slice(t[0].length));let[n]=Ed(e);if(n&&n.ch===":"){let s=e.slice(0,n.pos),r=e.slice(n.pos+1);return`${mt(s)}:${mt(r)}`}return mt(e)}function mt(e){let t=Fw(e,Iw),n=Ed(t),s=n.find(c=>c.ch==="?");if(!s)return t;let r=0,i=-1;for(let c of n)if(!(c.pos<=s.pos)){if(c.ch==="?"){r++;continue}if(r>0){r--;continue}i=c.pos;break}if(i===-1)return t;let o=t.slice(0,s.pos).trim(),a=t.slice(s.pos+1,i).trim(),l=t.slice(i+1).trim();return`(${mt(a)} if ${mt(o)} else ${mt(l)})`}function Mw(e,t){return e.replace(/(\{\{-?)([\s\S]*?)(-?\}\})|(\{%-?)([\s\S]*?)(-?%\})/g,(n,s,r,i,o,a,l)=>s!==void 0?`${s}${t(r,"print")}${i}`:`${o}${t(a,"block")}${l}`)}var jw=/^(\s*(?:if|elif|elseif)\s+)/;function bs(e){return Mw(e,(t,n)=>{let s=yo(t);if(n==="print")return mt(s);let r=new RegExp(`^(\\s*set\\s+${Er}(?:\\s*,\\s*${Er})*\\s*=(?!=)\\s*)`).exec(s);if(r)return r[1]+mt(s.slice(r[1].length));let i=jw.exec(s);return i?i[1]+mt(s.slice(i[1].length)):s})}var wo=es(vr(),1);var T={MODULE_SHAPE_UNRECOGNISED:"MODULE_SHAPE_UNRECOGNISED",MODULE_RENDER_ERROR:"MODULE_RENDER_ERROR",HUBL_MODULE_ERROR:"HUBL_MODULE_ERROR",CSS_RENDER_ERROR:"CSS_RENDER_ERROR",SSR_BRIDGE_UNAVAILABLE:"SSR_BRIDGE_UNAVAILABLE",SSR_BRIDGE_REQUEST_FAILED:"SSR_BRIDGE_REQUEST_FAILED",REACT_MODULE_NOT_RENDERED:"REACT_MODULE_NOT_RENDERED",HUBL_FILTER_UNSUPPORTED:"HUBL_FILTER_UNSUPPORTED",HUBL_FILTER_UNIMPLEMENTED:"HUBL_FILTER_UNIMPLEMENTED",HUBL_GLOBAL_UNIMPLEMENTED:"HUBL_GLOBAL_UNIMPLEMENTED",HUBL_TRANSLATIONS_UNRESOLVED:"HUBL_TRANSLATIONS_UNRESOLVED",HUBL_WIDGET_EDITOR_ONLY:"HUBL_WIDGET_EDITOR_ONLY",HUBL_TAG_UNSUPPORTED:"HUBL_TAG_UNSUPPORTED",HUBL_DO_NO_OP:"HUBL_DO_NO_OP",HUBL_FOR_RECURSIVE_DEGRADED:"HUBL_FOR_RECURSIVE_DEGRADED",HUBL_SCOPE_CSS_UNSCOPED:"HUBL_SCOPE_CSS_UNSCOPED",HUBL_SCOPE_CSS_APPROXIMATE:"HUBL_SCOPE_CSS_APPROXIMATE",HUBL_DATA_TEMPLATE_FAILED:"HUBL_DATA_TEMPLATE_FAILED",HUBL_DATA_TEMPLATE_INVALID:"HUBL_DATA_TEMPLATE_INVALID",HUBL_DATA_FIXTURE_INVALID:"HUBL_DATA_FIXTURE_INVALID",CRM_OBJECT_FIXTURE_INVALID:"CRM_OBJECT_FIXTURE_INVALID",CRM_OBJECT_QUERY_NOT_APPLIED:"CRM_OBJECT_QUERY_NOT_APPLIED",SPECIMEN_SOURCE_FAILED:"SPECIMEN_SOURCE_FAILED",CONTENT_FIXTURE_INVALID:"CONTENT_FIXTURE_INVALID",CONTENT_STATE_UNKNOWN:"CONTENT_STATE_UNKNOWN",FIELD_TYPE_UNSUPPORTED:"FIELD_TYPE_UNSUPPORTED",THEME_MANIFEST_FALLBACK:"THEME_MANIFEST_FALLBACK",TEMPLATE_CONTEXT_UNREADABLE:"TEMPLATE_CONTEXT_UNREADABLE",INHERITANCE_PARENT_MISSING:"INHERITANCE_PARENT_MISSING",INHERITANCE_TOO_DEEP:"INHERITANCE_TOO_DEEP",DND_HIERARCHY_VIOLATION:"DND_HIERARCHY_VIOLATION",DND_ARGUMENT_SERIALISED:"DND_ARGUMENT_SERIALISED",FIELD_BOOLEAN_FORMAT:"FIELD_BOOLEAN_FORMAT",FIELD_REQUIRED_NO_DEFAULT:"FIELD_REQUIRED_NO_DEFAULT",FIELD_CONTENT_LINK_UNRESOLVABLE:"FIELD_CONTENT_LINK_UNRESOLVABLE",CONTENT_LINK_UNRESOLVED:"CONTENT_LINK_UNRESOLVED",FIELD_NAME_RESERVED:"FIELD_NAME_RESERVED",TEMPLATE_REQUIRED_VARIABLE_MISSING:"TEMPLATE_REQUIRED_VARIABLE_MISSING",HUBL_PARTIAL_NOT_FOUND:"HUBL_PARTIAL_NOT_FOUND",MODULE_NOT_FOUND:"MODULE_NOT_FOUND",HUBSPOT_INTERNAL_MODULE:"HUBSPOT_INTERNAL_MODULE",HUBSPOT_DEFAULT_MODULE_UNAVAILABLE:"HUBSPOT_DEFAULT_MODULE_UNAVAILABLE",HUBSPOT_DEFAULT_MODULE_NEEDS_PORTAL_DATA:"HUBSPOT_DEFAULT_MODULE_NEEDS_PORTAL_DATA",HUBSPOT_DEFAULT_MODULE_APPROXIMATED:"HUBSPOT_DEFAULT_MODULE_APPROXIMATED",REACT_MODULE_FIELD_SCHEMA_UNAVAILABLE:"REACT_MODULE_FIELD_SCHEMA_UNAVAILABLE",REACT_MODULE_FIELD_DEFAULT_UNEVALUABLE:"REACT_MODULE_FIELD_DEFAULT_UNEVALUABLE",VALIDATION_SOURCE_UNREADABLE:"VALIDATION_SOURCE_UNREADABLE",ASSET_BASE_URL_MISSING:"ASSET_BASE_URL_MISSING",ASSET_URL_UNRESOLVED:"ASSET_URL_UNRESOLVED",ASSET_BASE_URL_INVALID:"ASSET_BASE_URL_INVALID",PAGE_MODULE_NOT_DRAWN:"PAGE_MODULE_NOT_DRAWN",PAGE_TEMPLATE_NOT_DRAWN:"PAGE_TEMPLATE_NOT_DRAWN",PAGE_LAYOUT_UNBOUND:"PAGE_LAYOUT_UNBOUND",PAGE_WIDGET_UNBOUND:"PAGE_WIDGET_UNBOUND",PAGE_LAYOUT_INVALID:"PAGE_LAYOUT_INVALID",PAGE_THEME_ROOT_FILE_REJECTED:"PAGE_THEME_ROOT_FILE_REJECTED"};function P(e,t,n){return new X(e,t,n)}var Td="data-themespot-scope",vo="__themespot_module_scope";function Uw(e){return`[${Td}="${Hw(e)}"]`}function kd(e,t){return`<div ${Td}="${Bw(e)}">${t}</div>`}function Bw(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}function Hw(e){return e.replace(/\\/g,"\\\\").replace(/"/g,'\\"')}var Gw=new Set(["media","supports","container","layer","scope","document","starting-style"]),Ww=new Set(["keyframes","font-face","counter-style","property"]);function Kw(e,t){let n=Uw(t),s=[],r={scoped:0};if(!qw.test(e))return{css:So(e,n,s,r),degraded:s,scopedRuleCount:r.scoped};let i=e.replace(Rd,(l,c,u,d)=>`${c}${So(u,n,s,r)}${d}`),o=e.replace(Rd,""),a=o.slice(Ro(o));return a&&s.push({kind:"mixed-content",construct:zw(a)}),{css:i,degraded:s,scopedRuleCount:r.scoped}}var Rd=/(<style\b[^>]*>)([\s\S]*?)(<\/style\s*>)/gi,qw=/<style\b/i;function ys(e,t){if(e[t]==="/"&&e[t+1]==="*"){let r=e.indexOf("*/",t+2);return r===-1?e.length:r+2}let n=e[t];if(n!=='"'&&n!=="'")return t;let s=t+1;for(;s<e.length;){if(e[s]==="\\"){s+=2;continue}if(e[s]===n)return s+1;s++}return e.length}function Vw(e,t){let n=0,s=t;for(;s<e.length;){let r=ys(e,s);if(r!==s){s=r;continue}if(e[s]==="{")n++;else if(e[s]==="}"&&(n--,n===0))return s;s++}return e.length}function So(e,t,n,s){let r="",i=0,o=0;for(;o<e.length;){let a=ys(e,o);if(a!==o){o=a;continue}if(e[o]==="{"){let l=e.slice(i,o),c=Vw(e,o),u=e.slice(o+1,c);r+=Jw(l,u,t,n,s),o=c<e.length?c+1:c,i=o;continue}if(e[o]===";"){r+=e.slice(i,o+1),o++,i=o;continue}o++}return r+e.slice(i)}function Jw(e,t,n,s,r){let i=Ro(e),o=e.slice(0,i),a=e.slice(i).trim(),l=/^@([\w-]+)/.exec(a);if(l){let u=l[1].toLowerCase().replace(/^-\w+-/,"");return Gw.has(u)?`${o}${a} {${So(t,n,s,r)}}`:(s.push({kind:Ww.has(u)?"at-rule":"unknown-at-rule",construct:Eo(a)}),`${o}${a} {${t}}`)}let c=Yw(a).map(u=>Zw(u,n,s,r)).filter(u=>u.length>0);return c.length===0?`${e}{${t}}`:`${o}${c.join(", ")} {${t}}`}function Eo(e){return e.replace(/\s+/g," ").trim()}var xd=120;function zw(e){let t=Eo(e);return t.length<=xd?t:`${t.slice(0,xd).trimEnd()}\u2026`}function Yw(e){let t=[],n=0,s=0,r=0;for(;r<e.length;){let i=ys(e,r);if(i!==r){r=i;continue}let o=e[r];o==="("||o==="["?n++:o===")"||o==="]"?n--:o===","&&n===0&&(t.push(e.slice(s,r)),s=r+1),r++}return t.push(e.slice(s)),t}var Xw=/^(:root|html|body)(?![\w-])/i;function Ro(e){let t=0;for(;t<e.length;){if(/\s/.test(e[t])){t++;continue}let n=ys(e,t);if(n!==t&&e[t]==="/"){t=n;continue}break}return t}function Zw(e,t,n,s){let r=Ro(e),i=e.slice(0,r).trim(),o=e.slice(r).trim();if(!o)return"";let a=i?`${i} `:"",l=Xw.exec(o);return l?(n.push({kind:"root-selector",construct:Eo(o)}),s.scoped++,`${a}${t}${o.slice(l[0].length)}`):(s.scoped++,`${a}${t} ${o}`)}var Wn=class{tags=["scope_css"];hooks;reportedUnscoped=new WeakSet;reportedDegradations=new WeakMap;constructor(t){this.hooks=t}parse(t,n){let s=t.nextToken();t.advanceAfterBlockEnd(s.value);let r=t.parseUntilBlocks("end_scope_css");t.advanceAfterBlockEnd();let i=new n.NodeList(s.lineno,s.colno,[new n.Symbol(s.lineno,s.colno,vo)]);return new n.CallExtension(this,"run",i,[r])}run(t,n,s){let r=typeof s=="function"?s():"",i=typeof n=="string"?n:"";if(!i||!r.trim())return r.trim()&&this.reportUnscoped(),new wo.default.runtime.SafeString(r);let{css:o,degraded:a,scopedRuleCount:l}=Kw(r,i);return l>0&&this.hooks.onScoped(i),this.reportDegradations(i,a),new wo.default.runtime.SafeString(o)}reportUnscoped(){this.reportedUnscoped.has(this.hooks.renderToken)||(this.reportedUnscoped.add(this.hooks.renderToken),this.hooks.onDiagnostic(P(T.HUBL_SCOPE_CSS_UNSCOPED,"scope_css was used outside a module instance, so its rules were rendered unscoped \u2014 they apply to the whole preview rather than to one module instance, and styling may bleed. The rules themselves are correct; only their scope is approximate.",{feature:"scope_css"})))}reportDegradations(t,n){let s=this.reportedDegradations.get(this.hooks.renderToken);s||(s=new Set,this.reportedDegradations.set(this.hooks.renderToken,s));for(let r of n){let i=`${t}:${r.kind}:${r.construct}`;s.has(i)||(s.add(i),this.hooks.onDiagnostic(P(T.HUBL_SCOPE_CSS_APPROXIMATE,Qw(r),{feature:"scope_css",instance:t,kind:r.kind,construct:r.construct})))}}};function Qw(e){switch(e.kind){case"at-rule":return`scope_css could not scope '${e.construct}' to one module instance: the at-rule registers a document-wide name, so two instances declaring the same one still collide. It was left as written.`;case"unknown-at-rule":return`scope_css did not recurse into '${e.construct}': it is not an at-rule the renderer knows to hold a list of rules, so the body was copied exactly as written. Any selector inside it is unscoped and can bleed onto other instances and other modules.`;case"root-selector":return`scope_css rewrote '${e.construct}' to the module instance's wrapper: a rule rooted at the document cannot be contained by a descendant of it. Anything the selector required of :root, html or body will not match the wrapper.`;case"mixed-content":return`scope_css scoped only what was inside the block's <style> element: the block also carried bare CSS around it ('${e.construct}'), which was emitted as written and applies to the whole preview rather than to this instance. Move it inside the <style> element to have it scoped.`}}function Od(e){return bs(e)}function ws(e,t){let n=e.replace("#",""),s=parseInt(n.substring(0,2),16)/255,r=parseInt(n.substring(2,4),16)/255,i=parseInt(n.substring(4,6),16)/255,o=Math.max(s,r,i),a=Math.min(s,r,i),l=0,c=0,u=(o+a)/2;if(o!==a){let E=o-a;switch(c=u>.5?E/(2-o-a):E/(o+a),o){case s:l=((r-i)/E+(r<i?6:0))/6;break;case r:l=((i-s)/E+2)/6;break;case i:l=((s-r)/E+4)/6;break}}u=Math.max(0,Math.min(1,u+t/100));let d=(E,x,R)=>(R<0&&(R+=1),R>1&&(R-=1),R<1/6?E+(x-E)*6*R:R<1/2?x:R<2/3?E+(x-E)*(2/3-R)*6:E),p,m,g;if(c===0)p=m=g=u;else{let E=u<.5?u*(1+c):u+c-u*c,x=2*u-E;p=d(x,E,l+1/3),m=d(x,E,l),g=d(x,E,l-1/3)}let y=E=>Math.round(E*255).toString(16).padStart(2,"0");return`#${y(p)}${y(m)}${y(g)}`}var eS=["_layout.hubl.css","_typography.hubl.css","_colors.hubl.css","_button.hubl.css","_forms.hubl.css","_cards.hubl.css","_section-colors.hubl.css","_tags.hubl.css","_borders.hubl.css","_icons.hubl.css","_shadows.hubl.css","_transitions.hubl.css","_zindex.hubl.css","_focus.hubl.css"],ko=/@import\s+(?:url\()?\s*['"]([^'"]+)['"]\s*\)?\s*;/g;function Nd(e){return e.replace(/\/\*[\s\S]*?\*\//g,"")}function tS(e){let t=Nd(e),n=[];ko.lastIndex=0;let s;for(;(s=ko.exec(t))!==null;)n.push(s[1]);return n}var Ao=/\{%-?\s*include\s+(?:"([^"]+)"|'([^']+)')\s*-?%\}/g,nS=/\{%-?\s*import\s+(?:"([^"]+)"|'([^']+)')\s*-?%\}/g;function Ld(e,t){let n=oe.resolve(e),s=oe.resolve(t);return s===n||s.startsWith(n+oe.sep)}function rS(e){let t=Nd(e),n=[];for(let s of[ko,Ao]){s.lastIndex=0;let r;for(;(r=s.exec(t))!==null;){let i=r[1]??r[2];i&&n.push({index:r.index,ref:i})}}return n.sort((s,r)=>s.index-r.index),n.map(s=>s.ref)}function Oo(e){return e.replace(Ao,"")}function No(e,t,n,s,r=0){if(r>8)return s.includes?Oo(e):e;let i=(a,l,c)=>{let u=l??c,d;try{d=H(n,oe.resolve(t,u))}catch{return""}if(!A.existsSync(d))return"";try{let p=A.readFileSync(d,"utf-8");return No(p,oe.dirname(d),n,s,r+1)}catch{return""}},o=e.replace(nS,i);return s.includes&&(o=o.replace(Ao,i)),o}function sS(e){let t=H(e,"_variables.hubl.css");if(A.existsSync(t))try{let n=A.readFileSync(t,"utf-8"),s=tS(n);if(s.length>0)return s.map(r=>H(e,r))}catch{}return eS.map(n=>H(e,n))}var iS=["main.hubl.css","main.css"];function oS(e){for(let t of iS){let n=oe.join(e,t);if(!A.existsSync(n))continue;let s=aS(n,e);if(s.ordered.length>0)return s}return{ordered:cS(e),barrels:[]}}function aS(e,t){let n=[],s=[],r=new Set,i=o=>{if(r.has(o))return;r.add(o);let a;try{a=A.readFileSync(o,"utf-8")}catch{return}let l=oe.dirname(o);for(let c of rS(a)){let u;try{u=H(t,oe.resolve(l,c))}catch{continue}i(u)}lS(a)?n.push(o):s.push(o)};return i(e),{ordered:n,barrels:s}}function lS(e){return Oo(e).replace(/\/\*[\s\S]*?\*\//g,"").replace(/\{#[\s\S]*?#\}/g,"").replace(/@import\s+(?:url\()?\s*['"][^'"]+['"]\s*\)?\s*;/g,"").trim().length>0}function cS(e){let t=oe.join(e,"settings"),n=sS(t),s=[oe.join(e,"generic","_reset.css"),oe.join(e,"generic","_normalize.css")],r=[oe.join(e,"objects","_layout.css")],i=[oe.join(e,"elements","_typography.hubl.css"),oe.join(e,"elements","_buttons.hubl.css"),oe.join(e,"elements","_cards.hubl.css"),oe.join(e,"elements","_forms.hubl.css")],o=[oe.join(e,"components","_header.hubl.css"),oe.join(e,"components","_footer.hubl.css"),oe.join(e,"components","_menu.hubl.css"),oe.join(e,"components","_default-modules.css")],a=[oe.join(e,"presets","_onyx.hubl.css")];return[...n,...s,...r,...i,...o,...a]}function uS(e){let t=[...e].reverse().find(r=>A.existsSync(r))??e[0],n=oS(t),s=r=>r.map(i=>oe.relative(t,i)).map(i=>{for(let o of e){let a=H(o,i);if(A.existsSync(a))return a}return H(e[0],i)});return{ordered:s(n.ordered),barrels:s(n.barrels)}}function dS(e,t){return t.map(n=>{for(let s of e){let r=H(s,n);if(A.existsSync(r))return r}return H(e[0],n)})}function Ad({r:e,g:t,b:n}){let s=r=>{let i=r/255;return i<=.03928?i/12.92:Math.pow((i+.055)/1.055,2.4)};return .2126*s(e)+.7152*s(t)+.0722*s(n)}function pS(e,t,n="AA"){let s=Dn(e),r=Dn(t);if(!s||!r)return!1;let i=Ad(s),o=Ad(r),a=(Math.max(i,o)+.05)/(Math.min(i,o)+.05),l=String(n).toUpperCase()==="AAA"?7:4.5;return a>=l}function Lo(e){let t=Dn(e);return t?`${t.r},${t.g},${t.b}`:String(e??"")}var xo="0";function Co(e){return t=>{let n=typeof t=="string"?t:String(t??"");if(n==="")return"";if(/^(?:[a-z][a-z0-9+.-]*:)?\/\//i.test(n)||/^data:/i.test(n))return n;let s=e?.(n)??null;return s===null?n:`file://${s.replace(/\\/g,"/")}`}}function Po(e){let t=new Set;return n=>{let s=String(n??"");return t.has(s)||(t.add(s),e(P(T.HUBL_GLOBAL_UNIMPLEMENTED,`get_asset_version("${s}") answered "${xo}" \u2014 the real value is the version of that default module installed in the portal, which an offline render cannot read. Rules guarded on any other version are omitted from the output.`,{feature:"get_asset_version",asset:s,assumedVersion:xo}))),xo}}function Cd(e,t,n,s){let r=new To.default.Environment(new Gn(e),{autoescape:!1,throwOnUndefined:!1});To.default.installJinjaCompat(),r.addExtension("ScopeCssTag",new Wn({renderToken:r,onScoped:()=>{},onDiagnostic:n}));for(let[i,o]of Object.entries(t))r.addGlobal(i,o);return r.addGlobal("color_variant",ws),r.addGlobal("color_contrast",pS),r.addGlobal("get_asset_version",Po(n)),r.addGlobal("get_asset_url",Co(s)),r.addFilter("convert_rgb",Lo),r.addFilter("color_variant",ws),r}var hS=[["{{","}}"],["{%","%}"],["{#","#}"]];function fS(e){return hS.some(([t,n])=>{let s=e.indexOf(t);return s!==-1&&e.indexOf(n,s+t.length)!==-1})}function Pd(e,t){return e.endsWith(".hubl.css")||fS(t)}function mS(e){return Fd(e).ordered}function $d(e){let t=Fd(e);return[...t.ordered,...t.barrels]}function Fd(e){let{cssDir:t,cssDirs:n=[t],cssAssets:s}=e,r=s&&s.length>0?{ordered:dS(n,s),barrels:[]}:uS(n),i=o=>A.existsSync(o);return{ordered:r.ordered.filter(i),barrels:r.barrels.filter(i)}}function gS(e,t){let n=t.find(r=>Ld(r,e));return n?oe.relative(n,e).replace(/\\/g,"/")||oe.basename(e):oe.basename(e)}function Id(e,t,n){let s=gS(e,t);return P(T.CSS_RENDER_ERROR,`Theme stylesheet failed to render: ${s} \u2014 ${n}`,{sourceFile:s,error:n})}function $o(e){let{theme:t,cssDir:n,cssDirs:s=[n],presetName:r="default",cssAssets:i,baseSize:o,resolveAsset:a}=e,l={theme:t,base_size:o??16,theme_preset:{name:r}},c=[],u=Cd(s,l,m=>c.push(m),a),d=mS({cssDir:n,cssDirs:s,cssAssets:i}),p=[];for(let m of d){let g=A.readFileSync(m,"utf-8");if(!Pd(m,g)){p.push(`/* === ${oe.basename(m)} === */
-${g}`);continue}let y=oe.dirname(m),E=s.find(O=>Ld(O,m))??y,x=No(Oo(g),y,E,{includes:!1}),R=Od(x);try{let O=u.renderString(R,l);p.push(`/* === ${oe.basename(m)} === */
-${O}`)}catch(O){let k=O instanceof Error?O.message:String(O);p.push(`/* === ${oe.basename(m)} \u2014 RENDER ERROR === */
-/* ${k} */
-`),c.push(Id(m,s,k))}}return{css:p.join(`
+// src/cli.ts
+import path8 from "path";
+import fs3 from "fs";
 
-`),diagnostics:c}}function Dd(e,t){let n=A.readFileSync(e,"utf-8");if(!Pd(e,n))return{css:n,diagnostics:[]};let s=oe.dirname(e),r=No(n,s,s,{includes:!0}),i={theme:t.theme,base_size:t.baseSize??16,theme_preset:{name:t.presetName??"default"}},o=[],a=Cd([s],i,l=>o.push(l),t.resolveAsset);try{return{css:a.renderString(Od(r),i),diagnostics:o}}catch(l){let c=l instanceof Error?l.message:String(l);return o.push(Id(e,[s],c)),{css:n,diagnostics:o}}}function Md(e,t){let{css:n,diagnostics:s}=$o(e),r=oe.dirname(t);return A.existsSync(r)||A.mkdirSync(r,{recursive:!0}),A.writeFileSync(t,n,"utf-8"),s}import gf from"path";var jd="error",Ud=Object.assign(Object.create(null),{[T.MODULE_RENDER_ERROR]:"error",[T.HUBL_MODULE_ERROR]:"error",[T.CSS_RENDER_ERROR]:"error",[T.MODULE_SHAPE_UNRECOGNISED]:"warning",[T.HUBL_DATA_TEMPLATE_FAILED]:"error",[T.HUBL_DATA_TEMPLATE_INVALID]:"error",[T.HUBL_DATA_FIXTURE_INVALID]:"warning",[T.CRM_OBJECT_FIXTURE_INVALID]:"warning",[T.CRM_OBJECT_QUERY_NOT_APPLIED]:"info",[T.SPECIMEN_SOURCE_FAILED]:"error",[T.CONTENT_FIXTURE_INVALID]:"warning",[T.CONTENT_STATE_UNKNOWN]:"error",[T.SSR_BRIDGE_UNAVAILABLE]:"warning",[T.SSR_BRIDGE_REQUEST_FAILED]:"error",[T.REACT_MODULE_NOT_RENDERED]:"warning",[T.HUBL_FILTER_UNSUPPORTED]:"warning",[T.HUBL_FILTER_UNIMPLEMENTED]:"warning",[T.HUBL_GLOBAL_UNIMPLEMENTED]:"warning",[T.HUBL_TRANSLATIONS_UNRESOLVED]:"warning",[T.HUBL_WIDGET_EDITOR_ONLY]:"info",[T.HUBL_TAG_UNSUPPORTED]:"warning",[T.HUBL_FOR_RECURSIVE_DEGRADED]:"warning",[T.HUBL_DO_NO_OP]:"warning",[T.HUBL_SCOPE_CSS_UNSCOPED]:"warning",[T.HUBL_SCOPE_CSS_APPROXIMATE]:"info",[T.FIELD_TYPE_UNSUPPORTED]:"warning",[T.THEME_MANIFEST_FALLBACK]:"info",[T.TEMPLATE_CONTEXT_UNREADABLE]:"info",[T.INHERITANCE_PARENT_MISSING]:"error",[T.INHERITANCE_TOO_DEEP]:"error",[T.DND_HIERARCHY_VIOLATION]:"warning",[T.DND_ARGUMENT_SERIALISED]:"warning",[T.FIELD_BOOLEAN_FORMAT]:"warning",[T.FIELD_REQUIRED_NO_DEFAULT]:"error",[T.FIELD_CONTENT_LINK_UNRESOLVABLE]:"error",[T.CONTENT_LINK_UNRESOLVED]:"warning",[T.FIELD_NAME_RESERVED]:"error",[T.TEMPLATE_REQUIRED_VARIABLE_MISSING]:"warning",[T.HUBL_PARTIAL_NOT_FOUND]:"error",[T.MODULE_NOT_FOUND]:"error",[T.HUBSPOT_INTERNAL_MODULE]:"info",[T.HUBSPOT_DEFAULT_MODULE_UNAVAILABLE]:"warning",[T.HUBSPOT_DEFAULT_MODULE_NEEDS_PORTAL_DATA]:"info",[T.HUBSPOT_DEFAULT_MODULE_APPROXIMATED]:"info",[T.REACT_MODULE_FIELD_SCHEMA_UNAVAILABLE]:"warning",[T.REACT_MODULE_FIELD_DEFAULT_UNEVALUABLE]:"info",[T.VALIDATION_SOURCE_UNREADABLE]:"error",[T.ASSET_BASE_URL_MISSING]:"info",[T.ASSET_URL_UNRESOLVED]:"warning",[T.ASSET_BASE_URL_INVALID]:"error",[T.PAGE_MODULE_NOT_DRAWN]:"warning",[T.PAGE_TEMPLATE_NOT_DRAWN]:"warning",[T.PAGE_LAYOUT_UNBOUND]:"warning",[T.PAGE_WIDGET_UNBOUND]:"warning",[T.PAGE_LAYOUT_INVALID]:"warning",[T.PAGE_THEME_ROOT_FILE_REJECTED]:"error"});var _S=["dnd_area","dnd_section","dnd_column","dnd_row","dnd_module"],bS={dnd_area:["dnd_section"],dnd_section:["dnd_column","dnd_module"],dnd_column:["dnd_row"],dnd_row:["dnd_column","dnd_module"],dnd_module:[]},Bd=new Set(["if","for"]),yS=new Set(["block","macro","call","filter","with","module_block"]),wS={endif:"if",endfor:"for",endblock:"block",endmacro:"macro",endcall:"call",endfilter:"filter",endwith:"with",end_module_block:"module_block"},SS=new Set(["area","base","br","col","embed","hr","img","input","link","meta","param","source","track","wbr"]),vS=new Set(["dnd_module","module","module_block"]);function ES(e){return _S.includes(e)}function Gd(e){let t=/^\s*<!--([\s\S]*?)-->/.exec(e);if(!t)return{};let n={},s=/^\s*templateType\s*:\s*(\S+)\s*$/m.exec(t[1]);s&&(n.templateType=s[1]);let r=/^\s*label\s*:\s*(.+?)\s*$/m.exec(t[1]);r&&(n.label=r[1].replace(/^["']|["']$/g,""));let i=/^\s*isAvailableForNewContent\s*:\s*(true|false)\s*$/m.exec(t[1]);return i&&(n.isAvailableForNewContent=i[1]==="true"),n}function Ss(e){return e.replace(/[^\n]/g," ")}function Wd(e){return e.replace(/\{%-?\s*raw\s*-?%\}[\s\S]*?\{%-?\s*endraw\s*-?%\}/g,Ss).replace(/\{#[\s\S]*?#\}/g,Ss).replace(/<!--[\s\S]*?-->/g,Ss).replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi,Ss)}function Kd(e,t){let n=t+2;for(e[n]==="-"&&n++;n<e.length&&/\s/.test(e[n]);)n++;let s=n;for(;n<e.length&&/[A-Za-z0-9_]/.test(e[n]);)n++;if(n===s)return null;let r=e.slice(s,n),i=n,o=null;for(;n<e.length;){let a=e[n];if(o){if(a==="\\"){n+=2;continue}a===o&&(o=null),n++;continue}if(a==='"'||a==="'"){o=a,n++;continue}if(a==="%"&&e[n+1]==="}"){let l=e[n-1]==="-"?n-1:n;return{name:r,raw:e.slice(i,l).trim(),end:n+2}}n++}return{name:r,raw:"",end:i}}var Hd=/<(\/?)([A-Za-z][A-Za-z0-9:-]*)((?:"[^"]*"|'[^']*'|[^>"'])*)>/g;function qd(e){let t=[0];for(let n=0;n<e.length;n++)e[n]===`
-`&&t.push(n+1);return t}function Fo(e,t){let n=0,s=e.length-1;for(;n<s;){let r=Math.ceil((n+s)/2);e[r]<=t?n=r:s=r-1}return n+1}function Vd(e,t={}){let n=Wd(e),s=qd(n),r=[],i=[],o=t.templateType==="page",a=()=>{for(let m=i.length-1;m>=0;m--){let g=i[m];if(g.kind==="dnd")return g.tag}return null},l=(m,g)=>{for(let y=i.length-1;y>=0;y--){let E=i[y];if(m(E)){i.length=y;return}if(g&&E.kind==="dnd")return}},c=null,u=!1,d=m=>u?null:(c&&c.index>=m||(Hd.lastIndex=m,c=Hd.exec(n),c||(u=!0)),c),p=0;for(;p<n.length;){let m=n.indexOf("{%",p),g=d(p),y=g?g.index:-1;if(m===-1&&y===-1)break;if(m===-1||y!==-1&&y<m){let[k,C,I,F]=g,K=I.toLowerCase();C==="/"?l(le=>le.kind==="html"&&le.tag===K,!0):!SS.has(K)&&!F.trimEnd().endsWith("/")&&i.push({kind:"html",tag:K,line:Fo(s,y)}),p=y+k.length;continue}let E=Kd(n,m);if(!E){p=m+2;continue}let x=Fo(s,m),{name:R}=E;if(ES(R)){let k=a();k===null?o&&R!=="dnd_area"&&r.push({rule:4,tag:R,parentTag:null,line:x,message:`Tag '${R}' must be within a 'dnd_area' and will be skipped.`}):bS[k].includes(R)||r.push({rule:RS(k,R),tag:R,parentTag:k,line:x,message:`Tag ${R} cannot be a descendant of tag ${k} and will be ignored.`}),i.push({kind:"dnd",tag:R,line:x}),p=E.end;continue}if(R.startsWith("end_dnd_")){let k=R.slice(4);l(C=>C.kind==="dnd"&&C.tag===k,!1),p=E.end;continue}if(Bd.has(R)||yS.has(R)){let k=i[i.length-1];Bd.has(R)&&k&&k.kind==="dnd"&&k.tag==="dnd_column"&&r.push({rule:3,tag:R,parentTag:"dnd_column",line:x,message:`Tag ${R} cannot be a descendant of tag dnd_column and will be ignored.`}),i.push({kind:"control",tag:R,line:x}),p=E.end;continue}let O=wS[R];O&&l(k=>k.kind==="control"&&k.tag===O,!0),p=E.end}return r}function RS(e,t){return e==="dnd_section"&&t==="dnd_row"?1:e==="dnd_column"&&t==="dnd_module"?2:null}function Jd(e){let t=Wd(e),n=qd(t),s=[],r=0;for(;r<t.length;){let i=t.indexOf("{%",r);if(i===-1)break;let o=Kd(t,i);if(!o){r=i+2;continue}vS.has(o.name)&&s.push({tag:o.name,raw:o.raw,line:Fo(n,i)}),r=o.end}return s}var z=es(vr(),1);import Ne from"path";import Xe from"path";import bn from"path";var xS=/(^|_)(path|file|filename|filepath|src|asset|image|icon|template|partial|module|extends)(_|$)/i,TS=/^(?:[a-z][a-z0-9+.-]*:|#|\{\{|theme\.|@hubspot\/)/i;function kS(e,t){let n=t.trim();return!n||TS.test(n)||e==="property_value_paths"||e==="controlling_field_path"?!1:xS.test(e)?!0:n.startsWith("../")||n.startsWith("..\\")||n.includes("/../")||n.includes("\\..\\")}function AS(e,t,n,s){if(s.startsWith("@projects/")||s.startsWith("@marketplace/"))return;let r=bn.dirname(t),i=bn.resolve(r),o=bn.isAbsolute(s)?s:bn.resolve(i,s),a=e.roots.find(l=>{let c=bn.relative(bn.resolve(l),i);return c===""||!c.startsWith("..")&&!bn.isAbsolute(c)})??e.themeRoot;H(a,o,{reference:s,sourceFile:`${t}:${n}`})}function rn(e,t,n){function s(r,i){if(typeof r=="string"){let o=i.split(".").pop()??"";kS(o,r)&&AS(e,t,i,r);return}if(Array.isArray(r)){r.forEach((o,a)=>s(o,`${i}[${a}]`));return}if(r&&typeof r=="object")for(let[o,a]of Object.entries(r))s(a,i?`${i}.${o}`:o)}s(n,"")}var OS=/^@projects\/([^/]+)\/([^/]+)(?:\/(.*))?$/,NS="@marketplace/";function Yd(e){let t=e.match(OS);return t?{project:t[1],themeName:t[2],rest:t[3]??""}:null}function LS(e){return e.startsWith(NS)}function Xd(e){let t=e.split("/").filter(Boolean);return t[t.length-1]??e}function CS(e){let t=H(e,"theme.json");return A.existsSync(t)?{filePath:t,source:A.readFileSync(t,"utf-8")}:null}function Zd(e,t){let n=CS(e);if(!n)return null;let s;try{s=JSON.parse(n.source)}catch(r){return t.push(zd(e,n.filePath,r)),null}return!s||typeof s!="object"?(t.push(zd(e,n.filePath)),null):{filePath:n.filePath,value:s}}function zd(e,t,n){let s=n instanceof Error?n.message:"it is not a JSON object";return P(T.THEME_MANIFEST_FALLBACK,`Theme '${Xe.basename(e)}' has a theme.json the renderer could not read (${t}): ${s}. It is treated as declaring nothing, so any parent it names with 'extends' is absent from the cascade and the inheritance checks could not run against it. Fix the JSON to restore theme metadata and parent resolution.`,{themeRoot:e,themeJsonPath:t,reason:s})}function PS(e,t){let n=Zd(e,t);if(!n)return null;let s=typeof n.value.extends=="string"?n.value.extends.trim():"";return s?{ref:s,filePath:n.filePath}:null}function $S(e){let t=[];for(let[n,s]of Object.entries(e))for(let[r,i]of Object.entries(s))t.push(`@projects/${n}/${r} -> ${i}`);return t}function FS(e){let{extendsRef:t,childThemeRoot:n,themeJsonPath:s,projects:r,marketplace:i}=e,o=Xe.basename(n),a=Xd(t),l=$S(r),c=l.length>0?`Searched: ${l.join("; ")}. The parentThemeRoot option was not set.`:"Searched: nothing \u2014 no parentThemeRoot was supplied and the projects registry was empty.",u=i?`HubSpot does not allow the source of a marketplace theme to be downloaded, so the renderer cannot fetch it. Copy the installed theme's files out of the portal into a local folder and pass parentThemeRoot: '/absolute/path/to/${a}'.`:`Pass parentThemeRoot: '/absolute/path/to/${a}', or register it as projects: { '${e.project??"<project>"}': { '${a}': '/absolute/path/to/${a}' } }. If you do not have the parent locally, run \`hs cms fetch ${a}\` first.`;return P(T.INHERITANCE_PARENT_MISSING,`Child theme '${o}' extends '${t}' but that parent theme was not supplied to the renderer, so only the child's own files are in the cascade. ${c} ${u}`,{extendsRef:t,parentTheme:a,childTheme:o,childThemeRoot:n,themeJsonPath:s,searched:l,variant:i?"marketplace":"custom"})}function IS(e){let{parentThemeRoot:t,grandparentRef:n,parentThemeJsonPath:s,childThemeRoot:r}=e,i=Xe.basename(t),o=Xd(n);return P(T.INHERITANCE_TOO_DEEP,`Parent theme '${i}' itself extends '${n}'. HubSpot child themes inherit one level only, so the renderer resolves the child against '${i}' and never looks in '${o}' \u2014 anything only '${o}' defines will be missing. Flatten the chain so '${i}' owns what the child inherits, or render against '${o}' directly.`,{parentTheme:i,parentThemeRoot:t,grandparentTheme:o,grandparentRef:n,parentThemeJsonPath:s,childThemeRoot:r})}function Me(e){let t=[],n=e.childThemeRoot?H(e.childThemeRoot,"."):void 0,s=e.parentThemeRoot?H(e.parentThemeRoot,"."):void 0,r=DS(e.projects);if(n&&!s){let a=Zd(n,t);if(a){let l=a.value;rn({themeRoot:n,childThemeRoot:n,parentThemeRoot:s,roots:[n,s].filter(u=>!!u),projects:r,diagnostics:t},a.filePath,l);let c=typeof l.extends=="string"?l.extends.trim():"";if(c){let u=Yd(c);u&&(s=r[u.project]?.[u.themeName]),s||t.push(FS({extendsRef:c,childThemeRoot:n,themeJsonPath:a.filePath,projects:r,project:u?.project,marketplace:LS(c)}))}}}let i=n??(e.themeRoot?H(e.themeRoot,"."):s);if(!i)throw new Error("themeRoot or childThemeRoot is required");if(s&&s!==i){let a=PS(s,t);a&&t.push(IS({parentThemeRoot:s,grandparentRef:a.ref,parentThemeJsonPath:a.filePath,childThemeRoot:n}))}let o=[n??i,s].filter(a=>!!a).map(a=>H(a,"."));return{themeRoot:H(i,"."),childThemeRoot:n,parentThemeRoot:s,roots:Array.from(new Set(o)),projects:r,diagnostics:t}}function DS(e){let t={};for(let[n,s]of Object.entries(e??{})){t[n]={};for(let[r,i]of Object.entries(s??{}))t[n][r]=H(i,".")}return t}function Rr(e,t){let n=Yd(e);if(!n)return null;let s=t.projects[n.project]?.[n.themeName]??(t.parentThemeRoot&&n.themeName===Xe.basename(t.parentThemeRoot)?t.parentThemeRoot:void 0)??(t.childThemeRoot&&n.themeName===Xe.basename(t.childThemeRoot)?t.childThemeRoot:void 0);return s?H(s,n.rest,{reference:e,sourceFile:"theme project reference"}):null}function $e(e,t){for(let n of e.roots){let s;try{s=H(n,t)}catch(r){if(r instanceof X)continue;throw r}if(A.existsSync(s))return s}return null}function xr(e,t){return n=>{let s=Rr(n,t);if(s)return s;let r=$e(t,n);if(r)return r;let i;try{i=H(e,n,{reference:n,sourceFile:"get_asset_url"})}catch(o){if(o instanceof X)return null;throw o}return A.existsSync(i)?i:null}}function Pt(e,t){let n=Xe.dirname(Xe.resolve(e));for(let s of t.roots){let r=Xe.relative(s,n);if(!(r.startsWith("..")||Xe.isAbsolute(r)))return r.split(Xe.sep).join("/")}return null}var vs=["templates","sections","helpers","partials"];function Qd(e,t){return[...t.map(n=>Xe.join(e,n)),e]}function Io(e,t){return e.roots.flatMap(n=>Qd(n,t))}function ut(e,t){for(let n of e.roots)for(let s of Qd(n,vs)){let r=Xe.resolve(s),i=Xe.resolve(r,t);if(i!==r&&!i.startsWith(r+Xe.sep))continue;let o;try{o=H(n,i)}catch(a){if(a instanceof X)continue;throw a}if(A.existsSync(o)){try{if(A.statSync(o).isDirectory())continue}catch{continue}return o}}return null}import jo from"path";var gt={"blog-posts.json":[{id:2001,name:"Building Modern Web Experiences with HubSpot CMS",label:"Building Modern Web Experiences with HubSpot CMS",slug:"building-modern-web-experiences",absolute_url:"/blog/building-modern-web-experiences",absoluteUrl:"/blog/building-modern-web-experiences",featured_image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=675&fit=crop",featured_image_alt_text:"Developer working on modern web application with code on screen",featured_image_width:1200,featured_image_height:675,featuredImage:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=675&fit=crop",featuredImageAltText:"Developer working on modern web application with code on screen",featuredImageWidth:1200,featuredImageHeight:675,topic_list:[{name:"Web Development",slug:"web-development"},{name:"HubSpot",slug:"hubspot"}],topicNames:["Web Development","HubSpot"],tag_list:[{name:"Web Development",slug:"web-development"},{name:"HubSpot",slug:"hubspot"}],publish_date:"2026-03-15T10:00:00Z",publish_date_localized:"March 15, 2026",created:"2026-03-10T09:00:00Z",updated:"2026-03-14T16:30:00Z",meta_description:"Learn how to build modern, performant web experiences using HubSpot CMS with React-powered modules and component-driven architecture.",blog_post_author:{avatar:"https://i.pravatar.cc/150?img=47",bio:"Senior web developer specialising in HubSpot CMS themes and React-based module development.",display_name:"Sarah Chen",email:"sarah.chen@example.com",slug:"sarah-chen",has_social_profiles:!0,facebook:"",linkedin:"https://linkedin.com/in/sarahchen",twitter:"https://twitter.com/sarahchen",website:"https://sarahchen.dev"},blog_author:{avatar:"https://i.pravatar.cc/150?img=47",display_name:"Sarah Chen"},comment_count:3,post_body:"<p>Building modern web experiences on HubSpot CMS requires a thoughtful approach to component architecture, performance optimisation, and developer experience. In this guide, we explore how React-powered modules transform the traditional CMS development workflow.</p><h2>Component-Driven Development</h2><p>The shift towards component-driven development has fundamentally changed how we build websites. By breaking interfaces into reusable, self-contained components, teams can work in parallel, maintain consistency across pages, and iterate faster than ever before.</p><p>HubSpot's CMS React modules take this further by providing server-side rendering out of the box, ensuring fast initial page loads while enabling rich interactivity through island hydration. Each module encapsulates its own fields, styling, and behaviour \u2014 making them truly portable across templates and pages.</p><h2>Performance First</h2><p>Core Web Vitals are no longer optional. With Google using page experience signals in ranking, every millisecond matters. Our approach leverages CSS Modules for scoped, deduplicated styles, lazy-loaded islands for JavaScript, and optimised asset delivery through HubSpot's CDN.</p><p>The result is a theme architecture that scores consistently above 90 on Lighthouse across all templates, while delivering the rich interactivity clients expect from a modern website.</p>",post_summary:"Learn how to build modern, performant web experiences using HubSpot CMS with React-powered modules and component-driven architecture.",post_list_content:"<p>Building modern web experiences on HubSpot CMS requires a thoughtful approach to component architecture, performance optimisation, and developer experience.</p>",next_post_name:"Scaling Your Digital Strategy in 2026",next_post_slug:"scaling-digital-strategy",next_post_featured_image:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=675&fit=crop",next_post_featured_image_alt_text:"Business analytics dashboard showing growth metrics and charts",previous_post_name:null,previous_post_slug:null,previous_post_featured_image:null,previous_post_featured_image_alt_text:null},{id:2002,name:"Scaling Your Digital Strategy in 2026",label:"Scaling Your Digital Strategy in 2026",slug:"scaling-digital-strategy",absolute_url:"/blog/scaling-digital-strategy",absoluteUrl:"/blog/scaling-digital-strategy",featured_image:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=675&fit=crop",featured_image_alt_text:"Business analytics dashboard showing growth metrics and charts",featured_image_width:1200,featured_image_height:675,featuredImage:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=675&fit=crop",featuredImageAltText:"Business analytics dashboard showing growth metrics and charts",featuredImageWidth:1200,featuredImageHeight:675,topic_list:[{name:"Strategy",slug:"strategy"},{name:"Growth",slug:"growth"}],topicNames:["Strategy","Growth"],tag_list:[{name:"Strategy",slug:"strategy"},{name:"Growth",slug:"growth"}],publish_date:"2026-03-01T10:00:00Z",publish_date_localized:"March 1, 2026",created:"2026-02-25T14:00:00Z",updated:"2026-02-28T11:00:00Z",meta_description:"Discover proven approaches to scaling your digital strategy in 2026, from content operations to technology stack decisions.",blog_post_author:{avatar:"https://i.pravatar.cc/150?img=12",bio:"Digital strategy consultant helping enterprises scale their online presence through data-driven decision making.",display_name:"Marcus Webb",email:"marcus.webb@example.com",slug:"marcus-webb",has_social_profiles:!0,facebook:"",linkedin:"https://linkedin.com/in/marcuswebb",twitter:"",website:""},blog_author:{avatar:"https://i.pravatar.cc/150?img=12",display_name:"Marcus Webb"},comment_count:7,post_body:"<p>As organisations mature their digital presence, the challenge shifts from building a website to orchestrating a scalable digital ecosystem. In 2026, the most successful teams treat their website as a living platform \u2014 continuously optimised, deeply integrated with their marketing stack, and architecturally prepared for growth.</p><h2>The Three Pillars of Scale</h2><p>Scaling digital strategy effectively requires alignment across three pillars: content operations, technology infrastructure, and measurement frameworks. Without all three working in concert, growth creates friction rather than momentum.</p><p>Content operations define how teams create, review, approve, and publish content at pace. Technology infrastructure \u2014 from your CMS to your CDP \u2014 must support this velocity without introducing technical debt. And measurement frameworks ensure every investment ties back to business outcomes.</p><h2>Building for What's Next</h2><p>The organisations that will win in 2026 and beyond are those investing in composable architectures today. By decoupling content from presentation, data from display, and authoring from deployment, teams gain the flexibility to adapt to whatever comes next.</p>",post_summary:"Discover proven approaches to scaling your digital strategy in 2026, from content operations to technology stack decisions.",post_list_content:"<p>As organisations mature their digital presence, the challenge shifts from building a website to orchestrating a scalable digital ecosystem.</p>",next_post_name:"Enterprise CMS Migration: Lessons Learned",next_post_slug:"cms-migration-lessons",next_post_featured_image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=675&fit=crop",next_post_featured_image_alt_text:"Project management board with migration planning tasks and timeline",previous_post_name:"Building Modern Web Experiences with HubSpot CMS",previous_post_slug:"building-modern-web-experiences",previous_post_featured_image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=675&fit=crop",previous_post_featured_image_alt_text:"Developer working on modern web application with code on screen"},{id:2003,name:"Enterprise CMS Migration: Lessons Learned",label:"Enterprise CMS Migration: Lessons Learned",slug:"cms-migration-lessons",absolute_url:"/blog/cms-migration-lessons",absoluteUrl:"/blog/cms-migration-lessons",featured_image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=675&fit=crop",featured_image_alt_text:"Project management board with migration planning tasks and timeline",featured_image_width:1200,featured_image_height:675,featuredImage:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=675&fit=crop",featuredImageAltText:"Project management board with migration planning tasks and timeline",featuredImageWidth:1200,featuredImageHeight:675,topic_list:[{name:"CMS",slug:"cms"},{name:"Enterprise",slug:"enterprise"}],topicNames:["CMS","Enterprise"],tag_list:[{name:"CMS",slug:"cms"},{name:"Enterprise",slug:"enterprise"}],publish_date:"2026-02-15T10:00:00Z",publish_date_localized:"February 15, 2026",created:"2026-02-10T08:00:00Z",updated:"2026-02-14T17:00:00Z",meta_description:"Real-world lessons from migrating enterprise websites to HubSpot CMS, covering planning, execution, and post-launch optimisation.",blog_post_author:{avatar:"https://i.pravatar.cc/150?img=47",bio:"Technical project manager with 10+ years leading enterprise CMS migrations across industries.",display_name:"Sarah Chen",email:"sarah.chen@example.com",slug:"sarah-chen",has_social_profiles:!0,facebook:"",linkedin:"https://linkedin.com/in/sarahchen",twitter:"https://twitter.com/sarahchen",website:"https://sarahchen.dev"},blog_author:{avatar:"https://i.pravatar.cc/150?img=47",display_name:"Sarah Chen"},comment_count:12,post_body:"<p>Migrating an enterprise website to a new CMS is one of the most complex projects a digital team can undertake. After leading dozens of these migrations, patterns emerge \u2014 both in what goes right and what goes sideways. Here are the hard-won lessons.</p><h2>Plan for Content, Not Just Templates</h2><p>Most migration plans focus heavily on template design and development timelines, but the real bottleneck is almost always content. Auditing, restructuring, rewriting, and approving content takes longer than anyone expects. Build your timeline around content readiness, not dev completion.</p><p>A phased content migration \u2014 starting with high-traffic pages and working outward \u2014 reduces risk and gives your team time to refine the process before tackling the long tail.</p><h2>Redirects Are a First-Class Concern</h2><p>Every migration generates URL changes. Every URL change risks breaking inbound links, losing SEO equity, and frustrating users. Treat your redirect map as a first-class deliverable, not an afterthought. Automate redirect testing, monitor 404s aggressively post-launch, and keep your redirect map versioned alongside your codebase.</p>",post_summary:"Real-world lessons from migrating enterprise websites to HubSpot CMS, covering planning, execution, and post-launch optimisation.",post_list_content:"<p>Migrating an enterprise website to a new CMS is one of the most complex projects a digital team can undertake.</p>",next_post_name:"The Developer's Guide to Theme Architecture",next_post_slug:"theme-architecture-guide",next_post_featured_image:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=675&fit=crop",next_post_featured_image_alt_text:"Abstract architectural blueprint and component diagrams",previous_post_name:"Scaling Your Digital Strategy in 2026",previous_post_slug:"scaling-digital-strategy",previous_post_featured_image:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=675&fit=crop",previous_post_featured_image_alt_text:"Business analytics dashboard showing growth metrics and charts"},{id:2004,name:"The Developer's Guide to Theme Architecture",label:"The Developer's Guide to Theme Architecture",slug:"theme-architecture-guide",absolute_url:"/blog/theme-architecture-guide",absoluteUrl:"/blog/theme-architecture-guide",featured_image:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=675&fit=crop",featured_image_alt_text:"Abstract architectural blueprint and component diagrams",featured_image_width:1200,featured_image_height:675,featuredImage:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=675&fit=crop",featuredImageAltText:"Abstract architectural blueprint and component diagrams",featuredImageWidth:1200,featuredImageHeight:675,topic_list:[{name:"Development",slug:"development"},{name:"Architecture",slug:"architecture"}],topicNames:["Development","Architecture"],tag_list:[{name:"Development",slug:"development"},{name:"Architecture",slug:"architecture"}],publish_date:"2026-02-01T10:00:00Z",publish_date_localized:"February 1, 2026",created:"2026-01-28T10:00:00Z",updated:"2026-01-31T15:00:00Z",meta_description:"A comprehensive guide to building maintainable, scalable HubSpot CMS theme architectures with React modules.",blog_post_author:{avatar:"https://i.pravatar.cc/150?img=33",bio:"Full-stack developer focused on design systems and CMS architecture patterns.",display_name:"Alex Torres",email:"alex.torres@example.com",slug:"alex-torres",has_social_profiles:!0,facebook:"",linkedin:"https://linkedin.com/in/alextorres",twitter:"https://twitter.com/alextorres",website:""},blog_author:{avatar:"https://i.pravatar.cc/150?img=33",display_name:"Alex Torres"},comment_count:5,post_body:"<p>A well-architected theme is the foundation of every successful HubSpot CMS project. It determines how fast your team ships, how consistent your pages look, and how maintainable the codebase remains as it grows. This guide distils the patterns that separate good themes from great ones.</p><h2>Module Boundaries</h2><p>The most impactful architectural decision is where you draw module boundaries. Too granular, and authors drown in options. Too coarse, and you lose flexibility. The sweet spot is modules that map to recognisable content patterns \u2014 a hero section, a card grid, a testimonial carousel \u2014 each configurable enough to serve multiple contexts without becoming a swiss-army knife.</p><p>Each module should own its fields, its CSS, and its JavaScript. Shared styles belong in the theme's design tokens, not in module-specific overrides that create hidden coupling.</p>",post_summary:"A comprehensive guide to building maintainable, scalable HubSpot CMS theme architectures with React modules.",post_list_content:"<p>A well-architected theme is the foundation of every successful HubSpot CMS project.</p>",next_post_name:"Accessibility Best Practices for Modern Websites",next_post_slug:"accessibility-best-practices",next_post_featured_image:"https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&h=675&fit=crop",next_post_featured_image_alt_text:"Person using assistive technology to navigate a website",previous_post_name:"Enterprise CMS Migration: Lessons Learned",previous_post_slug:"cms-migration-lessons",previous_post_featured_image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=675&fit=crop",previous_post_featured_image_alt_text:"Project management board with migration planning tasks and timeline"},{id:2005,name:"Accessibility Best Practices for Modern Websites",label:"Accessibility Best Practices for Modern Websites",slug:"accessibility-best-practices",absolute_url:"/blog/accessibility-best-practices",absoluteUrl:"/blog/accessibility-best-practices",featured_image:"https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&h=675&fit=crop",featured_image_alt_text:"Person using assistive technology to navigate a website",featured_image_width:1200,featured_image_height:675,featuredImage:"https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&h=675&fit=crop",featuredImageAltText:"Person using assistive technology to navigate a website",featuredImageWidth:1200,featuredImageHeight:675,topic_list:[{name:"Accessibility",slug:"accessibility"},{name:"Web Development",slug:"web-development"}],topicNames:["Accessibility","Web Development"],tag_list:[{name:"Accessibility",slug:"accessibility"},{name:"Web Development",slug:"web-development"}],publish_date:"2026-01-20T10:00:00Z",publish_date_localized:"January 20, 2026",created:"2026-01-15T11:00:00Z",updated:"2026-01-19T14:00:00Z",meta_description:"Practical accessibility best practices for building inclusive modern websites that meet WCAG 2.2 standards.",blog_post_author:{avatar:"https://i.pravatar.cc/150?img=28",bio:"Accessibility specialist and front-end developer advocating for inclusive digital experiences.",display_name:"Priya Nair",email:"priya.nair@example.com",slug:"priya-nair",has_social_profiles:!0,facebook:"",linkedin:"https://linkedin.com/in/priyanair",twitter:"https://twitter.com/priyanair",website:"https://priyanair.com"},blog_author:{avatar:"https://i.pravatar.cc/150?img=28",display_name:"Priya Nair"},comment_count:9,post_body:"<p>Accessibility isn't a feature you bolt on at the end \u2014 it's a design principle that shapes every decision from colour contrast to interaction patterns. Here are the practices that make the biggest difference, grounded in WCAG 2.2 and real-world testing.</p><h2>Semantic HTML Is Your Foundation</h2><p>Before reaching for ARIA attributes, ensure your HTML is semantically correct. Headings should form a logical hierarchy. Navigation should use <code>&lt;nav&gt;</code> elements. Forms need associated labels. These basics solve the majority of accessibility issues before you write a single line of JavaScript.</p><p>Screen readers, voice control software, and keyboard navigation all benefit from well-structured HTML. It's the highest-impact, lowest-effort accessibility improvement you can make.</p>",post_summary:"Practical accessibility best practices for building inclusive modern websites that meet WCAG 2.2 standards.",post_list_content:"<p>Accessibility isn't a feature you bolt on at the end \u2014 it's a design principle that shapes every decision.</p>",next_post_name:"Optimising Core Web Vitals for HubSpot Sites",next_post_slug:"core-web-vitals-hubspot",next_post_featured_image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=675&fit=crop&sat=-100",next_post_featured_image_alt_text:"Performance monitoring dashboard showing website speed metrics",previous_post_name:"The Developer's Guide to Theme Architecture",previous_post_slug:"theme-architecture-guide",previous_post_featured_image:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=675&fit=crop",previous_post_featured_image_alt_text:"Abstract architectural blueprint and component diagrams"},{id:2006,name:"Optimising Core Web Vitals for HubSpot Sites",label:"Optimising Core Web Vitals for HubSpot Sites",slug:"core-web-vitals-hubspot",absolute_url:"/blog/core-web-vitals-hubspot",absoluteUrl:"/blog/core-web-vitals-hubspot",featured_image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=675&fit=crop&sat=-100",featured_image_alt_text:"Performance monitoring dashboard showing website speed metrics",featured_image_width:1200,featured_image_height:675,featuredImage:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=675&fit=crop&sat=-100",featuredImageAltText:"Performance monitoring dashboard showing website speed metrics",featuredImageWidth:1200,featuredImageHeight:675,topic_list:[{name:"Performance",slug:"performance"},{name:"SEO",slug:"seo"}],topicNames:["Performance","SEO"],tag_list:[{name:"Performance",slug:"performance"},{name:"SEO",slug:"seo"}],publish_date:"2026-01-05T10:00:00Z",publish_date_localized:"January 5, 2026",created:"2026-01-02T09:00:00Z",updated:"2026-01-04T16:00:00Z",meta_description:"Actionable strategies for optimising Largest Contentful Paint, Cumulative Layout Shift, and Interaction to Next Paint on HubSpot CMS sites.",blog_post_author:{avatar:"https://i.pravatar.cc/150?img=47",bio:"Performance engineer obsessed with making websites fast, accessible, and delightful.",display_name:"Sarah Chen",email:"sarah.chen@example.com",slug:"sarah-chen",has_social_profiles:!0,facebook:"",linkedin:"https://linkedin.com/in/sarahchen",twitter:"https://twitter.com/sarahchen",website:"https://sarahchen.dev"},blog_author:{avatar:"https://i.pravatar.cc/150?img=47",display_name:"Sarah Chen"},comment_count:4,post_body:"<p>Core Web Vitals directly influence your search rankings and user experience. On HubSpot CMS, the combination of server-rendered React modules, HubSpot's CDN, and thoughtful theme architecture gives you powerful levers to hit top scores consistently.</p><h2>Largest Contentful Paint</h2><p>LCP measures how quickly the main content becomes visible. On CMS pages, this is typically a hero image or headline. Prioritise above-the-fold content by inlining critical CSS, preloading hero images, and ensuring server-side rendering delivers complete HTML without JavaScript dependencies.</p><p>Avoid lazy-loading above-the-fold images \u2014 this is the single most common LCP mistake we see in HubSpot theme audits.</p>",post_summary:"Actionable strategies for optimising Largest Contentful Paint, Cumulative Layout Shift, and Interaction to Next Paint on HubSpot CMS sites.",post_list_content:"<p>Core Web Vitals directly influence your search rankings and user experience.</p>",next_post_name:"Design Systems That Scale: A Practical Approach",next_post_slug:"design-systems-scale",next_post_featured_image:"https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=675&fit=crop",next_post_featured_image_alt_text:"Design system components and color palette on designer's desk",previous_post_name:"Accessibility Best Practices for Modern Websites",previous_post_slug:"accessibility-best-practices",previous_post_featured_image:"https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&h=675&fit=crop",previous_post_featured_image_alt_text:"Person using assistive technology to navigate a website"},{id:2007,name:"Design Systems That Scale: A Practical Approach",label:"Design Systems That Scale: A Practical Approach",slug:"design-systems-scale",absolute_url:"/blog/design-systems-scale",absoluteUrl:"/blog/design-systems-scale",featured_image:"https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=675&fit=crop",featured_image_alt_text:"Design system components and color palette on designer's desk",featured_image_width:1200,featured_image_height:675,featuredImage:"https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=675&fit=crop",featuredImageAltText:"Design system components and color palette on designer's desk",featuredImageWidth:1200,featuredImageHeight:675,topic_list:[{name:"Design",slug:"design"},{name:"Systems",slug:"systems"}],topicNames:["Design","Systems"],tag_list:[{name:"Design",slug:"design"},{name:"Systems",slug:"systems"}],publish_date:"2025-12-15T10:00:00Z",publish_date_localized:"December 15, 2025",created:"2025-12-10T13:00:00Z",updated:"2025-12-14T10:00:00Z",meta_description:"How to build and maintain design systems that scale with your organisation, from tokens to components to governance.",blog_post_author:{avatar:"https://i.pravatar.cc/150?img=33",bio:"Design systems lead building bridges between design and engineering teams.",display_name:"Alex Torres",email:"alex.torres@example.com",slug:"alex-torres",has_social_profiles:!0,facebook:"",linkedin:"https://linkedin.com/in/alextorres",twitter:"https://twitter.com/alextorres",website:""},blog_author:{avatar:"https://i.pravatar.cc/150?img=33",display_name:"Alex Torres"},comment_count:6,post_body:"<p>Design systems promise consistency, efficiency, and scalability \u2014 but only when they're built to evolve alongside your organisation. Too rigid, and teams route around them. Too loose, and they become a style guide nobody follows. Here's how to find the balance.</p><h2>Start with Tokens, Not Components</h2><p>Design tokens \u2014 colours, spacing, typography, shadows \u2014 are the foundation. They're the shared language between designers and developers. Get tokens right, and components almost build themselves. Get them wrong, and every component becomes a bespoke negotiation.</p><p>Define your tokens as a single source of truth, expressed as CSS custom properties for the web and as platform-appropriate formats for native. Version them, document them, and treat breaking changes with the same care as API changes.</p>",post_summary:"How to build and maintain design systems that scale with your organisation, from tokens to components to governance.",post_list_content:"<p>Design systems promise consistency, efficiency, and scalability \u2014 but only when they're built to evolve alongside your organisation.</p>",next_post_name:"Headless CMS vs Traditional CMS: Making the Right Choice",next_post_slug:"headless-vs-traditional-cms",next_post_featured_image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=675&fit=crop",next_post_featured_image_alt_text:"Technology comparison diagram on whiteboard",previous_post_name:"Optimising Core Web Vitals for HubSpot Sites",previous_post_slug:"core-web-vitals-hubspot",previous_post_featured_image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=675&fit=crop&sat=-100",previous_post_featured_image_alt_text:"Performance monitoring dashboard showing website speed metrics"},{id:2008,name:"Headless CMS vs Traditional CMS: Making the Right Choice",label:"Headless CMS vs Traditional CMS: Making the Right Choice",slug:"headless-vs-traditional-cms",absolute_url:"/blog/headless-vs-traditional-cms",absoluteUrl:"/blog/headless-vs-traditional-cms",featured_image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=675&fit=crop",featured_image_alt_text:"Technology comparison diagram on whiteboard",featured_image_width:1200,featured_image_height:675,featuredImage:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=675&fit=crop",featuredImageAltText:"Technology comparison diagram on whiteboard",featuredImageWidth:1200,featuredImageHeight:675,topic_list:[{name:"CMS",slug:"cms"},{name:"Technology",slug:"technology"}],topicNames:["CMS","Technology"],tag_list:[{name:"CMS",slug:"cms"},{name:"Technology",slug:"technology"}],publish_date:"2025-12-01T10:00:00Z",publish_date_localized:"December 1, 2025",created:"2025-11-26T09:00:00Z",updated:"2025-11-30T12:00:00Z",meta_description:"A balanced comparison of headless and traditional CMS architectures to help you make the right choice for your organisation.",blog_post_author:{avatar:"https://i.pravatar.cc/150?img=12",bio:"Digital strategy consultant helping enterprises scale their online presence through data-driven decision making.",display_name:"Marcus Webb",email:"marcus.webb@example.com",slug:"marcus-webb",has_social_profiles:!0,facebook:"",linkedin:"https://linkedin.com/in/marcuswebb",twitter:"",website:""},blog_author:{avatar:"https://i.pravatar.cc/150?img=12",display_name:"Marcus Webb"},comment_count:15,post_body:"<p>The headless vs traditional CMS debate generates strong opinions, but the right answer depends entirely on your team's capabilities, your content operations, and your performance requirements. Let's cut through the marketing noise and examine what actually matters.</p><h2>What 'Headless' Really Means</h2><p>A headless CMS separates content management from content presentation. You manage content through an admin interface, and consume it via APIs in whatever front-end framework you choose. This gives developers complete control over the user experience, at the cost of building and maintaining the presentation layer themselves.</p><p>A traditional CMS like HubSpot bundles content management and presentation together. Templates, modules, and pages are all managed in one system. This reduces complexity for marketing teams and accelerates time-to-market, while still allowing sophisticated customisation through themes and custom modules.</p>",post_summary:"A balanced comparison of headless and traditional CMS architectures to help you make the right choice for your organisation.",post_list_content:"<p>The headless vs traditional CMS debate generates strong opinions, but the right answer depends entirely on your context.</p>",next_post_name:"The ROI of Investing in Website Performance",next_post_slug:"roi-website-performance",next_post_featured_image:"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&h=675&fit=crop",next_post_featured_image_alt_text:"Financial charts showing upward ROI trends and performance metrics",previous_post_name:"Design Systems That Scale: A Practical Approach",previous_post_slug:"design-systems-scale",previous_post_featured_image:"https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=675&fit=crop",previous_post_featured_image_alt_text:"Design system components and color palette on designer's desk"},{id:2009,name:"The ROI of Investing in Website Performance",label:"The ROI of Investing in Website Performance",slug:"roi-website-performance",absolute_url:"/blog/roi-website-performance",absoluteUrl:"/blog/roi-website-performance",featured_image:"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&h=675&fit=crop",featured_image_alt_text:"Financial charts showing upward ROI trends and performance metrics",featured_image_width:1200,featured_image_height:675,featuredImage:"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&h=675&fit=crop",featuredImageAltText:"Financial charts showing upward ROI trends and performance metrics",featuredImageWidth:1200,featuredImageHeight:675,topic_list:[{name:"Performance",slug:"performance"},{name:"Business",slug:"business"}],topicNames:["Performance","Business"],tag_list:[{name:"Performance",slug:"performance"},{name:"Business",slug:"business"}],publish_date:"2025-11-15T10:00:00Z",publish_date_localized:"November 15, 2025",created:"2025-11-10T08:00:00Z",updated:"2025-11-14T17:00:00Z",meta_description:"Quantifying the business impact of website performance improvements, from conversion rates to search rankings.",blog_post_author:{avatar:"https://i.pravatar.cc/150?img=28",bio:"Accessibility specialist and front-end developer advocating for inclusive digital experiences.",display_name:"Priya Nair",email:"priya.nair@example.com",slug:"priya-nair",has_social_profiles:!0,facebook:"",linkedin:"https://linkedin.com/in/priyanair",twitter:"https://twitter.com/priyanair",website:"https://priyanair.com"},blog_author:{avatar:"https://i.pravatar.cc/150?img=28",display_name:"Priya Nair"},comment_count:2,post_body:"<p>Every 100ms of page load improvement can increase conversion rates by up to 1%. But translating performance metrics into business language remains one of the biggest challenges for development teams seeking budget and buy-in. Here's how to make the case.</p><h2>The Performance-Revenue Connection</h2><p>Study after study shows the direct link between page speed and business outcomes. Amazon found that every 100ms of latency cost them 1% in sales. Google discovered that a 0.5-second delay in search results reduced traffic by 20%. These aren't edge cases \u2014 they're consistent patterns across industries and geographies.</p><p>For your organisation, the calculation is straightforward: multiply your monthly revenue by the conversion rate improvement you'd expect from hitting your performance targets. Even conservative estimates typically justify significant investment in performance optimisation.</p>",post_summary:"Quantifying the business impact of website performance improvements, from conversion rates to search rankings.",post_list_content:"<p>Every 100ms of page load improvement can increase conversion rates by up to 1%.</p>",next_post_name:null,next_post_slug:null,next_post_featured_image:null,next_post_featured_image_alt_text:null,previous_post_name:"Headless CMS vs Traditional CMS: Making the Right Choice",previous_post_slug:"headless-vs-traditional-cms",previous_post_featured_image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=675&fit=crop",previous_post_featured_image_alt_text:"Technology comparison diagram on whiteboard"}],"content/blog-listing/empty.json":{label:"A blog with no published posts yet",is_in_editor:!1,request:{domain:"www.example-portal.com",scheme:"https",path:"/blog",path_and_query:"/blog",full_url:"https://www.example-portal.com/blog",query:"",query_dict:{}},group:{id:81234567890,name:"Example blog",public_title:"Notes from the example team",html_title:"Notes from the example team | Example",slug:"blog",absolute_url:"https://www.example-portal.com/blog",language:"en",description:"Field notes on building sites people can edit."},blog:{id:81234567890,posts:[],topics:[]},content:{id:190000000100,name:"Notes from the example team",html_title:"Notes from the example team | Example",absolute_url:"https://www.example-portal.com/blog",language:"en"},contents:[],current_page_num:1,last_page_num:1},"content/blog-listing/index.json":{label:"The blog's first page, with more posts on the next page",is_in_editor:!1,request:{domain:"www.example-portal.com",scheme:"https",path:"/blog",path_and_query:"/blog",full_url:"https://www.example-portal.com/blog",query:"",query_dict:{}},group:{id:81234567890,name:"Example blog",public_title:"Notes from the example team",html_title:"Notes from the example team | Example",slug:"blog",absolute_url:"https://www.example-portal.com/blog",language:"en",description:"Field notes on building sites people can edit."},blog:{id:81234567890,posts:[{id:128374619283,name:"What changes when a module reads the platform",title:"What changes when a module reads the platform | Example",html_title:"What changes when a module reads the platform | Example",slug:"blog/what-changes-when-a-module-reads-the-platform",absolute_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",post_summary:"A band that restates a post's heading, date and author as static text stops being true the next time somebody publishes.",post_body:"<p>A featured band that restates a post's title, date and author in text fields matches its reference exactly, and stops being true the next time somebody publishes. Reading the post is the whole difference.</p><h2>Where the data comes from</h2><p>Every value on this page is the post's own, read out of the post in plain values before it reaches the module. The title never carries HubSpot's wrapper, and a topic is a name with its own listing address.</p><ul><li><strong>The title</strong> is the post's name, not its SEO title.</li><li><strong>The topics</strong> are names, never ids.</li><li><strong>The reading time</strong> is counted from the body.</li></ul><blockquote><p>A plausible card that is wrong is worse than an empty one.</p></blockquote><h3>What the editor sees</h3><p>The body is edited in the blog editor, where it always was. The marker the editor adds in front of it never reaches the page.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/what-changes-when-a-module-reads-the-platform.jpg",featured_image_alt_text:"A page editor with a blog post open beside its live page",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:1785834e6,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888,475272560901]},{id:128374619301,name:"Three fields every blog listing needs",title:"Three fields every blog listing needs | Example",html_title:"Three fields every blog listing needs | Example",slug:"blog/three-fields-every-blog-listing-needs",absolute_url:"https://www.example-portal.com/blog/three-fields-every-blog-listing-needs",post_summary:"A listing reads its posts from the platform; the only fields it needs are the words on its controls.",post_body:"<p>A listing reads its posts from the platform; the only fields it needs are the words on its controls.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/three-fields.jpg",featured_image_alt_text:"A blog listing with topic filters above a grid of posts",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17852292e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888]},{id:128374619302,name:"Why a topic filter is a link",title:"Why a topic filter is a link | Example",html_title:"Why a topic filter is a link | Example",slug:"blog/why-a-topic-filter-is-a-link",absolute_url:"https://www.example-portal.com/blog/why-a-topic-filter-is-a-link",post_summary:"Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.",post_body:"<p>Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17846244e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560915]},{id:128374619303,name:"Writing rich text that survives a redesign",title:"Writing rich text that survives a redesign | Example",html_title:"Writing rich text that survives a redesign | Example",slug:"blog/writing-rich-text-that-survives-a-redesign",absolute_url:"https://www.example-portal.com/blog/writing-rich-text-that-survives-a-redesign",post_summary:"Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.",post_body:"<p>Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/rich-text.jpg",featured_image_alt_text:"A post's body with its headings and lists outlined",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17840196e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560901]},{id:128374619304,name:"Previews an editor can trust",title:"Previews an editor can trust | Example",html_title:"Previews an editor can trust | Example",slug:"blog/previews-an-editor-can-trust",absolute_url:"https://www.example-portal.com/blog/previews-an-editor-can-trust",post_summary:"A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.",post_body:"<p>A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17834148e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560888,475272560901]},{id:128374619305,name:"An empty state is for the editor",title:"An empty state is for the editor | Example",html_title:"An empty state is for the editor | Example",slug:"blog/an-empty-state-is-for-the-editor",absolute_url:"https://www.example-portal.com/blog/an-empty-state-is-for-the-editor",post_summary:"A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.",post_body:"<p>A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/empty-state.jpg",featured_image_alt_text:"An empty module in the page editor with a hint beneath it",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:178281e7,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560915]}],topics:[{id:475272560888,name:"HubSpot CMS",slug:"hubspot-cms"},{id:475272560901,name:"Content operations",slug:"content-operations"},{id:475272560915,name:"Accessibility",slug:"accessibility"}]},content:{id:190000000100,name:"Notes from the example team",html_title:"Notes from the example team | Example",absolute_url:"https://www.example-portal.com/blog",language:"en"},contents:[{id:128374619283,name:"What changes when a module reads the platform",title:"What changes when a module reads the platform | Example",html_title:"What changes when a module reads the platform | Example",slug:"blog/what-changes-when-a-module-reads-the-platform",absolute_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",post_summary:"A band that restates a post's heading, date and author as static text stops being true the next time somebody publishes.",post_body:"<p>A featured band that restates a post's title, date and author in text fields matches its reference exactly, and stops being true the next time somebody publishes. Reading the post is the whole difference.</p><h2>Where the data comes from</h2><p>Every value on this page is the post's own, read out of the post in plain values before it reaches the module. The title never carries HubSpot's wrapper, and a topic is a name with its own listing address.</p><ul><li><strong>The title</strong> is the post's name, not its SEO title.</li><li><strong>The topics</strong> are names, never ids.</li><li><strong>The reading time</strong> is counted from the body.</li></ul><blockquote><p>A plausible card that is wrong is worse than an empty one.</p></blockquote><h3>What the editor sees</h3><p>The body is edited in the blog editor, where it always was. The marker the editor adds in front of it never reaches the page.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/what-changes-when-a-module-reads-the-platform.jpg",featured_image_alt_text:"A page editor with a blog post open beside its live page",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:1785834e6,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888,475272560901]},{id:128374619301,name:"Three fields every blog listing needs",title:"Three fields every blog listing needs | Example",html_title:"Three fields every blog listing needs | Example",slug:"blog/three-fields-every-blog-listing-needs",absolute_url:"https://www.example-portal.com/blog/three-fields-every-blog-listing-needs",post_summary:"A listing reads its posts from the platform; the only fields it needs are the words on its controls.",post_body:"<p>A listing reads its posts from the platform; the only fields it needs are the words on its controls.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/three-fields.jpg",featured_image_alt_text:"A blog listing with topic filters above a grid of posts",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17852292e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888]},{id:128374619302,name:"Why a topic filter is a link",title:"Why a topic filter is a link | Example",html_title:"Why a topic filter is a link | Example",slug:"blog/why-a-topic-filter-is-a-link",absolute_url:"https://www.example-portal.com/blog/why-a-topic-filter-is-a-link",post_summary:"Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.",post_body:"<p>Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17846244e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560915]},{id:128374619303,name:"Writing rich text that survives a redesign",title:"Writing rich text that survives a redesign | Example",html_title:"Writing rich text that survives a redesign | Example",slug:"blog/writing-rich-text-that-survives-a-redesign",absolute_url:"https://www.example-portal.com/blog/writing-rich-text-that-survives-a-redesign",post_summary:"Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.",post_body:"<p>Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/rich-text.jpg",featured_image_alt_text:"A post's body with its headings and lists outlined",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17840196e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560901]}],current_page_num:1,next_page_num:2,last_page_num:2},"content/blog-listing/page-2.json":{label:"The blog's second and last page",is_in_editor:!1,request:{domain:"www.example-portal.com",scheme:"https",path:"/blog/page/2",path_and_query:"/blog/page/2",full_url:"https://www.example-portal.com/blog/page/2",query:"",query_dict:{}},group:{id:81234567890,name:"Example blog",public_title:"Notes from the example team",html_title:"Notes from the example team | Example",slug:"blog",absolute_url:"https://www.example-portal.com/blog",language:"en",description:"Field notes on building sites people can edit."},blog:{id:81234567890,posts:[{id:128374619283,name:"What changes when a module reads the platform",title:"What changes when a module reads the platform | Example",html_title:"What changes when a module reads the platform | Example",slug:"blog/what-changes-when-a-module-reads-the-platform",absolute_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",post_summary:"A band that restates a post's heading, date and author as static text stops being true the next time somebody publishes.",post_body:"<p>A featured band that restates a post's title, date and author in text fields matches its reference exactly, and stops being true the next time somebody publishes. Reading the post is the whole difference.</p><h2>Where the data comes from</h2><p>Every value on this page is the post's own, read out of the post in plain values before it reaches the module. The title never carries HubSpot's wrapper, and a topic is a name with its own listing address.</p><ul><li><strong>The title</strong> is the post's name, not its SEO title.</li><li><strong>The topics</strong> are names, never ids.</li><li><strong>The reading time</strong> is counted from the body.</li></ul><blockquote><p>A plausible card that is wrong is worse than an empty one.</p></blockquote><h3>What the editor sees</h3><p>The body is edited in the blog editor, where it always was. The marker the editor adds in front of it never reaches the page.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/what-changes-when-a-module-reads-the-platform.jpg",featured_image_alt_text:"A page editor with a blog post open beside its live page",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:1785834e6,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888,475272560901]},{id:128374619301,name:"Three fields every blog listing needs",title:"Three fields every blog listing needs | Example",html_title:"Three fields every blog listing needs | Example",slug:"blog/three-fields-every-blog-listing-needs",absolute_url:"https://www.example-portal.com/blog/three-fields-every-blog-listing-needs",post_summary:"A listing reads its posts from the platform; the only fields it needs are the words on its controls.",post_body:"<p>A listing reads its posts from the platform; the only fields it needs are the words on its controls.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/three-fields.jpg",featured_image_alt_text:"A blog listing with topic filters above a grid of posts",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17852292e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888]},{id:128374619302,name:"Why a topic filter is a link",title:"Why a topic filter is a link | Example",html_title:"Why a topic filter is a link | Example",slug:"blog/why-a-topic-filter-is-a-link",absolute_url:"https://www.example-portal.com/blog/why-a-topic-filter-is-a-link",post_summary:"Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.",post_body:"<p>Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17846244e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560915]},{id:128374619303,name:"Writing rich text that survives a redesign",title:"Writing rich text that survives a redesign | Example",html_title:"Writing rich text that survives a redesign | Example",slug:"blog/writing-rich-text-that-survives-a-redesign",absolute_url:"https://www.example-portal.com/blog/writing-rich-text-that-survives-a-redesign",post_summary:"Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.",post_body:"<p>Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/rich-text.jpg",featured_image_alt_text:"A post's body with its headings and lists outlined",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17840196e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560901]},{id:128374619304,name:"Previews an editor can trust",title:"Previews an editor can trust | Example",html_title:"Previews an editor can trust | Example",slug:"blog/previews-an-editor-can-trust",absolute_url:"https://www.example-portal.com/blog/previews-an-editor-can-trust",post_summary:"A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.",post_body:"<p>A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17834148e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560888,475272560901]},{id:128374619305,name:"An empty state is for the editor",title:"An empty state is for the editor | Example",html_title:"An empty state is for the editor | Example",slug:"blog/an-empty-state-is-for-the-editor",absolute_url:"https://www.example-portal.com/blog/an-empty-state-is-for-the-editor",post_summary:"A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.",post_body:"<p>A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/empty-state.jpg",featured_image_alt_text:"An empty module in the page editor with a hint beneath it",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:178281e7,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560915]}],topics:[{id:475272560888,name:"HubSpot CMS",slug:"hubspot-cms"},{id:475272560901,name:"Content operations",slug:"content-operations"},{id:475272560915,name:"Accessibility",slug:"accessibility"}]},content:{id:190000000100,name:"Notes from the example team",html_title:"Notes from the example team | Example",absolute_url:"https://www.example-portal.com/blog/page/2",language:"en"},contents:[{id:128374619304,name:"Previews an editor can trust",title:"Previews an editor can trust | Example",html_title:"Previews an editor can trust | Example",slug:"blog/previews-an-editor-can-trust",absolute_url:"https://www.example-portal.com/blog/previews-an-editor-can-trust",post_summary:"A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.",post_body:"<p>A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17834148e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560888,475272560901]},{id:128374619305,name:"An empty state is for the editor",title:"An empty state is for the editor | Example",html_title:"An empty state is for the editor | Example",slug:"blog/an-empty-state-is-for-the-editor",absolute_url:"https://www.example-portal.com/blog/an-empty-state-is-for-the-editor",post_summary:"A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.",post_body:"<p>A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/empty-state.jpg",featured_image_alt_text:"An empty module in the page editor with a hint beneath it",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:178281e7,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560915]}],current_page_num:2,last_page_num:2},"content/blog-listing/topic.json":{label:"A topic page, showing only the posts filed under one topic",is_in_editor:!1,request:{domain:"www.example-portal.com",scheme:"https",path:"/blog/tag/hubspot-cms",path_and_query:"/blog/tag/hubspot-cms",full_url:"https://www.example-portal.com/blog/tag/hubspot-cms",query:"",query_dict:{}},group:{id:81234567890,name:"Example blog",public_title:"Notes from the example team",html_title:"Notes from the example team | Example",slug:"blog",absolute_url:"https://www.example-portal.com/blog",language:"en",description:"Field notes on building sites people can edit."},blog:{id:81234567890,posts:[{id:128374619283,name:"What changes when a module reads the platform",title:"What changes when a module reads the platform | Example",html_title:"What changes when a module reads the platform | Example",slug:"blog/what-changes-when-a-module-reads-the-platform",absolute_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",post_summary:"A band that restates a post's heading, date and author as static text stops being true the next time somebody publishes.",post_body:"<p>A featured band that restates a post's title, date and author in text fields matches its reference exactly, and stops being true the next time somebody publishes. Reading the post is the whole difference.</p><h2>Where the data comes from</h2><p>Every value on this page is the post's own, read out of the post in plain values before it reaches the module. The title never carries HubSpot's wrapper, and a topic is a name with its own listing address.</p><ul><li><strong>The title</strong> is the post's name, not its SEO title.</li><li><strong>The topics</strong> are names, never ids.</li><li><strong>The reading time</strong> is counted from the body.</li></ul><blockquote><p>A plausible card that is wrong is worse than an empty one.</p></blockquote><h3>What the editor sees</h3><p>The body is edited in the blog editor, where it always was. The marker the editor adds in front of it never reaches the page.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/what-changes-when-a-module-reads-the-platform.jpg",featured_image_alt_text:"A page editor with a blog post open beside its live page",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:1785834e6,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888,475272560901]},{id:128374619301,name:"Three fields every blog listing needs",title:"Three fields every blog listing needs | Example",html_title:"Three fields every blog listing needs | Example",slug:"blog/three-fields-every-blog-listing-needs",absolute_url:"https://www.example-portal.com/blog/three-fields-every-blog-listing-needs",post_summary:"A listing reads its posts from the platform; the only fields it needs are the words on its controls.",post_body:"<p>A listing reads its posts from the platform; the only fields it needs are the words on its controls.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/three-fields.jpg",featured_image_alt_text:"A blog listing with topic filters above a grid of posts",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17852292e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888]},{id:128374619302,name:"Why a topic filter is a link",title:"Why a topic filter is a link | Example",html_title:"Why a topic filter is a link | Example",slug:"blog/why-a-topic-filter-is-a-link",absolute_url:"https://www.example-portal.com/blog/why-a-topic-filter-is-a-link",post_summary:"Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.",post_body:"<p>Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17846244e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560915]},{id:128374619303,name:"Writing rich text that survives a redesign",title:"Writing rich text that survives a redesign | Example",html_title:"Writing rich text that survives a redesign | Example",slug:"blog/writing-rich-text-that-survives-a-redesign",absolute_url:"https://www.example-portal.com/blog/writing-rich-text-that-survives-a-redesign",post_summary:"Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.",post_body:"<p>Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/rich-text.jpg",featured_image_alt_text:"A post's body with its headings and lists outlined",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17840196e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560901]},{id:128374619304,name:"Previews an editor can trust",title:"Previews an editor can trust | Example",html_title:"Previews an editor can trust | Example",slug:"blog/previews-an-editor-can-trust",absolute_url:"https://www.example-portal.com/blog/previews-an-editor-can-trust",post_summary:"A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.",post_body:"<p>A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17834148e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560888,475272560901]},{id:128374619305,name:"An empty state is for the editor",title:"An empty state is for the editor | Example",html_title:"An empty state is for the editor | Example",slug:"blog/an-empty-state-is-for-the-editor",absolute_url:"https://www.example-portal.com/blog/an-empty-state-is-for-the-editor",post_summary:"A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.",post_body:"<p>A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/empty-state.jpg",featured_image_alt_text:"An empty module in the page editor with a hint beneath it",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:178281e7,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560915]}],topics:[{id:475272560888,name:"HubSpot CMS",slug:"hubspot-cms"},{id:475272560901,name:"Content operations",slug:"content-operations"},{id:475272560915,name:"Accessibility",slug:"accessibility"}]},content:{id:190000000100,name:"Notes from the example team",html_title:"HubSpot CMS | Notes from the example team | Example",absolute_url:"https://www.example-portal.com/blog/tag/hubspot-cms",language:"en"},contents:[{id:128374619283,name:"What changes when a module reads the platform",title:"What changes when a module reads the platform | Example",html_title:"What changes when a module reads the platform | Example",slug:"blog/what-changes-when-a-module-reads-the-platform",absolute_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",post_summary:"A band that restates a post's heading, date and author as static text stops being true the next time somebody publishes.",post_body:"<p>A featured band that restates a post's title, date and author in text fields matches its reference exactly, and stops being true the next time somebody publishes. Reading the post is the whole difference.</p><h2>Where the data comes from</h2><p>Every value on this page is the post's own, read out of the post in plain values before it reaches the module. The title never carries HubSpot's wrapper, and a topic is a name with its own listing address.</p><ul><li><strong>The title</strong> is the post's name, not its SEO title.</li><li><strong>The topics</strong> are names, never ids.</li><li><strong>The reading time</strong> is counted from the body.</li></ul><blockquote><p>A plausible card that is wrong is worse than an empty one.</p></blockquote><h3>What the editor sees</h3><p>The body is edited in the blog editor, where it always was. The marker the editor adds in front of it never reaches the page.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/what-changes-when-a-module-reads-the-platform.jpg",featured_image_alt_text:"A page editor with a blog post open beside its live page",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:1785834e6,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888,475272560901]},{id:128374619301,name:"Three fields every blog listing needs",title:"Three fields every blog listing needs | Example",html_title:"Three fields every blog listing needs | Example",slug:"blog/three-fields-every-blog-listing-needs",absolute_url:"https://www.example-portal.com/blog/three-fields-every-blog-listing-needs",post_summary:"A listing reads its posts from the platform; the only fields it needs are the words on its controls.",post_body:"<p>A listing reads its posts from the platform; the only fields it needs are the words on its controls.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/three-fields.jpg",featured_image_alt_text:"A blog listing with topic filters above a grid of posts",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17852292e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888]},{id:128374619304,name:"Previews an editor can trust",title:"Previews an editor can trust | Example",html_title:"Previews an editor can trust | Example",slug:"blog/previews-an-editor-can-trust",absolute_url:"https://www.example-portal.com/blog/previews-an-editor-can-trust",post_summary:"A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.",post_body:"<p>A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17834148e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560888,475272560901]}],current_page_num:1,last_page_num:1},"content/blog-post/editor.json":{label:"The post open in HubSpot's editor, where the body starts with the editor's marker",is_in_editor:!0,request:{domain:"www.example-portal.com",scheme:"https",path:"/blog/what-changes-when-a-module-reads-the-platform",path_and_query:"/blog/what-changes-when-a-module-reads-the-platform",full_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",query:"",query_dict:{}},group:{id:81234567890,name:"Example blog",public_title:"Notes from the example team",html_title:"Notes from the example team | Example",slug:"blog",absolute_url:"https://www.example-portal.com/blog",language:"en",description:"Field notes on building sites people can edit."},blog:{id:81234567890,posts:[{id:128374619283,name:"What changes when a module reads the platform",title:"What changes when a module reads the platform | Example",html_title:"What changes when a module reads the platform | Example",slug:"blog/what-changes-when-a-module-reads-the-platform",absolute_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",post_summary:"A band that restates a post's heading, date and author as static text stops being true the next time somebody publishes.",post_body:"<p>A featured band that restates a post's title, date and author in text fields matches its reference exactly, and stops being true the next time somebody publishes. Reading the post is the whole difference.</p><h2>Where the data comes from</h2><p>Every value on this page is the post's own, read out of the post in plain values before it reaches the module. The title never carries HubSpot's wrapper, and a topic is a name with its own listing address.</p><ul><li><strong>The title</strong> is the post's name, not its SEO title.</li><li><strong>The topics</strong> are names, never ids.</li><li><strong>The reading time</strong> is counted from the body.</li></ul><blockquote><p>A plausible card that is wrong is worse than an empty one.</p></blockquote><h3>What the editor sees</h3><p>The body is edited in the blog editor, where it always was. The marker the editor adds in front of it never reaches the page.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/what-changes-when-a-module-reads-the-platform.jpg",featured_image_alt_text:"A page editor with a blog post open beside its live page",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:1785834e6,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888,475272560901]},{id:128374619301,name:"Three fields every blog listing needs",title:"Three fields every blog listing needs | Example",html_title:"Three fields every blog listing needs | Example",slug:"blog/three-fields-every-blog-listing-needs",absolute_url:"https://www.example-portal.com/blog/three-fields-every-blog-listing-needs",post_summary:"A listing reads its posts from the platform; the only fields it needs are the words on its controls.",post_body:"<p>A listing reads its posts from the platform; the only fields it needs are the words on its controls.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/three-fields.jpg",featured_image_alt_text:"A blog listing with topic filters above a grid of posts",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17852292e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888]},{id:128374619302,name:"Why a topic filter is a link",title:"Why a topic filter is a link | Example",html_title:"Why a topic filter is a link | Example",slug:"blog/why-a-topic-filter-is-a-link",absolute_url:"https://www.example-portal.com/blog/why-a-topic-filter-is-a-link",post_summary:"Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.",post_body:"<p>Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17846244e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560915]},{id:128374619303,name:"Writing rich text that survives a redesign",title:"Writing rich text that survives a redesign | Example",html_title:"Writing rich text that survives a redesign | Example",slug:"blog/writing-rich-text-that-survives-a-redesign",absolute_url:"https://www.example-portal.com/blog/writing-rich-text-that-survives-a-redesign",post_summary:"Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.",post_body:"<p>Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/rich-text.jpg",featured_image_alt_text:"A post's body with its headings and lists outlined",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17840196e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560901]},{id:128374619304,name:"Previews an editor can trust",title:"Previews an editor can trust | Example",html_title:"Previews an editor can trust | Example",slug:"blog/previews-an-editor-can-trust",absolute_url:"https://www.example-portal.com/blog/previews-an-editor-can-trust",post_summary:"A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.",post_body:"<p>A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17834148e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560888,475272560901]},{id:128374619305,name:"An empty state is for the editor",title:"An empty state is for the editor | Example",html_title:"An empty state is for the editor | Example",slug:"blog/an-empty-state-is-for-the-editor",absolute_url:"https://www.example-portal.com/blog/an-empty-state-is-for-the-editor",post_summary:"A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.",post_body:"<p>A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/empty-state.jpg",featured_image_alt_text:"An empty module in the page editor with a hint beneath it",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:178281e7,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560915]}],topics:[{id:475272560888,name:"HubSpot CMS",slug:"hubspot-cms"},{id:475272560901,name:"Content operations",slug:"content-operations"},{id:475272560915,name:"Accessibility",slug:"accessibility"}]},content:{id:128374619283,name:"What changes when a module reads the platform",html_title:"What changes when a module reads the platform | Example",slug:"blog/what-changes-when-a-module-reads-the-platform",absolute_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",post_summary:"A band that restates a post's heading, date and author as static text stops being true the next time somebody publishes.",post_body:"{% blog_post_wrapper %}<p>A featured band that restates a post's title, date and author in text fields matches its reference exactly, and stops being true the next time somebody publishes. Reading the post is the whole difference.</p><h2>Where the data comes from</h2><p>Every value on this page is the post's own, read out of the post in plain values before it reaches the module. The title never carries HubSpot's wrapper, and a topic is a name with its own listing address.</p><ul><li><strong>The title</strong> is the post's name, not its SEO title.</li><li><strong>The topics</strong> are names, never ids.</li><li><strong>The reading time</strong> is counted from the body.</li></ul><blockquote><p>A plausible card that is wrong is worse than an empty one.</p></blockquote><h3>What the editor sees</h3><p>The body is edited in the blog editor, where it always was. The marker the editor adds in front of it never reaches the page.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/what-changes-when-a-module-reads-the-platform.jpg",featured_image_alt_text:"A page editor with a blog post open beside its live page",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:1785834e6,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg",bio:"Ada writes about the parts of a site nobody screenshots."},topic_list:[{id:475272560888,name:"HubSpot CMS",slug:"hubspot-cms"},{id:475272560901,name:"Content operations",slug:"content-operations"}]}},"content/blog-post/full.json":{label:"A full post: featured image, author, two topics and a long body",is_in_editor:!1,request:{domain:"www.example-portal.com",scheme:"https",path:"/blog/what-changes-when-a-module-reads-the-platform",path_and_query:"/blog/what-changes-when-a-module-reads-the-platform",full_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",query:"",query_dict:{}},group:{id:81234567890,name:"Example blog",public_title:"Notes from the example team",html_title:"Notes from the example team | Example",slug:"blog",absolute_url:"https://www.example-portal.com/blog",language:"en",description:"Field notes on building sites people can edit."},blog:{id:81234567890,posts:[{id:128374619283,name:"What changes when a module reads the platform",title:"What changes when a module reads the platform | Example",html_title:"What changes when a module reads the platform | Example",slug:"blog/what-changes-when-a-module-reads-the-platform",absolute_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",post_summary:"A band that restates a post's heading, date and author as static text stops being true the next time somebody publishes.",post_body:"<p>A featured band that restates a post's title, date and author in text fields matches its reference exactly, and stops being true the next time somebody publishes. Reading the post is the whole difference.</p><h2>Where the data comes from</h2><p>Every value on this page is the post's own, read out of the post in plain values before it reaches the module. The title never carries HubSpot's wrapper, and a topic is a name with its own listing address.</p><ul><li><strong>The title</strong> is the post's name, not its SEO title.</li><li><strong>The topics</strong> are names, never ids.</li><li><strong>The reading time</strong> is counted from the body.</li></ul><blockquote><p>A plausible card that is wrong is worse than an empty one.</p></blockquote><h3>What the editor sees</h3><p>The body is edited in the blog editor, where it always was. The marker the editor adds in front of it never reaches the page.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/what-changes-when-a-module-reads-the-platform.jpg",featured_image_alt_text:"A page editor with a blog post open beside its live page",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:1785834e6,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888,475272560901]},{id:128374619301,name:"Three fields every blog listing needs",title:"Three fields every blog listing needs | Example",html_title:"Three fields every blog listing needs | Example",slug:"blog/three-fields-every-blog-listing-needs",absolute_url:"https://www.example-portal.com/blog/three-fields-every-blog-listing-needs",post_summary:"A listing reads its posts from the platform; the only fields it needs are the words on its controls.",post_body:"<p>A listing reads its posts from the platform; the only fields it needs are the words on its controls.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/three-fields.jpg",featured_image_alt_text:"A blog listing with topic filters above a grid of posts",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17852292e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888]},{id:128374619302,name:"Why a topic filter is a link",title:"Why a topic filter is a link | Example",html_title:"Why a topic filter is a link | Example",slug:"blog/why-a-topic-filter-is-a-link",absolute_url:"https://www.example-portal.com/blog/why-a-topic-filter-is-a-link",post_summary:"Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.",post_body:"<p>Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17846244e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560915]},{id:128374619303,name:"Writing rich text that survives a redesign",title:"Writing rich text that survives a redesign | Example",html_title:"Writing rich text that survives a redesign | Example",slug:"blog/writing-rich-text-that-survives-a-redesign",absolute_url:"https://www.example-portal.com/blog/writing-rich-text-that-survives-a-redesign",post_summary:"Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.",post_body:"<p>Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/rich-text.jpg",featured_image_alt_text:"A post's body with its headings and lists outlined",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17840196e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560901]},{id:128374619304,name:"Previews an editor can trust",title:"Previews an editor can trust | Example",html_title:"Previews an editor can trust | Example",slug:"blog/previews-an-editor-can-trust",absolute_url:"https://www.example-portal.com/blog/previews-an-editor-can-trust",post_summary:"A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.",post_body:"<p>A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17834148e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560888,475272560901]},{id:128374619305,name:"An empty state is for the editor",title:"An empty state is for the editor | Example",html_title:"An empty state is for the editor | Example",slug:"blog/an-empty-state-is-for-the-editor",absolute_url:"https://www.example-portal.com/blog/an-empty-state-is-for-the-editor",post_summary:"A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.",post_body:"<p>A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/empty-state.jpg",featured_image_alt_text:"An empty module in the page editor with a hint beneath it",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:178281e7,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560915]}],topics:[{id:475272560888,name:"HubSpot CMS",slug:"hubspot-cms"},{id:475272560901,name:"Content operations",slug:"content-operations"},{id:475272560915,name:"Accessibility",slug:"accessibility"}]},content:{id:128374619283,name:"What changes when a module reads the platform",html_title:"What changes when a module reads the platform | Example",slug:"blog/what-changes-when-a-module-reads-the-platform",absolute_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",post_summary:"A band that restates a post's heading, date and author as static text stops being true the next time somebody publishes.",post_body:"<p>A featured band that restates a post's title, date and author in text fields matches its reference exactly, and stops being true the next time somebody publishes. Reading the post is the whole difference.</p><h2>Where the data comes from</h2><p>Every value on this page is the post's own, read out of the post in plain values before it reaches the module. The title never carries HubSpot's wrapper, and a topic is a name with its own listing address.</p><ul><li><strong>The title</strong> is the post's name, not its SEO title.</li><li><strong>The topics</strong> are names, never ids.</li><li><strong>The reading time</strong> is counted from the body.</li></ul><blockquote><p>A plausible card that is wrong is worse than an empty one.</p></blockquote><h3>What the editor sees</h3><p>The body is edited in the blog editor, where it always was. The marker the editor adds in front of it never reaches the page.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/what-changes-when-a-module-reads-the-platform.jpg",featured_image_alt_text:"A page editor with a blog post open beside its live page",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:1785834e6,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg",bio:"Ada writes about the parts of a site nobody screenshots."},topic_list:[{id:475272560888,name:"HubSpot CMS",slug:"hubspot-cms"},{id:475272560901,name:"Content operations",slug:"content-operations"}]}},"content/blog-post/minimal.json":{label:"A bare post: no featured image, no author, no topics and an empty body",is_in_editor:!1,request:{domain:"www.example-portal.com",scheme:"https",path:"/blog/a-note-with-nothing-else-yet",path_and_query:"/blog/a-note-with-nothing-else-yet",full_url:"https://www.example-portal.com/blog/a-note-with-nothing-else-yet",query:"",query_dict:{}},group:{id:81234567890,name:"Example blog",public_title:"Notes from the example team",html_title:"Notes from the example team | Example",slug:"blog",absolute_url:"https://www.example-portal.com/blog",language:"en",description:"Field notes on building sites people can edit."},blog:{id:81234567890,posts:[{id:128374619400,name:"A note with nothing else yet",title:"A note with nothing else yet | Example",html_title:"A note with nothing else yet | Example",slug:"blog/a-note-with-nothing-else-yet",absolute_url:"https://www.example-portal.com/blog/a-note-with-nothing-else-yet",post_summary:"",post_body:"",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17864388e5,language:"en",blog_post_author:null,topic_list:[]},{id:128374619283,name:"What changes when a module reads the platform",title:"What changes when a module reads the platform | Example",html_title:"What changes when a module reads the platform | Example",slug:"blog/what-changes-when-a-module-reads-the-platform",absolute_url:"https://www.example-portal.com/blog/what-changes-when-a-module-reads-the-platform",post_summary:"A band that restates a post's heading, date and author as static text stops being true the next time somebody publishes.",post_body:"<p>A featured band that restates a post's title, date and author in text fields matches its reference exactly, and stops being true the next time somebody publishes. Reading the post is the whole difference.</p><h2>Where the data comes from</h2><p>Every value on this page is the post's own, read out of the post in plain values before it reaches the module. The title never carries HubSpot's wrapper, and a topic is a name with its own listing address.</p><ul><li><strong>The title</strong> is the post's name, not its SEO title.</li><li><strong>The topics</strong> are names, never ids.</li><li><strong>The reading time</strong> is counted from the body.</li></ul><blockquote><p>A plausible card that is wrong is worse than an empty one.</p></blockquote><h3>What the editor sees</h3><p>The body is edited in the blog editor, where it always was. The marker the editor adds in front of it never reaches the page.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/what-changes-when-a-module-reads-the-platform.jpg",featured_image_alt_text:"A page editor with a blog post open beside its live page",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:1785834e6,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888,475272560901]},{id:128374619301,name:"Three fields every blog listing needs",title:"Three fields every blog listing needs | Example",html_title:"Three fields every blog listing needs | Example",slug:"blog/three-fields-every-blog-listing-needs",absolute_url:"https://www.example-portal.com/blog/three-fields-every-blog-listing-needs",post_summary:"A listing reads its posts from the platform; the only fields it needs are the words on its controls.",post_body:"<p>A listing reads its posts from the platform; the only fields it needs are the words on its controls.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/three-fields.jpg",featured_image_alt_text:"A blog listing with topic filters above a grid of posts",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17852292e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560888]},{id:128374619302,name:"Why a topic filter is a link",title:"Why a topic filter is a link | Example",html_title:"Why a topic filter is a link | Example",slug:"blog/why-a-topic-filter-is-a-link",absolute_url:"https://www.example-portal.com/blog/why-a-topic-filter-is-a-link",post_summary:"Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.",post_body:"<p>Every filter on a listing is a real link to the topic's own route, so the band works before a script loads.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17846244e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560915]},{id:128374619303,name:"Writing rich text that survives a redesign",title:"Writing rich text that survives a redesign | Example",html_title:"Writing rich text that survives a redesign | Example",slug:"blog/writing-rich-text-that-survives-a-redesign",absolute_url:"https://www.example-portal.com/blog/writing-rich-text-that-survives-a-redesign",post_summary:"Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.",post_body:"<p>Headings that are real headings, lists that are real lists, and one paragraph style for the whole site.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/rich-text.jpg",featured_image_alt_text:"A post's body with its headings and lists outlined",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:17840196e5,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560901]},{id:128374619304,name:"Previews an editor can trust",title:"Previews an editor can trust | Example",html_title:"Previews an editor can trust | Example",slug:"blog/previews-an-editor-can-trust",absolute_url:"https://www.example-portal.com/blog/previews-an-editor-can-trust",post_summary:"A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.",post_body:"<p>A preview drawn from the page's real states shows the empty topic and the missing picture before a visitor does.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17834148e5,language:"en",blog_post_author:{id:90210002,display_name:"Sam Okafor",slug:"sam-okafor",avatar:""},topic_list:[475272560888,475272560901]},{id:128374619305,name:"An empty state is for the editor",title:"An empty state is for the editor | Example",html_title:"An empty state is for the editor | Example",slug:"blog/an-empty-state-is-for-the-editor",absolute_url:"https://www.example-portal.com/blog/an-empty-state-is-for-the-editor",post_summary:"A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.",post_body:"<p>A module with nothing to show shows nothing to a visitor and one clear hint to the person editing the page.</p><p>The rest of this post is here so the listing has a reading time to count.</p>",featured_image:"https://cdn2.hubspot.net/hubfs/8675309/blog/empty-state.jpg",featured_image_alt_text:"An empty module in the page editor with a hint beneath it",featured_image_width:1200,featured_image_height:675,use_featured_image:!0,publish_date:178281e7,language:"en",blog_post_author:{id:90210001,display_name:"Ada Fenwick",slug:"ada-fenwick",avatar:"https://cdn2.hubspot.net/hubfs/8675309/authors/ada-fenwick.jpg"},topic_list:[475272560915]}],topics:[{id:475272560888,name:"HubSpot CMS",slug:"hubspot-cms"},{id:475272560901,name:"Content operations",slug:"content-operations"},{id:475272560915,name:"Accessibility",slug:"accessibility"}]},content:{id:128374619400,name:"A note with nothing else yet",html_title:"A note with nothing else yet | Example",slug:"blog/a-note-with-nothing-else-yet",absolute_url:"https://www.example-portal.com/blog/a-note-with-nothing-else-yet",post_summary:"",post_body:"",featured_image:"",featured_image_alt_text:"",featured_image_width:0,featured_image_height:0,use_featured_image:!1,publish_date:17864388e5,language:"en",blog_post_author:null,topic_list:[]}},"content/hubdb-dynamic-page/listing.json":{label:"The table's listing page, with every row",is_in_editor:!1,request:{domain:"www.example-portal.com",scheme:"https",path:"/locations",path_and_query:"/locations",full_url:"https://www.example-portal.com/locations",query:"",query_dict:{}},content:{id:190000000200,name:"Locations",html_title:"Locations | Example",absolute_url:"https://www.example-portal.com/locations",language:"en"},dynamicPage:{tableId:5678901,rows:[{hs_id:4820193,hs_name:"Bakehouse",hs_path:"bakehouse",hs_created_at:1785312e6,summary:"Sourdough and pastry, six mornings a week.",address:"3 Oven Street"},{hs_id:4820194,hs_name:"Ferment",hs_path:"ferment",hs_created_at:17853984e5,summary:"Small-batch kraut, kimchi and kefir from the same kitchen.",address:"7 Crock Yard"},{hs_id:4820195,hs_name:"Roastery",hs_path:"roastery",hs_created_at:17854848e5,summary:"Single-origin coffee roasted on site and sold by the kilo.",address:"12 Mill Lane"},{hs_id:4820196,hs_name:"Larder",hs_path:"larder",hs_created_at:17855712e5,summary:"Store-cupboard staples from growers within fifty miles.",address:"1 Granary Row"}]}},"content/hubdb-dynamic-page/row.json":{label:"One row's own page, such as a single location",is_in_editor:!1,request:{domain:"www.example-portal.com",scheme:"https",path:"/locations/roastery",path_and_query:"/locations/roastery",full_url:"https://www.example-portal.com/locations/roastery",query:"",query_dict:{}},content:{id:190000000200,name:"Locations",html_title:"Roastery | Example",absolute_url:"https://www.example-portal.com/locations/roastery",language:"en"},dynamicPage:{tableId:5678901,row:{hs_id:4820195,hs_name:"Roastery",hs_path:"roastery",hs_created_at:17854848e5,summary:"Single-origin coffee roasted on site and sold by the kilo.",address:"12 Mill Lane"}}},"crm-objects/p_sample.json":{objectTypeId:"2-1234567",name:"p_sample",labels:{singular:"Sample project",plural:"Sample projects"},primaryDisplayProperty:"name",properties:[{name:"name",label:"Name",type:"string",fieldType:"text"},{name:"summary",label:"Summary",type:"string",fieldType:"textarea"},{name:"status",label:"Status",type:"enumeration",fieldType:"select",options:[{label:"Planning",value:"planning"},{label:"In progress",value:"in_progress"},{label:"Complete",value:"complete"}]},{name:"start_date",label:"Start date",type:"date",fieldType:"date"}],records:[{id:"1001",properties:{hs_object_id:"1001",name:"Sample Project 1",summary:"A placeholder record so a custom-object module has something to show.",status:"planning",start_date:"2026-01-12"}},{id:"1002",properties:{hs_object_id:"1002",name:"Sample Project 2",summary:"A second record, with a longer summary, so a layout that wraps text can be seen wrapping it.",status:"in_progress",start_date:"2026-03-02"}},{id:"1003",properties:{hs_object_id:"1003",name:"Sample Project 3",summary:"A third record: replace this file with the theme's own fixtures/crm-objects/<objectType>.json.",status:"complete",start_date:"2026-05-18"}}]},"form.json":{id:"preview-form-001",guid:"a1b2c3d4-e5f6-7890-abcd-ef1234567890",name:"Contact Form",portalId:12345678,formType:"HUBSPOT",cssClass:"",submitText:"Submit",thankYouMessage:"Thank you for your submission. We'll be in touch shortly.",redirect:null,notifyRecipients:"",followUpId:null,inlineMessage:"Thank you for your submission. We'll be in touch shortly.",formFieldGroups:[{fields:[{name:"firstname",label:"First name",type:"string",fieldType:"text",required:!0,hidden:!1,placeholder:"Enter your first name",defaultValue:"",description:"",groupName:"contactinformation",labelHidden:!1,validation:{name:"",message:"",data:"",useDefaultBlockList:!1},enabled:!0,selectedOptions:[],options:[]}],default:!0,isSmartGroup:!1,richText:{content:""}},{fields:[{name:"lastname",label:"Last name",type:"string",fieldType:"text",required:!0,hidden:!1,placeholder:"Enter your last name",defaultValue:"",description:"",groupName:"contactinformation",labelHidden:!1,validation:{name:"",message:"",data:"",useDefaultBlockList:!1},enabled:!0,selectedOptions:[],options:[]}],default:!0,isSmartGroup:!1,richText:{content:""}},{fields:[{name:"email",label:"Email",type:"string",fieldType:"text",required:!0,hidden:!1,placeholder:"you@example.com",defaultValue:"",description:"",groupName:"contactinformation",labelHidden:!1,validation:{name:"email",message:"Please enter a valid email address.",data:"",useDefaultBlockList:!1},enabled:!0,selectedOptions:[],options:[]}],default:!0,isSmartGroup:!1,richText:{content:""}},{fields:[{name:"company",label:"Company name",type:"string",fieldType:"text",required:!1,hidden:!1,placeholder:"Your company",defaultValue:"",description:"",groupName:"company",labelHidden:!1,validation:{name:"",message:"",data:"",useDefaultBlockList:!1},enabled:!0,selectedOptions:[],options:[]}],default:!0,isSmartGroup:!1,richText:{content:""}},{fields:[{name:"message",label:"Message",type:"string",fieldType:"textarea",required:!1,hidden:!1,placeholder:"How can we help?",defaultValue:"",description:"",groupName:"",labelHidden:!1,validation:{name:"",message:"",data:"",useDefaultBlockList:!1},enabled:!0,selectedOptions:[],options:[]}],default:!0,isSmartGroup:!1,richText:{content:""}}],metaData:[{name:"lang",value:"en"},{name:"legalConsentOptions",value:""}],deletable:!0,createdAt:"2026-01-01T10:00:00Z",updatedAt:"2026-03-01T12:00:00Z"},"hubdb-rows.json":[{hs_id:5001,hs_created_at:"2026-01-10T09:00:00Z",hs_path:"digital-transformation-guide",hs_name:"Digital Transformation Guide",name:"Digital Transformation Guide",internal_name:"digital-transformation-guide",description:"A comprehensive guide to modernising your digital infrastructure and workflows for maximum efficiency.",medium:{id:1,name:"Guide",order:0},category:{id:1,name:"Strategy",order:0},landing_page_url:"#",link_text:"Download guide",cover_image:{url:"/images/icon-placeholder.svg",width:800,height:450,altText:"Digital transformation guide cover",type:"image"},featured_offer:!0},{hs_id:5002,hs_created_at:"2026-01-15T14:00:00Z",hs_path:"web-performance-checklist",hs_name:"Web Performance Checklist",name:"Web Performance Checklist",internal_name:"web-performance-checklist",description:"Essential performance optimisations every website should implement, from image compression to caching strategies.",medium:{id:2,name:"Checklist",order:1},category:{id:2,name:"Development",order:1},landing_page_url:"#",link_text:"Get checklist",cover_image:{url:"/images/icon-placeholder.svg",width:800,height:450,altText:"Web performance checklist cover",type:"image"},featured_offer:!1},{hs_id:5003,hs_created_at:"2026-02-01T10:00:00Z",hs_path:"cms-migration-playbook",hs_name:"CMS Migration Playbook",name:"CMS Migration Playbook",internal_name:"cms-migration-playbook",description:"Step-by-step playbook for migrating your website to a modern CMS without losing traffic or rankings.",medium:{id:3,name:"Playbook",order:2},category:{id:3,name:"CMS",order:2},landing_page_url:"#",link_text:"Read playbook",cover_image:{url:"/images/icon-placeholder.svg",width:800,height:450,altText:"CMS migration playbook cover",type:"image"},featured_offer:!0},{hs_id:5004,hs_created_at:"2026-02-10T11:00:00Z",hs_path:"brand-identity-workshop",hs_name:"Brand Identity Workshop",name:"Brand Identity Workshop",internal_name:"brand-identity-workshop",description:"Interactive workshop template for defining your brand voice, visual identity, and messaging framework.",medium:{id:4,name:"Workshop",order:3},category:{id:4,name:"Design",order:3},landing_page_url:"#",link_text:"Start workshop",cover_image:{url:"/images/icon-placeholder.svg",width:800,height:450,altText:"Brand identity workshop cover",type:"image"},featured_offer:!1},{hs_id:5005,hs_created_at:"2026-02-20T08:00:00Z",hs_path:"seo-audit-template",hs_name:"SEO Audit Template",name:"SEO Audit Template",internal_name:"seo-audit-template",description:"Comprehensive SEO audit template covering technical SEO, content quality, and backlink analysis.",medium:{id:5,name:"Template",order:4},category:{id:5,name:"Marketing",order:4},landing_page_url:"#",link_text:"Download template",cover_image:{url:"/images/icon-placeholder.svg",width:800,height:450,altText:"SEO audit template cover",type:"image"},featured_offer:!1}],"menu.json":{children:[{label:"Home",url:"/",pageId:101,contentGroupId:null,linkTarget:null,slug:"",pageTitle:"Home",level:0,activeBranch:!1,activeNode:!1,children:[]},{label:"About",url:"/about",pageId:102,contentGroupId:null,linkTarget:null,slug:"about",pageTitle:"About Us",level:0,activeBranch:!1,activeNode:!1,children:[{label:"Our Team",url:"/about/team",pageId:103,contentGroupId:null,linkTarget:null,slug:"team",pageTitle:"Our Team",level:1,activeBranch:!1,activeNode:!1,children:[]},{label:"Careers",url:"/about/careers",pageId:104,contentGroupId:null,linkTarget:null,slug:"careers",pageTitle:"Careers",level:1,activeBranch:!1,activeNode:!1,children:[]}]},{label:"Services",url:"/services",pageId:105,contentGroupId:null,linkTarget:null,slug:"services",pageTitle:"Our Services",level:0,activeBranch:!1,activeNode:!1,children:[{label:"Web Development",url:"/services/web-development",pageId:106,contentGroupId:null,linkTarget:null,slug:"web-development",pageTitle:"Web Development",level:1,activeBranch:!1,activeNode:!1,children:[]},{label:"Consulting",url:"/services/consulting",pageId:107,contentGroupId:null,linkTarget:null,slug:"consulting",pageTitle:"Consulting",level:1,activeBranch:!1,activeNode:!1,children:[]},{label:"Design",url:"/services/design",pageId:108,contentGroupId:null,linkTarget:null,slug:"design",pageTitle:"Design",level:1,activeBranch:!1,activeNode:!1,children:[]}]},{label:"Blog",url:"/blog",pageId:null,contentGroupId:201,linkTarget:null,slug:"blog",pageTitle:"Blog",level:0,activeBranch:!1,activeNode:!1,children:[]},{label:"Contact",url:"/contact",pageId:109,contentGroupId:null,linkTarget:null,slug:"contact",pageTitle:"Contact Us",level:0,activeBranch:!1,activeNode:!1,children:[]}]}};function Kn(e){return e!==null&&typeof e=="object"&&!Array.isArray(e)}function MS(e,t){switch(t){case"non-empty-string":return typeof e=="string"&&e.trim()!=="";case"object":return Kn(e);case"list":return Array.isArray(e);case"boolean":return typeof e=="boolean";case"number":return typeof e=="number";case"any":return!0}}function ep(e,t){for(let n of t){let s=n.key.indexOf("."),r=s===-1?e:e[n.key.slice(0,s)],i=s===-1?n.key:n.key.slice(s+1);if(Kn(r)){if(!(i in r)){if(n.required)return n.problem;continue}if(!MS(r[i],n.type))return n.problem}}return null}var tp=[{key:"label",type:"non-empty-string",required:!0,problem:"`label` must be a non-empty string",description:"What the state shows, in plain words."},{key:"content",type:"object",required:!0,problem:"`content` must be an object",description:"The page, as `content` reads in a template."},{key:"blog",type:"object",required:!1,problem:"`blog` must be an object when present",description:"The blog: `{ id, posts, topics }`, posts serialised with topic ids."},{key:"group",type:"object",required:!1,problem:"`group` must be an object when present",description:"The blog as `group` reads on a blog route."},{key:"request",type:"object",required:!1,problem:"`request` must be an object when present",description:"The route facts: path, domain, full_url, query."},{key:"tag",type:"object",required:!1,problem:"`tag` must be an object when present",description:"Set only where the portal sets it."},{key:"is_in_editor",type:"boolean",required:!1,problem:"`is_in_editor` must be true or false",description:"Whether the page renders as the editor shows it."},{key:"contents",type:"list",required:!1,problem:"`contents` must be a list of posts when present",description:"A listing route's page of posts."},{key:"current_page_num",type:"number",required:!1,problem:"`current_page_num` must be a number when present",description:"A listing route's page number."},{key:"next_page_num",type:"number",required:!1,problem:"`next_page_num` must be a number when present",description:"Absent on the last page."},{key:"last_page_num",type:"number",required:!1,problem:"`last_page_num` must be a number when present",description:"A listing's page count."},{key:"blog.posts",type:"list",required:!1,problem:"`blog.posts` must be a list when present",description:"What the blog functions answer with on this route."},{key:"blog.topics",type:"list",required:!1,problem:"`blog.topics` must be a list when present",description:"The topics the posts name by id."},{key:"dynamicPage",type:"object",required:!1,problem:"`dynamicPage` must be an object when present",description:"A HubDB dynamic page: `{ tableId, row }` or `{ tableId, rows }`."},{key:"dynamicPage.rows",type:"list",required:!1,problem:"`dynamicPage.rows` must be a list when present",description:"The table's rows, on its listing page."}],jS="a hubdb-dynamic-page state needs `dynamicPage` (`tableId`, with `row` or `rows`)";function np(e,t){if(!Kn(e))return"the file is not a JSON object";let n=ep(e,tp);return n||(t==="hubdb-dynamic-page"&&!Kn(e.dynamicPage)?jS:null)}var Do=[{key:"records",type:"list",required:!0,problem:"it has no `records` array",description:"The records: `{ id, properties }` each. A record that is not an object is skipped."},{key:"objectTypeId",type:"any",required:!1,problem:"",description:"The object type id (`2-1234567`); one of the names a template may use."},{key:"name",type:"any",required:!1,problem:"",description:"The object type name (`p_projects`); one of the names a template may use."},{key:"fullyQualifiedName",type:"any",required:!1,problem:"",description:"The fully qualified name; one of the names a template may use."},{key:"labels",type:"any",required:!1,problem:"",description:"`{ singular, plural }`."},{key:"primaryDisplayProperty",type:"any",required:!1,problem:"",description:"The property shown as the record name."},{key:"properties",type:"any",required:!1,problem:"",description:"The property definitions, as the schemas API returns them."}];function Mo(e){return Kn(e)?ep(e,Do):Do[0].problem}var US="https://json-schema.org/draft/2020-12/schema";function BS(e){switch(e){case"non-empty-string":return{type:"string",pattern:"\\S"};case"object":return{type:"object"};case"list":return{type:"array"};case"boolean":return{type:"boolean"};case"number":return{type:"number"};case"any":return{}}}function rp(e,t,n=[]){let s={},r=[];for(let i of t){let o=i.key.indexOf("."),a={...BS(i.type),description:i.description};if(o===-1){s[i.key]={...s[i.key]??{},...a},i.required&&r.push(i.key);continue}let l=i.key.slice(0,o),c=s[l]??={},u=c.properties??{};u[i.key.slice(o+1)]=a,c.properties=u}return{$schema:US,title:e,type:"object",required:[...r,...n],properties:s}}function sp(e){return rp(`A ${e} content state`,tp,e==="hubdb-dynamic-page"?["dynamicPage"]:[])}function ip(){return rp("A CRM object type and its records",Do)}var HS=[{id:"1001",name:"Main menu",tree:{children:[{label:"Home",url:"/",pageId:101,contentGroupId:null,linkTarget:null,slug:"",pageTitle:"Home",level:0,activeBranch:!1,activeNode:!1,children:[]}]}}],GS=[{id:"contact",guid:"00000000-0000-4000-8000-000000000001",name:"Contact form",submitText:"Send",formFieldGroups:[{fields:[{name:"email",label:"Email",fieldType:"text",required:!0,hidden:!1,labelHidden:!1,placeholder:"you@example.com",description:"",defaultValue:"",options:[],validation:{name:""}}]}]}],WS={name:"Example brand",primaryLogo:{src:"https://example.com/logo.png",alt:"Example brand",width:200,height:60},logos:[{src:"https://example.com/logo.png",alt:"Example brand",width:200,height:60}],primaryFavicon:{src:"https://example.com/favicon.ico"},favicons:[{src:"https://example.com/favicon.ico"}],primaryColor:{color:"#1f6feb",label:"Primary"},secondaryColor:{color:"#f6f8fa",label:"Secondary"},colors:[{color:"#1f6feb",label:"Primary"},{color:"#f6f8fa",label:"Secondary"}]},KS=[{id:"1",name:"Newsletter",description:"The monthly newsletter",active:!0}],op={"blog-posts.json":{fileType:"list",description:"Blog posts: what blog_recent_posts, blog_recent_tag_posts, blog_popular_posts and blog_by_id answer when no content state supplies posts."},"menu.json":{fileType:"object",description:"One navigation tree, { children: [...] }: what menu() answers when menus.json has no menu with the id asked for."},"menus.json":{fileType:"list",description:"Menus by id, [{ id, name, tree: { children } }]: menu(<id>) answers the matching tree.",whenAbsent:"no menus by id: menu(<id>) answers from menu.json",authoredExample:HS},"form.json":{fileType:"object",description:"One form definition, with formFieldGroups: what form() draws when forms.json has no form with the id asked for."},"forms.json":{fileType:"list",description:"Forms by id or guid: form(form_to_use=<id>) draws the matching form.",whenAbsent:"no forms by id: form() draws form.json",authoredExample:GS},"hubdb-rows.json":{fileType:"list",description:"HubDB rows: what hubdb_table_rows and the other HubDB functions answer when no content state supplies rows."},"brand-settings.json":{fileType:"object",description:"Brand settings: logos, favicons and colours, read through brand_settings.",whenAbsent:"brand_settings with an empty logo and favicon",authoredExample:WS},"subscription-types.json":{fileType:"list",description:"Email subscription types, read through subscription_types.",whenAbsent:"an empty subscription_types list",authoredExample:KS}};function ap(e,t){if(t==="list")return Array.isArray(e)&&e.length>0?[structuredClone(e[0])]:null;if(!Kn(e))return null;let n={};for(let[s,r]of Object.entries(e))n[s]=Array.isArray(r)?structuredClone(r.slice(0,1)):structuredClone(r);return n}function _t(e,t,n){if(e)try{return JSON.parse(A.readFileSync(jo.join(e,"fixtures",t),"utf-8"))}catch{}let s=gt[t];return s!==void 0?structuredClone(s):n}var Kt="crm-objects";function lp(e,t){return e<t?-1:e>t?1:0}function dp(e){return typeof e=="string"||e instanceof String||typeof e=="number"?String(e):null}function cp(e){if(Mo(e)!==null)return null;let t=e.records;return{...e,records:t.filter(n=>n!==null&&typeof n=="object"&&!Array.isArray(n))}}function up(e,t,n){return[e.objectTypeId,e.name,e.fullyQualifiedName,t].map(dp).some(s=>s!==null&&s.trim().toLowerCase()===n)}function pp(e,t){let n=[],s=dp(t)?.trim().toLowerCase()??"";if(s==="")return{match:null,problems:n};if(e){let i=jo.join(e,"fixtures",Kt),o=[];try{o=A.readdirSync(i)}catch{}for(let a of o.filter(l=>l.toLowerCase().endsWith(".json")).sort(lp)){let l=`fixtures/${Kt}/${a}`,c;try{c=A.readFileSync(jo.join(i,a),"utf-8")}catch{continue}let u;try{u=JSON.parse(c)}catch(p){n.push({file:l,reason:"not-json",detail:p instanceof Error?p.message:String(p)});continue}let d=cp(u);if(!d){n.push({file:l,reason:"not-a-fixture",detail:Mo(u)??"it is not a fixture"});continue}if(up(d,a.slice(0,-5),s))return{match:{fixture:d,file:l,source:"theme"},problems:n}}}let r=`${Kt}/`;for(let i of Object.keys(gt).filter(o=>o.startsWith(r)).sort(lp)){let o=cp(gt[i]);if(o&&up(o,i.slice(r.length,-5),s))return{match:{fixture:structuredClone(o),file:`fixtures/${i}`,source:"renderer"},problems:n}}return{match:null,problems:n}}import Jt from"path";var qt="@hubspot/",Uo=".module",qS=/^[A-Za-z0-9_-]+$/;function sn(e){if(typeof e!="string"||!e.startsWith(qt))return null;let t=e.slice(qt.length).replace(/\/+$/,""),n=t.endsWith(Uo)?t.slice(0,-Uo.length):t;return qS.test(n)?n:null}function hp(e){return typeof e=="string"&&e.startsWith(qt)&&sn(e)===null}function qn(e){let t=sn(e);return t===null?null:`${qt}${t}${Uo}`}var VS=Object.assign(Object.create(null),{form:"a form definition from the portal",blog_subscribe:"a blog subscription form from the portal",cta:"a call-to-action defined in the portal",meetings:"a meetings link from the portal",payments:"a payment link from the portal",menu:"a menu tree from the portal",blog_posts:"blog posts from the portal",blog_comments:"blog comments from the portal",post_listing:"blog posts from the portal",post_filter:"blog tags, authors and dates from the portal",related_blog_posts:"blog posts from the portal",pagination:"the blog listing's page count from the portal",rss_listing:"an RSS feed fetched at render time",product:"a product record from the CRM",line_items:"quote line items from the CRM",quote_download:"a quote record from the CRM",quote_payment:"a quote record from the CRM",quote_signature:"a quote record from the CRM",search_results:"the portal's search index",language_switcher:"the page's translated variants from the portal",membership_social_logins:"the membership settings for the portal",email_subscriptions:"the subscription types defined in the portal",email_subscriptions_confirmation:"the subscription types defined in the portal",email_simple_subscription:"the subscription types defined in the portal",password_prompt:"HubSpot's password-protection form"});function fp(e){let t=sn(e);if(t===null)return null;let n=VS[t];return n===void 0?null:{slug:t,needs:n}}var mp=Object.assign(Object.create(null),{logo:"loaded from your brand kit",form:"loaded from your HubSpot forms",blog_subscribe:"loaded from your blog subscription form",cta:"loaded from your HubSpot CTAs",meetings:"loaded from your HubSpot meetings",payments:"loaded from your HubSpot payment links",menu:"loaded from your site navigation",blog_posts:"loaded from your blog",blog_comments:"loaded from your blog comments",post_listing:"loaded from your blog",post_filter:"loaded from your blog",related_blog_posts:"loaded from your blog",pagination:"loaded from your blog",rss_listing:"loaded from your RSS feed",product:"loaded from your CRM products",line_items:"loaded from your CRM quote",quote_download:"loaded from your CRM quote",quote_payment:"loaded from your CRM quote",quote_signature:"loaded from your CRM quote",search_results:"loaded from your site search",language_switcher:"loaded from your translated pages",membership_social_logins:"loaded from your membership settings",email_subscriptions:"loaded from your subscription types",email_subscriptions_confirmation:"loaded from your subscription types",email_simple_subscription:"loaded from your subscription types",password_prompt:"loaded from your content settings"});function Tr(e){return mp[e]??"loaded from your HubSpot portal"}function gp(e){return e in mp}function kr(e){let t=e.replace(/[_-]+/g," ").trim();return t.charAt(0).toUpperCase()+t.slice(1)}var Bo="_themespot_menu_link_unsafe",JS=new Set(["http","https","mailto","tel"]);function _p(e){if(e==null)return!1;let t=String(e).replace(/^[\u0000- ]+/,"").replace(/[\t\n\r]/g,"");if(t==="")return!1;let n=/^([A-Za-z][A-Za-z0-9+.-]*):/.exec(t);return n!==null&&!JS.has(n[1].toLowerCase())}var zS=Object.assign(Object.create(null),{rich_text:{source:'{% rich_text "module" html="{{ module.html }}" %}',fieldDefaults:{html:""}},linked_image:{source:`{% set _img_style = 'width: 100%; height: auto;' if module.img.size_type in ['auto', 'auto_custom_max'] else '' %}{% linked_image "module" src="{{ module.img.src }}" alt="{{ module.img.alt }}" width="{{ module.img.width }}" height="{{ module.img.height }}" loading="{{ module.img.loading }}" style="{{ _img_style }}" link="{{ module.link }}" target="{{ '_blank' if module.open_in_new_tab else '' }}" %}`,fieldDefaults:{img:{},link:"",open_in_new_tab:!1}},logo:{source:`{% set _brand_logo = brand_settings.primaryLogo if brand_settings.primaryLogo.src else brand_settings.logo %}{% set _logo = module.img if module.img.src else (module.logo if module.logo.src else (module if module.src else _brand_logo)) %}{% set _company = brand_settings.name if brand_settings.name else site_settings.company_name %}{% if _logo.src %}{% logo "module" src="{{ _logo.src }}" alt="{{ _logo.alt }}" width="{{ _logo.width }}" height="{{ _logo.height }}" loading="{{ _logo.loading }}" link="{{ module.link }}" target="{{ '_blank' if module.open_in_new_tab else '' }}" %}{% else %}<span class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_logo" data-hs-cos-general-type="widget" data-hs-cos-type="logo"><a href="{{ module.link if module.link else '/' }}" class="hs-logo-widget">{{ _company }}</a></span>{% endif %}`,fieldDefaults:{img:{},logo:{},link:"",open_in_new_tab:!1},rendersFrom:(e,t)=>!!(e?.img?.src??e?.logo?.src??e?.src??t?.brand?.primaryLogo?.src??t?.brand?.logos?.[0]?.src??t?.brand?.name),needsWithout:"the site logo from the portal's brand settings"},divider:{source:`{% set _d_align = module.alignment|lower %}<span class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_divider" data-hs-cos-general-type="widget" data-hs-cos-type="divider"><hr style="border: none; border-top: {{ module.height }}px {{ module.line_type|lower }} {{ module.color.color }}; width: {{ module.width }}%;{% if module.color.opacity is defined and module.color.opacity < 100 %} opacity: {{ module.color.opacity / 100 }};{% endif %} margin-left: {{ '0' if _d_align == 'left' else 'auto' }}; margin-right: {{ '0' if _d_align == 'right' else 'auto' }};"></span>`,fieldDefaults:{height:1,width:100,line_type:"solid",alignment:"center",color:{color:"#000000",opacity:100}}},search_input:{source:`{% set _search_label = module.field_label if module.field_label else (module.placeholder if module.placeholder else 'Search') %}<span class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_search_input" data-hs-cos-general-type="widget" data-hs-cos-type="search_input"><div class="hs-search-field"><div class="hs-search-field__bar"><form data-hs-do-not-collect action="/hs-search-results"><label for="term-{{ name }}">{{ _search_label }}</label><input type="text" class="hs-search-field__input" name="term" autocomplete="off" id="term-{{ name }}" placeholder="{{ _search_label }}" aria-label="{{ _search_label }}"><button aria-label="{{ _search_label }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 2.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/><path d="M16.2 14.4L22 20.2l-1.8 1.8-5.8-5.8Z"/></svg></button></form></div><ul class="hs-search-field__suggestions"></ul></div></span>`,fieldDefaults:{placeholder:"Search"}},simple_menu:{source:`{% set _sm_tree = module.menu_tree if (module.menu_tree is iterable and module.menu_tree is not string) else [] %}<nav class="hs-menu-wrapper hs-menu-flow-{{ 'vertical' if module.orientation == 'vertical' else 'horizontal' }}" aria-label="Navigation Menu">{% if _sm_tree|length > 0 %}<ul role="menu">{% for _sm_item in _sm_tree recursive %}<li class="hs-menu-item hs-menu-depth-{{ loop.depth }}{% if _sm_item.children is iterable and _sm_item.children is not string and _sm_item.children|length > 0 %} hs-item-has-children{% endif %}" role="none">{% if _sm_item.linkUrl|${Bo} %}<span>{{ _sm_item.linkLabel|escape_html if _sm_item.linkLabel else '' }}</span>{% else %}<a{% if _sm_item.linkUrl %} href="{{ _sm_item.linkUrl|escape_attr }}"{% endif %}{% if _sm_item.linkTarget %} target="{{ _sm_item.linkTarget|escape_attr }}"{% endif %}{% if _sm_item.children is iterable and _sm_item.children is not string and _sm_item.children|length > 0 %} aria-haspopup="true" aria-expanded="false"{% endif %} role="menuitem">{{ _sm_item.linkLabel|escape_html if _sm_item.linkLabel else '' }}</a>{% endif %}{% if _sm_item.children is iterable and _sm_item.children is not string and _sm_item.children|length > 0 %}<ul role="menu" class="hs-menu-children-wrapper">{{ loop(_sm_item.children) }}</ul>{% endif %}</li>{% endfor %}</ul>{% endif %}</nav>`,fieldDefaults:{menu_tree:[],orientation:"horizontal"}}});function bp(e){let t=sn(e);if(t===null)return null;let n=zS[t];return n===void 0?null:{slug:t,builtin:n}}var Es="field-schemas",Go=".schema.json",YS="themespot-asset-placeholder",XS="asset-stub";var ZS=Object.freeze([YS,XS]);function QS(e){return typeof e=="string"&&ZS.includes(e)}function ev(e,t){let s=(t??e).replace(/\\/g,"/").split("/").filter(Boolean),r=s[s.length-1];return!r||r==="."||r===".."?null:r}function Rs(e){return`${Es}/${e}${Go}`}function tv(e){return $e(e,Es)!==null}function yp(e,t,n){let s=ev(t,n);if(s===null)return{found:!1,defaults:{},unevaluable:[],markers:[],absence:"unnamed-reference",basename:""};let r=Rs(s),i=$e(e,r);if(i===null)return{found:!1,defaults:{},unevaluable:[],markers:[],absence:tv(e)?"missing-from-schema-dir":"no-schema-dir",basename:s};let o=y=>({found:!1,defaults:{},unevaluable:[],markers:[],absence:"unreadable",file:i,basename:s,reason:y}),a;try{a=JSON.parse(A.readFileSync(i,"utf-8"))}catch(y){return o(y instanceof Error?y.message:String(y))}if(!a||typeof a!="object"||Array.isArray(a))return o("the file is not a field-schema object");let l=a,c=Array.isArray(l.contentFields),u=Array.isArray(l.styleFields);if(!c&&!u)return o("the object carries neither a contentFields nor a styleFields array");let d=nv([...c?l.contentFields:[],...u?l.styleFields:[]]),p=[],m=[],g={};for(let[y,E]of Object.entries(d)){let x=Ho(E);if(x.length>0){p.push(y);for(let R of x)m.includes(R)||m.push(R);continue}g[y]=E}return{found:!0,defaults:g,unevaluable:p,markers:m,file:i,basename:s}}function Ho(e,t=[]){if(QS(e))t.includes(e)||t.push(e);else if(Array.isArray(e))for(let n of e)Ho(n,t);else if(e&&typeof e=="object")for(let n of Object.values(e))Ho(n,t);return t}function wp(e){return Wo(e,!1)}function nv(e){return Wo(e,!0)}function Wo(e,t){let n={};if(!Array.isArray(e))return n;for(let s of e){if(!s||!s.name)continue;if((!!s.occurrence||t&&!!s.children&&Array.isArray(s.default))&&s.default!==void 0)n[s.name]=s.default;else if(s.children&&!s.occurrence){let i=Wo(s.children,t);Object.keys(i).length>0&&(n[s.name]=i)}else s.default!==void 0&&(n[s.name]=s.default)}return n}function xs(e){let t=new TextEncoder().encode(e),n="";for(let s=0;s<t.length;s++)n+=String.fromCharCode(t[s]);return btoa(n)}function Vn(e){let t=atob(e),n=new Uint8Array(t.length);for(let s=0;s<t.length;s++)n[s]=t.charCodeAt(s);return new TextDecoder().decode(n)}function Sp(e){if(e===null||typeof e!="object"||Array.isArray(e))return!1;let t=Object.getPrototypeOf(e);return t===Object.prototype||t===null}function rv(e){return Sp(e)&&e.type==="CONTENT"&&("href"in e||"content_id"in e)}function sv(e){if(e==null)return!0;if(typeof e=="number")return!Number.isFinite(e)||e<=0;if(typeof e=="string"){let t=e.trim();return t===""?!0:/^-?\d+$/.test(t)?Number(t)<=0:!1}return!1}function iv(e,t){return e?`${e}.${t}`:t}function Ko(e,t=""){let n=[],s=new Set,r=(i,o)=>{if(i===null||typeof i!="object"||s.has(i))return i;if(Array.isArray(i)){s.add(i);let l=null;return i.forEach((c,u)=>{let d=r(c,`${o}[${u}]`);d!==c&&(l??=i.slice(),l[u]=d)}),s.delete(i),l??i}if(!Sp(i))return i;if(rv(i)&&sv(i.content_id))return n.push({path:o,contentId:i.content_id,href:i.href}),i.href===""?i:{...i,href:""};s.add(i);let a=null;for(let[l,c]of Object.entries(i)){let u=r(c,iv(o,l));u!==c&&(a??={...i},a[l]=u)}return s.delete(i),a??i};return{value:r(e,t),unresolved:n}}function qo(e,t=""){return Ko(e,t).unresolved}function Ts(e){return e===void 0?"absent":JSON.stringify(e)}import on from"path";var $t={kind:"data-themespot-kind",themeId:"data-themespot-theme-id",runtime:"data-themespot-runtime",file:"data-themespot-file",instance:"data-themespot-instance",global:"data-themespot-global",dnd:"data-themespot-dnd"},vp=Object.values($t);var Vo="@hubspot";function ks(e,t={},n=[]){let s=n.map(i=>({root:on.resolve(i.root),themeId:i.themeId&&i.themeId.trim()?i.themeId.trim():null})),r=e.childThemeRoot??e.themeRoot;for(let i of e.roots){let a=e.parentThemeRoot!==void 0&&i===e.parentThemeRoot&&i!==r?t.parentThemeId:i===r?t.themeId:void 0,l=on.resolve(i);s.some(c=>c.root===l)||s.push({root:l,themeId:a&&a.trim()?a.trim():null})}for(let[i,o]of Object.entries(e.projects??{}))for(let[a,l]of Object.entries(o))s.some(c=>c.root===on.resolve(l))||s.push({root:on.resolve(l),themeId:`@projects/${i}/${a}`});return{roots:s,files:[],globalDepth:0,dndAreas:[]}}function Vt(e,t){if(!t)return null;let n=on.resolve(t);for(let{root:s,themeId:r}of e.roots){let i=on.relative(s,n);if(i===""||i.startsWith("..")||on.isAbsolute(i))continue;let o=i.split(on.sep).join("/");return{file:o,themeId:o.startsWith("@hubspot/")?Vo:r}}return null}function Jo(e){return e.files[e.files.length-1]??null}function As(e,t,n,s={}){if(!e)return n();t&&e.files.push(t),s.global&&(e.globalDepth+=1);try{return n()}finally{s.global&&(e.globalDepth-=1),t&&e.files.pop()}}function Ep(e,t,n){if(!e)return n();e.dndAreas.push(t);try{return n()}finally{e.dndAreas.pop()}}function Jn(e,t,n={}){let s=Jo(e);return{kind:t,runtime:"hubl",themeId:s?.themeId??null,file:s?.file??null,global:e.globalDepth>0,dnd:e.dndAreas[e.dndAreas.length-1]??null,...n}}function ov(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}function Ft(e){return[[$t.kind,e.kind],[$t.themeId,e.themeId],[$t.runtime,e.runtime],[$t.file,e.file],[$t.instance,e.instance],[$t.global,e.global?"true":null],[$t.dnd,e.dnd]].filter(n=>typeof n[1]=="string"&&n[1]!=="").map(([n,s])=>` ${n}="${ov(s)}"`).join("")}var av=new Set(["style","script","noscript","template","title","textarea"]),lv=new Set(["link","meta","base"]),cv=new RegExp(`\\s${$t.kind}\\s*=`,"i");function uv(e,t){let n=null;for(let s=t+1;s<e.length;s++){let r=e[s];if(n){r===n&&(n=null);continue}if(r==='"'||r==="'")n=r;else if(r===">")return s+1}return-1}function zo(e,t){if(!t)return e;let n=0;for(;n<e.length;){let s=e[n];if(s===" "||s===`
-`||s==="\r"||s==="	"||s==="\f"){n++;continue}if(s!=="<")return e;if(e.startsWith("<!--",n)){let u=e.indexOf("-->",n+4);if(u<0)return e;n=u+3;continue}if(e[n+1]==="!"||e[n+1]==="?"){let u=e.indexOf(">",n);if(u<0)return e;n=u+1;continue}let r=/^<([a-zA-Z][a-zA-Z0-9:-]*)/.exec(e.slice(n,n+64));if(!r)return e;let i=r[1].toLowerCase(),o=uv(e,n);if(o<0)return e;if(lv.has(i)){n=o;continue}if(av.has(i)){let u=e.toLowerCase().indexOf(`</${i}`,o);if(u<0)return e;let d=e.indexOf(">",u);if(d<0)return e;n=d+1;continue}let a=e.slice(n,o);if(cv.test(a))return e;let c=a.endsWith("/>")?o-2:o-1;return e.slice(0,c)+t+e.slice(c)}return e}function zn(e,t){return t?zo(e,Ft(t)):e}function Rp(e){let t="";for(let n of vp){let s=new RegExp(`\\s${n}="([^"]*)"`).exec(e);s&&(t+=` ${n}="${s[1]}"`)}return t}var dv=T.MODULE_SHAPE_UNRECOGNISED;function an(e){let t=e.foreignRoots;return t&&t.length>0?t[t.length-1]:null}function kp(e,t,n){if(!t)return n();(e.foreignRoots??=[]).push(t);try{return n()}finally{e.foreignRoots.pop()}}function Ns(e,t){let n=an(e);if(!n||typeof t!="string")return t;let s=t.trim();if(s===""||s.startsWith("//")||/^[a-z][a-z0-9+.-]*:/i.test(s))return t;let r=s.replace(/^(?:\.\.?\/)+/,""),i=null;try{i=$e(n.themeRoots,r)??H(n.dir,r)}catch{i=null}return i?`file://${i.replace(/\\/g,"/")}`:t}var pv=["index.tsx","index.ts","index.jsx","index.js"],Ap=["module.hubl.html","module.html"],hv=["module.hubl.css","module.css"];function Os(e){try{return A.statSync(e).isDirectory()}catch{return!1}}function Ar(e){return!e||!Os(e)?"unrecognised":pv.some(t=>A.existsSync(Jt.join(e,t)))?"react":Ap.some(t=>A.existsSync(Jt.join(e,t)))?"hubl":"unrecognised"}var xp=".module";function Tp(e){return!e||e.endsWith(xp)?[e]:[e,`${e}${xp}`]}function yt(e,t){let n=qn(t);if(n!==null){let i=$e(e,n);return i&&Os(i)?i:null}for(let i of Tp(t)){let o=Rr(i,e);if(o&&Os(o))return o}let s=t.replace(/^(?:\.\.\/)+/,""),r=[Jt.join("templates",t),Jt.join("templates/partials",t),Jt.join("templates/layouts",t),s,t];for(let i of r)for(let o of Tp(i))try{let a=$e(e,o);if(a&&Os(a))return a}catch(a){if(!(a instanceof X))throw a}return null}var fv=[qt,"@projects/","@marketplace/"];function mv(e){if(typeof e!="string")return!1;let t=e.trim();return t===""||t.includes("{{")||t.includes("{%")?!1:!fv.some(n=>t.startsWith(n))}function gv(e){for(let t of Ap){let n=Jt.join(e,t);if(A.existsSync(n))return n}return null}function _v(e){return e.replace(/\*\//g,"* /").replace(/[\r\n]+/g," ").trim()}function bv(e){return e.replace(/<\/(style)/gi,"<\\/$1")}function yv(e,t,n,s){for(let r of hv){let i=Jt.join(e,r);if(!A.existsSync(i))continue;let o=A.readFileSync(i,"utf-8");if(!r.endsWith(".hubl.css"))return{css:o};try{return{css:t.renderString(s(o),n)}}catch(a){let l=a instanceof Error?a.message:String(a);return{css:`/* === ${r} \u2014 RENDER ERROR === */
-/* ${_v(l)} */
-`,error:{file:r,message:l}}}}return{css:""}}function Op(e){let t=e?.fields;if(!t||typeof t!="object"||Array.isArray(t))return e;let{fields:n,...s}=e;return{...t,...s}}function wv(e,t){if(t.modulesWithAssetsCollected.has(e))return;t.modulesWithAssetsCollected.add(e);let n=Jt.join(e,"meta.json");if(A.existsSync(n))try{let r=JSON.parse(A.readFileSync(n,"utf-8"));for(let[i,o]of[["css_assets",t.cssLinks],["js_assets",t.jsLinks]])for(let a of Array.isArray(r?.[i])?r[i]:[]){if(!a||a.autoload===!1||typeof a.path!="string")continue;let l=Ns(t,a.path);o.includes(l)||o.push(l)}}catch{}let s=Jt.join(e,"module.js");if(A.existsSync(s))try{let r=A.readFileSync(s,"utf-8");r.trim()&&t.moduleScripts.push(r)}catch{}}function Yn(e){return`module_${e}`}function Xo(e){let{env:t,collector:n,themeRoots:s,moduleDir:r,builtin:i,modulePath:o,props:a,contextCtx:l,moduleNumber:c,preprocess:u}=e,d,p;if(r===null){if(!i)return Zo(o);d=u(i.source),p=i.fieldDefaults}else{let O=gv(r);if(!O)return Zo(o);d=u(A.readFileSync(O,"utf-8").replace(/^<!--[\s\S]*?-->\s*/m,""),Pt(O,s)),p=Ov(r,s)}let m=Cs(n,o,Qo(p,Op(a)));fn(m),gn(m);let g=e.instanceName??Yn(c),y={...l,module:m,name:g,[vo]:g,module_id:String(c),is_in_editor:!1},E;try{E=t.renderString(d,y)}catch(O){let k=O instanceof Error?O.message:String(O);return n.diagnostics.push(P(T.HUBL_MODULE_ERROR,`HubL module failed to render: ${o} \u2014 ${k}`,{modulePath:o,moduleDir:r})),It(o,{error:k})}r!==null&&wv(r,n);let x=r===null?{css:""}:yv(r,t,y,u);if(x.error){let O=`${r}::${x.error.file}`;n.reportedModuleStylesheetErrors.has(O)||(n.reportedModuleStylesheetErrors.add(O),n.diagnostics.push(P(T.CSS_RENDER_ERROR,`Module stylesheet failed to render: ${o}/${x.error.file} \u2014 ${x.error.message}. The rules it generates are absent from this render; a RENDER ERROR marker stands in their place.`,{modulePath:o,moduleDir:r,sourceFile:x.error.file,error:x.error.message})))}let R=x.css;return R.trim()&&(n.moduleStyles.push(R),E+=`
-<style>${bv(R)}</style>`),n.scopedInstances.has(g)?kd(g,E):E}function bt(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}function Sv(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}function It(e,t={}){let n=Np(e,t.label),s=['class="themespot-module-placeholder"',`data-module-path="${bt(e)}"`];t.props!==void 0&&s.push(`data-module-props="${xs(JSON.stringify(t.props))}"`),t.instance!==void 0&&s.push(`data-module-instance="${bt(t.instance)}"`),t.notRendered!==void 0&&s.push(`data-module-not-rendered="${bt(t.notRendered)}"`),t.error!==void 0&&s.push(`data-module-error="${bt(t.error)}"`),t.reason!==void 0&&s.push(`data-module-reason="${bt(t.reason)}"`);let r=t.kind??"Module";if(t.text!==void 0)return`<div ${s.join(" ")} style="${Yo}">${Sv(t.text)}</div>`;if(t.sourceFramed){let o=t.note!==void 0?` ${t.note}`:"";return`<div ${s.join(" ")} style="${Yo}">${bt(r)}: ${bt(n)}${bt(o)}</div>`}let i=t.note!==void 0?` \u2014 ${t.note}`:t.error!==void 0?" \u2014 HubL render failed":"";return`<div ${s.join(" ")} style="${Yo}">[${bt(r)}: ${bt(n)}${bt(i)}]</div>`}function Np(e,t){return t??e.split("/").pop()??e}function vv(e){return`${e}: React module, not drawn. This build has no React renderer; ThemeSpot renders React modules with a connected HubSpot account.`}var Yo=["display:block","box-sizing:border-box","margin:8px 0","padding:12px 16px","background:#f1f3f4","border:1px dashed #9aa0a6","border-radius:6px","color:#3c4043","font:500 13px/1.45 ui-sans-serif,system-ui,-apple-system,sans-serif","text-align:center","position:relative","z-index:0","overflow-wrap:anywhere"].join(";");function Ev(e){return{brand:_t(e.themeRoots.themeRoot,"brand-settings.json",null)}}function Rv(e,t){let{collector:n,modulePath:s}=e,r=sn(s);if(r===null)return!hp(s)||t!==null?null:(n.diagnostics.push(P(T.HUBSPOT_DEFAULT_MODULE_UNAVAILABLE,`'${s}' is not a usable HubSpot default-module reference: ${qt} names exactly one module slug (@hubspot/rich_text), so there is no source to fetch for this reference and nothing was rendered.`,{modulePath:s,slug:null,moduleDir:null,reason:"malformed-reference"})),It(s,{kind:"HubSpot default module",label:s,note:"not a valid reference",reason:"default-module-reference-malformed"}));let i=fp(s);if(i)return n.diagnostics.push(P(T.HUBSPOT_DEFAULT_MODULE_NEEDS_PORTAL_DATA,`HubSpot default module '${r}' renders ${i.needs}, which an offline render does not have. A labelled placeholder is shown in its place; loading the module source would not change that.`,{modulePath:s,slug:r,needs:i.needs,hydrated:t!==null})),It(s,{kind:"HubSpot module",label:kr(r),note:Tr(r),sourceFramed:!0,reason:"portal-data-required"});let o=t?Ar(t):"unrecognised";if(o==="hubl"&&t)return Xo({...e,moduleDir:t});if(o==="react")return null;let a=bp(s);if(a){let{builtin:u}=a,d=Op(e.props);return u.rendersFrom&&!u.rendersFrom(d,Ev(e))?(n.diagnostics.push(P(T.HUBSPOT_DEFAULT_MODULE_NEEDS_PORTAL_DATA,`HubSpot default module '${r}' renders ${u.needsWithout}, which an offline render does not have, and this template set no value of its own. A labelled placeholder is shown in its place.`,{modulePath:s,slug:r,needs:u.needsWithout,hydrated:!1,reason:"builtin-needs-content"})),It(s,{kind:"HubSpot module",label:kr(r),note:Tr(r),sourceFramed:!0,reason:"portal-data-required"})):(n.approximatedDefaultModules.has(r)||(n.approximatedDefaultModules.add(r),n.diagnostics.push(P(T.HUBSPOT_DEFAULT_MODULE_APPROXIMATED,`HubSpot default module '${r}' rendered from this renderer's built-in equivalent of HubSpot's source, which no theme ships. The content is the theme's own; the surrounding markup is equivalent rather than identical. Hydrate ${qn(s)}/ to render HubSpot's own source instead.`,{modulePath:s,slug:r}))),Xo({...e,moduleDir:null,builtin:{source:u.source,fieldDefaults:{...u.fieldDefaults??{}}}}))}let l=qn(s),c=t?`its source directory (${l}) holds neither module.html nor an index.tsx`:`its source is not in this theme \u2014 hydrate ${l}/ (what \`hs cms fetch ${l}\` writes) to render it`;return n.diagnostics.push(P(T.HUBSPOT_DEFAULT_MODULE_UNAVAILABLE,`HubSpot default module '${r}' could not be rendered: ${c}.`,{modulePath:s,slug:r,moduleDir:t,expectedDir:l})),It(s,{kind:"HubSpot default module",label:r,note:"source not loaded",reason:"default-module-source-missing"})}function Zo(e){return`<!-- ${dv}: ${e} is neither a React module (index.tsx) nor a HubL module (module.hubl.html + meta.json) -->`}function Or(e){return Ls(e).html}function xv(e,t,n,s,r,i){let o=e.provenance;if(!o)return null;let a=Vt(o,n),l=a?.file??(i?qn(t):null)??t.replace(/^(?:\.\.\/)+/,""),c=i||l.startsWith("@hubspot/")?Vo:a?.themeId??null;return{kind:"module",...s!==null?{runtime:s}:{},themeId:c,file:l,instance:r,global:o.globalDepth>0,dnd:o.dndAreas[o.dndAreas.length-1]??null}}function Ls(e,t=()=>!0){let{collector:n,modulePath:s,moduleNumber:r}=e,i=e.resolvedModuleDir!==void 0?e.resolvedModuleDir:yt(e.themeRoots,s),o="hubl",a=!1,l=Tv(e,i,d=>{o=d.runtime,a=d.hubspotDefault}),c=e.instanceName??Yn(r),u=xv(n,s,i,o,c,a);return{html:t(o)?zn(l,u):l,provenance:u}}function Tv(e,t,n){let{collector:s,themeRoots:r,modulePath:i,props:o,renderModuleFn:a,attrs:l={},moduleNumber:c}=e,u=Rv(e,t);if(u!==null)return n({runtime:"hubl",hubspotDefault:!0}),u;if(t===null&&s.reactModulePolicy==="not-rendered"&&mv(i)){n({runtime:null,hubspotDefault:!1});let g=e.instanceName??Yn(c),y=r.parentThemeRoot!==void 0&&r.roots.length>1?"the theme or its parent":"the theme";return s.diagnostics.push(P(T.MODULE_NOT_FOUND,`Module "${i}" was not found: no module directory at that path exists in ${y}, so nothing was drawn in its place. Check the path, and that the module directory is in the theme.`,{modulePath:i,instance:g,reason:"module-unknown"})),It(i,{instance:g,reason:"module-unknown",note:"not found"})}let d=t?Ar(t):"react";if(d==="hubl"&&t)return n({runtime:"hubl",hubspotDefault:!1}),Xo({...e,moduleDir:t});if(d==="unrecognised")return s.diagnostics.push(P(T.MODULE_SHAPE_UNRECOGNISED,`${i} is neither a React module (index.tsx) nor a HubL module (module.hubl.html + meta.json)`,{modulePath:i,moduleDir:t})),Zo(i);s.reactModules.push(i),n({runtime:"react",hubspotDefault:!1});let p=Cs(s,i,Qo(Av({collector:s,themeRoots:r,modulePath:i,moduleDir:t}),o));if(a)try{return a(i,p,l)}catch(g){let y=g instanceof Error?g.message:String(g);return s.diagnostics.push(P(T.MODULE_RENDER_ERROR,`Module failed to render: ${i} \u2014 ${y}`,{modulePath:i})),`<!-- Module render error: ${y} -->`}let m=e.instanceName??Yn(c);if(s.reactModulePolicy==="not-rendered"&&t!==null&&d==="react"){let g=Np(i);return s.diagnostics.push(P(T.REACT_MODULE_NOT_RENDERED,`React module "${g}" was not drawn because this build has no React renderer. A placeholder marks its place.`,{modulePath:i,instance:m,reason:"no-bridge-in-build"})),It(i,{props:p,instance:m,notRendered:"react",text:vv(g)})}return It(i,{props:p,instance:m})}function Cs(e,t,n){let{value:s,unresolved:r}=Ko(n);for(let i of r){let o=`${t} ${i.path}`;if(e.reportedContentLinks.has(o))continue;e.reportedContentLinks.add(o);let a=typeof i.href=="string"&&i.href!==""?` ("${i.href}")`:"";e.diagnostics.push(P(T.CONTENT_LINK_UNRESOLVED,`Module '${t}' field '${i.path}' is a CONTENT link with content_id ${Ts(i.contentId)}, which names no page. HubSpot resolves a CONTENT link by content_id and ignores its href${a}, so the live page renders it with an empty href \u2014 and so does this preview. Point it at a real page, or ship an internal default as EXTERNAL with a relative href until the page exists.`,{modulePath:t,fieldPath:i.path,contentId:i.contentId??null,ignoredHref:typeof i.href=="string"?i.href:null}))}return s}function kv(e,t,n){return yp(e,t,n===void 0?yt(e,t):n)}function Av(e){let{collector:t,themeRoots:n,modulePath:s,moduleDir:r}=e,i=`${s}\0${r??""}`,o=t.moduleFieldSchemas.get(i);o||(o=kv(n,s,r),t.moduleFieldSchemas.set(i,o));let a=!t.reportedModuleFieldSchemas.has(s);if(a&&t.reportedModuleFieldSchemas.add(s),o.found)return o.unevaluable.length>0&&a&&t.diagnostics.push(P(T.REACT_MODULE_FIELD_DEFAULT_UNEVALUABLE,`React module '${s}' has ${o.unevaluable.length} field(s) whose default the field-schema build could not evaluate \u2014 an asset import, recorded as the sentinel ${o.markers.map(l=>`'${l}'`).join(" / ")}. They are left unset rather than pointed at a URL that cannot load: ${o.unevaluable.join(", ")}. The Node reference render fills them from the module's own fields.tsx (its fields export, or the file itself when the entry exports none) and withdraws this record when it has filled every one; a surface that has only the placeholder shows them unset.`,{modulePath:s,moduleDir:r,schemaPath:Rs(o.basename),fields:o.unevaluable,markers:o.markers})),o.defaults;if(o.absence==="no-schema-dir")return{};if(a){let l=o.basename?Rs(o.basename):null,c=o.absence==="unnamed-reference"?`Module reference '${s}' ends in no name, so there is no module directory to file a field schema under and none was looked for. Reference a module by its directory (path="../components/modules/PlanGrid"); this render's props are the template's own.`:o.absence==="unreadable"?`React module '${s}' has a field schema at ${l} that could not be read (${o.reason}), so no theme defaults were merged into its props. Re-run the theme's field-schema build to regenerate it.`:`React module '${s}' has no generated field schema. This theme generates them, so ${l} was expected and is absent \u2014 the module's placeholder therefore carries only the parameters the template passed, and a surface that has nothing but the placeholder renders the module's empty state. Re-run the theme's field-schema build, or check that the schema is named after the module directory (${o.basename}).`;t.diagnostics.push(P(T.REACT_MODULE_FIELD_SCHEMA_UNAVAILABLE,c,{modulePath:s,moduleDir:r,expectedSchemaPath:l,reason:o.absence,detail:o.reason}))}return{}}function Ov(e,t){let n=H(e,"fields.json");if(!A.existsSync(n))return{};try{let s=JSON.parse(A.readFileSync(n,"utf-8"));return rn(t??Me({themeRoot:e}),n,s),wp(s)}catch(s){if(s instanceof X)throw s;return{}}}function Qo(e,t){let n={...e};for(let[s,r]of Object.entries(t))r!==void 0&&(r!==null&&typeof r=="object"&&!Array.isArray(r)&&n[s]!==null&&typeof n[s]=="object"&&!Array.isArray(n[s])?n[s]=Qo(n[s],r):n[s]=r);return n}import Pv from"path";import Nr from"path";function $p(){return{areas:{},stack:[],reports:[]}}function Fp(e,t){if(e==null||e==="")return t;let n=Number(e);return Number.isFinite(n)?n:t}function Ps(e){return Fp(e,12)}function $s(e){return Fp(e,0)}function Fs(e){let t={cells:[],cssClass:e.cssClass??"",cssId:"",cssStyle:""};return e.label!==void 0&&(t.label=e.label),t.name=e.name,t.params=e.params??{},t.rowMetaData=[],t.rows=[],e.styles!==void 0&&(t.styles=e.styles),t.type=e.type,t.w=e.w,t.x=e.x,t}function Ip(e){for(let t=e.stack.length-1;t>=0;t-=1){let n=e.stack[t];if(n.kind==="area"||n.kind==="partial")return n}}function Dp(e,t){let n=Ip(e);if(!n)return`${t}-1`;let s=n.sequence+=1;return`${n.prefix}-${t}-${s}`}function Mp(e){for(let t=e.stack.length-1;t>=0;t-=1){let n=e.stack[t];if(n.kind!=="partial")return n}}function Nv(e,t){for(let n=t;n>=0;n-=1){let s=e.stack[n];if(s.kind!=="partial")return s}}function ta(e,t,n){let s=t.x,r=s;for(;Object.prototype.hasOwnProperty.call(e,String(r));)r+=1;r!==s&&(t.x=r,n?.onCollision?.(s,r,t)),e[String(r)]=t}function jp(e,t,n){let s=Mp(e);if(!s)return;if(s.kind==="section"||s.kind==="row"){ta(s.cells,t,n);return}let r={};ta(r,t,n),s.container.rows.push(r),s.container.rowMetaData.push({cssClass:"dnd-row"})}function Up(e,t,n){let s=Fs({name:t,type:"cell",w:12,x:0,label:n});e.areas[t]=s;let r={kind:"area",container:s,prefix:t,sequence:0};return e.stack.push(r),r}function Bp(e,t){for(let r=e.stack.length-1;r>=0;r-=1)if(e.stack[r].kind==="area")return e.stack[r];let n=Fs({name:t,type:"cell",w:12,x:0,label:""});e.areas[t]=n;let s={kind:"area",container:n,prefix:t,sequence:0};return e.stack.unshift(s),s}function na(e){let t=Ip(e),n=t?.sequence??0,s=t?t.sequence+=1:1,r=`${t?.prefix??"dnd_area"}-dnd_partial-${s}`,i=Mp(e),o={kind:"partial",prefix:r,sequence:0,restore:{container:i?.container,rows:i?.container?.rows.length??0,rowMetaData:i?.container?.rowMetaData.length??0,cells:i?.cells,cellKeys:i?.cells?Object.keys(i.cells):[],owner:t,sequence:n,reports:e.reports.length}};return e.stack.push(o),o}function Is(e,t){let n=e.stack.lastIndexOf(t);n!==-1&&e.stack.splice(n);let s=t.restore;if(!s)return[];if(s.container&&(s.container.rows.length=s.rows,s.container.rowMetaData.length=s.rowMetaData),s.cells){let r=new Set(s.cellKeys);for(let i of Object.keys(s.cells))r.has(i)||delete s.cells[i]}return s.owner&&(s.owner.sequence=s.sequence),e.reports.splice(s.reports)}function Hp(e,t){let n={kind:"section",cells:{},meta:t,sequence:0};return e.stack.push(n),n}function Gp(e,t){let n={kind:"row",cells:{},meta:t,sequence:0};return e.stack.push(n),n}function Wp(e,t,n){let s=Fs({name:Dp(e,"column"),type:"cell",w:t.w,x:t.x,params:{css_class:t.cssClass},styles:t.styles});jp(e,s,n);let r={kind:"column",container:s,sequence:0};return e.stack.push(r),r}function ra(e,t,n){let s=Fs({name:Dp(e,"module"),type:"custom_widget",w:t.w,x:t.x,params:t.params,styles:t.styles&&Object.keys(t.styles).length>0?t.styles:void 0});return jp(e,s,n),s}function Kp(e,t,n){let s=e.stack.lastIndexOf(t);if(s===-1||(e.stack.splice(s,1),t.kind!=="section"&&t.kind!=="row"))return;let r=Nv(e,s-1);if(r){if(r.kind==="section"||r.kind==="row"){n?.onFlatten?.({kind:t.kind,into:r.kind,cells:Object.keys(t.cells).length,styles:t.meta?.styles});for(let i of Object.values(t.cells))ta(r.cells,i,n);return}r.container.rows.push(t.cells),r.container.rowMetaData.push(t.meta)}}function Ds(e){return e.areas}function qp(e){if(typeof e=="number")return Number.isFinite(e)?{units:"px",value:e}:null;if(typeof e!="string")return null;let t=/^\s*(-?\d*\.?\d+)\s*(px|rem|em|%|vh|vw|vmin|vmax|ch|ex|pt|pc|cm|mm|in)?\s*$/i.exec(e);if(!t)return null;let n=Number(t[1]);return Number.isFinite(n)?{units:(t[2]??"px").toLowerCase(),value:n}:null}function Lp(e){if(!e||typeof e!="object")return null;let t=e,n={};for(let s of["top","right","bottom","left"]){let r=qp(t[s]);r&&(n[s]=r)}return Object.keys(n).length>0?{padding:n}:null}function Vp(e){if(!e)return null;if(typeof e=="object"){let r=e;return typeof r.r=="number"?{r:Number(r.r)||0,g:Number(r.g)||0,b:Number(r.b)||0,a:Number.isFinite(Number(r.a))?Number(r.a):1}:typeof r.color=="string"?Vp(r.color):null}if(typeof e!="string")return null;let t=e.trim().replace(/^#/,""),n=t.length===3||t.length===4?t.split("").map(r=>r+r).join(""):t;if(!/^[0-9a-f]{6}([0-9a-f]{2})?$/i.test(n))return null;let s=r=>parseInt(n.slice(r,r+2),16);return{r:s(0),g:s(2),b:s(4),a:n.length===8?Number((s(6)/255).toFixed(3)):1}}var Jp=new Set(["TOP","MIDDLE","BOTTOM"]),Cp=new Set(["TOP_LEFT","TOP_CENTER","TOP_RIGHT","MIDDLE_LEFT","MIDDLE_CENTER","MIDDLE_RIGHT","BOTTOM_LEFT","BOTTOM_CENTER","BOTTOM_RIGHT"]);function Lv(e){let t=String(e.flexbox_positioning??"").trim().toUpperCase();if(t)return Cp.has(t)?t:null;let n=String(e.horizontal_alignment??"").trim().toUpperCase();if(!n)return null;let s=String(e.vertical_alignment??"").trim().toUpperCase(),r=`${Jp.has(s)?s:"TOP"}_${n}`;return Cp.has(r)?r:null}function Lr(e,t={}){let n={},s=Vp(e.background_color);s&&(n.backgroundColor=s);let r=e.background_image;if(r&&typeof r=="object"){let c=r.imageUrl;if(typeof c=="string"&&c.trim()){let u={imageUrl:c.trim()},d=r.backgroundSize,p=r.backgroundPosition;typeof d=="string"&&d.trim()&&(u.backgroundSize=d.trim()),typeof p=="string"&&p.trim()&&(u.backgroundPosition=p.trim()),n.backgroundImage=u}}let i=e.padding;if(i&&typeof i=="object"){let c=i,u="default"in c||"mobile"in c,d={},p=Lp(u?c.default:c),m=Lp(c.mobile);p&&(d.default=p),m&&(d.mobile=m),Object.keys(d).length>0&&(n.breakpointStyles=d)}t.section&&(n.forceFullWidthSection=!!e.full_width);let o=qp(e.max_width);o&&o.units==="px"&&(n.maxWidthSectionCentering=o.value);let a=String(e.vertical_alignment??"").trim().toUpperCase();Jp.has(a)&&(n.verticalAlignment=a);let l=Lv(e);return l&&(n.flexboxPositioning=l),n}function Ms(e,t){let n=typeof t.class=="string"?t.class.trim():"";return n?`${e} ${n}`:e}function ea(e){return e.endsWith(".module")?e.slice(0,-7):e}function Pp(e,t){for(let[n,s]of Object.entries(e.projects??{}))for(let[r,i]of Object.entries(s))if(Nr.resolve(i)===Nr.resolve(t))return`@projects/${n}/${r}`;return`/${Nr.basename(t)}`}function zp(e,t,n){let s=String(e??"").trim();if(!s)return"";if(s.startsWith("@")||s.startsWith("/"))return ea(s);if(n)for(let i of t.roots){let o=Nr.relative(i,n).replace(/\\/g,"/");if(o&&!o.startsWith("..")&&!Nr.isAbsolute(o))return`${Pp(t,i)}/${ea(o)}`}let r=s.replace(/^(?:\.\.\/)+/,"").replace(/^\.\//,"").replace(/\\/g,"/");return`${Pp(t,t.themeRoot)}/${ea(r)}`}var sa=Object.freeze({child_css:{},css:{},css_class:"dnd-module",schema_version:2,smart_objects:[],smart_type:"NOT_SMART",wrap_field_tag:"div"}),Cv=new Set(["path","offset","width","horizontal_alignment","flexbox_positioning","_positional","padding","background_color","background_image","vertical_alignment","max_width","full_width"]);function ia(e,t){let n={...sa,path:t};for(let[s,r]of Object.entries(e))Cv.has(s)||(n[s]=r);return n}function eh(e){return{binding:e,consumedAreas:new Set,boundWidgets:new Set,records:[],reportedGaps:new Set,globalDepth:0}}function oa(e,t){let n=[],s=0;for(let r of e){if(r.gap===null){s+=1;continue}n.push({path:r.path,...r.instance?{instance:r.instance}:{},reason:r.gap})}return{templateDrawn:t,modules:{total:e.length,drawn:s,gaps:n}}}function me(e){return typeof e=="object"&&e!==null&&!Array.isArray(e)}function Yp(e){return wn(e).replace(/\.module$/,"")}function wn(e){return e.trim().replace(/\\/g,"/").replace(/\/{2,}/g,"/").replace(/^\/+/,"").replace(/\/+$/,"")}function js(e,t,n,s){let r=wn(String(e??""));return r?{portalRoot:r,root:String(e).trim(),dir:t,themeId:typeof n=="string"&&n.trim()?n.trim():null,themeName:typeof s=="string"&&s.trim()?s.trim():null}:null}var $v=new Set([...Object.keys(sa),"path","module_id"]);function Cr(e){let t={};for(let[n,s]of Object.entries(e))$v.has(n)||(t[n]=s);return t}function th(e){if(!me(e))return{};if(me(e.body))return Cr(e.body);if(me(e.params))return Cr(e.params);let t=Cr(e);for(let n of["id","name","label","order","type","smart_type","styles","deleted_at"])delete t[n];return t}function Fv(e,t){return typeof e!="string"?"":e.split(/\s+/).filter(n=>n&&n!==t).join(" ")}function Iv(e){if(typeof e=="number")return Number.isFinite(e)?`${e}px`:null;if(typeof e=="string")return e.trim()||null;if(!me(e))return null;let t=Number(e.value);if(!Number.isFinite(t))return null;let n=typeof e.units=="string"&&e.units.trim()?e.units.trim():"px";return`${t}${n}`}function Xp(e){if(!me(e)||!me(e.padding))return null;let t={};for(let n of["top","right","bottom","left"]){let s=Iv(e.padding[n]);s!==null&&(t[n]=s)}return Object.keys(t).length>0?t:null}function aa(e,t,n){let s={},r=Fv(t,n);if(r&&(s.class=r),!me(e))return s;if(e.backgroundColor&&(s.background_color=e.backgroundColor),me(e.backgroundImage)&&(s.background_image=e.backgroundImage),me(e.breakpointStyles)){let i=Xp(e.breakpointStyles.default),o=Xp(e.breakpointStyles.mobile);(i||o)&&(s.padding={...i?{default:i}:{},...o?{mobile:o}:{}})}return e.forceFullWidthSection===!0&&(s.full_width=!0),typeof e.maxWidthSectionCentering=="number"&&(s.max_width=e.maxWidthSectionCentering),typeof e.verticalAlignment=="string"&&(s.vertical_alignment=e.verticalAlignment),typeof e.flexboxPositioning=="string"&&(s.flexbox_positioning=e.flexboxPositioning),s}function Dv(e){let t=me(e.params)?e.params:{},n=typeof e.cssClass=="string"&&e.cssClass?e.cssClass:typeof t.css_class=="string"?t.css_class:"";return{...aa(e.styles,n,"dnd-column"),width:yn(e.w,12),offset:yn(e.x,0)}}function yn(e,t){if(e==null||e==="")return t;let n=Number(e);return Number.isFinite(n)?n:t}function Mv(e,t,n){let s=[];for(let[r,i]of Object.entries(e)){if(!me(i)){t.invalid(`${n} \u203A cell ${JSON.stringify(r)}`,"is not a layout node");continue}s.push({node:i,x:yn(i.x,yn(r,0))})}return s.sort((r,i)=>r.x-i.x).map(r=>r.node)}function nh(e,t,n){let s=Array.isArray(e.rows)?e.rows:[],r=Array.isArray(e.rowMetaData)?e.rowMetaData:[],i=[];return s.forEach((o,a)=>{if(!me(o)){t.invalid(`${n} row ${a}`,"is not an object of cells keyed by offset");return}let l=me(r[a])?r[a]:{};i.push(t.section(aa(l.styles,l.cssClass,"dnd-section"),()=>rh(o,t,`${n} row ${a}`)))}),i.join(`
-`)}function rh(e,t,n){let s=[];for(let r of Mv(e,t,n)){if(r.type==="custom_widget"){s.push(t.module(r));continue}if(r.type==="cell"){s.push(t.column(Dv(r),()=>jv(r,t,`${n} \u203A ${String(r.name??"column")}`)));continue}t.invalid(`${n} \u203A ${String(r.name??"?")}`,`has type ${JSON.stringify(r.type??null)}, not a cell or a custom_widget`)}return s.join(`
-`)}function jv(e,t,n){let s=Array.isArray(e.rows)?e.rows:[],r=Array.isArray(e.rowMetaData)?e.rowMetaData:[],i=[];return s.forEach((o,a)=>{if(!me(o)){t.invalid(`${n} row ${a}`,"is not an object of cells keyed by offset");return}let l=me(r[a])?r[a]:{};i.push(t.row(aa(l.styles,l.cssClass,"dnd-row"),()=>rh(o,t,`${n} row ${a}`)))}),i.join(`
-`)}function Zp(e,t){let n=t.replace(/\\/g,"/").replace(/^\/+/,"");if(!n)return null;let s=n.endsWith(".module")?[n]:[n,`${n}.module`];for(let r of s){let i;try{i=H(e,r)}catch(o){if(o instanceof X)continue;throw o}try{if(A.existsSync(i)&&A.statSync(i).isDirectory())return i}catch{}}return null}function Qp(e,t){let n=wn(t);return e.filter(s=>n.startsWith(`${s.portalRoot}/`)).sort((s,r)=>r.portalRoot.length-s.portalRoot.length).map(s=>({root:s,rest:n.slice(s.portalRoot.length+1)}))}function Us(e,t={}){return{themeRoot:e,roots:[e],projects:t,diagnostics:[]}}function sh(e,t,n,s){for(let{root:i,rest:o}of Qp(e.cascadeRoots,n)){let a=Zp(i.dir,o);if(a)return{dir:a,themeRoots:t}}let r=s(t,n);if(r)return{dir:r,themeRoots:t};for(let{root:i,rest:o}of Qp(e.extraRoots,n)){let a=Zp(i.dir,o);if(a)return{dir:a,themeRoots:Us(i.dir,t.projects),root:i}}return null}function ih(e){return wn(e).startsWith(qt)}function oh(e,t){let n=Yp(t);if(!n)return null;for(let s of e)if(me(s)&&typeof s.path=="string"&&Yp(s.path)===n)return s;return null}function Uv(e,t){let n=typeof t.themeId=="string"?t.themeId.trim():"",s=typeof t.themeName=="string"?t.themeName.trim():"";return e.suppliedThemes.some(r=>n!==""&&r.themeId===n||s!==""&&r.themeName===s)}function ah(e,t){return t&&(t.themeId||t.themeName)&&!Uv(e,t)?"module-theme-unavailable":"module-unknown"}function lh(e,t){if(!t)return null;if(typeof t.themeName=="string"&&t.themeName.trim())return t.themeName.trim();let n=typeof t.themeId=="string"?t.themeId.trim():"";return n?e.suppliedThemes.find(r=>r.themeId===n&&r.themeName)?.themeName??n:null}function ch(e){return e?`Module from ${e} \xB7 can't be drawn here`:"Unrecognised module"}function Bs(e){let t=e.trimStart();if(t.startsWith("<!-- MODULE_SHAPE_UNRECOGNISED"))return"module-shape-unrecognised";let n=/^<div class="themespot-module-placeholder"[^>]*>/.exec(t);if(!n)return null;let s=/\sdata-module-reason="([^"]*)"/.exec(n[0]);return s?s[1]:/\sdata-module-error="/.test(n[0])?"module-render-failed":null}function la(e){return typeof e=="string"&&/^[A-Za-z0-9_][\w-]*$/.test(e)?e:null}function Bv(e){return e.replace(/([a-z0-9])([A-Z])/g,"$1_$2").replace(/([A-Z])([A-Z][a-z])/g,"$1_$2").toLowerCase()}function uh(e){let t={...e};for(let[n,s]of Object.entries(e)){let r=Bv(n);r!==n&&!(r in t)&&(t[r]=s)}return"url"in t&&!("absolute_url"in t)&&(t.absolute_url=t.url),t}function ca(e){try{return H(e,".")}catch{return Pv.resolve(e)}}var hh=String.raw`\{%-?\s*(?:end_)?blog_post_wrapper\s*-?%\}`,Hv=new RegExp(hh,"g"),Gv=new RegExp(`^(\\s*${hh})`);function ua(e,t,n){return`<span id="hs_cos_wrapper_${e.replace(/[^\w-]/g,"")}" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_${t}" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="${t}">${n}</span>`}var da=Symbol("themespot.metaField"),zt=class extends String{constructor(t,n,s="text"){super(t),Object.defineProperty(this,da,{value:{field:n,cosType:s},enumerable:!1})}get field(){return this[da].field}get cosType(){return this[da].cosType}get raw(){return String.prototype.valueOf.call(this)}toString(){return this.raw}valueOf(){return this.raw}printed(){return ua(this.field,this.cosType,this.raw.replace(Hv,""))}serialised(){let t=this.raw,n=Gv.exec(t);return n?n[1]+ua(this.field,this.cosType,t.slice(n[0].length)):ua(this.field,this.cosType,t)}toJSON(){return this.serialised()}};function ln(e){return e instanceof zt?e.raw:e}function Wv(e,t,n="text"){return e instanceof zt||typeof e!="string"||e.length===0?e:new zt(e,t,n)}var Kv={name:"text",post_summary:"text",post_body:"rich_text"};function ha(e){return e.blog_author!==void 0||e.blog_post_author===void 0?e:{...e,blog_author:e.blog_post_author}}function pa(e){let t=2166136261;for(let n=0;n<e.length;n++)t^=e.charCodeAt(n),t=Math.imul(t,16777619)>>>0;return 4e11+t}function dh(e){return e.toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")}function Hs(e){return Array.isArray(e)?e.map(t=>{if(typeof t=="string"){let n=dh(t);return{id:pa(n||t),name:t,slug:n}}if(t&&typeof t=="object"){let n=t;if(n.id!==void 0&&n.id!==null)return{...n};let s=String(n.slug??n.name??"");return{...n,id:pa(s)}}return{id:pa(String(t)),name:String(t),slug:dh(String(t))}}):[]}function fa(e,t={}){let n={...e};return("topic_list"in e||!("tag_list"in e))&&(n.topic_list=Hs(e.topic_list)),"tag_list"in e&&(n.tag_list=Hs(e.tag_list)),Object.defineProperty(n,"toJSON",{enumerable:!1,value(){return qv(this,t)}}),n}function qv(e,t){let n={...e},s=e.html_title;if(s!=null&&String(s)!=="")n.title=s;else{let r=String(ln(e.name??e.label??""));n.title=r?`${r} | ${t.blogTitle||"Blog"}`:""}return n.topic_list=Hs(e.topic_list).map(r=>r.id),"tag_list"in e&&(n.tag_list=Hs(e.tag_list).map(r=>r.id)),n}function Gs(e,t){let n=t.postBean?fa(ha(e),{blogTitle:t.blogTitle}):{...e};for(let[s,r]of Object.entries(Kv))s in n&&(n[s]=Wv(n[s],s,r));return n}var ph=Symbol.for("themespot.metaFieldPrinting");function fh(e){let t=e;if(!t||t[ph])return;let n=t.suppressValue;t.suppressValue=function(r,i){return n.call(this,r instanceof zt?r.printed():r,i)},t[ph]=!0}var ma="/blog",dt=new Map,Ks=0,Va=new Map;function Ja(){dt.clear(),Va.clear(),Ks=0}function qs(e,t,n,s){let r=Ks+1,i=Yt(e,n,s);if(t)for(let o=r;o<=Ks;o++)Va.set(o,t);return i}function Vs(e,t){let n=Pt(e,t);if(n===null)return null;let s=Ne.basename(e);return n?`${n}/${s}`:s}function mh(e,t){let n=[],s=a=>/[A-Za-z0-9_$]/.test(a),r=0,i=0,o=null;for(;r<e.length;){let a=e[r];if(o){if(a==="\\"&&r+1<e.length){r+=2;continue}a===o&&(o=null),r++;continue}if(a==='"'||a==="'"){o=a,r++;continue}if(a==="("||a==="["||a==="{"){i++,r++;continue}if(a===")"||a==="]"||a==="}"){i--,r++;continue}if(i===0){let l=r===0?" ":e[r-1];if(!s(l)){let c=!1;for(let u of t)if(e.startsWith(u,r)&&(r+u.length===e.length||!s(e[r+u.length]))){n.push({keyword:u,pos:r,len:u.length}),r+=u.length,c=!0;break}if(c)continue}}r++}return n}function wa(e){let t=mh(e,["if","else"]);if(t.filter(p=>p.keyword==="if").length<2)return e;let s=t.find(p=>p.keyword==="else");if(!s)return e;let r=s.pos+s.len,i=e.slice(0,r),o=e.slice(r);if(mh(o,["if"]).length<1)return e;let l=o.replace(/^(\s*)/,""),c=o.slice(0,o.length-l.length),u=wa(l.trimEnd()),d=l.length>l.trimEnd().length?l.slice(l.trimEnd().length):"";return`${i}${c}(${u})${d}`}var Ch=String.raw`\{%-?\s*set\s+${Er}(?:\s*,\s*${Er})*\s*=(?!=)\s*`;function Vv(e){let t=e.replace(/\{\{([\s\S]*?)\}\}/g,(n,s)=>`{{${wa(s)}}}`);return t=t.replace(new RegExp(`(${Ch})([\\s\\S]*?)(\\s*-?%\\})`,"g"),(n,s,r,i)=>`${s}${wa(r)}${i}`),t}var Ph={"~":"''","+":"0","-":"0","*":"0","/":"0","%":"0"};function $h(e,t){return`(${e} if ${e} is not none else ${Ph[t]})`}function Jv(e){return e.replace(/(\{%-?\s*set\s+)([A-Za-z_][A-Za-z0-9_]*)(\s*=(?!=)\s*)\2(\s*)([+\-*/%~])/g,(t,n,s,r,i,o)=>`${n}${s}${r}${$h(s,o)}${i}${o}`)}var zv=String.raw`(\{\{-?|\{%-?)([\s\S]*?)(-?\}\}|-?%\})`,Yv=String.raw`\{%-?\s*macro\s+[A-Za-z_$][\w$]*\s*\(([^)]*)\)\s*-?%\}`,Xv=String.raw`\{%-?\s*(macro|endmacro)\b[\s\S]*?-?%\}`,gh=new Set(Object.keys(Ph));function Zv(e){let t=[],n=0,s=0,r=0,i=o=>{let a=/^\s*([A-Za-z_$][\w$]*)\s*$/.exec(o);a&&t.push(a[1])};for(;r<e.length;){let o=e[r];if(o==='"'||o==="'"){r=Te(e,r);continue}if(o==="("||o==="["||o==="{"){n++,r++;continue}if(o===")"||o==="]"||o==="}"){n--,r++;continue}n===0&&o===","&&(i(e.slice(s,r)),s=r+1),r++}return i(e.slice(s)),t}function Qv(e){let t=[],n=new RegExp(Yv,"g"),s;for(;(s=n.exec(e))!==null;){let r=Zv(s[1]);if(r.length===0)continue;let i=s.index+s[0].length,o=new RegExp(Xv,"g");o.lastIndex=i;let a=0,l;for(;(l=o.exec(e))!==null;){if(l[1]==="macro"){a++;continue}if(a>0){a--;continue}t.push({start:i,end:l.index,params:r});break}}return t}function eE(e){let t=Qv(e);if(t.length===0)return e;let n=new Map;for(let i of t){let o=new Set(i.params),a=new RegExp(zv,"g");a.lastIndex=i.start;let l;for(;(l=a.exec(e))!==null&&!(l.index>=i.end);){let c=l[2],u=l.index+l[1].length,d=0;for(;d<c.length;){let p=c[d];if(p==='"'||p==="'"){d=Te(c,d);continue}if(!/[A-Za-z_$]/.test(p)||d>0&&/[\w$.]/.test(c[d-1])){d++;continue}let m=d;for(;m<c.length&&/[\w$]/.test(c[m]);)m++;let g=c.slice(d,m);if(!o.has(g)){d=m;continue}if(tE(c,d)){d=m;continue}let y=nE(c,d,m);y&&n.set(u+d,{length:g.length,text:$h(g,y)}),d=m}}}if(n.size===0)return e;let s="",r=0;for(let i of[...n.keys()].sort((o,a)=>o-a)){let o=n.get(i);s+=e.slice(r,i)+o.text,r=i+o.length}return s+e.slice(r)}function tE(e,t){let n=t-1;for(;n>=0&&/\s/.test(e[n]);)n--;return n>=0&&e[n]==="|"}function nE(e,t,n){if(e[n]==="."||e[n]==="["||e[n]==="(")return null;let s=n;for(;s<e.length&&/\s/.test(e[s]);)s++;if(gh.has(e[s])&&e.slice(s+1).trim()!=="")return e[s];let r=t-1;for(;r>=0&&/\s/.test(e[r]);)r--;return r>=0&&gh.has(e[r])?e[r]:null}var Sa="_themespot_interp";function Js(e){return e.replace(/\\([\s\S])/g,(t,n)=>n==="n"?`
-`:n==="t"?"	":n==="r"?"\r":n)}function za(e){let t=/\{\{([\s\S]*?)\}\}/g,n=[],s=0,r;for(;(r=t.exec(e))!==null;){r.index>s&&n.push(JSON.stringify(Js(e.slice(s,r.index))));let i=r[1].trim();n.push(i===""?'""':`(${i}|${Sa})`),s=r.index+r[0].length}return n.length===0?null:(s<e.length&&n.push(JSON.stringify(Js(e.slice(s)))),`(${n.join(" + ")})`)}function rE(e){return e.replace(new RegExp(`(${Ch})([\\s\\S]*?)(\\s*-?%\\})`,"g"),(t,n,s,r)=>{let i="",o=0,a=!1;for(;o<s.length;){let l=s[o];if(l!=='"'&&l!=="'"){i+=l,o++;continue}let c=Te(s,o),u=s.slice(o+1,c-1),d=u.includes("{{")?za(u):null;d===null?i+=s.slice(o,c):(i+=d,a=!0),o=c}return a?`${n}${i}${r}`:t})}function sE(e){return e.replace(/(\{%-?)\s*unless\s+([\s\S]*?)(-?%\})/g,(t,n,s,r)=>`${n} if not (${s.trim()}) ${r}`).replace(/(\{%-?)\s*endunless\s*(-?%\})/g,(t,n,s)=>`${n} endif ${s}`)}function iE(e,t){let n=e[t];if(n==='"'||n==="'")return Te(e,t);let s=e.slice(t),r=/^(?:-?\d+(?:\.\d+)?|true|false|none|null|True|False|None)\b/.exec(s);return r?t+r[0].length:t}function oE(e){let t="",n=0;for(;n<e.length;){let s=e[n];if(s==='"'||s==="'"){let i=Te(e,n);t+=e.slice(n,i),n=i;continue}if(!(n>0&&/[\w$.]/.test(e[n-1]))){let i=/^is\s+(not\s+)?([A-Za-z_][A-Za-z0-9_]*)\s+/.exec(e.slice(n));if(i){let o=n+i[0].length,a=iE(e,o);if(a>o){t+=`is ${i[1]?"not ":""}${i[2]}(${e.slice(o,a)})`,n=a;continue}}}t+=s,n++}return t}function aE(e){return e.replace(/(\{\{[\s\S]*?\}\}|\{%[\s\S]*?%\})/g,t=>oE(t))}function lE(e){if(!e.includes(","))return e;let t="",n=0;for(;n<e.length;){let s=e[n];if(s==='"'||s==="'"){let r=Te(e,n);t+=e.slice(n,r),n=r;continue}if(s===","){let r=n+1;for(;r<e.length&&/\s/.test(e[r]);)r++;if(e[r]==="}"||e[r]==="]"){n+=1;continue}}t+=s,n+=1}return t}function cE(e){return e.replace(/(\{\{[\s\S]*?\}\}|\{%[\s\S]*?%\})/g,t=>lE(t))}function uE(e){if(!e.includes("{{"))return e;let t="",n=0;for(;n<e.length;){let s=e.indexOf("{{",n);if(s===-1){t+=e.slice(n);break}t+=e.slice(n,s);let r=s+2,i=null,o=-1;for(;r<e.length;){let l=e[r];if(i){if(l==="\\"){r+=2;continue}l===i&&(i=null),r++;continue}if(l==='"'||l==="'"){i=l,r++;continue}if(l==="}"&&e[r+1]==="}"){o=r;break}if(l==="{"&&e[r+1]==="%")break;r++}if(o===-1){t+="{{",n=s+2;continue}let a=e.slice(s+2,o);t+=a.includes("{{")?`{{${dE(a)}}}`:`{{${a}}}`,n=o+2}return t}function dE(e){let t="",n=0;for(;n<e.length;){let s=e[n];if(s!=='"'&&s!=="'"){t+=s,n++;continue}let r=Te(e,n),i=e.slice(n+1,r-1),o=i.includes("{{")?za(i):null;t+=o??e.slice(n,r),n=r}return t}var pE="__themespot_protected_",Fh="__",hE=0;function fE(){let e=`${(++hE).toString(36)}${Math.random().toString(36).slice(2,8)}`;return`${pE}${e}_`}var _h=/\{%-?\s*(raw|verbatim)\s*-?%\}/y;function mE(e,t){let n=e.indexOf("#}",t+2);return n===-1?-1:n+2}function gE(e,t,n){let s=`end${n}`,r=o=>{let a=new RegExp(`${o}|\\{%\\s*(${s})\\s*%\\}`,"g");a.lastIndex=t;let l=1,c;for(;(c=a.exec(e))!==null;)if(l+=c[1]===s?-1:1,l===0)return c.index+c[0].length;return-1},i=r(`\\{%-?\\s*${n}\\s*-?%\\}`);return i===-1?r(`\\{%\\s*${n}\\s*%\\}`):i}function _E(e){let t=[],n=fE();if(!e.includes("{"))return{masked:e,regions:t,prefix:n};let s="",r=0,i=0;for(;i<e.length;){if(e[i]!=="{"){i++;continue}let o=-1;if(e[i+1]==="#")o=mE(e,i);else if(e[i+1]==="%"){_h.lastIndex=i;let a=_h.exec(e);a!==null&&(o=gE(e,i+a[0].length,a[1]))}if(o===-1){i++;continue}s+=e.slice(r,i)+`${n}${t.length}${Fh}`,t.push(e.slice(i,o)),r=o,i=o}return{masked:s+e.slice(r),regions:t,prefix:n}}function Ih(e,t){if(t.regions.length===0)return e;let n=new RegExp(`${t.prefix}(\\d+)${Fh}`,"g");return e.replace(n,(s,r)=>t.regions[Number(r)]??s)}function Dh(e,t){let n=++Ks;return dt.set(n,Ih(e,t)),n}var Zs="_themespot_macro_scope",Qs="_themespot_end_macro_scope",bE={endmacro:"macro",endcall:"call"};function yE(e){let t=/\{%(-?)\s*(macro|endmacro|call|endcall)\b([\s\S]*?)(-?)%\}/g,n=[],s=[],r;for(;(r=t.exec(e))!==null;){let[a,l,c,,u]=r,d=bE[c];if(d===void 0){n.push(c),s.push({at:r.index+a.length,text:`{% ${Zs} ${u}%}`});continue}if(n.pop()!==d)return e;s.push({at:r.index,text:`{%${l} ${Qs} %}`})}if(n.length>0||s.length===0)return e;let i="",o=0;for(let a of s)i+=e.slice(o,a.at)+a.text,o=a.at;return i+e.slice(o)}var Ya="_themespot_unknown",zs="_themespot_end_unknown",Mh="_themespot_set_sync",Xa="_themespot_load_translations_from",Za="_themespot_load_translations_in";function va(e){return e.replace(/\\/g,"/")}function Qa(e,t,n){if(n.length===0)return null;let s=Ne.resolve(e),r=o=>{let a=Ne.relative(o,s);return a!==""&&!a.startsWith("..")&&!Ne.isAbsolute(a)},i=null;for(let o of t.roots)r(o)&&(!i||o.length>i.dir.length)&&(i={dir:o,extra:!1});for(let o of n)r(o)&&(!i||o.length>i.dir.length)&&(i={dir:o,extra:!0});return i?.extra?i.dir:null}var wE=["raw","verbatim","if","ifAsync","for","asyncEach","asyncAll","block","extends","include","set","macro","call","import","from","filter","switch","endraw","endverbatim","endif","endfor","endeach","endall","endblock","endset","endmacro","endcall","endfilter","endswitch","case","default","else","elif","elseif"],SE=["unless","endunless","do"],vE=[Mh,Zs,Qs,Ya,zs],EE=["payment","subscription","dnd_area","dnd_section","dnd_column","dnd_row","dnd_module","include_dnd_partial","global_partial","module_attribute","require_css","require_js","require_head","scope_css","widget_block","widget_attribute","content_attribute","module","module_block","raw_html"],el=["end_dnd_area","end_dnd_section","end_dnd_column","end_dnd_row","end_dnd_module","end_module_attribute","end_module_block","end_widget_block","end_widget_attribute","end_content_attribute","end_require_css","end_require_js","end_require_head","end_scope_css"],RE=["if","ifAsync","for","asyncEach","asyncAll","block","macro","call","filter","switch"],xE=["endif","endfor","endeach","endall","endblock","endset","endmacro","endcall","endfilter","endswitch"],TE=new Set([...RE,...el.map(e=>e.slice(4)),Zs]),kE=new Set([...xE,...el,Qs]),AE=new Set(["else","elif","elseif","case","default"]),ga=null;function OE(){return ga===null&&(ga=new Set([...wE,...SE,...vE,...EE,...el,...ll])),ga}function jh(e){let t=/\{%-?\s*([A-Za-z_][A-Za-z0-9_]*)([\s\S]*?)-?%\}/g,n=[],s;for(;(s=t.exec(e))!==null;)n.push({start:s.index,end:s.index+s[0].length,name:s[1],args:s[2]});return n}function NE(e,t){return e===`end${t}`||e===`end_${t}`}function LE(e){return e.name==="set"?!e.args.includes("="):TE.has(e.name)}function CE(e,t){let n=OE(),s=jh(e);if(!s.some(l=>!n.has(l.name)))return e;let r=new Map,i=new Set;for(let l=0;l<s.length;l++){if(n.has(s[l].name)||i.has(l))continue;let c=s[l].name,u=1,d=0;for(let p=l+1;p<s.length;p++){let m=s[p].name;if(d===0&&AE.has(m))break;if(LE(s[p])){d++;continue}if(kE.has(m)){if(d===0)break;d--;continue}if(!(n.has(m)||i.has(p))){if(m===c){u++;continue}if(NE(m,c)&&(u--,!(u>0))){d===0&&(r.set(l,p),i.add(p));break}}}}let o="",a=0;for(let l=0;l<s.length;l++){let c=s[l];if(n.has(c.name))continue;if(o+=e.slice(a,c.start),a=c.end,i.has(l)){o+=`{% ${zs} %}`;continue}let u=Dh(c.args.trim(),t),d=r.has(l);o+=`{% ${Ya} "${c.name}", ${u}, ${d} %}`,d||(o+=`{% ${zs} %}`)}return o+e.slice(a)}var Uh="_themespot_do_append";function bh(e){let t=0,n=0;for(;n<e.length;){let s=e[n];if(s==='"'||s==="'"){n=Te(e,n);continue}if(s==="("||s==="["||s==="{")t++;else if((s===")"||s==="]"||s==="}")&&(t--,t<0))return!1;n++}return t===0}function yh(e){let t=/^([\s\S]+?)\.push\(([\s\S]*)\)$/.exec(e.trim());if(t===null)return e;let[,n,s]=t;return!bh(n)||!bh(s)?e:`${Uh}(${n}, [${s}], ${JSON.stringify(n.trim())})`}var Ws="_themespot_recur",Bh="_themespot_recursive_for_degraded";function PE(e){let t=0,n=0;for(;n<e.length;){let s=e[n];if(s==='"'||s==="'"){n=Te(e,n);continue}if(s==="("||s==="["||s==="{"){t++,n++;continue}if(s===")"||s==="]"||s==="}"){t--,n++;continue}if(t===0&&/\s/.test(s)){let r=/^\s+in\s+/.exec(e.slice(n));if(r!==null){let i=e.slice(0,n).trim(),o=e.slice(n+r[0].length).trim();return i===""||o===""?null:{targets:i,sequence:o}}}n++}return null}function Hh(e){let t=/^([\s\S]*?)\srecursive\s*$/.exec(e);return t===null?null:PE(t[1])}function $E(e,t){let n=0,s=t;for(;s<e.length;){let r=e[s];if(r==='"'||r==="'"){s=Te(e,s);continue}if(r==="("||r==="["||r==="{")n++;else if((r===")"||r==="]"||r==="}")&&(n--,n===0))return s;s++}return-1}function FE(e){let t=0,n=0;for(;n<e.length;){let s=e[n];if(s==='"'||s==="'"){n=Te(e,n);continue}if(s==="("||s==="["||s==="{")t++;else if(s===")"||s==="]"||s==="}")t--;else if(s===","&&t===0)return!0;n++}return!1}function IE(e,t,n,s){if(!s)return e;let r="",i=0,o=0;for(;o<e.length;){let a=e[o];if(a==='"'||a==="'"){o=Te(e,o);continue}if(!e.startsWith("loop",o)||/[\w$.]/.test(e[o-1]??"")){o++;continue}let l=e.slice(o+4),c=/^\s*\(/.exec(l);if(c!==null){let u=o+4+c[0].length-1,d=$E(e,u),p=d===-1?"":e.slice(u+1,d).trim();if(d!==-1&&p!==""&&!FE(p)){r+=e.slice(i,o)+`${t}(${p}, ${n} + 1, ${t})`,i=d+1,o=d+1;continue}}else{let u=/^\.depth0(?![\w$])/.exec(l),d=/^\.depth(?![\w$])/.exec(l),p=u??d;if(p!==null){r+=e.slice(i,o)+(u!==null?`(${n} - 1)`:n),i=o+4+p[0].length,o=i;continue}}o++}return r+e.slice(i)}var DE=new Set(["for","macro","call"]),ME=new Set(["endfor","endmacro","endcall"]);function jE(e,t){let n=/(\{\{-?)([\s\S]*?)(-?\}\})|(\{%-?)([\s\S]*?)(-?%\})/g,s="",r=0,i=0,o;for(;(o=n.exec(e))!==null;){let a=o[4]!==void 0,[l,c,u]=a?[o[4],o[5],o[6]]:[o[1],o[2],o[3]],d=a?/^\s*([A-Za-z_][A-Za-z0-9_]*)/.exec(c)?.[1]??"":"";ME.has(d)&&i--,s+=e.slice(r,o.index)+l+t(c,i)+u,r=o.index+o[0].length,DE.has(d)&&i++}return s+e.slice(r)}function UE(e){if(!/\srecursive\s*-?%\}/.test(e))return e;let t=e,n=0,s=(t.match(/\srecursive\s*-?%\}/g)??[]).length+1;for(let r=0;r<s;r++){let i=jh(t),o=-1;for(let a=0;a<i.length;a++)i[a].name==="for"&&Hh(i[a].args)!==null&&(o=a);if(o===-1)break;t=BE(t,i,o,++n)}return t}function BE(e,t,n,s){let r=t[n],i=Hh(r.args),o=e.slice(r.start,r.end),a=o.startsWith("{%-")?"-":"",l=o.endsWith("-%}")?"-":"",c=0,u=-1;for(let C=n;C<t.length;C++)if(t[C].name==="for")c++;else if(t[C].name==="endfor"&&--c===0){u=C;break}if(u===-1)return e.slice(0,r.start)+`{{${a} ${Bh}(${JSON.stringify(i.sequence)}) }}{% for ${i.targets} in ${i.sequence} ${l}%}`+e.slice(r.end);let d=t[u],p=e.slice(d.start,d.end),m=p.startsWith("{%-")?"-":"",g=p.endsWith("-%}")?"-":"",y=`${Ws}_${s}`,E=`${Ws}_seq_${s}`,x=`${Ws}_depth_${s}`,R=`${Ws}_self_${s}`,O=jE(e.slice(r.end,d.start),(C,I)=>IE(C,R,x,I===0)),k=d.end;return g===""&&(e.startsWith(`\r
-`,k)?k+=2:e[k]===`
-`&&(k+=1)),e.slice(0,r.start)+`{%${a} macro ${y}(${E}, ${x}, ${R}) %}{% for ${i.targets} in ${E} ${l}%}`+O+`{%${m} endfor %}{% endmacro %}{{ ${y}(${i.sequence}, 1, ${y}) ${g}}}`+e.slice(k)}var Pr="load_translations";function HE(e,t,n){let s=n?`${Za}(${JSON.stringify(va(n))}, ${JSON.stringify(t)}`:`${Xa}(${JSON.stringify(t)}`,r=c=>{let u="",d=0;for(;d<c.length;){let p=c[d];if(p==='"'||p==="'"){let y=Te(c,d);u+=c.slice(d,y),d=y;continue}if(!c.startsWith(Pr,d)||d>0&&/[\w$.]/.test(c[d-1])||/[\w$]/.test(c[d+Pr.length]??"")){u+=p,d++;continue}let m=d+Pr.length;for(;m<c.length&&/\s/.test(c[m]);)m++;if(c[m]!=="("){u+=p,d++;continue}let g=m+1;for(;g<c.length&&/\s/.test(c[g]);)g++;c[g]===")"?(u+=`${s})`,d=g+1):(u+=`${s}, `,d=g)}return u},i=/(\{\{-?)([\s\S]*?)(-?\}\})|(\{%-?)([\s\S]*?)(-?%\})/g,o="",a=0,l;for(;(l=i.exec(e))!==null;){let c=l[4]!==void 0,[u,d,p]=c?[l[4],l[5],l[6]]:[l[1],l[2],l[3]];o+=e.slice(a,l.index)+u+r(d)+p,a=l.index+l[0].length}return o+e.slice(a)}function GE(e){let t='"(?:[^"\\\\]|\\\\.)*"';return e.replace(new RegExp(`${Za}\\(\\s*${t}\\s*,\\s*${t}\\s*(?:,\\s*)?`,"g"),`${Pr}(`).replace(new RegExp(`${Xa}\\(\\s*${t}\\s*(?:,\\s*)?`,"g"),`${Pr}(`)}function Yt(e,t,n){let s=_E(e),r=uE(s.masked);t!=null&&(r=HE(r,t,n)),r=sE(r),r=rE(r),r=bs(r),r=Vv(r),r=Jv(r),r=eE(r),r=aE(r),r=cE(r),r=r.replace(/\{%\s*import\s+"([^"]+)"\s*%\}/g,'{% include "$1" %}'),r=r.replace(/\.append\(/g,".push("),r=r.replace(/\{%\s*do\s+([\s\S]*?)%\}/g,(o,a)=>{let l=a.trim(),c=0,u=-1;for(let d=0;d<l.length;d++){let p=l[d];p==="("||p==="["||p==="{"?c++:p===")"||p==="]"||p==="}"?c--:c===0&&l.slice(d).match(/^\s+if\s+/)&&(u=d)}if(u>=0){let d=l.substring(0,u).trim();return`{% if ${l.substring(u).replace(/^\s+if\s+/,"").trim()} %}{% set _do_result = ${yh(d)} %}{% endif %}`}return`{% set _do_result = ${yh(l)} %}`});let i=["dnd_area","dnd_section","dnd_column","dnd_row","dnd_module","include_dnd_partial","global_partial","module_attribute","module_block","module","raw_html",...AR];for(let o of i)r=r.replace(new RegExp(`\\{%\\s*${o}\\b([\\s\\S]*?)%\\}`,"g"),(a,l)=>{let c=l.trim().replace(/=\s*\{\{([\s\S]*?)\}\}/g,"=($1)"),u=Dh(c,s);return`{% ${o} ${u} %}`});return r=yE(r),r=r.replace(/\{%\s*set\s+([A-Za-z_$][\w$]*)\s*=\s*([\s\S]*?)\s*%\}/g,(o,a,l)=>a==="_do_result"?o:`${o}{% ${Mh} "${a}", ${a} %}`),r=UE(r),r=CE(r,s),Ih(r,s)}function Ea(e,t=!1){return e==null?t?"null":"":typeof e=="boolean"?e?"true":"false":typeof e=="string"?e:typeof e=="number"?String(e):Array.isArray(e)?`[${e.map(n=>Ea(n,!0)).join(", ")}]`:typeof e=="object"?`{${Object.entries(e).map(([n,s])=>`${n}=${Ea(s,!0)}`).join(", ")}}`:String(e)}var WE=/^[A-Za-z_$][\w$]*(?:\.[\w$]+|\[[^\]]+\])*$/;function _a(e,t,n,s,r,i){let{tagName:o,collector:a}=e;s=GE(s);let l=`${o}:${n}:${t}:${s}`;if(a.serialisedDndArgs.has(l))return;a.serialisedDndArgs.add(l);let c=t==="bare-reference"?`A bare reference is not resolved: HubSpot bakes this tag into the drag-and-drop layout at upload time, where there is no render context, so the module receives the ${s.length} characters "${s}" as a string.`:t==="interpolated-boolean"?`The interpolation resolves and HubSpot then serialises the RESULT, so the module receives the string "${r}" \u2014 which is truthy even when it reads "false".`:`The interpolation resolves to a list or dict and HubSpot then serialises the RESULT, so the module receives the string "${r}", fails its own \`Array.isArray\`/lookup, and drops to its defaults.`,u=i?`Write the literal in the tag (\`${n}=[\u2026]\` / \`${n}={\u2026}\`): a literal keeps its structure and its expression LEAVES \u2014 bare variables and \`get_asset_url()\` calls alike \u2014 do evaluate. That is the only portable spelling for a complex value.`:`Resolve it above the tree and pass \`${n}={{ \u2026 }}\`: an interpolated scalar survives intact.`;a.diagnostics.push(P(T.DND_ARGUMENT_SERIALISED,`{% ${o} %} was given \`${n}=${s}\`. ${c} ${u}`,{tag:o,argument:n,spelling:t,source:s,delivered:r}))}function Fr(e,t,n,s){if(!e)return{};if(!e.includes("="))return{_positional:e.trim().replace(/^["']|["']$/g,"")};let r=$r(e),i=s?$r(e,{raw:!0}):{};for(let[o,a]of Object.entries(r)){if(typeof a!="string")continue;let l=typeof i[o]=="string"?i[o]:a;if(a.startsWith("(")&&a.endsWith(")")){let c=a.slice(1,-1).trim();try{try{let d=t.renderString(`{{ (${c}) | dump }}`,n).trim();if(d&&d!=="null"&&d!=="undefined"){let p=JSON.parse(d);if(p&&typeof p=="object"){if(s){let m=Ea(p);r[o]=m,_a(s,"interpolated-collection",o,`{{ ${c} }}`,m,!0);continue}r[o]=p;continue}s&&typeof p=="boolean"&&_a(s,"interpolated-boolean",o,`{{ ${c} }}`,p?"true":"false",!1)}}catch{}let u=t.renderString(`{{ ${c} }}`,n).trim();r[o]=u}catch{let u=c.split(/\bor\b/),d=!1;for(let p=u.length-1;p>=0&&!d;p--){let m=u[p].trim(),g=m.match(/^"([\s\S]*)"$/);if(g){r[o]=g[1],d=!0;break}try{let y=t.renderString(`{{ ${m} }}`,n).trim();y&&(r[o]=y,d=!0)}catch{}}d||(r[o]="")}continue}if(a.startsWith("[")||a.startsWith("{")){try{let c=t.renderString(`{{ (${bo(a)}) | dump }}`,n).trim();c&&c!=="null"&&c!=="undefined"&&(r[o]=JSON.parse(c))}catch{}continue}if(a.includes("{{")&&a.includes("}}")){r[o]=a.replace(/\{\{([\s\S]*?)\}\}/g,(c,u)=>{let d=u.trim();if(d==="")return"";try{return t.renderString(`{{ ${d} }}`,n)}catch{return c}});continue}if(s){if(!/^["'[{]/.test(l)&&WE.test(l)){let c=!1;try{let u=t.renderString(`{{ (${l}) | dump }}`,n).trim();if(u&&u!=="null"&&u!=="undefined"){let d=JSON.parse(u);c=d!==null&&typeof d=="object"}}catch{}_a(s,"bare-reference",o,l,l,c)}continue}if(/^[A-Za-z_$][\w$]*(?:\.[\w$]+|\[[^\]]+\])*$/.test(a))try{let c=t.renderString(`{{ (${a}) | dump }}`,n).trim();if(c&&c!=="null"&&c!=="undefined"){let u=JSON.parse(c);u!==void 0&&(r[o]=u)}}catch{}}return r}function $r(e,t={}){let n={},s=e.trim(),r=0;function i(){for(;r<s.length&&/[\s,]/.test(s[r]);)r++}function o(){let l=r;for(;r<s.length&&/\w/.test(s[r]);)r++;return r>l?s.substring(l,r):null}function a(){let l=r,c=0,u=null;for(;r<s.length;){let d=s[r];if(u){if(d==="\\"){r+=2;continue}d===u&&(u=null),r++;continue}if(d==='"'||d==="'"){u=d,r++;continue}if(d==="("||d==="["||d==="{"){c++,r++;continue}if(d===")"||d==="]"||d==="}"){c--,r++;continue}if((d===","||/\s/.test(d))&&c===0){let p=r+1;for(;p<s.length&&/\s/.test(s[p]);)p++;let m=p;for(;m<s.length&&/\w/.test(s[m]);)m++;if(m>p){let g=m;for(;g<s.length&&/\s/.test(s[g]);)g++;if(g<s.length&&s[g]==="=")break}}r++}return s.substring(l,r).replace(/,\s*$/,"").trim()}for(;r<s.length&&(i(),!(r>=s.length));){let l=r,c=o();if(!c){r++;continue}if(i(),r>=s.length||s[r]!=="="){r=l+1;continue}for(r++;r<s.length&&/\s/.test(s[r]);)r++;let u=a();n[c]=t.raw?u:qE(u)}return n}function KE(e){if(!e.includes("\\"))return e;let t="";for(let n=0;n<e.length;n++){if(e[n]==="\\"){let s=e[n+1];if(s==="'"||s==='"'){t+=s,n++;continue}if(s==="\\"){t+="\\\\",n++;continue}}t+=e[n]}return t}function qE(e){let t=e.trim();if(t==="True"||t==="true")return!0;if(t==="False"||t==="false")return!1;if(t==="None"||t==="null")return null;if(/^-?\d+$/.test(t))return parseInt(t,10);if(/^-?\d+\.\d+$/.test(t))return parseFloat(t);if(t.startsWith('"')&&t.endsWith('"')||t.startsWith("'")&&t.endsWith("'"))return KE(t.slice(1,-1));try{let n=t.replace(/\bTrue\b/g,"true").replace(/\bFalse\b/g,"false").replace(/\bNone\b/g,"null");return JSON.parse(n)}catch{return t}}var Ra=class extends Gn{themeRoots;extraRootDirs;activeForeignRoot=()=>null;constructor(t,n,s=[]){super(t,{noCache:!0}),this.themeRoots=n,this.extraRootDirs=s}searchPathsFor(t){let n=this.activeForeignRoot();return n?Io(n.themeRoots,vs).map(s=>Ne.normalize(s)):super.searchPathsFor(t)}transform(t,n){let s=t.replace(/^<!--[\s\S]*?-->\s*/m,""),r=Qa(n,this.themeRoots,this.extraRootDirs);if(r){let i=Us(r);return qs(s,Vs(n,i),Pt(n,i),r)}return qs(s,Vs(n,this.themeRoots),Pt(n,this.themeRoots))}};function VE(e){if(!e||typeof e!="object")return{favicon:{src:""}};let t=e.primaryLogo??e.logos?.[0],n=e.primaryFavicon??e.favicons?.[0];return{...e,favicon:n??{src:""},logo:t??{src:""}}}function JE(e,t){if(t==null||t==="")return null;let n=_t(e,"forms.json",[]);if(!Array.isArray(n)||n.length===0)return null;let s=String(t);return n.find(r=>r&&(String(r.guid)===s||String(r.id)===s))??null}var zE=100,YE=100;function un(e){return typeof e=="string"||e instanceof String||typeof e=="number"?String(e):null}function wh(e,t){let n={notApplied:[]};if(e==null||e==="")return n;if(Array.isArray(e))return n.notApplied.push(`[${e.map(r=>String(r)).join(",")}]`),n;let s=un(e);if(s===null)return n.notApplied.push(String(e)),n;if(/^\s*\d+\s*$/.test(s))return t==="crm_object"?n.id=s.trim():n.notApplied.push(s.trim()),n;for(let r of s.split("&")){let i=r.trim();if(i==="")continue;let o=i.indexOf("="),a=(o===-1?i:i.slice(0,o)).trim().toLowerCase(),l=o===-1?"":i.slice(o+1).trim();if(a==="limit"&&/^\d+$/.test(l)){t==="crm_objects"&&(n.limit=Math.min(Number(l),YE));continue}if(t==="crm_object"&&a==="hs_object_id"&&l!==""){n.id=l;continue}n.notApplied.push(i)}return n}function Sh(e){let n=(Array.isArray(e)?e.map(s=>String(s)):un(e)?.split(",")??[]).map(s=>s.trim()).filter(s=>s!=="");return n.length>0?n:null}function Gh(e){return e.id??e.properties?.hs_object_id??null}function vh(e,t){let n=e.properties&&typeof e.properties=="object"&&!Array.isArray(e.properties)?e.properties:{},s={id:Gh(e)};for(let r of t??Object.keys(n))r==="id"||!Object.prototype.hasOwnProperty.call(n,r)||(s[r]=n[r]);return s}function XE(e){let t=un(e)?.trim()??"",n=/^[A-Za-z0-9_][A-Za-z0-9_.-]*$/.test(t)?t:"<objectTypeId-or-fqn>";return`fixtures/${Kt}/${n}.json`}function ba(e){let t=Number(e);return Number.isFinite(t)&&t>=1?Math.floor(t):null}function Eh(e){return{...e,id:e.id,name:e.name??e.label,label:e.label??e.name,slug:e.slug??"",absolute_url:e.absolute_url??e.absoluteUrl,absoluteUrl:e.absoluteUrl??e.absolute_url,featured_image:e.featured_image??e.featuredImage,featured_image_alt_text:e.featured_image_alt_text??e.featuredImageAltText,featured_image_width:e.featured_image_width??e.featuredImageWidth,featured_image_height:e.featured_image_height??e.featuredImageHeight,featuredImage:e.featuredImage??e.featured_image,featuredImageAltText:e.featuredImageAltText??e.featured_image_alt_text,featuredImageWidth:e.featuredImageWidth??e.featured_image_width,featuredImageHeight:e.featuredImageHeight??e.featured_image_height,topic_list:e.topic_list??[],tag_list:e.tag_list??e.topic_list??[],topicNames:e.topicNames??(e.topic_list??[]).map(t=>typeof t=="string"?t:t?.name),publish_date:e.publish_date,publish_date_localized:e.publish_date_localized??"",meta_description:e.meta_description??"",post_body:e.post_body??"",post_summary:e.post_summary??"",post_list_content:e.post_list_content??"",comment_count:e.comment_count??0,blog_post_author:e.blog_post_author??null,blog_author:e.blog_author??null,language:e.language??{languageTag:"en",textDirection:{value:"ltr"}}}}var ZE="messages.json";function Rh(e){let t=typeof e=="string"?e.trim().toLowerCase():"";if(!t)return[];let n=t.split(/[-_]/)[0];return n&&n!==t?[t,n]:[t]}function QE(e,t,n){let s=[],r=o=>{s.includes(o)||s.push(o)},i=o=>{let a=t.get(o);return a&&a!==o?[o,a]:[o]};for(let o of n){for(let a of i(o))r(Ne.join(e,a,ZE));for(let a of i(`${o}.json`))r(Ne.join(e,a))}return s}function eR(e){try{return A.existsSync(e)&&A.statSync(e).isDirectory()}catch{return!1}}function tR(e){let t=new Map,n;try{n=A.readdirSync(e)}catch{return t}for(let s of n){let r=s.toLowerCase();t.has(r)||t.set(r,s)}return t}function Ir(e){let{theme:t,renderModule:n,pageMeta:s,presetName:r="default"}=e,i=e.themeRoots??Me(e),o=i.themeRoot,a=new Ra(Io(i,vs),i,(e.page?.extraRoots??[]).map(h=>h.dir)),l=new z.default.Environment(a,{autoescape:!1,throwOnUndefined:!1,trimBlocks:!0,lstripBlocks:!0});z.default.installJinjaCompat(),fh(z.default.runtime);let c={cssLinks:[],jsLinks:[],moduleStyles:[],sectionCounter:0,rowCounter:0,columnCounter:0,moduleCounter:0,dndScopes:[],dndAreaNames:new Set,layout:$p(),diagnostics:e.themeRoots?[]:[...i.diagnostics],reactModules:[],scopedInstances:new Set,approximatedDefaultModules:new Set,rejectedDndLengths:new Set,serialisedDndArgs:new Set,reportedModuleStylesheetErrors:new Set,moduleScripts:[],inlineScripts:[],headMarkup:[],modulesWithAssetsCollected:new Set,reportedModuleFieldSchemas:new Set,reportedContentLinks:new Set,moduleFieldSchemas:new Map,provenance:e.stampProvenance===!1?void 0:ks(i,{themeId:e.themeId,parentThemeId:e.parentThemeId},(e.page?.extraRoots??[]).map(h=>({root:h.dir,themeId:h.themeId}))),page:e.page?eh(e.page):void 0,reactModulePolicy:e.reactModulePolicy};a.activeForeignRoot=()=>an(c);let d=(e.templateContext??{}).builtin_body_classes??"hs-content-page",p=e.contentState??null;l.addGlobal("theme",t),l.addGlobal("html_lang","en"),l.addGlobal("html_lang_dir","");let m=e.page?.content&&me(e.page.content)?uh(e.page.content):null;l.addGlobal("page_meta",s??{html_title:typeof m?.html_title=="string"?m.html_title:"Preview",meta_description:typeof m?.meta_description=="string"?m.meta_description:""}),l.addGlobal("brand_settings",VE(_t(o,"brand-settings.json",null))),l.addGlobal("builtin_body_classes",d),l.addGlobal("standard_header_includes",""),l.addGlobal("standard_footer_includes",""),l.addGlobal("theme_preset",{name:r}),l.addGlobal("is_in_editor",p?.is_in_editor===!0),l.addGlobal("rendered_with_grids",!1),l.addGlobal("context",{}),l.addGlobal("scaffold_content",{}),l.addGlobal("color_variant",ws),l.addGlobal("base_size",e.baseSize??16),l.addGlobal("year",new Date().getFullYear()),l.addGlobal("site_settings",{}),l.addGlobal("account",{}),l.addGlobal("portal_id",0),l.addGlobal("language","en"),l.addGlobal("local_dt",""),l.addGlobal("widget",{});let g=typeof p?.group?.public_title=="string"?p.group.public_title:void 0;l.addGlobal("blog",p?.blog??{});let y=e.page&&Object.keys(e.page.widgets).length>0?e.page.widgets:null;l.addGlobal("content",m||y?Gs({...p?.content??{},...y?{widgets:y}:{},...m??{}},{postBean:p?.kind==="blog-post",blogTitle:g}):p?Gs(p.content,{postBean:p.kind==="blog-post",blogTitle:g}):{}),p?.group&&l.addGlobal("group",p.group),p?.tag&&l.addGlobal("tag",p.tag),l.addGlobal("dynamic_page_hubdb_row",p?.dynamicPage?.row??void 0),l.addGlobal("dynamic_page_hubdb_table_id",p?.dynamicPage?.tableId??void 0),l.addGlobal("dynamic_page_crm_object",p?.dynamicPage?.crmObject??void 0);let E=(h,b=`${h} is not supported by the offline renderer \u2014 remove or replace it for a faithful render`,v={})=>(c.diagnostics.push(P(T.HUBL_GLOBAL_UNIMPLEMENTED,b,{feature:h,...v})),new z.default.runtime.SafeString(`<!-- ${h} not rendered: unsupported HubL feature -->`));for(let h of["crm_associations","oembed","related_blog_posts"])l.addGlobal(h,()=>E(h));l.addExtension("PaymentTag",new Xs(c,"payment")),l.addExtension("SubscriptionTag",new Xs(c,"subscription"));let x=new Set;l.addGlobal(Uh,(h,b,v)=>Array.isArray(h)?(h.push(...b??[]),""):(x.has(v)||(x.add(v),c.diagnostics.push(P(T.HUBL_DO_NO_OP,`\`{% do ${v}.append(\u2026) %}\` was ignored: \`${v}\` is not a list at that point in the template. HubSpot renders this as a silent no-op, so the page still renders \u2014 but the template is appending to something it has not defined yet.`,{receiver:v}))),""));let R=new Set;l.addGlobal(Bh,h=>(R.has(h)||(R.add(h),c.diagnostics.push(P(T.HUBL_FOR_RECURSIVE_DEGRADED,`\`{% for \u2026 in ${h} recursive %}\` rendered its first level only: the loop's \`{% endfor %}\` could not be found, so the recursion could not be rewritten. The rest of the page is unaffected \u2014 check that the loop is closed and correctly nested.`,{sequence:h}))),"")),l.addGlobal("request",{cookies:{},domain:"preview.localhost",full_url:"http://localhost:3456/",path:"/",path_and_query:"/",query:"",query_dict:{},referrer:"",remote_ip:"127.0.0.1",scheme:"http",search_engine:"",search_keyword:"",headers:{},...p?.request??{}}),l.addGlobal("request_contact",{is_logged_in:!1,list_memberships:{}});let O=xr(o,i),k=new Map;l.addGlobal("get_asset_url",Co(h=>{let b=an(c);if(!b)return O(h);let v=k.get(b.dir);return v||(v=xr(b.dir,b.themeRoots),k.set(b.dir,v)),v(h)})),l.addGlobal("get_asset_version",Po(h=>c.diagnostics.push(h))),l.addGlobal("require_css",h=>{let b=h&&Ns(c,h);return b&&!c.cssLinks.includes(b)&&c.cssLinks.push(b),""}),l.addGlobal("require_js",h=>{let b=h&&Ns(c,h);return b&&!c.jsLinks.includes(b)&&c.jsLinks.push(b),""});let C=new Set,I={themeRoots:i,themeRoot:o,label:null},F=new Map;for(let h of e.page?.extraRoots??[])F.set(va(h.dir),{themeRoots:Us(h.dir,i.projects),themeRoot:h.dir,label:h.root||h.portalRoot});let K=(h,b,v)=>{let f=typeof b=="string"?b:String(b??""),_=h!==null&&/^\.\.?\//.test(f.trim()),w=Ne.posix.normalize(_?Ne.posix.join(h,f.trim()):f.replace(/^\.\.\//,"")),S=v?.label?`the root of ${v.label}`:"the theme root",N=_?`${h===""?S:`${h}/`}, the directory of the template that called it`:S;if(w.startsWith(".."))return{lookedFor:w,resolvedFrom:N,directory:null};if(v===null)return{lookedFor:w,resolvedFrom:"a theme root this render was not given",directory:null};try{let L=$e(v.themeRoots,w);return L?{lookedFor:w,resolvedFrom:N,directory:L}:{lookedFor:w,resolvedFrom:N,directory:H(v.themeRoot,w,{reference:b,sourceFile:"load_translations"})}}catch(L){if(L instanceof X)return{lookedFor:w,resolvedFrom:N,directory:null};throw L}},le=(h,b,v,f,_=I)=>{let{lookedFor:w,resolvedFrom:S,directory:N}=K(h,b,_),L=[...Rh(v),...Rh(f)],D=N!==null&&eR(N),B=N??w,W=D?QE(N,tR(N),L):[],U=[];for(let ee of W)if(A.existsSync(ee))try{return JSON.parse(A.readFileSync(ee,"utf-8"))}catch{U.push(Ne.relative(B,ee))}let Y=W.map(ee=>Ne.relative(B,ee)),G=`${_===I?"":`${_?.label??"<unknown root>"}::`}${w}|${v??""}|${f??""}`;if(!C.has(G)){C.add(G);let ee=!D,pe=typeof b=="string"?`"${b}"`:b==null?null:String(b);c.diagnostics.push(P(T.HUBL_TRANSLATIONS_UNRESOLVED,(pe===null?"load_translations() was called without a locales path, so it returned an empty object and every `.message` a template reads from it is empty. ":`load_translations(${pe}, "${v??""}", "${f??""}") found no translations and returned an empty object, so every \`.message\` a template reads from it is empty. `)+(ee?`${w} is not a directory in ${_?.label?`the theme at ${_.label}`:"this theme"} \u2014 the path was resolved from ${S}. `:Y.length?`Looked for ${Y.join(", ")} under ${w}, resolved from ${S}. `:"Neither a language nor a fallback was named, so there was nothing to look for. ")+(U.length?`${U.join(", ")} exists but is not valid JSON \u2014 fix the file. `:"")+`HubSpot's layout is a folder per locale holding messages.json (${w}/${L[0]??"en"}/messages.json).`,{sourceFile:w,localesPath:typeof b=="string"?b:null,callerDir:h,lang:v??null,fallback:f??null,...ee?{}:{probed:Y},...U.length?{unreadable:U}:{},..._?.label?{themeRoot:_.label}:{}}))}return{}};l.addGlobal("load_translations",(h,b,v)=>le(null,h,b,v)),l.addGlobal(Xa,(h,b,v,f)=>le(typeof h=="string"?h:null,b,v,f)),l.addGlobal(Za,(h,b,v,f,_)=>le(typeof b=="string"?b:null,v,f,_,typeof h=="string"?F.get(va(h))??null:null)),l.addGlobal("resize_image_url",(h,...b)=>h==null?"":String(h));let Se=new Set,je=typeof p?.group?.absolute_url=="string"&&p.group.absolute_url.trim()!==""?p.group.absolute_url.trim().replace(/\/+$/,""):null,Ae=je??ma,ve=(h,b)=>(je!==null||Se.has(h)||(Se.add(h),c.diagnostics.push(P(T.HUBL_GLOBAL_UNIMPLEMENTED,`${h}() answered from an assumed blog root of "${ma}" \u2014 the real root is the blog listing page configured in the portal, which an offline render cannot read. The link shape is right; the prefix is a guess.`,{feature:h,assumedBlogRoot:ma}))),b),M=h=>encodeURIComponent(String(h??"").trim());l.addGlobal("blog_tag_url",(h,b)=>ve("blog_tag_url",`${Ae}/tag/${M(b)}`)),l.addGlobal("blog_author_url",(h,b)=>ve("blog_author_url",`${Ae}/author/${M(b)}`)),l.addGlobal("blog_page_link",h=>{let b=Number(h),v=Number.isFinite(b)&&b>1?`${Ae}/page/${Math.floor(b)}`:Ae;return ve("blog_page_link",v)}),l.addGlobal("blog_all_posts_url",h=>ve("blog_all_posts_url",Ae)),l.addGlobal("blog_by_id",h=>p?.group?{...p.group}:{id:h??null,absolute_url:ve("blog_by_id",Ae),public_title:"Blog",html_title:"Blog"});let Z=()=>_t(o,"blog-posts.json",[]),ne=h=>fa(h,{blogTitle:g}),ce=Array.isArray(p?.blog?.topics)?p.blog.topics:null,ge=new Map((ce??[]).filter(h=>h&&typeof h=="object").map(h=>[String(h.id),h])),_e=h=>Array.isArray(h)?h.map(b=>b!==null&&typeof b=="object"?b:ge.get(String(b))??{id:b,name:String(b),slug:String(b)}):h,ue=h=>{let b=Eh(ha({...h,topic_list:_e(h.topic_list)??[]}));return"tag_list"in h?b.tag_list=_e(h.tag_list):b.tag_list=b.topic_list,ne(b)},re=Array.isArray(p?.blog?.posts)?p.blog.posts:null,Ue=h=>new Set((Array.isArray(h)?h:[h]).filter(b=>b!=null).map(b=>String(b)));l.addGlobal("blog_tags",(h,b=250)=>{let v=Number.isFinite(Number(b))&&Number(b)>0?Math.floor(Number(b)):250;if(ce)return ce.slice(0,v).map(_=>({..._}));let f=new Map;for(let _ of Z())for(let w of ne(_).topic_list??[]){let S=String(w.slug??w.name??"");S&&!f.has(S)&&f.set(S,w)}return[...f.values()].slice(0,v)});let Be=!1;if(l.addGlobal("content_by_id",h=>{let b=String(h??"");if(p&&String(p.content?.id??"")===b&&b!=="")return Gs(p.content,{postBean:p.kind==="blog-post",blogTitle:g});let v=re?.find(_=>String(_?.id??"")===b);if(v)return ue(v);let f=Z().find(_=>String(_?.id??"")===b);return f?ne(f):(Be||(Be=!0,c.diagnostics.push(P(T.HUBL_GLOBAL_UNIMPLEMENTED,`content_by_id(${JSON.stringify(b)}) found nothing: offline, only the previewed page, its blog's posts and the posts in blog-posts.json can be looked up by id, so it answered null.`,{feature:"content_by_id",id:b}))),null)}),l.addGlobal("blog_recent_posts",(h,b=3)=>re?re.slice(0,b).map(ue):Z().slice(0,b).map(f=>ne({id:f.id,title:f.name??f.label,name:f.name??f.label,label:f.label??f.name,slug:f.slug??"",absolute_url:f.absolute_url??f.absoluteUrl,absoluteUrl:f.absoluteUrl??f.absolute_url,featured_image:f.featured_image??f.featuredImage,featured_image_alt:f.featured_image_alt_text??f.featuredImageAltText,featured_image_alt_text:f.featured_image_alt_text??f.featuredImageAltText,featured_image_width:f.featured_image_width??f.featuredImageWidth??800,featured_image_height:f.featured_image_height??f.featuredImageHeight??450,featuredImage:f.featuredImage??f.featured_image,featuredImageAltText:f.featuredImageAltText??f.featured_image_alt_text,featuredImageWidth:f.featuredImageWidth??f.featured_image_width??800,featuredImageHeight:f.featuredImageHeight??f.featured_image_height??450,topic_list:f.topic_list??(f.topicNames??[]).map(_=>({name:_})),tag_list:f.tag_list??f.topic_list??[],topicNames:f.topicNames??(f.topic_list??[]).map(_=>_.name),publish_date:f.publish_date,publish_date_localized:f.publish_date_localized??"",post_body:f.post_body??"",post_summary:f.post_summary??"",comment_count:f.comment_count??0,blog_post_author:f.blog_post_author??null,blog_author:f.blog_author??{display_name:"Preview Author",avatar:""},...f.html_title!==void 0?{html_title:f.html_title}:{}}))),l.addGlobal("blog_recent_tag_posts",(h,b,v=3)=>{if(re){let _=Ue(b);return re.map(ue).filter(w=>(w.topic_list??[]).some(S=>_.has(String(S?.slug??"")))).slice(0,v)}return Z().slice(0,v).map(_=>ne({id:_.id,title:_.name??_.label,name:_.name??_.label,label:_.label??_.name,slug:_.slug??"",absolute_url:_.absolute_url??_.absoluteUrl,absoluteUrl:_.absoluteUrl??_.absolute_url,featured_image:_.featured_image??_.featuredImage,featured_image_alt_text:_.featured_image_alt_text??_.featuredImageAltText,featured_image_width:_.featured_image_width??_.featuredImageWidth??800,featured_image_height:_.featured_image_height??_.featuredImageHeight??450,featuredImage:_.featuredImage??_.featured_image,featuredImageAltText:_.featuredImageAltText??_.featured_image_alt_text,featuredImageWidth:_.featuredImageWidth??_.featured_image_width??800,featuredImageHeight:_.featuredImageHeight??_.featured_image_height??450,topic_list:_.topic_list??[],tag_list:_.tag_list??_.topic_list??[],topicNames:_.topicNames??(_.topic_list??[]).map(w=>w.name),publish_date:_.publish_date,publish_date_localized:_.publish_date_localized??"",post_body:_.post_body??"",blog_author:_.blog_author??null,..._.html_title!==void 0?{html_title:_.html_title}:{}}))}),p?.kind==="blog-listing"){let h=Array.isArray(p.contents)?p.contents:re??Z(),b=Array.isArray(p.contents)||re?h.map(ue):h.map(w=>ne(Eh(w))),v=ba(p.current_page_num)??1,f=ba(p.last_page_num)??v,_=ba(p.next_page_num);b.total_count=re?.length??b.length,b.total_page_count=f,l.addGlobal("contents",b),l.addGlobal("current_page_num",v),_!==null&&l.addGlobal("next_page_num",_),l.addGlobal("last_page_num",f),l.addGlobal("previous_page_num",v>1?v-1:0)}l.addGlobal("business_unit",()=>({})),l.addGlobal("module_id",()=>`module_${++c.moduleCounter}`);let He=_t(o,"menu.json",{children:[]}),Ge=_t(o,"menus.json",[]),Ee=h=>{if(Array.isArray(Ge)&&Ge.length>0&&h!=null&&h!==""){let b=String(h),v=Ge.find(f=>f&&String(f.id)===b);if(v&&v.tree)return v.tree}return He};l.addGlobal("menu",(h,b)=>Ee(h)),l.addGlobal("simple_menu",(h,b)=>Ee(h)),l.addGlobal("form",h=>{let b=JE(o,h?.form_to_use)??_t(o,"form.json",{formFieldGroups:[],submitText:"Submit"}),v=h?.form_to_use??b.guid??"preview-form",f=b.submitText??"Submit",_=[];if(b.formFieldGroups){for(let S of b.formFieldGroups)if(S.fields)for(let N of S.fields)N.hidden||_.push(N)}else b.fields&&_.push(...b.fields);let w=_.map(S=>{let N=S.required?" required":"",L=S.required?'<span class="hs-form-required">*</span>':"",D=S.fieldType??S.type??"text",B=S.placeholder??"",W=S.description?`<legend class="hs-field-desc">${S.description}</legend>`:"",U;if(D==="textarea")U=`<textarea id="${S.name}" name="${S.name}" class="hs-input" placeholder="${B}"${N}></textarea>`;else if(D==="select"){let Q=(S.options??[]).map(G=>`<option value="${G.value}"${G.selected?" selected":""}>${G.label}</option>`).join("");U=`<select id="${S.name}" name="${S.name}" class="hs-input"${N}><option value="" disabled selected>Please select</option>${Q}</select>`}else D==="checkbox"?U=`<ul class="inputs-list">${(S.options??[]).map(G=>`<li><label class="hs-form-checkbox-display"><input type="checkbox" name="${S.name}" value="${G.value}" class="hs-input"><span>${G.label}</span></label></li>`).join("")}</ul>`:D==="radio"?U=`<ul class="inputs-list">${(S.options??[]).map(G=>`<li><label class="hs-form-radio-display"><input type="radio" name="${S.name}" value="${G.value}" class="hs-input"><span>${G.label}</span></label></li>`).join("")}</ul>`:U=`<input type="${S.validation?.name==="email"?"email":D==="phonenumber"?"tel":"text"}" id="${S.name}" name="${S.name}" class="hs-input" placeholder="${B}"${N}>`;return`<div class="hs-form-field">${S.labelHidden?"":`<label class="hs-form-label" for="${S.name}"><span>${S.label}</span>${L}</label>`}${W}<div class="input">${U}</div></div>`}).join(`
-`);return`<form id="hsForm_${v}" class="hs-form-private hsForm_${v} hs-form stacked" data-form-id="${v}" data-portal-id="${b.portalId??0}" novalidate>
-${w}
-<div class="hs_submit hs-submit"><div class="hs-field-desc" style="display:none"></div><div class="actions"><input type="submit" class="hs-button primary large" value="${f}"></div></div>
-</form>`}),l.addGlobal("subscription_types",_t(o,"subscription-types.json",[]));let qe=Array.isArray(p?.dynamicPage?.rows)?p.dynamicPage.rows:null,xt=()=>qe??_t(o,"hubdb-rows.json",[]);l.addGlobal("hubdb_table_rows",h=>xt()),l.addGlobal("hubdb_table_row",(h,b)=>{let v=xt(),f=p?.dynamicPage?.row;return b!==void 0?v.find(_=>_.hs_id===b)??(f&&f.hs_id===b?f:null):f||(v[0]??null)});let st=new Set,it=new Set,pn=h=>{let b=pp(o,h);for(let v of b.problems)st.has(v.file)||(st.add(v.file),c.diagnostics.push(P(T.CRM_OBJECT_FIXTURE_INVALID,`${v.file} is not a CRM object fixture (${v.detail}), so it answered no crm_objects or crm_object call. A fixture is a JSON object with a \`records\` array of \`{ "id", "properties" }\`.`,{file:v.file,reason:v.reason})));return b.match},Tt=(h,b)=>{let v=XE(b);return E(h,`${h} is not supported by the offline renderer without a fixture for ${JSON.stringify(un(b)??null)} \u2014 create ${v} in the theme to preview its records, or remove or replace it for a faithful render`,{objectType:un(b),fixturePath:v})},ot=(h,b,v,f,_)=>{if(f.length===0)return;let w=`${h}\0${un(b)}\0${_}\0${f.join("&")}`;if(it.has(w))return;it.add(w);let S=`${h}(${JSON.stringify(un(b))}, \u2026)`;c.diagnostics.push(P(T.CRM_OBJECT_QUERY_NOT_APPLIED,_==="id-not-in-fixture"?`${S} asked for a record ${v.file} does not have (${f.join(", ")}), so its first record stood in. Add a record with that id to the fixture to preview it.`:`${S} was answered from ${v.file} without applying ${f.join(", ")}: offline, only limit= (and crm_object's record id) is applied to fixture records.`,{feature:h,objectType:un(b),file:v.file,ignored:f,reason:_}))};l.addGlobal("crm_objects",(h,b,v)=>{let f=pn(h);if(!f)return Tt("crm_objects",h);let _=wh(b,"crm_objects");ot("crm_objects",h,f,_.notApplied,"clause-not-applied");let w=Sh(v),S=f.fixture.records,N=S.slice(0,_.limit??zE).map(L=>vh(L,w));return{results:N,total:S.length,has_more:N.length<S.length,offset:N.length}}),l.addGlobal("crm_object",(h,b,v)=>{let f=pn(h);if(!f)return Tt("crm_object",h);let _=wh(b,"crm_object");ot("crm_object",h,f,_.notApplied,"clause-not-applied");let w=f.fixture.records,S;return _.id!==void 0&&(S=w.find(N=>String(Gh(N))===_.id),S||ot("crm_object",h,f,[`hs_object_id=${_.id}`],"id-not-in-fixture")),S??=w[0],S?vh(S,Sh(v)):null}),l.addFilter("sanitize_html",(h,b)=>b==="STRIP"?String(h).replace(/<[^>]*>/g,""):String(h)),l.addFilter("escape_attr",h=>String(h).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")),l.addFilter("escape_url",h=>encodeURI(String(h))),l.addFilter("escape_html",h=>String(h??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")),l.addFilter("convert_rgb",Lo),l.addFilter("format_date",(h,b)=>{if(!h)return"";let v=new Date(h);if(isNaN(v.getTime()))return String(h);let _={short:"short",medium:"medium",long:"long",full:"full"}[String(b??"medium").toLowerCase()]??"long";try{return Li(v,_)}catch{return String(h)}}),l.addFilter("format_datetime",(h,b)=>{if(!h)return"";try{let v=new Date(h);if(isNaN(v.getTime()))return String(h);if(b==="MMMM yyyy")return`${["January","February","March","April","May","June","July","August","September","October","November","December"][v.getUTCMonth()]} ${v.getUTCFullYear()}`;if(typeof b=="string"&&!["short","medium","long","full"].includes(b.toLowerCase())){let f=ec(v,b);if(f!==null)return f}return Li(v,"long")}catch{return String(h)}}),l.addFilter("dump",h=>JSON.stringify(h)),l.addFilter("wordcount",h=>!h||typeof h!="string"?0:h.trim().split(/\s+/).length),l.addFilter("regex_replace",(h,b,v="",f="g")=>{try{return String(h).replace(new RegExp(b,f),v)}catch{return String(h)}}),l.addFilter("cut",(h,b="")=>String(h).split(String(b)).join("")),l.addFilter("xmlattr",(h,b=!0)=>{if(!h||typeof h!="object")return"";let v=[];for(let[f,_]of Object.entries(h))_==null||_===!1||/^[^\s"'<>=/]+$/.test(f)&&v.push(`${f}="${Ie(String(_))}"`);return v.length===0?"":new z.default.runtime.SafeString(`${b?" ":""}${v.join(" ")}`)}),l.addFilter("slugify",h=>String(h).toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")),l.addFilter("format_currency_value",(h,...b)=>{let v=b.find(S=>S&&typeof S=="object"&&S.__keywords)??{},f=v.locale??"en-GB",_=v.currency??"GBP",w=Number(h);if(!Number.isFinite(w))return String(h);try{return new Intl.NumberFormat(f,{style:"currency",currency:_}).format(w)}catch{return`\xA3${w.toFixed(2)}`}}),l.addFilter("between_times",(h,b,v="seconds")=>{let f=new Date(h).getTime(),_=new Date(b).getTime();if(Number.isNaN(f)||Number.isNaN(_))return 0;let w=_-f,N={milliseconds:1,seconds:1e3,minutes:6e4,hours:36e5,days:864e5,weeks:6048e5}[String(v)]??1e3;return Math.floor(w/N)}),l.addFilter("pprint",h=>{try{return JSON.stringify(h,null,2)}catch{return String(h)}}),l.addFilter("truncatehtml",(h,b=255,v="\u2026")=>{let f=String(h).replace(/<[^>]*>/g,"");return f.length<=b?f:`${f.slice(0,b).trimEnd()}${v}`});let ht=h=>h.find(b=>b&&typeof b=="object"&&b.__keywords)??{},at=h=>h.filter(b=>!(b&&typeof b=="object"&&b.__keywords)),Ce=h=>Array.isArray(h)?h:h==null?[]:[h],Pn=(h,b)=>{let v=h;for(let f of String(b).split(".")){if(v==null)return;v=v[f]}return v},kt=h=>{if(h===null)return"null";if(h===void 0)return"undefined";if(typeof h=="object")try{return`object:${JSON.stringify(h)}`}catch{return`object:${String(h)}`}return`${typeof h}:${String(h)}`},$n=(h,b)=>{let v=new Set,f=[];for(let _ of h){let w=kt(b(_));v.has(w)||(v.add(w),f.push(_))}return f},Fn=(h,b,v)=>{let f=Qe(h),_=Qe(b);if(f===null||_===null)return h;let w=v(f,_);return Number.isFinite(w)?w:h};l.addFilter("add",(h,b)=>Fn(h,b,(v,f)=>v+f)),l.addFilter("divide",(h,b)=>Fn(h,b,(v,f)=>v/f)),l.addFilter("multiply",(h,b)=>Fn(h,b,(v,f)=>v*f)),l.addFilter("divisible",(h,b)=>{let v=Qe(h),f=Qe(b);return v===null||f===null||f===0?!1:v%f===0}),l.addFilter("log",(h,b)=>{let v=Qe(h);if(v===null)return h;let f=b===void 0?void 0:Qe(b)??void 0,_=Kl(v,f);return Number.isFinite(_)?_:h}),l.addFilter("root",(h,b)=>{let v=Qe(h);if(v===null)return h;let f=b===void 0?void 0:Qe(b)??void 0,_=ql(v,f);return Number.isFinite(_)?_:h}),l.addFilter("format_number",(h,...b)=>{let v=ht(b),[f,_]=at(b),w=Qe(h);if(w===null)return h==null?"":String(h);let S=Qe(v.maxDecimalDigits??_);return Vl(w,v.locale??f,S??void 0)}),l.addFilter("filesizeformat",(h,...b)=>{let v=ht(b),[f]=at(b),_=Qe(h);return _===null?h==null?"":String(h):Jl(_,!!(v.binary??f??!1))}),l.addFilter("map",function(b,...v){let f=ht(v),[_,...w]=at(v),S=Ce(b);if(typeof f.attribute=="string")return S.map(L=>Pn(L,f.attribute));if(typeof _!="string")return S;let N=l.filters[_];if(typeof N=="function"){let L=this??l,D=[...w],B={...f};return delete B.attribute,Object.keys(B).length>1&&D.push(B),S.map(W=>N.call(L,W,...D))}return S.map(L=>Pn(L,_))}),l.addFilter("unique",(h,...b)=>{let v=ht(b),[f]=at(b),_=v.attr??v.attribute??f;return $n(Ce(h),w=>typeof _=="string"?Pn(w,_):w)}),l.addFilter("intersect",(h,b)=>{let v=new Set(Ce(b).map(kt));return $n(Ce(h).filter(f=>v.has(kt(f))),f=>f)}),l.addFilter("union",(h,b)=>$n([...Ce(h),...Ce(b)],v=>v)),l.addFilter("difference",(h,b)=>{let v=new Set(Ce(b).map(kt));return $n(Ce(h).filter(f=>!v.has(kt(f))),f=>f)}),l.addFilter("attr",(h,b)=>Pn(h,b));let Ri=new Set(["true","yes","on","y","t","1"]);l.addFilter("bool",h=>typeof h=="boolean"?h:typeof h=="number"?Number.isFinite(h)&&h!==0:typeof h=="string"?Ri.has(h.trim().toLowerCase()):!1),l.addFilter("fromjson",h=>{if(typeof h!="string")return h;try{return JSON.parse(h)}catch{return h}}),l.addFilter("md5",h=>Zl(h==null?"":String(h))),l.addFilter("wordwrap",(h,b=79)=>zl(h==null?"":String(h),Qe(b)??79)),l.addFilter("escape_jinjava",h=>Oi(h==null?"":String(h))),l.addFilter("escape_js",h=>Oi(Yl(h==null?"":String(h)))),l.addFilter("unescape_html",h=>Xl(h==null?"":String(h))),l.addFilter("urldecode",h=>h&&typeof h=="object"&&!Array.isArray(h)?Object.fromEntries(Object.entries(h).map(([b,v])=>[b,Ni(String(v??""))])):Ni(h==null?"":String(h))),l.addFilter("strtotime",(h,b)=>ns(h,typeof b=="string"?b:void 0)??h),l.addFilter("unixtimestamp",h=>{let b=ns(h);return b?b.getTime():h}),l.addFilter("format_time",(h,...b)=>{let v=ht(b),[f,_,w]=at(b),S=ns(h);return S?Ql(S,v.format??f??"medium",v.timeZone??_,v.locale??w):h});let xi=h=>h,Ti=l.getFilter.bind(l),ki=h=>c.diagnostics.some(b=>b.code===T.HUBL_FILTER_UNSUPPORTED&&b.details?.filter===h),dr=new Set(["default","d","safe","tojson","dump","pprint",Sa]),pr=new Map,Ai=(h,b)=>{let v=pr.get(h);return(!v||v.__themespotFilter!==b)&&(v=function(_,...w){return b.call(this,ln(_),...w)},v.__themespotFilter=b,pr.set(h,v)),v};l.getFilter=h=>{if(typeof l.filters[h]=="function"){let b=Ti(h);return dr.has(h)?b:Ai(h,b)}return ki(h)||c.diagnostics.push(P(T.HUBL_FILTER_UNSUPPORTED,`HubL filter \`${h}\` is not implemented by this renderer. Its input was passed through unchanged.`,{filter:h})),xi},l.addTest("string_containing",(h,b)=>{let v=ln(h);return typeof v=="string"&&v.includes(b)}),l.addTest("string",h=>typeof ln(h)=="string"),l.addTest("mapping",h=>h!==null&&typeof h=="object"&&!Array.isArray(h)&&!(h instanceof zt));let zr=(h,b)=>ln(h)===ln(b);l.addTest("equalto",zr),l.addTest("eq",zr),l.addTest("string_startingwith",(h,b)=>typeof h=="string"&&h.startsWith(String(b))),l.addTest("truthy",h=>h==null||h===!1||h===""||h===0?!1:Array.isArray(h)?h.length>0:typeof h=="object"?Object.keys(h).length>0:!!h),l.addTest("containing",(h,b)=>typeof h=="string"?h.includes(String(b)):Array.isArray(h)?h.includes(b):h!==null&&typeof h=="object"?Object.prototype.hasOwnProperty.call(h,String(b)):!1);let Yr=h=>h==null;l.addTest("null",Yr),l.addTest("none",Yr),l.addTest("boolean",h=>typeof h=="boolean"),l.addTest("sequence",h=>Array.isArray(h)||typeof h=="string"?!0:h!==null&&typeof h=="object"),l.addTest("float",h=>typeof h=="number"&&Number.isFinite(h)&&!Number.isInteger(h)),l.addTest("integer",h=>typeof h=="number"&&Number.isInteger(h));let hn=(h,b)=>{if(typeof h=="string")return h.includes(String(b));let v=kt(b);return Ce(h).some(f=>kt(f)===v)};l.addTest("containingall",(h,b)=>Ce(b).every(v=>hn(h,v))),l.addTest("within",(h,b)=>hn(b,h));let Xr=(h,b)=>h>=b,Zr=(h,b)=>h<=b;l.addTest("gte",Xr),l.addTest("lte",Zr),l.addFilter("split",(h,b="",v)=>{let f=String(h??"").split(String(b));return typeof v!="number"||v<=0||v>=f.length?f:[...f.slice(0,v-1),f.slice(v-1).join(String(b))]});let Qr=h=>h.replace(/</g,"\\u003c").replace(/>/g,"\\u003e").replace(/\u2028/g,"\\u2028").replace(/\u2029/g,"\\u2029");l.addFilter("tojson",h=>Qr(JSON.stringify(h??null))),l.addFilter("escapejson",h=>Qr(JSON.stringify(String(h??"")).slice(1,-1))),l.addFilter("render",h=>h==null?"":String(h)),l.addFilter(Sa,h=>h==null?"":h instanceof zt?h.printed():h),l.addFilter(Bo,h=>_p(ln(h))),l.addExtension("DndAreaTag",new xa(l,c)),l.addExtension("DndSectionTag",new Ta(l,c)),l.addExtension("DndColumnTag",new ka(l,c)),l.addExtension("DndRowTag",new Aa(l,c)),l.addExtension("DndModuleTag",new Na(l,c,o,n,i)),l.addExtension("IncludeDndPartialTag",new La(l,c,o,i)),l.addExtension("GlobalPartialTag",new Ca(l,o,e.renderGlobalPartials!==!1,i,c)),l.addExtension("ModuleAttributeTag",new Ia(l)),l.addExtension("RequireCssBlockTag",new Ha(l,c)),l.addExtension("RequireJsBlockTag",new Ga(l,c)),l.addExtension("RequireHeadBlockTag",new Wa(c)),l.addExtension("RawHtmlTag",new Ka),l.addExtension("ScopeCssTag",new Wn({renderToken:c,onScoped:h=>c.scopedInstances.add(h),onDiagnostic:h=>c.diagnostics.push(h)}));for(let h of ll)l.addExtension(`ModuleFieldTag:${h}`,new Ua(l,c,h));if(l.addExtension("WidgetBlockTag",new Ba(l)),l.addExtension("ModuleTag",new Da(l,c,o,n,i)),l.addExtension("ModuleBlockTag",new Ma(l,c,o,n,i)),l.addExtension("SetSyncTag",new Pa),l.addExtension("MacroScopeTag",new Fa),l.addExtension("UnknownTag",new qa(c)),c.page){let h=c.page,b={env:l,collector:c,themeRoots:i,themeRoot:o,renderModule:n};h.renderArea=(v,f,_)=>nh(v,{section:(w,S)=>zh(c,w,S),row:(w,S)=>Xh(c,w,S),column:(w,S)=>Yh(c,w,S),module:w=>pR(b,w,f),invalid:(w,S)=>c.diagnostics.push(P(T.PAGE_LAYOUT_INVALID,`The page's stored layout at ${w} ${S}, so it was skipped. The rest of the area renders.`,{where:w,detail:S}))},_)}return{env:l,collector:c,themeRoots:i}}function tl(e){let t=e.page;if(!t)return;let n=Object.keys(t.binding.widgets).filter(r=>!t.boundWidgets.has(r));n.length>0&&e.diagnostics.push(P(T.PAGE_WIDGET_UNBOUND,`The page holds values for ${n.length===1?"a fixed module":"fixed modules"} ${n.map(r=>JSON.stringify(r)).join(", ")} that no \`{% module %}\` or \`{% module_block %}\` on this render claimed, so ${n.length===1?"it is":"they are"} not drawn. A template that dropped the module leaves its old values behind; HubSpot does not draw them either.`,{widgets:n}));let s=Object.keys(t.binding.layoutSections).filter(r=>!t.consumedAreas.has(r));return s.length>0&&e.diagnostics.push(P(T.PAGE_LAYOUT_UNBOUND,`The page holds content for ${s.length===1?"a drag-and-drop area":"drag-and-drop areas"} ${s.map(r=>JSON.stringify(r)).join(", ")} that the template does not declare, so ${s.length===1?"it is":"they are"} not on this render. HubSpot draws a page's areas through its template, so the live page does not show them either.`,{areas:s})),t.records}function ei(e,t,n={}){Ja();let{env:s,collector:r}=Ir(e),i=Yt(t),o=s.renderString(i,n),a=tl(r);return{html:o,diagnostics:r.diagnostics,cssLinks:r.cssLinks,jsLinks:r.jsLinks,moduleScripts:r.moduleScripts,inlineScripts:r.inlineScripts,headMarkup:r.headMarkup,reactModules:r.reactModules,layoutSections:Ds(r.layout),...a?{pageModules:a}:{}}}function nl(e,t){Ja();let{env:n,collector:s,themeRoots:r}=Ir(e),i=e.templateContext??{},o=s.provenance?Vt(s.provenance,ut(r,t)):null,a=As(s.provenance,o,()=>n.render(t,i)),l=tl(s);return{html:a,diagnostics:s.diagnostics,cssLinks:s.cssLinks,jsLinks:s.jsLinks,moduleScripts:s.moduleScripts,inlineScripts:s.inlineScripts,headMarkup:s.headMarkup,reactModules:s.reactModules,layoutSections:Ds(s.layout),...l?{pageModules:l}:{}}}function Wh(e){Ja();let{env:t,collector:n}=Ir(e),s=e.templateContext??{},r=n.page?.binding.layoutSections??{},i=Object.keys(r).map(u=>{let d=r[u],p=me(d)&&typeof d.label=="string"?d.label:"";return Vh(n,u,{label:p},()=>"",s)}),o=t.renderString("{{ standard_header_includes }}",s),a=t.renderString("{{ standard_footer_includes }}",s),l=`${o}<main class="themespot-page-scaffold">
-${i.join(`
-`)}
-</main>${a}`,c=tl(n);return{html:l,diagnostics:n.diagnostics,cssLinks:n.cssLinks,jsLinks:n.jsLinks,moduleScripts:n.moduleScripts,inlineScripts:n.inlineScripts,headMarkup:n.headMarkup,reactModules:n.reactModules,layoutSections:Ds(n.layout),pageModules:c??[]}}var Sn=class{env;collector;argumentsAreSerialisedAtUpload=!0;constructor(t,n){this.env=t,this.collector=n}parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);t.advanceAfterBlockEnd(s.value);let i=t.parseUntilBlocks(this.endTag);return t.advanceAfterBlockEnd(),new n.CallExtension(this,"run",r,[i])}getKwargs(t,n){let s=n.length>1?n[0]:void 0;if(typeof s=="number"){let r=dt.get(s)??"";return Fr(r,this.env,t.ctx??{},this.argumentsAreSerialisedAtUpload?{tagName:this.tags[0],collector:this.collector}:void 0)}return Xt(n)}rawArgs(t){let n=t.length>1?t[0]:void 0;return typeof n=="number"?dt.get(n)??"":""}};function nR(e){return String(e??"").replace(/[^\w-]/g,"")||"dnd_area"}function rR(e,t){if(typeof t._positional=="string"&&t._positional.trim())return t._positional;let n=/^\s*(["'])([\s\S]*?)\1\s*,?/.exec(e);return n?n[2]:""}function Kh(e,t){if(!e.dndAreaNames.has(t))return e.dndAreaNames.add(t),t;for(let n=2;;n+=1){let s=`${t}-${n}`;if(!e.dndAreaNames.has(s))return e.dndAreaNames.add(s),s}}function vn(e){for(let n=e.dndScopes.length-1;n>=0;n-=1){let s=e.dndScopes[n];if(s.area)return s}let t={name:Kh(e,"dnd_area"),rows:0,columns:0,partials:0,area:{rowNumber:0,moduleNumber:0,css:[],mobileCss:[],rendersStyleBlock:!1}};return e.dndScopes.unshift(t),t}function ti(e){let t=e.dndScopes[e.dndScopes.length-1];return t||vn(e)}function Xn(e,t,n){e.dndScopes.push(t);try{return n()}finally{let s=e.dndScopes.lastIndexOf(t);s!==-1&&e.dndScopes.splice(s,1)}}function ni(e){return{name:e,rows:0,columns:0,partials:0}}function er(e){return Bp(e.layout,vn(e).name)}function Zn(e,t,n){try{return n()}finally{Kp(e.layout,t,ri(e))}}function xh(e,t){e.diagnostics.push(t),e.layout.reports.push(t)}function ri(e){return{onCollision:(t,n,s)=>{let r=s.type==="custom_widget"?"dnd_module":"dnd_column";xh(e,P(T.DND_HIERARCHY_VIOLATION,`Two drag-and-drop cells asked for offset ${t} in the same row, so {% ${r} %} "${s.name}" was stored at offset ${n} instead. HubSpot keys a row by offset: give each cell in a row its own \`offset\`, adding up to 12 with its \`width\`.`,{tag:r,name:s.name,requestedOffset:t,storedOffset:n}))},onFlatten:({kind:t,into:n,cells:s,styles:r})=>{let i=r&&Object.keys(r).length>0;xh(e,P(T.DND_HIERARCHY_VIOLATION,`A {% dnd_${t} %} was written directly inside a {% dnd_${n} %}, which HubSpot's stored layout cannot nest, so its ${s} cell${s===1?"":"s"} joined the {% dnd_${n} %}'s own row`+(i?` and its own styling (${Object.keys(r).sort().join(", ")}) was discarded`:"")+". Put the row inside a {% dnd_column %}, which is the level HubSpot stores rows at.",{kind:t,into:n,cells:s,discardedStyles:i?Object.keys(r).sort():[]}))}}}function ya(e,t){for(let n of t){let s=e.diagnostics.lastIndexOf(n);s!==-1&&e.diagnostics.splice(s,1)}}function qh(e){let t=[];return e.css.length>0&&t.push(e.css.join("")),e.mobileCss.length>0&&t.push(`@media (max-width: 767px){${e.mobileCss.join("")}}`),t.length>0?`<style>${t.join("")}</style>`:""}var xa=class extends Sn{tags=["dnd_area"];endTag="end_dnd_area";argumentsAreSerialisedAtUpload=!1;run(t,...n){let s=n[n.length-1],r=this.getKwargs(t,n);return new z.default.runtime.SafeString(Vh(this.collector,rR(this.rawArgs(n),r),r,()=>typeof s=="function"?s():"",t.ctx??{}))}};function sR(e,t,n){let s=e.page;if(!s||s.globalDepth>0)return null;for(let r of[t,n.trim()]){if(!r||s.consumedAreas.has(r)||!Object.prototype.hasOwnProperty.call(s.binding.layoutSections,r))continue;s.consumedAreas.add(r);let i=s.binding.layoutSections[r];return me(i)?i:(e.diagnostics.push(P(T.PAGE_LAYOUT_INVALID,`The page's stored content for drag-and-drop area ${JSON.stringify(r)} is not a layout node, so the area renders empty rather than as the template's default content, which is not this page's.`,{where:r,detail:"is not a layout node"})),{})}return null}function Vh(e,t,n,s,r){let i={name:Kh(e,nR(t)),rows:0,columns:0,partials:0,area:{rowNumber:0,moduleNumber:0,css:[],mobileCss:[],rendersStyleBlock:!0}},o=Up(e.layout,i.name,typeof n.label=="string"?n.label:""),a=sR(e,i.name,t),l=e.page?.renderArea,c=a&&l?()=>l(a,r,i.name):s,u=Ep(e.provenance,i.name,()=>Xn(e,i,()=>Zn(e,o,c))),d=e.provenance?Ft(Jn(e.provenance,"page",{dnd:i.name})):"",p=typeof n.class=="string"?n.class.trim():"",m=`container-fluid${p?" "+p:""}`;return`${qh(i.area)}<div class="${Ie(m)}"${d}>
-  <div class="row-fluid-wrapper">
-    <div class="row-fluid">
-      <div class="span12 widget-span widget-type-cell" data-widget-type="cell" data-x="0" data-w="12">
-        ${u}
-      </div>
-    </div>
-  </div>
-</div>`}var iR=/^-?[\d.]+(?:px|rem|em|%|vh|vw|vmin|vmax|ch|ex|pt|pc|cm|mm|in)?$|^auto$/i;function Jh(e,t){if(typeof e=="number")return Number.isFinite(e)?`${e}px`:null;if(typeof e!="string")return null;let n=e.trim();return n===""?null:iR.test(n)?/^-?[\d.]+$/.test(n)?`${n}px`:n:(t?.(n),null)}var oR=/[;{}<>"'\\@]|\/\*|\*\//;function aR(e){if(oR.test(e))return!1;let t=0;for(let n of e)if(n==="(")t+=1;else if(n===")"&&(t-=1,t<0))return!1;return t===0}var lR=/^#[0-9a-f]{3,8}$|^[a-z][\w-]*(?:\([\s\S]*\))?$/i;function cR(e,t){if(!e)return null;let n=s=>{let r=s.trim();return r?!aR(r)||!lR.test(r)?(t?.(r),null):r:null};return typeof e=="string"?n(e):typeof e!="object"?null:typeof e.color=="string"&&e.color.trim()?n(e.color):typeof e.r!="number"?null:`rgba(${Number(e.r)||0},${Number(e.g)||0},${Number(e.b)||0},${Number.isFinite(Number(e.a))?Number(e.a):1})`}function uR(e,t){if(typeof e!="string")return null;let n=e.trim();return n?/[<>{};\\"]|\/\*|\*\//.test(n)?(t?.(n),null):n.replace(/[ ()']/g,s=>({" ":"%20","(":"%28",")":"%29","'":"%27"})[s]??s):null}function Th(e,t){if(!e||typeof e!="object")return"";let n="";for(let s of["top","right","bottom","left"]){let r=Jh(e[s],t);r!==null&&(n+=`padding-${s}: ${r} !important;`)}return n}function rl(e,t){return n=>{let s=`${t}:${n}`;e.rejectedDndLengths.has(s)||(e.rejectedDndLengths.add(s),e.diagnostics.push(P(T.HUBL_GLOBAL_UNIMPLEMENTED,`{% ${t} %} was given "${n}" as a layout length, which is not one, so that declaration was dropped. HubSpot layout values are numbers of pixels, optionally with a CSS unit.`,{feature:`${t} length`,value:n})))}}function Qn(e,t,n){return s=>{let r=`${t}:${n}:${s}`;e.rejectedDndLengths.has(r)||(e.rejectedDndLengths.add(r),e.diagnostics.push(P(T.HUBL_GLOBAL_UNIMPLEMENTED,`{% ${t} %} was given "${s}" as a ${n}, which cannot be written into a CSS rule safely, so that declaration was dropped.`,{feature:`${t} ${n}`,value:s})))}}var dR={TOP:"flex-start",MIDDLE:"center",BOTTOM:"flex-end"};function sl(e,t,n={}){let{fullWidth:s=!1,verticalAlignment:r="self",onReject:i,onRejectColour:o,onRejectImage:a}=n,l=[],c="",u=cR(e.background_color,o);u&&(c+=`background-color: ${u} !important;`);let d=e.background_image;if(d&&typeof d=="object"){let E=uR(d.imageUrl,a);if(E){c+=`background-image: url('${E}') !important;`,c+=`background-size: ${String(d.backgroundSize??"cover").toLowerCase()==="contain"?"contain":String(d.backgroundSize??"cover").toLowerCase()==="auto"?"auto":"cover"} !important;`;let x=String(d.backgroundPosition??"MIDDLE_CENTER").toLowerCase().replace(/[^a-z_]/g,"").replace(/_/g," ").replace(/\bmiddle\b/,"center");c+=`background-position: ${x||"center center"} !important;`,c+="background-repeat: no-repeat !important;"}}c&&l.push({type:"background-layers",declarations:c});let p=e.padding;if(p&&typeof p=="object"){let E="default"in p||"mobile"in p,x=Th(E?p.default:p,i),R=Th(p.mobile,i);(x||R)&&l.push({type:"padding",declarations:x,mobile:R})}let m=dR[String(e.vertical_alignment??"").toUpperCase()];m&&l.push(r==="children"?{type:"vertical-alignment",target:" > .row-fluid",declarations:`display: flex !important;align-items: ${m} !important;`}:{type:"vertical-alignment",declarations:`display: flex !important;flex-direction: column !important;justify-content: ${m} !important;`});let g=Jh(e.max_width,i);g&&l.push({type:"max-width-section-centering",declarations:`max-width: ${g} !important;margin-left: auto !important;margin-right: auto !important;`}),s&&l.push({type:"force-full-width-section",target:" > .row-fluid",declarations:"max-width: none !important;"});let y={classes:[],css:[],mobileCss:[]};for(let E of l){let x=`${t}-${E.type}`;y.classes.push(x);let R=`.${x}${E.target??""}`;E.declarations&&y.css.push(`${R}{${E.declarations}}`),E.mobile&&y.mobileCss.push(`${R}{${E.mobile}}`)}return y}function il(e,t){let{area:n}=vn(e);return n.rendersStyleBlock?(n.css.push(...t.css),n.mobileCss.push(...t.mobileCss),""):qh({...n,css:t.css,mobileCss:t.mobileCss})}function ol(e,t,n=""){let s=[...e,...t.classes],r=n.trim();return r&&s.push(r),Ie(s.join(" "))}var Ta=class extends Sn{tags=["dnd_section"];endTag="end_dnd_section";run(t,...n){let s=n[n.length-1],r=this.getKwargs(t,n);return new z.default.runtime.SafeString(zh(this.collector,r,()=>typeof s=="function"?s():""))}};function zh(e,t,n){e.sectionCounter+=1;let s=ti(e),{area:r}=vn(e),i=`${s.name}-row-${s.rows}`;s.rows+=1;let o=r.rowNumber+=1,a=sl(t,i,{fullWidth:!!t.full_width,verticalAlignment:"children",onReject:rl(e,"dnd_section"),onRejectColour:Qn(e,"dnd_section","colour"),onRejectImage:Qn(e,"dnd_section","background image")}),l=il(e,a),c=ol(["row-fluid-wrapper","row-depth-1",`row-number-${o}`,"dnd-section"],a,typeof t.class=="string"?t.class:"");er(e);let u=Hp(e.layout,{cssClass:Ms("dnd-section",t),styles:Lr(t,{section:!0})}),d=Xn(e,ni(i),()=>Zn(e,u,n)),p=e.provenance?Ft(Jn(e.provenance,"section")):"";return`${l}<div class="${c}"${p}>
-  <div class="row-fluid">
-    ${d}
-  </div>
-</div>`}var ka=class extends Sn{tags=["dnd_column"];endTag="end_dnd_column";run(t,...n){let s=n[n.length-1],r=this.getKwargs(t,n);return new z.default.runtime.SafeString(Yh(this.collector,r,()=>typeof s=="function"?s():""))}};function Yh(e,t,n){e.columnCounter+=1;let s=t.width??12,r=t.offset??0,i=ti(e),o=`${i.name}-column-${i.columns}`;i.columns+=1;let a=sl(t,o,{onReject:rl(e,"dnd_column"),onRejectColour:Qn(e,"dnd_column","colour"),onRejectImage:Qn(e,"dnd_column","background image")}),l=il(e,a),c=ol([`span${s}`,"widget-span","widget-type-cell","dnd-column"],a);er(e);let u=Wp(e.layout,{w:Ps(s),x:$s(r),styles:Lr(t),cssClass:Ms("dnd-column",t)},ri(e)),d=Xn(e,ni(o),()=>Zn(e,u,n));return`${l}<div class="${c}" data-widget-type="cell" data-x="${r}" data-w="${s}">
-  ${d}
-</div>`}var Aa=class extends Sn{tags=["dnd_row"];endTag="end_dnd_row";run(t,...n){let s=n[n.length-1],r=this.getKwargs(t,n);return new z.default.runtime.SafeString(Xh(this.collector,r,()=>typeof s=="function"?s():""))}};function Xh(e,t,n){e.rowCounter+=1;let s=ti(e),{area:r}=vn(e),i=`${s.name}-row-${s.rows}`;s.rows+=1;let o=r.rowNumber+=1,a=sl(t,i,{verticalAlignment:"children",onReject:rl(e,"dnd_row"),onRejectColour:Qn(e,"dnd_row","colour"),onRejectImage:Qn(e,"dnd_row","background image")}),l=il(e,a),c=ol(["row-fluid-wrapper","row-depth-1",`row-number-${o}`,"dnd-row"],a);er(e);let u=Lr(t),d=Gp(e.layout,{cssClass:Ms("dnd-row",t),...Object.keys(u).length>0?{styles:u}:{}}),p=Xn(e,ni(i),()=>Zn(e,d,n));return`${l}<div class="${c}">
-  <div class="row-fluid">
-    ${p}
-  </div>
-</div>`}function Oa(e,t,n,s,r){return`<div class="span${e} widget-span widget-type-custom_widget dnd-module" data-widget-type="custom_widget" data-x="${t}" data-w="${e}">
-  <div id="hs_cos_wrapper_${Ie(n)}" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module"${s}>
-    ${r}
-  </div>
-</div>`}function Ys(e,t,n){let s=e.page;if(!s||(s.records.push(t),!n||t.gap===null))return;let r=`${t.path} ${t.gap}`;if(s.reportedGaps.has(r))return;s.reportedGaps.add(r);let i=t.gap==="module-removed"?"the content mirror reports that its module was removed from the theme it belonged to":t.gap==="module-theme-unavailable"?`it belongs to ${n.themeLabel??"a theme"}, whose source was not supplied to this render`:t.path?"no theme supplied to this render holds a module at that path":"the stored node names no module path";e.diagnostics.push(P(T.PAGE_MODULE_NOT_DRAWN,`Page module ${JSON.stringify(t.path)} could not be drawn: ${i}. A placeholder card stands in its place, so the layout around it is the page's own.`,{modulePath:t.path,instance:t.instance,reason:t.gap,...n.info?.themeId?{themeId:n.info.themeId}:{},...n.info?.themeName?{themeName:n.info.themeName}:{}}))}function pR(e,t,n){let{env:s,collector:r,themeRoots:i,themeRoot:o,renderModule:a}=e,l=r.page.binding,c=me(t.params)?t.params:{},u=typeof c.path=="string"?c.path.trim():"",d=Cr(c),p=yn(t.w,12),m=yn(t.x,0),g=++r.moduleCounter,y=vn(r),E=y.area.moduleNumber+=1,x=typeof t.name=="string"?t.name.trim():"",R=la(x),O=R??Yn(g),k=R??`${y.name}-module-${E}`;er(r),ra(r.layout,{w:Ps(p),x:$s(m),params:ia(d,u),styles:me(t.styles)?t.styles:void 0},ri(r));let C=oh(l.modules,u),I=null,F=null;u?C?.removed===!0?I="module-removed":(F=sh(l,i,u,yt),!F&&!ih(u)&&(I=ah(l,C))):I="module-unknown";let K=x||O;if(I!==null){let Ae=lh(l,C),ve=r.provenance,M=ve?{kind:"module",themeId:C?.themeId??null,instance:O,global:ve.globalDepth>0,dnd:ve.dndAreas[ve.dndAreas.length-1]??null}:null,Z=zn(It(u,{instance:O,reason:I,text:ch(Ae)}),M);return Ys(r,{path:u,instance:K,gap:I},{info:C,themeLabel:Ae}),Oa(p,m,k,M?Ft(M):"",Z)}let le=F?.root?{dir:F.root.dir,portalRoot:F.root.portalRoot,themeRoots:F.themeRoots,assets:l.assetsForRoot?.(F.root.dir)??null}:null,Se=kp(r,le,()=>Ls({env:s,collector:r,themeRoots:F?.themeRoots??i,themeRoot:o,modulePath:u,props:d,contextCtx:n,moduleNumber:g,preprocess:le?(Ae,ve)=>Yt(Ae,ve,ve==null?null:le.dir):Yt,renderModuleFn:a,attrs:{},resolvedModuleDir:F?F.dir:null,instanceName:O},Ae=>Ae==="react"));Ys(r,{path:u,instance:K,gap:Bs(Se.html)},null);let je=le?.assets?le.assets.html(Se.html):Se.html;return Oa(p,m,k,Se.provenance?Ft(Se.provenance):"",je)}function hR(e,t,n){let s=Rr(n,e);return s||($e(e,n)??H(t,n))}function fR(e,t){let n=["templates","sections","helpers","partials"];for(let s of t.roots){for(let i of n){let o=Ne.join(s,i),a=Ne.relative(o,e).replace(/\\/g,"/");if(a&&!a.startsWith("..")&&!Ne.isAbsolute(a))return a}let r=Ne.relative(s,e).replace(/\\/g,"/");if(r&&!r.startsWith("..")&&!Ne.isAbsolute(r))return r}return null}var Na=class extends Sn{tags=["dnd_module"];endTag="end_dnd_module";themeRoot;renderModuleFn;themeRoots;constructor(t,n,s,r,i){super(t,n),this.themeRoot=s,this.renderModuleFn=r,this.themeRoots=i??Me({themeRoot:s})}run(t,...n){let s=n[n.length-1],r=typeof s=="function"?s():"",i=this.getKwargs(t,n),o=i.path??"",a=i.width??12,l=i.offset??0,c=++this.collector.moduleCounter,u=vn(this.collector),d=u.name,p=u.area.moduleNumber+=1,m=new Set(["path","offset","width","horizontal_alignment","flexbox_positioning","_positional"]),g={};for(let[F,K]of Object.entries(i))m.has(F)||(g[F]=K);let y={},E=/<!-- module_attribute:(.*?) -->([\s\S]*?)<!-- end_module_attribute -->/g,x;for(;(x=E.exec(r))!==null;)y[x[1].trim()]=x[2].trim();let R={...g,...y};er(this.collector);let O=Lr(i);ra(this.collector.layout,{w:Ps(a),x:$s(l),params:ia({...i,...y},zp(o,this.themeRoots,yt(this.themeRoots,o))),styles:O},ri(this.collector));let{html:k,provenance:C}=Ls({env:this.env,collector:this.collector,themeRoots:this.themeRoots,themeRoot:this.themeRoot,modulePath:o,props:R,contextCtx:t.ctx??{},moduleNumber:c,preprocess:Yt,renderModuleFn:this.renderModuleFn,attrs:y},F=>F==="react"),I=C?Ft(C):"";return new z.default.runtime.SafeString(Oa(a,l,`${d}-module-${p}`,I,k))}};function Zh(e,t){let n=t===void 0?void 0:Va.get(t);return n||(e.provenance?Jo(e.provenance)?.file??null:null)}function Qh(e,t,n){let{tag:s,partialPath:r,includedFrom:i}=n,o=e.reportedMissingPartials??=new Set,a=`${s}|${r}|${i??""}`;if(o.has(a))return;o.add(a);let l=i?` in ${i}`:"",c=t.parentThemeRoot!==void 0&&t.roots.length>1?"this theme or its parent":"this theme";e.diagnostics.push(P(T.HUBL_PARTIAL_NOT_FOUND,`{% ${s} %}${l} names "${r}", which is not a file in ${c}, so nothing was rendered in its place. Check the path and the file name.`,{tag:s,path:r,includedFrom:i,...i?{sourceFile:i}:{}}))}var La=class{tags=["include_dnd_partial"];env;collector;themeRoot;themeRoots;constructor(t,n,s,r){this.env=t,this.collector=n,this.themeRoot=s,this.themeRoots=r??Me({themeRoot:s})}parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);return t.advanceAfterBlockEnd(s.value),new n.CallExtension(this,"run",r)}run(t,...n){let s=n.length>0?n[0]:void 0,r,i,o=typeof s=="number"?s:void 0;if(typeof s=="number"){let g=dt.get(s)??"",y=Fr(g,this.env,t.ctx??{});r=y.path??"",y.context&&typeof y.context=="object"&&(i=y.context)}else{let g=Xt(n);r=g.path??(typeof s=="string"?s:""),g.context&&typeof g.context=="object"&&(i=g.context)}if(!r)return"";let a=i?{...t.ctx??{},context:i}:t.ctx??{},l=ti(this.collector);l.partials+=1;let c=ni(`${l.name}-dnd_partial-${l.partials}`);er(this.collector);let u=na(this.collector.layout),d=an(this.collector),p=d?d.themeRoots:this.themeRoots,m=d?d.dir:this.themeRoot;try{let g=this.collector.provenance?Vt(this.collector.provenance,ut(p,r)??ut(p,r.replace(/^(?:\.\.\/)+/,""))):null,y=this.renderAsSection(g,()=>Xn(this.collector,c,()=>Zn(this.collector,u,()=>this.env.render(r,a))));return new z.default.runtime.SafeString(y)}catch{ya(this.collector,Is(this.collector.layout,u)),u=na(this.collector.layout);let g=hR(p,m,Ne.join("templates",r));if(!A.existsSync(g))return ya(this.collector,Is(this.collector.layout,u)),ut(p,r)===null&&ut(p,r.replace(/^(?:\.\.\/)+/,""))===null&&Qh(this.collector,p,{tag:"include_dnd_partial",partialPath:r,includedFrom:Zh(this.collector,o)}),new z.default.runtime.SafeString(`<!-- partial not found: ${r} -->`);let y=A.readFileSync(g,"utf-8");y=y.replace(/^<!--[\s\S]*?-->\s*/m,""),y=qs(y,Vs(g,p),Pt(g,p),d?Qa(g,this.themeRoots,[d.dir]):null);try{let E=this.collector.provenance?Vt(this.collector.provenance,g):null,x=this.renderAsSection(E,()=>Xn(this.collector,c,()=>Zn(this.collector,u,()=>this.env.renderString(y,a))));return new z.default.runtime.SafeString(x)}catch(E){ya(this.collector,Is(this.collector.layout,u));let x=E instanceof Error?E.message:String(E);return new z.default.runtime.SafeString(`<!-- partial error (${r}): ${x} -->`)}}}renderAsSection(t,n){let s=this.collector.provenance;return As(s,t,()=>{let r=n();return s?zn(r,Jn(s,"section")):r})}},Ca=class{tags=["global_partial"];env;themeRoot;renderPartials;themeRoots;collector;constructor(t,n,s,r,i){this.env=t,this.themeRoot=n,this.renderPartials=s,this.themeRoots=r??Me({themeRoot:n}),this.collector=i}parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);return t.advanceAfterBlockEnd(s.value),new n.CallExtension(this,"run",r)}run(t,...n){let s=n.length>0?n[0]:void 0,r,i=typeof s=="number"?s:void 0;if(typeof s=="number"){let m=dt.get(s)??"";r=Fr(m,this.env,t.ctx??{})}else r=Xt(n);let o=r.path??"",a=r.type??"CONTENT";if(!this.renderPartials){let m=this.collector?.provenance,g=m?Ft(Jn(m,"global",{file:String(o),global:!0,dnd:null})):"";return new z.default.runtime.SafeString(`<!-- global_partial: ${o} (${a}) -->
-<div class="themespot-global-partial-placeholder" data-partial-path="${o}" data-partial-type="${a}"${g}></div>`)}let l=o.replace(/^(?:\.\.\/)+/,""),c=[Ne.join("templates",o),Ne.join("templates",l),Ne.join("templates/layouts",o),Ne.join("partials",Ne.basename(o)),l],u=this.currentRoots(),d=c.map(m=>{try{return $e(u,m)}catch(g){if(g instanceof X)return null;throw g}}).find(m=>!!m);if(!d)return this.collector&&o&&Qh(this.collector,u,{tag:"global_partial",partialPath:String(o),includedFrom:Zh(this.collector,i)}),new z.default.runtime.SafeString(`<!-- global_partial not found: ${o} (${a}) -->`);let p=this.collector?.page;p&&(p.globalDepth+=1);try{return this.renderPartialFile(d,o,a,t)}finally{p&&(p.globalDepth-=1)}}renderPartialFile(t,n,s,r){let i=this.collector?.provenance;return i?As(i,Vt(i,t),()=>{let o=String(this.renderPartialFileUnstamped(t,n,s,r));return new z.default.runtime.SafeString(zn(o,Jn(i,"global",{dnd:null})))},{global:!0}):this.renderPartialFileUnstamped(t,n,s,r)}renderPartialFileUnstamped(t,n,s,r){try{let i=this.computeLoaderRelativeName(t);if(i){let c=this.env.render(i,r.ctx??{});return new z.default.runtime.SafeString(c)}let o=A.readFileSync(t,"utf-8");o=o.replace(/^<!--[\s\S]*?-->\s*/m,"");let a=this.collector?an(this.collector):null;o=qs(o,Vs(t,this.currentRoots()),Pt(t,this.currentRoots()),a?Qa(t,this.themeRoots,[a.dir]):null);let l=this.env.renderString(o,r.ctx??{});return new z.default.runtime.SafeString(l)}catch(i){let o=i instanceof Error?i.message:String(i);return new z.default.runtime.SafeString(`<!-- global_partial error (${n}, ${s}): ${o} -->`)}}computeLoaderRelativeName(t){return fR(t,this.currentRoots())}currentRoots(){let t=this.collector?an(this.collector):null;return t?t.themeRoots:this.themeRoots}},Pa=class{tags=["_themespot_set_sync"];parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);return t.advanceAfterBlockEnd(s.value),new n.CallExtension(this,"run",r)}run(t,...n){let s=n.filter(o=>!(o&&typeof o=="object"&&o.__keywords)),[r,i]=s;return typeof r=="string"&&t&&t.ctx&&(mR(t,r),t.ctx[r]=i),""}},$a=Symbol("themespot.macroScopeStack");function mR(e,t){let n=e[$a];if(!n||n.length===0)return;let s=n[n.length-1];if(s.has(t))return;let r=e.ctx;s.set(t,Object.prototype.hasOwnProperty.call(r,t)?{present:!0,value:r[t]}:{present:!1,value:void 0})}function gR(e,t){for(let[n,s]of t)s.present?e[n]=s.value:delete e[n]}var Fa=class{tags=[Zs];parse(t,n){let s=t.nextToken();t.advanceAfterBlockEnd(s.value);let r=t.parseUntilBlocks(Qs);return t.advanceAfterBlockEnd(),new n.CallExtension(this,"run",null,[r])}run(t,n){if(!t||!t.ctx)return new z.default.runtime.SafeString(n());let s=t[$a]??(t[$a]=[]),r=new Map;s.push(r);try{return new z.default.runtime.SafeString(n())}finally{let i=s.lastIndexOf(r);if(i>=0){for(let o=s.length-1;o>=i;o--)gR(t.ctx,s[o]);s.length=i}}}},Ia=class{tags=["module_attribute"];env;constructor(t){this.env=t}parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);t.advanceAfterBlockEnd(s.value);let i=t.parseUntilBlocks("end_module_attribute");return t.advanceAfterBlockEnd(),new n.CallExtension(this,"run",r,[i])}run(t,...n){let s=n[n.length-1],r=typeof s=="function"?s():"",i=n.length>1?n[0]:void 0,o;return typeof i=="number"?o=(dt.get(i)??"").trim().replace(/^["']|["']$/g,"")||"content":o=typeof i=="string"?i:"content",new z.default.runtime.SafeString(`<!-- module_attribute:${o} -->${r}<!-- end_module_attribute -->`)}},Da=class{tags=["module"];env;collector;themeRoot;renderModuleFn;themeRoots;constructor(t,n,s,r,i){this.env=t,this.collector=n,this.themeRoot=s,this.renderModuleFn=r,this.themeRoots=i??Me({themeRoot:s})}parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);return t.advanceAfterBlockEnd(s.value),new n.CallExtension(this,"run",r)}run(t,...n){let s=n.length>0?n[0]:void 0,r,i="";typeof s=="number"?(i=dt.get(s)??"",r=Fr(i,this.env,t.ctx??{})):r=Xt(n);let o=r.path??"";if(!o)return new z.default.runtime.SafeString("<!-- module: no path -->");let a=new Set(["path","overrideable","_positional"]),l={};for(let[p,m]of Object.entries(r))a.has(p)||(l[p]=m);let c=tf(this.collector,_R(i,r,n));c&&Object.assign(l,c.props);let u=++this.collector.moduleCounter,d=Or({env:this.env,collector:this.collector,themeRoots:this.themeRoots,themeRoot:this.themeRoot,modulePath:o,props:l,contextCtx:t.ctx??{},moduleNumber:u,preprocess:Yt,renderModuleFn:this.renderModuleFn,...c?.instanceName?{instanceName:c.instanceName}:{}});return c&&Ys(this.collector,{path:String(o),instance:c.name,gap:Bs(d)},null),new z.default.runtime.SafeString(d)}};function _R(e,t,n){let s=/^\s*(["'])([\s\S]*?)\1/.exec(e);return s?s[2].trim():ef(t,n)}function bR(e,t,n){let s=/^\s*(?:module\s+)?(["'])([\s\S]*?)\1/.exec(e);return s?s[2].trim():ef(t,n)}function ef(e,t){if(typeof e._positional=="string"&&e._positional.trim())return e._positional.trim();for(let n of t)if(typeof n=="string"&&n.trim())return n.trim();return""}function tf(e,t){let n=e.page;return!n||!t||n.globalDepth>0||n.boundWidgets.has(t)||!Object.prototype.hasOwnProperty.call(n.binding.widgets,t)?null:(n.boundWidgets.add(t),{name:t,props:th(n.binding.widgets[t]),instanceName:la(t)})}var Ma=class{tags=["module_block"];env;collector;themeRoot;renderModuleFn;themeRoots;constructor(t,n,s,r,i){this.env=t,this.collector=n,this.themeRoot=s,this.renderModuleFn=r,this.themeRoots=i??Me({themeRoot:s})}parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);t.advanceAfterBlockEnd(s.value);let i=t.parseUntilBlocks("end_module_block");return t.advanceAfterBlockEnd(),new n.CallExtension(this,"run",r,[i])}run(t,...n){let s=n[n.length-1],r=typeof s=="function"?s():"",i=n.length>1?n[0]:void 0,o,a="";typeof i=="number"?(a=dt.get(i)??"",o=Fr(a,this.env,t.ctx??{})):o=Xt(n);let l=o.path??"";if(!l)return new z.default.runtime.SafeString("<!-- module_block: no path -->");let c=new Set(["path","overrideable","_positional","module"]),u={};for(let[R,O]of Object.entries(o))c.has(R)||(u[R]=O);let d={},p=/<!-- module_attribute:(.*?) -->([\s\S]*?)<!-- end_module_attribute -->/g,m;for(;(m=p.exec(r))!==null;)d[m[1].trim()]=m[2].trim();let g=tf(this.collector,bR(a,o,n.slice(0,-1))),y={...u,...d,...g?.props??{}},E=++this.collector.moduleCounter,x=Or({env:this.env,collector:this.collector,themeRoots:this.themeRoots,themeRoot:this.themeRoot,modulePath:l,props:y,contextCtx:t.ctx??{},moduleNumber:E,preprocess:Yt,renderModuleFn:this.renderModuleFn,attrs:d,...g?.instanceName?{instanceName:g.instanceName}:{}});return g&&Ys(this.collector,{path:String(l),instance:g.name,gap:Bs(x)},null),new z.default.runtime.SafeString(x)}};function Fe(e){return e==null?"":String(e)}function Ie(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}function cn(e,t){let n=Fe(t);return n===""?"":` ${e}="${Ie(n)}"`}function kh(e){let t='<img class="hs-image-widget"'+cn("src",e.src)+cn("alt",e.alt)+cn("width",e.width)+cn("height",e.height)+cn("loading",e.loading)+cn("style",e.style)+">",n=Fe(e.link);return n===""?t:`<a class="hs-image-link"${cn("href",n)}${cn("target",e.target)}>${t}</a>`}function Ah(...e){for(let t of e)if(Fe(t).trim()!=="")return t;return""}function Oh(e,t){let n=Fe(e).toLowerCase(),s=/^h[1-6]$/.test(n)?n:"h1",r=Fe(t);return r===""?"":`<${s}>${Ie(r)}</${s}>`}var yR=/^fontawesome[-_]?(\d+)(?:\.\d+){0,2}$/i,Nh={4:{release:"4.7.0",stylesheet:"css/font-awesome.min.css",script:null,families:!1},5:{release:"5.15.4",stylesheet:"css/all.min.css",script:"js/all.min.js",families:!0},6:{release:"6.5.2",stylesheet:"css/all.min.css",script:"js/all.min.js",families:!0}},nf="5",wR="fa";function al(e){return Nh[e]??Nh[nf]}var SR={SOLID:"fas",REGULAR:"far",LIGHT:"fal",THIN:"fat",DUOTONE:"fad",BRANDS:"fab"},vR=new Set(["facebook","facebook-f","facebook-square","facebook-messenger","twitter","twitter-square","x-twitter","instagram","instagram-square","linkedin","linkedin-in","youtube","youtube-square","vimeo","vimeo-v","vimeo-square","pinterest","pinterest-p","pinterest-square","tiktok","snapchat","snapchat-ghost","whatsapp","whatsapp-square","telegram","telegram-plane","discord","slack","slack-hash","github","github-square","gitlab","bitbucket","stack-overflow","codepen","npm","node-js","dribbble","dribbble-square","behance","behance-square","medium","medium-m","tumblr","tumblr-square","reddit","reddit-alien","reddit-square","flickr","vk","weibo","weixin","spotify","soundcloud","apple","app-store","google","google-play","google-plus-g","google-plus-square","android","windows","microsoft","amazon","ebay","etsy","shopify","wordpress","wordpress-simple","hubspot","salesforce","mailchimp","stripe","stripe-s","paypal","cc-visa","cc-mastercard","cc-amex","cc-paypal","cc-stripe","yelp","tripadvisor","xing","xing-square","skype","twitch"]),rf="https://cdnjs.cloudflare.com/ajax/libs/font-awesome";function ER(e){let{release:t,stylesheet:n}=al(e);return`${rf}/${t}/${n}`}function RR(e){let{release:t,script:n}=al(e);return n===null?null:`${rf}/${t}/${n}`}var xR=":where(.themespot-icon){fill:currentColor}:where(.themespot-icon svg path){fill:inherit}";function TR(e){let t=RR(e);return t===null?null:[`<style data-themespot-icon-css>${xR}</style>`,`<script defer src="${Ie(t)}" data-auto-replace-svg="nest"></script>`]}function kR(e,t){let n=Fe(e.icon_set).trim(),s=yR.exec(n)?.[1];if(n!==""&&s===void 0)return null;let r=Fe(e.name).trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");if(r==="")return null;let i=Fe(e.style).trim().toUpperCase(),o=s??nf,a=al(o).families?vR.has(r)?"fab":SR[i]??"fas":wR,l=TR(o);if(l!==null)for(let x of l)t.headMarkup.includes(x)||t.headMarkup.push(x);else{let x=ER(o);t.cssLinks.includes(x)||t.cssLinks.push(x)}let c=l!==null?" data-themespot-fa-runtime":"",u=["themespot-icon",a,`fa-${r}`],d=Fe(e.extra_classes).trim();d&&u.push(d);let p=Fe(e.height).trim(),m=/^\d+(?:\.\d+)?$/.test(p)?` style="font-size: ${p}px;"`:"",g=Fe(e.purpose).trim().toLowerCase()==="decorative",y=Fe(e.title).trim(),E=g||y===""?' aria-hidden="true"':` role="img" aria-label="${Ie(y)}"`;return`<i class="${Ie(u.join(" "))}"${c}${m}${E}></i>`}var sf={text:{bare:!0},boolean:{bare:!0},choice:{bare:!0},rich_text:{body:e=>Fe(e.html)},linked_image:{body:kh},logo:{body:kh},header:{body:e=>Oh(Ah(e.heading_level,e.header_tag),Ah(e.header,e.value))},section_header:{body:e=>Oh(e.heading_level,e.header)+(Fe(e.subheader)===""?"":`<p>${Ie(Fe(e.subheader))}</p>`)},form:{needs:"a form definition from the portal"},cta:{needs:"a call-to-action defined in the portal"},menu:{needs:"a menu tree from the portal"},post_listing:{needs:"blog posts from the portal"},post_filter:{needs:"blog tags, authors and dates from the portal"},blog_comments:{needs:"blog comments from the portal"},blog_subscribe:{needs:"a blog subscription form from the portal"},rss_listing:{needs:"an RSS feed fetched at render time"},email_subscriptions:{needs:"the subscription types defined in the portal"},email_subscriptions_confirmation:{needs:"the subscription types defined in the portal"},email_simple_subscription:{needs:"the subscription types defined in the portal"},member_login:{needs:"HubSpot's membership login form"},member_register:{needs:"HubSpot's membership registration form"},password_reset:{needs:"HubSpot's membership password-reset form"},password_reset_request:{needs:"HubSpot's membership password-reset request form"},related_blog_posts:{needs:"blog posts from the portal"},simple_menu:{needs:"a rendered navigation tree"},page_footer:{needs:"the portal's footer content"},password_prompt:{needs:"HubSpot's password-protection form"},gallery:{needs:"HubSpot's gallery player"},icon:{body:kR,needs:"an icon from HubSpot's hosted icon sets"},video_player:{needs:"HubSpot's hosted video player"},editor_placeholder:{silent:"HubSpot draws this affordance inside its page editor and nowhere else, so a rendered page has nothing here either"}},ll=Object.keys(sf),AR=ll;function OR(e){let t=e.trim(),n=t[0];if(n!=='"'&&n!=="'")return null;let s=Te(t,0);return t.slice(1,s-1)}var cl="__themespot_widget_args__";function NR(e,t,n,s){let r=e.trim();if(/^(?:True|true)$/.test(r))return new t.Literal(n,s,!0);if(/^(?:False|false)$/.test(r))return new t.Literal(n,s,!1);if(/^(?:None|none|null)$/.test(r))return new t.Literal(n,s,null);if(/^-?\d+(?:\.\d+)?$/.test(r))return new t.Literal(n,s,Number(r));let i=r[0];if((i==='"'||i==="'")&&Te(r,0)===r.length){let o=r.slice(1,-1),a=o.includes("{{")?za(o):null;return a===null?new t.Literal(n,s,Js(o)):Lh(a,t,n,s)??new t.Literal(n,s,Js(o))}return Lh(r,t,n,s)??new t.Literal(n,s,r)}function Lh(e,t,n,s){try{let i=(z.default.parser.parse(`{{ ${e} }}`,[],{}).children??[]).find(o=>o instanceof t.Output&&(o.children??[]).length>0);return i?i.children[0]:null}catch{return null}}function of(e,t,n,s){let r=Object.entries($r(e,{raw:!0})).map(([i,o])=>new t.Pair(n,s,new t.Literal(n,s,i),NR(String(o),t,n,s)));return new t.NodeList(n,s,[new t.Literal(n,s,cl),new t.Literal(n,s,OR(e)),new t.Dict(n,s,r)])}function af(e){for(let t of e?.children??[])if(typeof t?.value=="number")return t.value;return null}function ja(e,t,n){return`<span id="hs_cos_wrapper_${Ie(t)}" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_${Ie(e)}" data-hs-cos-general-type="widget" data-hs-cos-type="${Ie(e)}">${n}</span>`}var Ua=class{tags;env;collector;tagName;spec;constructor(t,n,s){this.env=t,this.collector=n,this.tagName=s,this.spec=sf[s],this.tags=[s]}parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);t.advanceAfterBlockEnd(s.value);let i=af(r);return i===null?new n.CallExtension(this,"run",r):new n.CallExtension(this,"run",of(dt.get(i)??"",n,s.lineno,s.colno))}run(t,...n){if(this.spec.silent!==void 0)return this.reportSilentRender(this.spec.silent),new z.default.runtime.SafeString("");let s=t&&t.ctx||{},r=n[0]===cl,i=r?n[2]??{}:Xt(n),o=r?n[1]:n.find(l=>typeof l=="string")??null;if(this.spec.bare)return this.runLegacyFieldTag(s,o,i);if(this.spec.body){let l=this.spec.body(i,this.collector);if(l!==null)return new z.default.runtime.SafeString(ja(this.tagName,o??Fe(s.name),l))}this.collector.diagnostics.push(P(T.HUBL_GLOBAL_UNIMPLEMENTED,`The '${this.tagName}' widget renders ${this.spec.needs}, which an offline render does not have. A labelled placeholder is shown in its place.`,{feature:this.tagName,needs:this.spec.needs}));let a=gp(this.tagName)?`HubSpot module: ${Ie(kr(this.tagName))} ${Ie(Tr(this.tagName))}`:`[HubSpot widget: ${Ie(this.tagName)} \u2014 needs ${Ie(this.spec.needs??"live portal data")}]`;return new z.default.runtime.SafeString(ja(this.tagName,o??Fe(s.name),a))}reportSilentRender(t){this.collector.diagnostics.some(s=>s.code===T.HUBL_WIDGET_EDITOR_ONLY&&s.details?.feature===this.tagName)||this.collector.diagnostics.push(P(T.HUBL_WIDGET_EDITOR_ONLY,`The '${this.tagName}' widget rendered nothing, which is correct: ${t}. Nothing is missing from the page.`,{feature:this.tagName}))}runLegacyFieldTag(t,n,s){let r=n??s.name??"",i=t.module||{},o=s.value!==void 0?s.value:s.default,a=r&&i[r]!==void 0?i[r]:o;return new z.default.runtime.SafeString(Fe(a))}},Ba=class{tags=["widget_block","widget_attribute","content_attribute"];env;constructor(t){this.env=t}parse(t,n){let r=t.nextToken().value,i=t.parseSignature(null,!0);t.advanceAfterBlockEnd(r);let o=t.parseUntilBlocks(`end_${r}`);return t.advanceAfterBlockEnd(),new n.CallExtension(this,"run",i,[o])}run(t,...n){let s=n[n.length-1],r=typeof s=="function"?s():"",i=n.slice(0,-1),o=Xt(i),a=i.find(u=>typeof u=="string")??o.name??"",l=t.ctx&&t.ctx.module||{},c=a?l[a]:void 0;return c!=null&&c!==""?new z.default.runtime.SafeString(String(c)):new z.default.runtime.SafeString(r)}},Xs=class{tags;collector;feature;constructor(t,n){this.collector=t,this.feature=n,this.tags=[n]}parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);return t.advanceAfterBlockEnd(s.value),new n.CallExtension(this,"run",r)}run(t,...n){return this.collector.diagnostics.push(P(T.HUBL_GLOBAL_UNIMPLEMENTED,`${this.feature} is not supported by the offline renderer \u2014 remove or replace it for a faithful render`,{feature:this.feature})),new z.default.runtime.SafeString(`<!-- ${this.feature} not rendered: unsupported HubL feature -->`)}},Ha=class{tags=["require_css"];env;collector;constructor(t,n){this.env=t,this.collector=n}parse(t,n){let s=t.nextToken();t.advanceAfterBlockEnd(s.value);let r=t.parseUntilBlocks("end_require_css");return t.advanceAfterBlockEnd(),new n.CallExtension(this,"run",null,[r])}run(t,n){let s=typeof n=="function"?n():"";return s.trim()&&this.collector.moduleStyles.push(s),new z.default.runtime.SafeString(s)}},Ga=class{tags=["require_js"];env;collector;constructor(t,n){this.env=t,this.collector=n}parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);t.advanceAfterBlockEnd(s.value);let i=t.parseUntilBlocks("end_require_js");return t.advanceAfterBlockEnd(),new n.CallExtension(this,"run",r,[i])}run(t,...n){let s=n[n.length-1],r=typeof s=="function"?s():"";if(r.trim()){let i=Xt(n.slice(0,-1)),o=String(i.position??"").trim().toLowerCase();this.collector.inlineScripts.push({source:r,position:o==="head"?"head":"footer"})}return new z.default.runtime.SafeString("")}},Wa=class{tags=["require_head"];collector;constructor(t){this.collector=t}parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);t.advanceAfterBlockEnd(s.value);let i=t.parseUntilBlocks("end_require_head");return t.advanceAfterBlockEnd(),new n.CallExtension(this,"run",r,[i])}run(t,...n){let s=n[n.length-1],r=typeof s=="function"?s():"",i=an(this.collector);return r.trim()&&this.collector.headMarkup.push(i?.assets?i.assets.html(r):r),new z.default.runtime.SafeString("")}},Ka=class{tags=["raw_html"];parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);t.advanceAfterBlockEnd(s.value);let i=af(r);return i===null?new n.CallExtension(this,"run",r):new n.CallExtension(this,"run",of(dt.get(i)??"",n,s.lineno,s.colno))}run(t,...n){let s=t&&t.ctx||{},r=n[0]===cl,i=r?n[2]??{}:Xt(n),a=(r?n[1]:n.find(d=>typeof d=="string")??null)??i.name??"",l=s.module||{},c=i.value!==void 0?i.value:i.default,u=a&&l[a]!==void 0?l[a]:c;return new z.default.runtime.SafeString(ja("raw_html",String(a||Fe(s.name)),Fe(u)))}},qa=class{tags=[Ya];collector;reported=new Set;constructor(t){this.collector=t}parse(t,n){let s=t.nextToken(),r=t.parseSignature(null,!0);t.advanceAfterBlockEnd(s.value);let i=t.parseUntilBlocks(zs);return t.advanceAfterBlockEnd(),new n.CallExtension(this,"run",r,[i])}run(t,...n){let s=n[n.length-1],r=typeof s=="function"?s():"",[i,o,a]=n,l=String(i??"unknown");return this.reported.has(l)||(this.reported.add(l),this.collector.diagnostics.push(P(T.HUBL_TAG_UNSUPPORTED,`\`{% ${l} %}\` is not implemented by the offline renderer. A labelled placeholder is shown where it sits, and the rest of the template renders normally.`,{tag:l,form:a?"block":"self-closing",args:dt.get(o)??""}))),new z.default.runtime.SafeString(`<span class="themespot-unsupported-tag" data-themespot-hubl-tag="${Ie(l)}">[HubL tag not rendered: ${Ie(l)}]</span>${r}`)}};function Xt(e){if(e.length===0)return{};let t=e[e.length-1];if(t&&typeof t=="object"&&!Array.isArray(t)&&typeof t!="function"&&t.__keywords)return t;if(e.length>=2){let n=e[e.length-2];if(n&&typeof n=="object"&&n.__keywords)return n}return{}}function tr(e){let t=[];if(!Array.isArray(e))return t;for(let n of e){if(!n||!n.name)continue;let s={name:n.name,type:n.type??"unknown"};n.label!==void 0&&(s.label=n.label),n.default!==void 0&&(s.default=n.default);let r=n.help_text??n.inline_help_text;r!==void 0&&(s.helpText=r),n.choices&&(s.choices=n.choices),n.id!==void 0&&(s.id=n.id),n.display!==void 0&&(s.display=n.display),n.required!==void 0&&(s.required=n.required),n.occurrence!==void 0&&(s.occurrence=n.occurrence),n.visibility&&(s.visibility=n.visibility),n.advanced_visibility&&(s.advancedVisibility=n.advanced_visibility),Array.isArray(n.children)&&(s.children=tr(n.children)),t.push(s)}return t}function ul(e,t=""){let n=new Map;for(let s of e){let r=t?`${t}.${s.name}`:s.name;if(n.set(r,s),s.children){let i=ul(s.children,r);for(let[o,a]of i)n.set(o,a)}}return n}var LR=new Set(["label","name","id","type","module_id","style","class","tag"]),CR=new Set(["BooleanField","boolean"]),PR=new Set(["FieldGroup","RepeatedFieldGroup","group"]);function lf(e){return CR.has(e.type)}function $R(e){return PR.has(e.type)||Array.isArray(e.children)&&e.children.length>0}function cf(e){return typeof e=="string"&&/^(?:true|false)$/i.test(e.trim())}var FR=["visibility-path","reserved-name","link-default"],uf=["boolean-format","required-no-default"];function df(e,t={}){let n=new Set(t.rules??FR),s=[],r=new Set(ul(e).keys());function i(o,a=""){for(let l of o){let c=a?`${a}.${l.name}`:l.name;if(n.has("reserved-name")&&LR.has(l.name)&&s.push({kind:"reserved-name",fieldPath:c,message:`${c}: field name cannot be '${l.name}'`}),n.has("visibility-path")&&(si(c,l.visibility,r,s),si(c,l.advancedVisibility,r,s)),n.has("link-default")&&l.type==="LinkField"&&l.default!==void 0){let u=DR(l.default);u&&s.push({kind:"link-default",fieldPath:c,message:`Link field at path ${c} has an invalid default value (${u})`})}n.has("boolean-format")&&lf(l)&&cf(l.default)&&s.push({kind:"boolean-format",fieldPath:c,message:`${c}: the format for the boolean value is invalid (default is the string "${l.default}"; booleans must be unquoted)`}),n.has("required-no-default")&&l.required===!0&&l.default===void 0&&!$R(l)&&s.push({kind:"required-no-default",fieldPath:c,message:`'${c}' is required but no default is set`}),l.children&&i(l.children,c)}}return i(e),s}var IR=new Set(["path","offset","width","horizontal_alignment","vertical_alignment","flexbox_positioning","label","class","overrideable","no_wrapper","extra_classes","unique_id","export_to_template_context","type","_positional"]);function pf(e,t,n={}){let s=new Set(n.ignoreKeys??IR),r=[];function i(o,a,l,c){let u=new Map;for(let d of o)u.set(d.name,d),d.id&&u.set(d.id,d);for(let[d,p]of Object.entries(a)){let m=u.get(d);if(!m&&c&&d==="fields"&&dl(p)){i(o,p,l,!1);continue}if(!m||c&&s.has(d))continue;let g=l?`${l}.${m.name}`:m.name;if(lf(m)&&cf(p)){r.push({kind:"boolean-format",fieldPath:g,message:`${g}: the format for the boolean value is invalid (passed the string "${p}"; booleans must be unquoted)`});continue}m.children&&(dl(p)?i(m.children,p,g,!1):Array.isArray(p)&&p.forEach((y,E)=>{dl(y)&&i(m.children,y,`${g}[${E}]`,!1)}))}}return i(e,t,"",!0),r}function dl(e){return typeof e=="object"&&e!==null&&!Array.isArray(e)}function si(e,t,n,s){if(!(!t||typeof t!="object")){if(typeof t.controlling_field_path=="string"&&!n.has(t.controlling_field_path)&&s.push({kind:"visibility-path",fieldPath:e,message:`${e}: no controlling_field with path '${t.controlling_field_path}' exists`}),Array.isArray(t.criteria))for(let r of t.criteria)si(e,r,n,s);t.children&&typeof t.children=="object"&&si(e,t.children,n,s)}}function DR(e){return e===null||typeof e!="object"?"expected an object":Array.isArray(e)?"expected an object, got an array":!e.url||typeof e.url!="object"||Array.isArray(e.url)?"missing required 'url' object":typeof e.url.type!="string"||e.url.type.length===0?"'url.type' is required (e.g. 'EXTERNAL')":null}var MR=["templates","sections","helpers","partials",""];var Zt=String.raw`(?:"([^"]*)"|'([^']*)')`,pO=[{kind:"extends",regex:new RegExp(String.raw`\{%-?\s*extends\s+${Zt}`,"g")},{kind:"include",regex:new RegExp(String.raw`\{%-?\s*include\s+${Zt}`,"g")},{kind:"import",regex:new RegExp(String.raw`\{%-?\s*(?:from|import)\s+${Zt}`,"g")},{kind:"dnd-partial",regex:new RegExp(String.raw`\{%-?\s*include_dnd_partial[^%]*?\bpath\s*=\s*${Zt}`,"g")},{kind:"global-partial",regex:new RegExp(String.raw`\{%-?\s*global_partial[^%]*?\bpath\s*=\s*${Zt}`,"g")},{kind:"module",regex:new RegExp(String.raw`\{%-?\s*(?:dnd_module|module|module_block)\b[^%]*?\bpath\s*=\s*${Zt}`,"g")},{kind:"asset",regex:new RegExp(String.raw`get_asset_url\(\s*${Zt}`,"g")}],hO=new RegExp(String.raw`@import\s+(?:url\(\s*)?${Zt}`,"g"),fO=new RegExp(String.raw`\{%-?\s*(?:include|import)\s+${Zt}`,"g");function En(e){let t=[];for(let n of e.replace(/\\/g,"/").split("/"))if(!(n===""||n===".")){if(n===".."){t.pop();continue}t.push(n)}return t.join("/")}function hf(e,t=""){let n=e.replace(/^(?:\.\.\/)+/,""),s=new Set;t&&(e.startsWith("./")||e.startsWith("../"))&&s.add(En(`${t}/${e}`));for(let r of MR)s.add(En(r?`${r}/${n}`:n));return s.add(En(e)),[...s].filter(Boolean)}var jR="@hubspot/",UR=new Set(["node_modules",".git",".hs","dist","build","coverage",".next",".vite",".turbo","test-results","playwright-report"]),BR=".html";function ii(e){return Ud[e.code]??jd}function _f(e){let t=[],{themeRoots:n,resolved:s}=HR(e,t),r=n.themeRoot;t.push(...n.diagnostics);let i=[],o=WR(r,e.maxFiles??5e3,t),a=new Map,l=s&&!n.diagnostics.some(d=>d.code===T.INHERITANCE_PARENT_MISSING||d.code===T.INHERITANCE_TOO_DEEP),c=new Map;for(let d of o.templates){i.push(d);let p=pl(r,d,t);p!==null&&KR({root:r,relativePath:d,source:p,themeRoots:n,diagnostics:t,moduleFields:a,cascadeComplete:l,includeScans:c})}for(let d of o.fieldFiles){i.push(d);let p=pl(r,d,t);p!==null&&zR(d,p,t)}for(let d of o.schemaFiles){i.push(d);let p=pl(r,d,t);p!==null&&YR(d,p,t)}t.sort(gx);let u={error:0,warning:0,info:0};for(let d of t)u[ii(d)]++;return{diagnostics:t,filesScanned:i,truncated:o.truncated,counts:u}}function HR(e,t){try{return{themeRoots:Me({childThemeRoot:e.themeRoot,parentThemeRoot:e.parentThemeRoot,projects:e.projects}),resolved:!0}}catch(n){return t.push(n instanceof X?n:P(T.VALIDATION_SOURCE_UNREADABLE,`Theme cascade resolution failed: ${n instanceof Error?n.message:String(n)}. Validation continued against ${e.themeRoot} alone, so nothing inherited was checked.`,{file:"theme.json"})),{themeRoots:Me({themeRoot:e.themeRoot}),resolved:!1}}}function GR(e){let t=e.split("/");return t.length>=2&&t[t.length-2]===Es&&t[t.length-1].endsWith(Go)}function WR(e,t,n){let s=[],r=[],i=[],o=0,a=!1,l=(c,u)=>{if(a)return;let d;try{d=A.readdirSync(c)}catch(p){n.push(P(T.VALIDATION_SOURCE_UNREADABLE,`Could not list ${u||"."}: ${p instanceof Error?p.message:String(p)}. Nothing inside that directory was validated.`,{file:u||"."}));return}for(let p of d.slice().sort()){if(a)return;let m=gf.join(c,p),g=u?`${u}/${p}`:p,y;try{y=A.statSync(m).isDirectory()}catch(E){n.push(P(T.VALIDATION_SOURCE_UNREADABLE,`Could not stat ${g}: ${E instanceof Error?E.message:String(E)}. It was skipped, so any fault in it is unreported.`,{file:g}));continue}if(y){if(UR.has(p))continue;l(m,g);continue}if(++o>t){a=!0;return}p.toLowerCase().endsWith(BR)?s.push(g):p==="fields.json"?r.push(g):GR(g)&&i.push(g)}};return l(e,""),{templates:s,fieldFiles:r,schemaFiles:i,truncated:a}}function pl(e,t,n){try{return A.readFileSync(H(e,t),"utf-8")}catch(s){return n.push(P(T.VALIDATION_SOURCE_UNREADABLE,`Could not read ${t}: ${s instanceof Error?s.message:String(s)}. It was skipped, so any fault inside it is unreported.`,{file:t})),null}}function KR(e){let{relativePath:t,source:n,themeRoots:s,diagnostics:r,moduleFields:i}=e,o=Gd(n),a=t.split("/").slice(0,-1).join("/");for(let c of Vd(n,{templateType:o.templateType}))r.push(ux(t,c));if(e.cascadeComplete&&tx(o)){let c;try{c=lx(e)}catch(u){if(!(u instanceof X))throw u;c=null}c&&c.length>0&&r.push(fx(t,o.templateType,c))}let l=new Set;for(let c of Jd(n)){let u;try{u=$r(c.raw)}catch{continue}let d=typeof u.path=="string"?u.path:"";if(!d)continue;for(let[g,y]of Object.entries(u))if(g!=="path")for(let E of qo(y,g))r.push(ml(t,E,{line:c.line,modulePath:d,parameter:g}));if(d.startsWith(jR)){if(l.has(d))continue;l.add(d),r.push(mx(t,d,c.line));continue}let p=`${a}\0${d}`,m=i.get(p);if(m===void 0&&(m=JR(s,d,a),i.set(p,m)),!!m)for(let g of pf(m,u))r.push(yf(t,g,{line:c.line,modulePath:d,origin:"template"}))}}function qR(e){try{return A.statSync(e).isDirectory()}catch{return!1}}function VR(e,t,n){if(n&&/^\.\.?\//.test(t)){let s=En(`${n}/${t}`);if(s)try{let r=$e(e,s);if(r&&qR(r))return r}catch(r){if(!(r instanceof X))throw r}}try{return yt(e,t)}catch(s){if(s instanceof X)return null;throw s}}function JR(e,t,n){let s=VR(e,t,n);if(!s)return null;let r;try{r=H(s,"fields.json")}catch{return null}if(!A.existsSync(r))return null;try{return tr(JSON.parse(A.readFileSync(r,"utf-8")))}catch{return null}}function zR(e,t,n){let s;try{s=JSON.parse(t)}catch(i){n.push(P(T.VALIDATION_SOURCE_UNREADABLE,`${e} is not valid JSON (${i instanceof Error?i.message:String(i)}), so its field definitions could not be validated.`,{file:e}));return}if(!Array.isArray(s))return;if(!ZR(e))for(let i of bf(s))n.push(hx(e,i));let r=tr(s);for(let i of df(r,{rules:uf}))i.kind==="boolean-format"?n.push(yf(e,i,{origin:"default"})):i.kind==="required-no-default"&&n.push(dx(e,i));for(let{link:i,declaredOn:o}of fl(s))n.push(ml(e,i,{declaredOn:o}))}function YR(e,t,n){let s;try{s=JSON.parse(t)}catch(o){n.push(P(T.VALIDATION_SOURCE_UNREADABLE,`${e} is not valid JSON (${o instanceof Error?o.message:String(o)}), so the module defaults it carries could not be validated.`,{file:e}));return}if(s===null||typeof s!="object"||Array.isArray(s))return;let r=s,i=[...Array.isArray(r.contentFields)?r.contentFields:[],...Array.isArray(r.styleFields)?r.styleFields:[]];for(let{link:o,declaredOn:a}of fl(i))n.push(ml(e,o,{declaredOn:a}))}function fl(e,t=""){let n=[];if(!Array.isArray(e))return n;for(let s of e){if(s===null||typeof s!="object"||Array.isArray(s))continue;let{name:r,default:i,children:o}=s;if(typeof r!="string"||r==="")continue;let a=t?`${t}.${r}`:r;if(i!==void 0)for(let l of qo(i,a))n.push({link:l,declaredOn:a});n.push(...fl(o,a))}return n}var XR=new Map([["label","item_label"],["body","body_text"],["name","item_name"]]);function ZR(e){return e.split("/").some(t=>t==="@hubspot")}function bf(e,t=""){let n=[];if(!Array.isArray(e))return n;for(let s of e){if(s===null||typeof s!="object"||Array.isArray(s))continue;let{name:r,type:i,children:o}=s;if(typeof r!="string"||r==="")continue;let a=t?`${t}.${r}`:r,l=XR.get(r);l!==void 0&&n.push({fieldPath:a,name:r,rename:l,type:typeof i=="string"?i:null}),n.push(...bf(o,a))}return n}var hl=["standard_header_includes","standard_footer_includes"],QR=new Set(["page","blog","blog_post","blog_listing"]),ex=200;function tx(e){return!e.templateType||!QR.has(e.templateType)?!1:e.isAvailableForNewContent!==!1}function nx(e){return e.replace(/\{%-?\s*raw\s*-?%\}[\s\S]*?\{%-?\s*endraw\s*-?%\}/g," ").replace(/\{#[\s\S]*?#\}/g," ")}var ff=/\{%-?\s*(include_dnd_partial|global_partial|extends|include|import|from)\b([\s\S]*?)-?%\}/g;function rx(e,t){return new RegExp(`\\{\\{-?\\s*${t}\\s*(?:\\|[^{}]*?)?-?\\}\\}`).test(e)}function mf(e){let t=/^\s*(?:"([^"]*)"|'([^']*)')/.exec(e);if(!t)return null;let n=t[1]??t[2];return n.includes("{{")||n.includes("{%")?null:n}function sx(e){let t=nx(e),n=new Set;for(let i of hl)rx(t,i)&&n.add(i);let s=[];ff.lastIndex=0;let r;for(;(r=ff.exec(t))!==null;){let[,i,o]=r;if(i==="import"||i==="from"){s.push({tag:i,target:null});continue}if(i==="extends"||i==="include"){s.push({tag:i,target:mf(o)});continue}let a=/\bpath\s*=\s*([\s\S]*)$/.exec(o);a&&s.push({tag:i,target:mf(a[1])})}return{variables:n,references:s}}function ix(e){try{return A.statSync(e).isFile()}catch{return!1}}function ox(e,t,n,s){let r=t.split("/").slice(0,-1).join("/"),i=hf(s,r);if(n==="global_partial"){let o=s.split("/").pop()??s;i.push(En(`templates/layouts/${s}`),En(`partials/${o}`))}for(let o of i)if(o)try{let a=$e(e,o);if(a&&ix(a))return a}catch(a){if(!(a instanceof X))throw a}return null}function ax(e,t){let n=Pt(e,t);if(n===null)return null;let s=gf.basename(e);return n?`${n}/${s}`:s}function lx(e){let{root:t,relativePath:n,source:s,themeRoots:r,includeScans:i}=e,o=new Set,l=[{absolute:H(t,n),relative:n,source:s}],c=new Set;for(;l.length>0;){let u=l.shift();if(c.has(u.absolute))continue;if(c.add(u.absolute),c.size>ex)return null;let d=i.get(u.absolute);if(d===void 0){let p=u.source;if(p===null)try{p=A.readFileSync(u.absolute,"utf-8")}catch{p=null}d=p===null?null:sx(p),i.set(u.absolute,d)}if(d===null)return null;for(let p of d.variables)o.add(p);if(o.size===hl.length)return[];for(let p of d.references){if(p.target===null)return null;let m=ox(r,u.relative,p.tag,p.target);if(m===null)return null;let g=ax(m,r);if(g===null)return null;l.push({absolute:m,relative:g,source:null})}}return hl.filter(u=>!o.has(u))}var cx={1:"A dnd_section holds dnd_column and dnd_module directly. Drop the dnd_row wrapper, or put the row inside a dnd_column.",2:"Modules are columns themselves, so a dnd_module cannot sit directly in a dnd_column. Wrap it in a dnd_row.",3:"Wrap the conditional in an HTML element so the control-flow tag lives inside HTML rather than directly inside the dnd_column.",4:"Enclose it in a dnd_area > dnd_section > dnd_column chain. dnd_area ids must be literal strings \u2014 HubL interpolation is not supported there."};function ux(e,t){let n=t.rule?` ${cx[t.rule]}`:"";return P(T.DND_HIERARCHY_VIOLATION,`${e}:${t.line} \u2014 ${t.message}${n}`,{file:e,sourceFile:e,line:t.line,rule:t.rule,tag:t.tag,parentTag:t.parentTag,hubspotMessage:t.message})}function yf(e,t,n){let s=n.line?`${e}:${n.line}`:e,r=n.modulePath?` passed to ${n.modulePath}`:"";return P(T.FIELD_BOOLEAN_FORMAT,`${s} \u2014 ${t.message}${r}. HubSpot reports this as "The format for the boolean value is invalid." and ignores the value.`,{file:e,sourceFile:e,...n.line?{line:n.line}:{},...n.modulePath?{modulePath:n.modulePath}:{},fieldPath:t.fieldPath,origin:n.origin})}function dx(e,t){return P(T.FIELD_REQUIRED_NO_DEFAULT,`${e} \u2014 ${t.message}. HubSpot fails the build on this, because an empty editor state can never satisfy the field. Give it a default, or make it optional.`,{file:e,sourceFile:e,fieldPath:t.fieldPath})}var px='Internal defaults should ship EXTERNAL with a relative href (e.g. {"type": "EXTERNAL", "href": "/contact"}) until the page exists; an editor re-points the link to CONTENT once it does.';function ml(e,t,n){let s=n.line?`${e}:${n.line}`:e,r=n.parameter!==void 0?`'${t.path}' passed to ${n.modulePath}`:`'${t.path}' in the default of field '${n.declaredOn}'`,i=n.parameter!==void 0?"so the link renders empty on the page":"so every page that keeps this default renders the link empty";return P(T.FIELD_CONTENT_LINK_UNRESOLVABLE,`${s} \u2014 ${r} is a CONTENT link with content_id ${Ts(t.contentId)}, which names no page. HubSpot resolves a CONTENT link by content_id and ignores its href, ${i}. ${px}`,{file:e,sourceFile:e,...n.line?{line:n.line}:{},...n.modulePath?{modulePath:n.modulePath}:{},fieldPath:t.path,...n.declaredOn!==void 0?{declaredOn:n.declaredOn}:{},...n.parameter!==void 0?{parameter:n.parameter}:{},contentId:t.contentId??null,origin:n.parameter!==void 0?"template":"default"})}function hx(e,t){let n=e==="fields.json"?"theme":"module",s=t.type==="group"?"group":"field";return P(T.FIELD_NAME_RESERVED,`${e} \u2014 ${s} '${t.fieldPath}' is named '${t.name}', which HubSpot refuses at upload ("field name cannot be '${t.name}'") whether the entry is a field, a group or a repeater. Rename it, for example to '${t.rename}', and every ${n}.${t.fieldPath} reference with it. HubSpot reports one refused name per upload, so fix every one this run lists before uploading again.`,{file:e,sourceFile:e,fieldPath:t.fieldPath,fieldName:t.name,fieldType:t.type,suggestedName:t.rename})}function fx(e,t,n){let s=n.map(r=>`{{ ${r} }}`).join(" and ");return P(T.TEMPLATE_REQUIRED_VARIABLE_MISSING,`${e} \u2014 this ${t} template has no ${s}, neither in the file nor in anything it extends or includes. HubSpot requires both in a template or its partials before the template can be published and used; add the missing one to the template or to the layout it extends. A template that is not meant for new content can say so with isAvailableForNewContent: false instead.`,{file:e,sourceFile:e,templateType:t,missing:n})}function mx(e,t,n){return P(T.HUBSPOT_INTERNAL_MODULE,`${e}:${n} \u2014 ${t} is a HubSpot-shipped module. Upload warnings originating inside it (typically "Cannot resolve property 'style' in ''") come from HubSpot's own template, which cannot be edited, so they are informational. Passing a minimal style={} silences the common one.`,{file:e,sourceFile:e,line:n,modulePath:t})}function gx(e,t){let n=String(e.details?.file??""),s=String(t.details?.file??"");if(n!==s)return n<s?-1:1;let r=typeof e.details?.line=="number"?e.details.line:0,i=typeof t.details?.line=="number"?t.details.line:0;return r!==i?r-i:e.code<t.code?-1:e.code>t.code?1:0}function wf(e,t={}){let n=[],s=t.themeRoot?` in ${t.themeRoot}`:"";for(let r of e.diagnostics)n.push(`${ii(r).padEnd(7)} ${r.code}  ${r.message}`);return e.diagnostics.length===0&&n.push(`No template validation faults found${s}.`),n.push(""),n.push(`${e.filesScanned.length} file(s) scanned${s}: ${e.counts.error} error(s), ${e.counts.warning} warning(s), ${e.counts.info} informational.`),e.truncated&&n.push("WARNING: the file walk hit its maxFiles limit; this report is incomplete."),n.join(`
-`)}import Vr from"fs";import vi from"path";import{pathToFileURL as ST}from"url";import we from"path";async function Sf(){return null}import vf from"path";function nr(e){return typeof e=="string"&&e.length>0?e:void 0}function _x(e){return typeof e=="number"&&Number.isFinite(e)?e:void 0}function bx(e){if(!Array.isArray(e))return;let t=e.filter(n=>typeof n=="string");return t.length>0?t:void 0}function Ef(e){let t=vf.basename(vf.resolve(e)),n=H(e,"theme.json");if(!A.existsSync(n))return{name:t,raw:{},source:"fallback"};let s;try{s=JSON.parse(A.readFileSync(n,"utf-8"))}catch{return{name:t,raw:{},source:"fallback"}}let r=Array.isArray(s.responsive_breakpoints)?s.responsive_breakpoints.filter(i=>i&&typeof i.name=="string").map(i=>({name:i.name,mediaQuery:nr(i.mediaQuery),previewWidth:i.previewWidth})):void 0;return{name:t,label:nr(s.label),version:nr(s.version),screenshotPath:nr(s.screenshot_path),extends:nr(s.extends),cssAssets:bx(s.css_assets),baseSize:_x(s.base_size),tokenPrefix:nr(s.token_prefix),responsiveBreakpoints:r,raw:s,source:"theme.json"}}function Rf(e){if(!e.parentThemeRoot||!e.childThemeRoot){let i=H(e.themeRoot,"fields.json"),o=JSON.parse(A.readFileSync(i,"utf-8"));return rn(e,i,o),o}let t=H(e.parentThemeRoot,"fields.json"),n=H(e.childThemeRoot,"fields.json"),s=A.existsSync(t)?JSON.parse(A.readFileSync(t,"utf-8")):[],r=A.existsSync(n)?JSON.parse(A.readFileSync(n,"utf-8")):[];return rn(e,t,s),rn(e,n,r),Pi(s,r)}var yx=/^[a-zA-Z][a-zA-Z0-9+.-]*:/,_l=/^file:\/\//i,wx=new Set(["src","poster"]),Sx=new Set(["href","xlink:href"]),vx=new Set(["use","image"]),Ex=new Set(["srcset","imagesrcset"]),Rx="data-module-props",xx=new Set(["stylesheet","icon","shortcut","apple-touch-icon","apple-touch-startup-image","mask-icon","fluid-icon","manifest","preload","prefetch","modulepreload"]),xf=/["'<>()`\s]/;function Tx(){let e=globalThis.crypto,t=new Uint8Array(16);if(e&&typeof e.getRandomValues=="function")e.getRandomValues(t);else for(let n=0;n<t.length;n++)t[n]=Math.floor(Math.random()*256);return Array.from(t,n=>n.toString(16).padStart(2,"0")).join("")}function bl(e){let t=e.search(/[?#]/);return t<0?{path:e,tail:""}:{path:e.slice(0,t),tail:e.slice(t)}}function kx(e){let t=e.trim();return t===""||t.startsWith("#")||t.startsWith("//")?!0:_l.test(t)?!1:yx.test(t)}function Ax(e){let t=e.replace(/^\/+/,"").replace(/^(?:\.\.?\/+)+/,""),n=[];for(let s of t.split("/"))if(!(s===""||s===".")){if(s===".."){if(n.length===0)return{reason:"escapes-base"};n.pop();continue}n.push(s)}return n.length===0?{reason:"empty"}:{path:n.join("/")}}function rr(e){return e.replace(/\\/g,"/").replace(/\/+$/,"")}function Tf(e,t){if(!_l.test(e))return null;let n=e.slice(7);/^\/[A-Za-z]:/.test(n)&&(n=n.slice(1));try{n=decodeURI(n)}catch{}let s=rr(n),r=[...t].map(rr).filter(Boolean).sort((o,a)=>a.length-o.length);for(let o of r)if(s.startsWith(`${o}/`))return s.slice(o.length+1);let i=s.toLowerCase();for(let o of r){let a=o.toLowerCase();if(i.startsWith(`${a}/`))return s.slice(o.length+1)}return null}function Ox(e){return e.replace(/\s/g,t=>encodeURIComponent(t))}function Nx(e,t,n=""){let{path:s,tail:r}=bl(e.trim());return`${s.replace(/\/+$/,"")}/${Ox(t)}${n||r}`}function Lx(e){let t=[],n=0,s=e.length,r=i=>/\s/.test(i);for(;n<s;){for(;n<s&&(r(e[n])||e[n]===",");)n++;if(n>=s)break;let i=n;for(;n<s&&!r(e[n]);)n++;let o=e.slice(i,n),a="";if(o.endsWith(","))o=o.replace(/,+$/,"");else{let l=n;for(;n<s&&e[n]!==",";)n++;a=e.slice(l,n).trim(),n<s&&n++}o&&t.push({url:o,descriptor:a})}return t}var Cx=["&quot;","&#34;","&apos;","&#39;"];function Px(e){for(let t of Cx)if(e.length>t.length*2-1&&e.startsWith(t)&&e.endsWith(t))return{inner:e.slice(t.length,e.length-t.length),open:t,close:t};return{inner:e,open:"",close:""}}var $x=/url\(\s*(?:"([^"]*)"|'([^']*)'|([^()'"\s]*))\s*\)/gi,kf=/<(script|style)\b([^>]*)>([\s\S]*?)(<\/\1\s*>)/gi,Fx=/<([a-zA-Z][a-zA-Z0-9:-]*)((?:"[^"]*"|'[^']*'|[^"'>])*)>/g,gl=/([^\s=/>]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))/g,Ix=/\.(?:png|jpe?g|gif|svg|webp|avif|ico|bmp|tiff?|woff2?|ttf|otf|eot|mp4|webm|ogg|ogv|mov|m4v|mp3|wav|pdf)$/i;function Dx(e){let t=e.trim();if(t==="")return!1;let{path:n}=bl(t);return/\s/.test(n)||!n.includes("/")?!1:Ix.test(n)}function Mx(e){gl.lastIndex=0;let t;for(;(t=gl.exec(e))!==null;){if(t[1].toLowerCase()!=="rel")continue;return(t[2]??t[3]??t[4]??"").toLowerCase().split(/\s+/).filter(Boolean)}return[]}function jx(e,t){let n=e.toLowerCase();return vx.has(n)?!0:n==="link"?t().some(s=>xx.has(s)):!1}function Af(e){return{...e?{base:e}:{},references:[],seenReferences:new Set,unresolved:[],seenUnresolved:new Set}}function Of(e){return typeof e=="string"&&e.trim()?e.trim():void 0}function oi(e={}){let t=Of(e.baseUrl),n=t&&xf.test(t)?t:void 0,s=n?void 0:t,r=e.themeRoots??[],i=Af(s),o=Tx(),a=`<!--themespot-asset-root:${o}-->`,l=`<!--/themespot-asset-root:${o}-->`;function c(k,C){let I="",F=0;for(;;){let K=k.indexOf(a,F);if(K<0)break;let le=k.indexOf(l,K+a.length);if(le<0)break;I+=C(k.slice(F,K))+k.slice(K+a.length,le),F=le+l.length}return I+=C(k.slice(F)),I.split(a).join("").split(l).join("")}let u=(e.roots??[]).filter(k=>k&&typeof k.dir=="string"&&rr(k.dir)!=="").map(k=>{let C=Of(k.baseUrl),I=C&&xf.test(C)?C:void 0,F=I?void 0:C,K=F??s;return{...Af(K),label:typeof k.label=="string"&&k.label.trim()?k.label.trim():k.dir,dir:rr(k.dir),fallback:F===void 0&&K!==void 0,...I?{invalidBaseUrl:I}:{}}}),d=u.filter(k=>k.base!==void 0);function p(k,C){k.seenReferences.has(C)||(k.seenReferences.add(C),k.references.push(C))}function m(k,C,I,F){let K=`${F}:${C}`;k.seenUnresolved.has(K)||(k.seenUnresolved.add(K),k.unresolved.push({reference:C,reason:I,origin:F}))}function g(k,C){if(d.length===0){let F=Tf(k,r);return{target:C,resolved:F===null?{reason:"outside-theme-root"}:{path:F}}}let I=[...d.map(F=>({dir:F.dir,target:F})),...r.map(rr).filter(Boolean).map(F=>({dir:F,target:i}))].sort((F,K)=>K.dir.length-F.dir.length);for(let F of I){let K=Tf(k,[F.dir]);if(K!==null)return{target:F.target,resolved:{path:K}}}return{target:C,resolved:{reason:"outside-theme-root"}}}function y(k,C,I){let F=k.trim();if(kx(F))return null;let{path:K,tail:le}=bl(F),Se=I,je;if(_l.test(K)){let Ae=g(K,I);Se=Ae.target,je=Ae.resolved}else je=Ax(K);return p(Se,F),Se.base?"path"in je?Nx(Se.base,je.path,le):(m(Se,F,je.reason,C),null):null}function E(k){function C(M,Z="css"){if(!M)return M;let ne=!1,ce=M.replace($x,(ge,_e,ue,re)=>{let Ue=_e!==void 0?'"':ue!==void 0?"'":"",Be=_e??ue??re??"",{inner:He,open:Ge,close:Ee}=Ue?{inner:Be,open:"",close:""}:Px(Be),qe=y(He,Z,k);return qe===null?ge:(ne=!0,`url(${Ue}${Ge}${qe}${Ee}${Ue})`)});return ne?ce:M}function I(M,Z){if(!Z)return Z;let ne=!1,ce=Z.replace(gl,(ge,_e,ue,re,Ue)=>{let Be=_e.toLowerCase(),He=ue??re??Ue??"",Ge=ue!==void 0?'"':re!==void 0?"'":"",Ee=null;if(Sx.has(Be)){if(!jx(M,()=>Mx(Z)))return ge;Ee=y(He,"markup",k)}else if(wx.has(Be))Ee=y(He,"markup",k);else if(Ex.has(Be)){let qe=Lx(He);if(qe.length===0)return ge;let xt=!1,st=qe.map(({url:it,descriptor:pn})=>{let Tt=y(it,"markup",k);Tt!==null&&(xt=!0);let ot=Tt??it;return pn?`${ot} ${pn}`:ot}).join(", ");Ee=xt?st:null}else if(Be==="style"){let qe=C(He,"markup");Ee=qe===He?null:qe}else Be===Rx&&(Ee=F(He));return Ee===null?ge:(ne=!0,`${_e}=${Ge}${Ee}${Ge}`)});return ne?ce:Z}function F(M){if(!k.base||M==="")return null;let Z;try{Z=JSON.parse(Vn(M))}catch{return null}let ne=Se(Z);return ne===Z?null:xs(JSON.stringify(ne))}function K(M){if(!M)return M;let Z=!1,ne=M.replace(Fx,(ce,ge,_e)=>{let ue=I(ge,_e);return ue===_e?ce:(Z=!0,`<${ge}${ue}>`)});return Z?ne:M}function le(M){return Dx(M)?y(M,"props",k)??M:M}function Se(M){if(typeof M=="string")return le(M);if(Array.isArray(M)){let Z=!1,ne=M.map(ce=>{let ge=Se(ce);return ge!==ce&&(Z=!0),ge});return Z?ne:M}if(M&&typeof M=="object"){let Z=M;if(Z.constructor!==Object||typeof Z.toJSON=="function")return M;let ne=!1,ce={};for(let[ge,_e]of Object.entries(M)){let ue=Se(_e);ue!==_e&&(ne=!0),ce[ge]=ue}return ne?ce:M}return M}function je(M){return k.base?Se(M):M}function Ae(M){if(!M)return M;let Z=M.includes(a)||M.includes(l);if(k!==i){let ne=Z?c(M,ve):ve(M);return`${a}${ne}${l}`}return Z?c(M,ve):ve(M)}function ve(M){if(!M)return M;let Z=!1,ne=[],ce=0;kf.lastIndex=0;let ge;for(;(ge=kf.exec(M))!==null;){let[re,Ue,Be,He,Ge]=ge,Ee=M.slice(ce,ge.index),qe=K(Ee);qe!==Ee&&(Z=!0),ne.push(qe);let xt=I(Ue,Be),st=Ue.toLowerCase()==="style"?C(He,"css"):He;(xt!==Be||st!==He)&&(Z=!0),ne.push(`<${Ue}${xt}>${st}${Ge}`),ce=ge.index+re.length}let _e=M.slice(ce),ue=K(_e);return ue!==_e&&(Z=!0),ne.push(ue),Z?ne.join(""):M}return{html:Ae,css:M=>C(M,"css"),props:je}}function x(){return{...s?{baseUrl:s}:{},...n?{invalidBaseUrl:n}:{},references:[...i.references],unresolved:[...i.unresolved],...u.length>0?{roots:u.map(k=>({label:k.label,dir:k.dir,...k.base?{baseUrl:k.base}:{},fallback:k.fallback,...k.invalidBaseUrl?{invalidBaseUrl:k.invalidBaseUrl}:{},references:[...k.references],unresolved:[...k.unresolved]}))}:{}}}let R=new Map;function O(k){let C=rr(String(k??""));if(!C)return null;let I=d.find(K=>K.dir===C)??d.find(K=>K.dir.toLowerCase()===C.toLowerCase());if(!I)return null;let F=R.get(I);return F||(F={...E(I),forRoot:O,report:x},R.set(I,F)),F}return{...E(i),forRoot:O,report:x}}import Lf from"path";var Ux=1,dn={"blog-post":["full","minimal","editor"],"blog-listing":["index","topic","page-2","empty"],"hubdb-dynamic-page":["row","listing"]},Bx=["blog-post","blog-listing","hubdb-dynamic-page"],xn="content",Cf=/^[a-z0-9][a-z0-9-]{0,63}$/;function Hx(e){return typeof e=="string"&&Object.prototype.hasOwnProperty.call(dn,e)}function Pf(e){return`${e}/${dn[e][0]}`}function Gx(e){let t=e.indexOf("/");if(t===-1)return null;let n=e.slice(0,t),s=e.slice(t+1);return!Hx(n)||!Cf.test(s)?null:{kind:n,name:s}}function Dr(e,t){return`${xn}/${e}/${t}.json`}function Wx(e,t,n){return Lf.join(e,"fixtures",xn,t,`${n}.json`)}function sr(e){return e!==null&&typeof e=="object"&&!Array.isArray(e)}function Kx(e,t){return np(e,t)}function Nf(e,t,n,s){let r={id:`${t}/${n}`,kind:t,name:n,label:String(e.label).trim(),source:s,required:dn[t].includes(n),content:e.content,request:sr(e.request)?e.request:{},is_in_editor:e.is_in_editor===!0};sr(e.blog)&&(r.blog=e.blog),sr(e.group)&&(r.group=e.group),sr(e.tag)&&(r.tag=e.tag),Array.isArray(e.contents)&&(r.contents=e.contents);for(let i of["current_page_num","next_page_num","last_page_num"])typeof e[i]=="number"&&(r[i]=e[i]);return sr(e.dynamicPage)&&(r.dynamicPage=e.dynamicPage),r}function qx(e,t){let n=gt[Dr(e,t)];return sr(n)?structuredClone(n):null}function Vx(e,t,n){if(!e)return{status:"missing"};let s=Wx(e,t,n),r;try{if(!A.existsSync(s))return{status:"missing"};r=A.readFileSync(s,"utf-8")}catch{return{status:"missing"}}let i;try{i=JSON.parse(r)}catch(a){return{status:"invalid",reason:`it is not valid JSON (${a instanceof Error?a.message:String(a)})`}}let o=Kx(i,t);return o?{status:"invalid",reason:o}:{status:"ok",document:i}}function Jx(e,t,n,s){let r=`fixtures/${Dr(e,t)}`;return P(T.CONTENT_FIXTURE_INVALID,`The theme's content fixture ${r} could not be used: ${n}. `+(s?"The preview shows the renderer's own version of this state instead.":"This state is not one the renderer ships, so there is nothing to show in its place."),{file:r,kind:e,state:t,reason:n,fellBack:s})}function Rn(e,t){let n=Gx(t);if(!n)return{state:null,diagnostics:[]};let{kind:s,name:r}=n,i=[],o=Vx(e,s,r);if(o.status==="ok")return{state:Nf(o.document,s,r,"theme"),diagnostics:i};let a=qx(s,r);return o.status==="invalid"&&i.push(Jx(s,r,o.reason,a!==null)),a?{state:Nf(a,s,r,"embedded"),diagnostics:i}:{state:null,diagnostics:i}}function zx(e,t){if(!e)return[];let n=Lf.join(e,"fixtures",xn,t),s;try{if(!A.existsSync(n)||!A.statSync(n).isDirectory())return[];s=A.readdirSync(n)}catch{return[]}let r=new Set(dn[t]);return s.filter(i=>i.endsWith(".json")).map(i=>i.slice(0,-5)).filter(i=>Cf.test(i)&&!r.has(i)).sort()}function ir(e){let t=Bx.map(n=>{let s=[...dn[n],...zx(e,n)],r=[];for(let i of s){let{state:o}=Rn(e,`${n}/${i}`);o&&r.push({id:o.id,kind:n,name:i,label:o.label,source:o.source,required:o.required})}return{kind:n,defaultState:Pf(n),states:r}});return{contract:Ux,kinds:t}}function yl(e,t){let n=ir(e).kinds.flatMap(s=>s.states.map(r=>({id:r.id,label:r.label,source:r.source})));return new X(T.CONTENT_STATE_UNKNOWN,`There is no content state ${JSON.stringify(t)}. A state is written <kind>/<name>; this theme has: ${n.map(s=>`${s.id} (${s.label})`).join(", ")}.`,{requested:t,available:n})}function ai(e,t,n){if(typeof t=="string"&&t!==""){let s=Rn(e,t);if(!s.state)throw yl(e,t);return s}return n?Rn(e,Pf(n)):{state:null,diagnostics:[]}}function li(e){let t=/^\s*<!--([\s\S]*?)-->/.exec(e)?.[1]??"";if(/^\s*dynamicPageDataSourceType\s*:\s*\S+/m.test(t))return"hubdb-dynamic-page";let n=/templateType:\s*(\w+)/.exec(e)?.[1]??"";return n==="blog_post"?"blog-post":n==="blog_listing"?"blog-listing":null}function ci(e){let t=Array.isArray(e)?e.map(n=>String(n).toUpperCase()):[];return t.includes("BLOG_POST")?"blog-post":t.includes("BLOG_LISTING")?"blog-listing":"blog-post"}import Dt from"path";var If=["components/theme/text.tsx","components/theme/text.ts","components/theme/text.jsx","components/theme/text.js"],Df=["components/theme/prose.ts","components/theme/prose.tsx","components/theme/prose.js","components/theme/prose.jsx"],ui="ProseTone",Yx=/Role$/;function Mf(e){let t=[],n=new Set,s=/data-themespot-surface\s*[~|^$*]?=\s*["']?([A-Za-z0-9_-]+)/g,r;for(;(r=s.exec(e))!==null;){let o=r[1];o==="inherit"||n.has(o)||(n.add(o),t.push(o))}let i=t.indexOf("canvas");return i>0&&t.unshift(...t.splice(i,1)),t}function jf(e){return e.replace(/\/\*[\s\S]*?\*\//g," ").replace(/(^|[^:'"])\/\/[^\n]*/g,"$1")}function Xx(e,t){let n=t,s=i=>{let o=i;for(;o<e.length&&/\s/.test(e[o]);)o++;return o};n=s(n),e[n]==="|"&&n++;let r=[];for(;;){n=s(n);let i=e[n];if(i!=="'"&&i!=='"')return null;let o=e.indexOf(i,n+1);if(o<0||e.slice(n+1,o).includes(`
-`))return null;r.push(e.slice(n+1,o)),n=o+1;let a=s(n);if(e[a]==="|"){n=a+1;continue}return a>=e.length||e[a]===";"||e.slice(n,a).includes(`
-`)?r:null}}function Uf(e){let t=jf(e),n=[],s=/(^|[;\n}])\s*(export\s+)?(?:declare\s+)?type\s+([A-Za-z_$][\w$]*)\s*=/g,r;for(;(r=s.exec(t))!==null;){let i=Xx(t,r.index+r[0].length);i&&n.push({name:r[3],members:i,exported:!!r[2]})}return n}function Bf(e){return Uf(e).find(t=>t.exported&&Yx.test(t.name))??null}function Zx(e,t){let n=jf(e),s=/export\s+(?:type\s+)?\{([^}]*)\}\s*from\s*['"]([^'"]+)['"]/g,r;for(;(r=s.exec(n))!==null;)for(let a of r[1].split(",")){let l=a.trim().replace(/^type\s+/,"").split(/\s+as\s+/),c=l[0]?.trim();if((l[1]??l[0])?.trim()===t&&c)return[{specifier:r[2],importedName:c}]}let i=[],o=/export\s+(?:type\s+)?\*\s+from\s*['"]([^'"]+)['"]/g;for(;(r=o.exec(n))!==null;)i.push({specifier:r[1],importedName:t});return i}function Qx(e,t){let n=Dt.resolve(e);for(;;){if(A.existsSync(Dt.join(n,"node_modules",t,"package.json")))return Dt.join(n,"node_modules",t);let s=Dt.dirname(n);if(s===n)return null;n=s}}function Hf(e){if(typeof e=="string")return/\.d\.m?ts$/.test(e)?e:/\.m?js$/.test(e)?e.replace(/\.(m?)js$/,".d.$1ts"):null;if(!e||typeof e!="object"||Array.isArray(e))return null;let t=e;if(typeof t.types=="string")return t.types;for(let n of["import","default","module","require"])if(n in t){let s=Hf(t[n]);if(s)return s}return null}var $f=[".ts",".tsx",".d.ts",".mts",".d.mts",".js",".jsx",".mjs"];function e0(e,t){if(e.startsWith(".")){let d=Dt.resolve(Dt.dirname(t),e),p=d.replace(/\.(m?[jt]sx?)$/,"");return[...$f.map(g=>`${p}${g}`),d,...$f.map(g=>Dt.join(d,`index${g}`))].find(g=>A.existsSync(g)&&A.statSync(g).isFile())??null}let n=e.split("/"),s=e.startsWith("@")?n.slice(0,2).join("/"):n[0],r=e.slice(s.length),i=Qx(Dt.dirname(t),s);if(!i)return null;let o;try{o=JSON.parse(A.readFileSync(Dt.join(i,"package.json"),"utf-8"))}catch{return null}let a=r?`.${r}`:".",l=o?.exports,c=null;if(l&&typeof l=="object"&&!Array.isArray(l)?c=Hf(l[a]):r||(c=typeof o?.types=="string"?o.types:typeof o?.typings=="string"?o.typings:null),!c)return null;let u=Dt.join(i,c);return A.existsSync(u)?u:null}function wl(e,t,n=0,s=new Set){if(n>6||s.has(`${e}#${t}`))return null;s.add(`${e}#${t}`);let r;try{r=A.readFileSync(e,"utf-8")}catch{return null}let i=Uf(r).find(o=>o.name===t);if(i)return{...i,file:e};for(let o of Zx(r,t)){let a=e0(o.specifier,e),l=a?wl(a,o.importedName,n+1,s):null;if(l)return l}return null}function Ze(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}var t0=["<h2>A heading two in rich text</h2>",'<p>Body copy an editor wrote, with <a href="#specimen">a link</a>, <strong>strong words</strong> and <em>emphasis</em>. A second sentence gives the paragraph a line to wrap.</p>',"<h3>A heading three</h3>","<ul><li>A list item</li><li>Another list item</li></ul>","<blockquote><p>A quotation set off from the copy around it.</p></blockquote>"].join(""),Sl="Sphinx of black quartz, judge my vow";function n0(e){return e.samples.length===0?"":`<div class="themespot-specimen__roles">${e.samples.map(({role:n,html:s})=>`<div class="themespot-specimen__row"><div class="themespot-specimen__meta"><code>${Ze(n)}</code><span class="themespot-specimen__metrics" data-themespot-specimen-metrics></span></div><div class="themespot-specimen__sample" data-themespot-specimen-sample>${s}</div></div>`).join("")}</div>`}function r0(e){return e.classes.length===0?"":`<div class="themespot-specimen__tones">${e.classes.map(({tone:n,className:s})=>`<div class="themespot-specimen__tone"><div class="themespot-specimen__meta"><code>prose: ${Ze(n)}</code></div><div class="${Ze(s)}" data-themespot-specimen-prose>${t0}</div><dl class="themespot-specimen__prose-metrics" data-themespot-specimen-prose-metrics></dl></div>`).join("")}</div>`}function Ff(e,t,n,s,r){if(!t)return`<li>${e}: <em>no file</em>${r?` \u2014 ${Ze(r)}`:""}</li>`;let i=n?` (<code>${Ze(n)}</code>, ${s})`:"";return`<li>${e}: <code>${Ze(t)}</code>${i}${r?` \u2014 ${Ze(r)}`:""}</li>`}function Gf(e){let{roles:t,tones:n,surfaces:s}=e,r='<header class="themespot-specimen__intro"><h1 class="themespot-specimen__title">Type specimen</h1><ul class="themespot-specimen__sources">'+Ff("Text roles",t.file,t.typeName,t.samples.length,t.note)+Ff("Prose tones",n.file,n.typeName,n.classes.length,n.note)+`<li>Surfaces: ${s.length>0?s.map(o=>`<code>${Ze(o)}</code>`).join(" "):"<em>none declared \u2014 shown on the page background</em>"}</li></ul><p class="themespot-specimen__legend">Beside each sample: font size / line height \xB7 colour, measured in this browser after fonts load.</p></header>`,i=(s.length>0?s:[null]).map(o=>{let a=o?` data-themespot-surface="${Ze(o)}"`:"",l=o?`Surface: ${Ze(o)}`:"Page background";return`<section class="themespot-specimen__surface"${a}><h2 class="themespot-specimen__label">${l}</h2>`+n0(t)+r0(n)+"</section>"}).join("");return`<main class="themespot-specimen" data-themespot-specimen>${r}${i}</main>
-${s0}`}function Wf(e="--themespot--"){return`<style id="themespot-specimen-styles">
-  .themespot-specimen { margin: 0; }
-  .themespot-specimen__intro { font: 13px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; padding: 24px; }
-  .themespot-specimen__title { font: 600 18px/1.3 system-ui, -apple-system, "Segoe UI", sans-serif; margin: 0 0 8px; }
-  .themespot-specimen__sources { margin: 0 0 8px; padding-left: 18px; }
-  .themespot-specimen__legend { margin: 0; opacity: 0.7; }
-  .themespot-specimen__surface {
-    background-color: var(--color-background, var(${e}surface__backgroundColor, #fff));
-    color: var(--color-foreground, var(${e}surface__textColor, inherit));
-    padding: 24px;
-    border-top: 1px dashed rgba(127,127,127,0.35);
-  }
-  .themespot-specimen__label, .themespot-specimen__meta, .themespot-specimen__prose-metrics {
-    font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    letter-spacing: 0; text-transform: none;
-  }
-  .themespot-specimen__label { font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.6; margin: 0 0 16px; }
-  .themespot-specimen__row { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: baseline; padding: 8px 0; }
-  .themespot-specimen__meta { display: flex; flex-direction: column; gap: 2px; opacity: 0.75; }
-  .themespot-specimen__meta code { font: inherit; }
-  .themespot-specimen__sample > * { margin: 0; }
-  .themespot-specimen__tones { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 32px; margin-top: 24px; }
-  .themespot-specimen__prose-metrics { display: grid; grid-template-columns: max-content 1fr; gap: 0 12px; margin: 12px 0 0; opacity: 0.75; }
-  .themespot-specimen__prose-metrics dt, .themespot-specimen__prose-metrics dd { margin: 0; }
-</style>`}var s0=`<script>
-(function () {
-  function px(value) {
-    var n = parseFloat(value);
-    if (!isFinite(n)) return value;
-    return String(Math.round(n * 100) / 100) + 'px';
-  }
-  // Computed colours arrive in whatever space the theme wrote them in
-  // (oklab from a color-mix, rgb from a hex), so each is painted onto one
-  // canvas pixel and read back as sRGB: every number on the page is a hex.
-  var probe = document.createElement('canvas');
-  probe.width = 1;
-  probe.height = 1;
-  var ctx = probe.getContext('2d', { willReadFrequently: true });
-  function hex(channel) { return ('0' + channel.toString(16)).slice(-2); }
-  function colour(value) {
-    if (!ctx) return value;
-    ctx.clearRect(0, 0, 1, 1);
-    ctx.fillStyle = '#000';
-    ctx.fillStyle = value;
-    ctx.fillRect(0, 0, 1, 1);
-    var d = ctx.getImageData(0, 0, 1, 1).data;
-    var out = '#' + hex(d[0]) + hex(d[1]) + hex(d[2]);
-    return d[3] === 255 ? out : out + ' @ ' + (Math.round((d[3] / 255) * 100) / 100);
-  }
-  function metrics(el) {
-    var style = getComputedStyle(el);
-    var lh = style.lineHeight === 'normal' ? 'normal' : px(style.lineHeight);
-    return px(style.fontSize) + ' / ' + lh + ' \\u00b7 ' + colour(style.color);
-  }
-  function measure() {
-    document.querySelectorAll('[data-themespot-specimen-sample]').forEach(function (sample) {
-      var target = sample.firstElementChild || sample;
-      var out = sample.parentElement && sample.parentElement.querySelector('[data-themespot-specimen-metrics]');
-      if (out) out.textContent = metrics(target);
-    });
-    document.querySelectorAll('[data-themespot-specimen-prose]').forEach(function (prose) {
-      var list = prose.parentElement && prose.parentElement.querySelector('[data-themespot-specimen-prose-metrics]');
-      if (!list) return;
-      list.textContent = '';
-      var seen = {};
-      prose.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,blockquote,a,strong').forEach(function (el) {
-        var tag = el.tagName.toLowerCase();
-        if (el.parentElement && el.parentElement.tagName.toLowerCase() === 'blockquote') tag = 'blockquote ' + tag;
-        if (seen[tag]) return;
-        seen[tag] = true;
-        var dt = document.createElement('dt');
-        dt.textContent = tag;
-        var dd = document.createElement('dd');
-        dd.textContent = metrics(el);
-        list.appendChild(dt);
-        list.appendChild(dd);
-      });
-    });
-    document.documentElement.setAttribute('data-themespot-specimen', 'measured');
-  }
-  var ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
-  ready.then(measure, measure);
-})();
-</script>`;function Kf(e){return`<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><title>Specimen unavailable</title></head>
-<body style="font:15px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;padding:2rem;max-width:760px;margin:0 auto">
-<h1 style="font-size:1.4rem">Specimen unavailable: this theme has no <code>components/theme/text.tsx</code> or <code>components/theme/prose.ts</code></h1>
-<p><code>/?specimen</code> is generated from the theme's own type grammar, read from those two files at request time:</p>
-<ul>
-<li><code>components/theme/text.tsx</code> \u2014 an exported string-union type whose name ends in <code>Role</code> (<code>export type TextRole = 'eyebrow' | 'h2' | 'body'</code>) names the text roles. Each is rendered through the file's exported <code>Text</code> component (<code>&lt;Text role="h2"&gt;</code>) or its <code>textClass(role)</code>.</li>
-<li><code>components/theme/prose.ts</code> \u2014 its exported <code>proseClass</code>, once per member of <code>ProseTone</code>, declared there or re-exported through it from another module, such as a UI library's <code>styles</code> entry.</li>
-</ul>
-<p>Either file on its own is enough. Surfaces are read from the <code>data-themespot-surface</code> selectors in the theme's stylesheets.</p>
-<p>Theme root: <code>${Ze(e)}</code></p>
-<p><a href="/">Back to the index</a></p>
-</body></html>`}function qf(e){return`<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><title>Specimen unavailable</title></head>
-<body style="font:15px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;padding:2rem;max-width:760px;margin:0 auto">
-<h1 style="font-size:1.4rem">Specimen unavailable: React SSR is not running</h1>
-<p>The specimen evaluates the theme's <code>components/theme/text.tsx</code> and <code>prose.ts</code> through the renderer's SSR bridge, and this renderer has none: ${Ze(e)}</p>
-</body></html>`}var zf="base-layout-css-scan";function i0(e,t){return new X(e.code,`Base layout ${t}: ${e.message}`,{...e.details,origin:zf,originTemplate:t})}async function di(e){let{presetName:t="default",renderModules:n=!0,renderGlobalPartials:s=!0,themeOverrides:r}=e,i=Me(e),{themeRoot:o}=i,a=Ef(i.themeRoot),l=Rf(i),c=fr(l),u=xr(i.themeRoot,i),d=_0(i,a),p=d.cssDir,m=d.cssDirs,g=m.find(f=>A.existsSync(we.join(f,"presets")))?we.join(m.find(f=>A.existsSync(we.join(f,"presets"))),"presets"):we.join(p,"presets"),E=["default",...(A.existsSync(g)?A.readdirSync(g).filter(f=>f.endsWith(".hubl.css")&&f.startsWith("_")).map(f=>f.replace(/^_/,"").replace(/\.hubl\.css$/,"")):[]).filter(f=>f!=="default")],x=null;function R(f){return we.basename(f).toLowerCase()===f0?!0:(x||(x=new Set($d({cssDir:p,cssDirs:m,cssAssets:a.cssAssets}).map(_=>we.resolve(_).toLowerCase()))),x.has(we.resolve(f).toLowerCase()))}let O=new Map;function k(f,_){let w=c0(r,_),S=w?fr(l,w):c,N=`${f}::${w?JSON.stringify(w):""}`,L=O.get(N);L===void 0&&(L=$o({theme:S,cssDir:p,cssDirs:m,presetName:f,cssAssets:a.cssAssets,baseSize:a.baseSize,resolveAsset:u}),O.size>64&&O.clear(),O.set(N,L));let D=h0(S);return{theme:S,css:L.css,cssDiagnostics:L.diagnostics,fontLinks:D}}function C(f){let _=Jf(f);if(_)return A.existsSync(_)?_:null;let w=f.replace(/^(?:\.\.?\/)+/,""),S=null;try{S=$e(i,w)??H(o,w)}catch{S=null}return S&&A.existsSync(S)?S:null}let I=[...i.roots,i.themeRoot,i.childThemeRoot,i.parentThemeRoot,...Object.values(i.projects??{}).flatMap(f=>Object.values(f))].filter(f=>typeof f=="string"&&f.length>0);function F(f,_){let w=_?K():[];return oi({baseUrl:f?.assetBaseUrl??e.assetBaseUrl,themeRoots:I,...w.length>0?{roots:w}:{}})}function K(){return(e.extraThemes??[]).filter(f=>f&&typeof f.root=="string"&&wn(f.root)!==""&&f.dir).map(f=>({dir:ca(f.dir),label:f.root.trim(),...typeof f.assetBaseUrl=="string"?{baseUrl:f.assetBaseUrl}:{}}))}function le(f,_){return{...f,assetsForRoot:w=>_.forRoot(w)}}function Se(f){let _=K();return(w,S,N)=>{let L=je(_,w);if(!L)return null;let D=f.forRoot(L.dir);if(!D)return null;let B=we.relative(L.dir,we.resolve(w)).split(we.sep).join("/");return D.html(N(Yf(S,`/${B}`)))}}function je(f,_){let w=we.resolve(_),S=null;for(let N of f){let L=we.relative(N.dir,w);L===""||L.startsWith("..")||we.isAbsolute(L)||(!S||N.dir.length>S.dir.length)&&(S=N)}return S}function Ae(f){let _=K();return w=>{let S=Jf(w);if(!S)return null;let N=je(_,S);return!N||f.forRoot(N.dir)?null:we.relative(N.dir,we.resolve(S)).split(we.sep).join("/")}}let ve=5;function M(f){let _=f.report();return[...Z(_),...(_.roots??[]).flatMap(ne)]}function Z(f){if(f.invalidBaseUrl)return[P(T.ASSET_BASE_URL_INVALID,`assetBaseUrl ${JSON.stringify(f.invalidBaseUrl)} was refused: it contains a character that could break out of an attribute or a <style> block (a quote, angle bracket, parenthesis, backtick, or whitespace). Asset references were left relative; supply a base without those characters.`,{assetBaseUrl:f.invalidBaseUrl})];if(f.baseUrl)return f.unresolved.map(w=>P(T.ASSET_URL_UNRESOLVED,`Asset reference "${w.reference}" could not be resolved against the asset base URL "${f.baseUrl}" (${w.reason}); it was left as it was and will not load.`,{reference:w.reference,reason:w.reason,origin:w.origin,assetBaseUrl:f.baseUrl}));if(f.references.length===0)return[];let _=f.references.slice(0,ve);return[P(T.ASSET_BASE_URL_MISSING,`No assetBaseUrl was supplied, so ${f.references.length} theme-relative asset reference${f.references.length===1?"":"s"} (${_.join(", ")}${f.references.length>_.length?", \u2026":""}) were emitted unchanged. They resolve against whatever page hosts the output, which in a sandboxed preview frame is not the theme.`,{referenceCount:f.references.length,references:_})]}function ne(f){let _=[],w=f.references.slice(0,ve),S=`${w.join(", ")}${f.references.length>w.length?", \u2026":""}`;if(f.invalidBaseUrl&&_.push(P(T.ASSET_BASE_URL_INVALID,`The assetBaseUrl ${JSON.stringify(f.invalidBaseUrl)} supplied for theme root ${f.label} was refused: it contains a character that could break out of an attribute or a <style> block (a quote, angle bracket, parenthesis, backtick, or whitespace). `+(f.baseUrl?`Its asset references were joined onto the render's assetBaseUrl ${JSON.stringify(f.baseUrl)} instead, which serves the template's theme. `:"Its asset references were left relative. ")+"Supply a base without those characters.",{themeRoot:f.label,assetBaseUrl:f.invalidBaseUrl,...f.baseUrl?{fallbackAssetBaseUrl:f.baseUrl}:{}})),!f.baseUrl)return _;for(let L of f.unresolved.slice(0,ve))_.push(P(T.ASSET_URL_UNRESOLVED,`Asset reference "${L.reference}" from theme root ${f.label} could not be resolved against the asset base URL "${f.baseUrl}" (${L.reason}); it was left as it was and will not load.`,{reference:L.reference,reason:L.reason,origin:L.origin,assetBaseUrl:f.baseUrl,themeRoot:f.label}));let N=f.unresolved.slice(ve);if(N.length>0){let L=N.slice(0,ve).map(D=>D.reference);_.push(P(T.ASSET_URL_UNRESOLVED,`${N.length} further asset reference${N.length===1?"":"s"} from theme root ${f.label} could not be resolved against the asset base URL "${f.baseUrl}" (${L.join(", ")}${N.length>L.length?", \u2026":""}); ${N.length===1?"it was":"they were"} left as written and will not load.`,{assetBaseUrl:f.baseUrl,themeRoot:f.label,omittedCount:N.length,references:L}))}return f.fallback&&!f.invalidBaseUrl&&f.references.length>0&&_.push(P(T.ASSET_BASE_URL_MISSING,`Theme root ${f.label} was supplied without an assetBaseUrl of its own, so ${f.references.length} asset reference${f.references.length===1?"":"s"} its modules named (${S}) ${f.references.length===1?"was":"were"} joined onto the render's assetBaseUrl ${JSON.stringify(f.baseUrl)} instead. That base serves the template's theme; they load only if it serves ${f.label}'s files too. Supply the root's own assetBaseUrl.`,{themeRoot:f.label,fallbackAssetBaseUrl:f.baseUrl,referenceCount:f.references.length,references:w})),_}function ce(f){for(let _ of i.roots){let w=we.relative(_,f);if(!(w===""||w.startsWith("..")||we.isAbsolute(w)))return`/${w.replace(/\\/g,"/")}`}return null}let ge=k(t),_e=[...i.diagnostics],ue=null,re=null,Ue,Be=f=>f==="no-bridge-in-build"?P(T.SSR_BRIDGE_UNAVAILABLE,"This build has no React renderer, so React modules appear as placeholders.",{reason:f}):P(T.SSR_BRIDGE_UNAVAILABLE,"React SSR is not available in this build \u2014 React modules render as placeholders. Their structure and fields are shown; their markup is not.",{reason:f}),He=f=>f==="not-rendered"?"no-bridge-in-build":"disabled-by-configuration";if(n&&e.createSsrBridge===null)Ue=e.reactModulePolicy??"host-may-finish",ue=Be(He(Ue));else if(n)try{let f=e.createSsrBridge===void 0?await Sf():e.createSsrBridge;f===null?(Ue=e.reactModulePolicy??"not-rendered",ue=Be(He(Ue))):re=await f({themeRoot:o,themeRoots:i})}catch(f){let _=f instanceof Error?f.message:String(f);ue=P(T.SSR_BRIDGE_UNAVAILABLE,`SSR bridge unavailable \u2014 React modules will render as placeholders: ${_}`,{reason:"bridge-failed-to-start"})}function Ge(f){return!ue||f.length===0?[]:[ue]}function Ee(f,_,w){return{themeRoot:o,childThemeRoot:i.childThemeRoot,parentThemeRoot:i.parentThemeRoot,projects:i.projects,themeRoots:i,theme:f,presetName:_,renderGlobalPartials:s,baseSize:a.baseSize,themeId:e.themeId,parentThemeId:e.parentThemeId,stampProvenance:e.stampProvenance,reactModulePolicy:Ue,...w}}function qe(f){if(e.stampProvenance===!1)return"";let _=ks(i,{themeId:e.themeId,parentThemeId:e.parentThemeId}),w=Vt(_,ut(i,f));return Ft({kind:"template",runtime:"hubl",themeId:w?.themeId??null,file:w?.file??f})}function xt(f){let w=["layouts/base.hubl.html","layouts/base.html"].find(S=>$e(i,we.join("templates",S)));if(!w)return{cssLinks:[],diagnostics:[]};try{let S=nl({...f,renderGlobalPartials:!1},w);return{cssLinks:S.cssLinks,diagnostics:S.diagnostics.map(N=>i0(N,w))}}catch(S){let N=S instanceof Error?S.message:String(S);return{cssLinks:[],diagnostics:[P(T.CSS_RENDER_ERROR,`Base layout ${w}: could not be evaluated for its require_css links, so this preview is missing the layout's stylesheets \u2014 ${N}`,{origin:zf,originTemplate:w,sourceFile:w})]}}}function st(f,_,w,S){let N=xt(f),L=vl([...N.cssLinks,..._,Tt],{theme:w,baseSize:a.baseSize,presetName:S,resolveAsset:u},C,R,ce);return{markup:L.markup,diagnostics:[...N.diagnostics,...L.diagnostics]}}function it(f,_){return ai(o,f?.state,_)}function pn(f){try{let _=yt(i,f);if(!_)return null;let w=we.join(_,"meta.json");if(!A.existsSync(w))return null;let S=JSON.parse(A.readFileSync(w,"utf-8"));return ci(S?.content_types)}catch{return null}}let Tt="assets/dist/theme.css";async function ot(f,_,w=[],S){if(!re)return{html:f,css:"",islands:[],sharedStates:{},diagnostics:[],hydrated:[],filledFieldDefaults:{}};let N=/<div class="themespot-module-placeholder"\s+data-module-path="([^"]+)"\s+data-module-props="([^"]*)"[^>]*>\s*\[Module:[^\]]*\]\s*<\/div>/g,L=[],D={diagnostics:[],reportedContentLinks:new Set(w.filter(q=>q.code===T.CONTENT_LINK_UNRESOLVED).map(q=>`${q.details?.modulePath} ${q.details?.fieldPath}`))},B,W=!0;for(;(B=N.exec(f))!==null;){let q=B[1],Oe=B[2],ae={};try{ae=JSON.parse(Vn(Oe))}catch{}W&&_&&Object.keys(_).length>0&&(ae={...ae,...Cs(D,q,_)},W=!1);let Pe=B[0].slice(0,B[0].indexOf(">")+1);L.push({fullMatch:B[0],modulePath:q,props:ae,provenance:Rp(Pe)})}if(L.length===0)return{html:f,css:"",islands:[],sharedStates:{},diagnostics:[],hydrated:[],filledFieldDefaults:{}};let U=[],Y=[],Q={},G=[...D.diagnostics],ee=[],pe={},Ye=L.map(()=>[]),Ve=await Promise.all(L.map(async({modulePath:q,props:Oe,provenance:ae},Pe)=>{try{let fe=await re.renderModule(q,Oe,{state:S?.state,theme:S?.theme,presetName:S?.presetName,diagnostics:Ye[Pe]});fe.css&&U.push(fe.css);let xe=fe.html;if(fe.islands&&fe.islands.length>0){let lt=`m${Pe}-`;for(let Ke of fe.islands){if(!Ke.id)continue;let hr=`${lt}${Ke.id}`;xe=xe.split(`id="${Ke.id}"`).join(`id="${hr}"`),Ke.id=hr}Y.push(...fe.islands)}if(fe.sharedStates&&Object.assign(Q,fe.sharedStates),ee.push(q),Array.isArray(fe.filledFieldDefaults)&&fe.filledFieldDefaults.length>0){let lt=pe[q]??[];for(let Ke of fe.filledFieldDefaults)typeof Ke=="string"&&!lt.includes(Ke)&&lt.push(Ke);pe[q]=lt}return zo(xe,ae)}catch(fe){let xe=fe instanceof Error?fe.message:String(fe);return G.push(P(T.MODULE_RENDER_ERROR,`Module failed to render: ${q} \u2014 ${xe}`,{modulePath:q})),`<!-- Module SSR error (${q}): ${xe} -->`}})),he=f;for(let q=0;q<L.length;q++)he=he.replace(L[q].fullMatch,Ve[q]);let Re=new Set;for(let q of Ye.flat()){let Oe=`${q.code}\0${q.message}`;Re.has(Oe)||(Re.add(Oe),G.push(q))}return{html:he,css:U.join(`
-`),islands:Y,sharedStates:Q,diagnostics:G,hydrated:ee,filledFieldDefaults:pe}}async function ht(f,_){if(!re||_.hydrated.length===0)return f;let w=f.filter(L=>L.code===T.REACT_MODULE_FIELD_DEFAULT_UNEVALUABLE);if(w.length===0)return f;let S=new Set(_.hydrated),N=new Set;for(let L of w){let D=typeof L.details?.modulePath=="string"?L.details.modulePath:"";if(!D||!S.has(D)||N.has(D))continue;let B=Array.isArray(L.details?.fields)?L.details.fields:[];if(B.length===0)continue;let W=new Set(_.filledFieldDefaults[D]??[]);B.every(U=>W.has(U))&&N.add(D)}return N.size===0?f:f.filter(L=>L.code!==T.REACT_MODULE_FIELD_DEFAULT_UNEVALUABLE||!N.has(typeof L.details?.modulePath=="string"?L.details.modulePath:""))}function at(f,_="",w=[],S={},N){let L=N?.assets,D=Pe=>L?L.html(Pe):Pe,B=D(f),W=D(_),U=D(N?.requireCss??""),Y=D(N?.themeScripts??""),Q=D(N?.headScripts??""),G=D(N?.headMarkup??""),ee=w.length>0?p0(w,S,L):"",pe=N?.previewNavigation?o0(N.previewNavigation.templates):"",Ye=N?.themeCss??ge.css,Ve=N?.fontLinks??ge.fontLinks,he=N?.surfaceScheme?` data-themespot-surface="${ar(N.surfaceScheme)}"`:"",Re=N?.presetName?` data-preset="${ar(N.presetName)}"`:"",q=N?.themeMode==="dark"?' data-themespot-theme="dark"':"",Oe=N?.multiSurface?l0(a.tokenPrefix??"--themespot--"):"",ae=N?.inEditor?' class="hs-inline-edit"':"";return`<!DOCTYPE html>
-<html lang="en"${q}${ae}>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Preview</title>
-  ${Ve}
-  <style id="themespot-theme-css">${Ye}</style>
-  <!-- Empty injection hook: external tooling (Studio, agents) may write
-       CSS-var overrides here without a server round-trip. -->
-  <style id="themespot-theme-css-override"></style>
-  ${Oe}
-  ${N?.chromeStyles??""}
-  ${U}
-  ${W}
-  ${G}
-  ${Q}
-</head>
-<body class="body-wrapper theme-overrides" style="margin:0"${he}${Re}${N?.bodyProvenance??""}>
-  ${B}
-  ${Y}
-  ${ee}
-  ${pe}
-</body>
-</html>`}function Ce(f){let _=f?.presetName??t,w=f?.themeOverrides;return!w&&_===t?{...ge,presetName:_}:{...k(_,w),presetName:_}}async function Pn(f,_){return(await kt(f,_)).result}async function kt(f,_,w){re?.resetCssCache();let S=F(_,w),{theme:N,css:L,cssDiagnostics:D,fontLinks:B,presetName:W}=Ce(_),{context:U,diagnostics:Y,contentKind:Q}=u0(i,f),{state:G,diagnostics:ee}=it(_,Q),pe=d0(U,G),Ye=Ee(N,W,{templateContext:pe,contentState:G,...w?{page:le(w,S)}:{}}),{html:Ve,diagnostics:he,cssLinks:Re,jsLinks:q,moduleScripts:Oe,inlineScripts:ae,headMarkup:Pe,reactModules:fe,layoutSections:xe,pageModules:lt}=nl(Ye,f),Ke=await ot(Ve,void 0,[],{state:G,theme:N,presetName:W}),hr=vl([...Re,Tt],{theme:N,baseSize:a.baseSize,presetName:W,resolveAsset:u},C,R,ce,w?Se(S):void 0);return{result:{html:at(Ke.html,Ke.css,Ke.islands,Ke.sharedStates,{themeCss:S.css(L),fontLinks:B,surfaceScheme:_?.surfaceScheme,presetName:W,themeMode:or(N),previewNavigation:_?.previewNavigation,requireCss:hr.markup,themeScripts:Mr(q,Oe,ae,ce,C,w?Ae(S):void 0),headScripts:jr(ae),headMarkup:Ur(Pe),assets:S,inEditor:G?.is_in_editor===!0,bodyProvenance:qe(f)}),diagnostics:[..._e,...Y,...ee,...D,...hr.diagnostics,...Ge(fe),...await ht(he,Ke),...Ke.diagnostics,...M(S)],layoutSections:xe},pageModules:lt}}async function $n(f,_){re?.resetCssCache();let w=F(_,f),{theme:S,css:N,cssDiagnostics:L,fontLinks:D,presetName:B}=Ce(_),{state:W,diagnostics:U}=it(_,null),Y=Ee(S,B,{contentState:W,page:le(f,w)}),Q=Wh(Y),G=await ot(Q.html,void 0,[],{state:W,theme:S,presetName:B}),ee=vl([...Q.cssLinks,Tt],{theme:S,baseSize:a.baseSize,presetName:B,resolveAsset:u},C,R,ce,Se(w));return{result:{html:at(G.html,G.css,G.islands,G.sharedStates,{themeCss:w.css(N),fontLinks:D,surfaceScheme:_?.surfaceScheme,presetName:B,themeMode:or(S),previewNavigation:_?.previewNavigation,requireCss:ee.markup,themeScripts:Mr(Q.jsLinks,Q.moduleScripts,Q.inlineScripts,ce,C,Ae(w)),headScripts:jr(Q.inlineScripts),headMarkup:Ur(Q.headMarkup),assets:w,inEditor:W?.is_in_editor===!0}),diagnostics:[..._e,...U,...L,...ee.diagnostics,...Ge(Q.reactModules),...await ht(Q.diagnostics,G),...G.diagnostics,...M(w)],layoutSections:Q.layoutSections},pageModules:Q.pageModules??[]}}function Fn(){return[e.portalRoot?js(e.portalRoot,i.childThemeRoot??i.themeRoot,e.themeId):null,e.parentPortalRoot&&i.parentThemeRoot?js(e.parentPortalRoot,i.parentThemeRoot,e.parentThemeId):null].filter(_=>_!==null)}function Ri(f){let _=(e.extraThemes??[]).map(S=>js(S.root,ca(S.dir),S.themeId,S.themeName)).filter(S=>S!==null),w=[{themeId:e.themeId?.trim()||null,themeName:null},...i.parentThemeRoot?[{themeId:e.parentThemeId?.trim()||null,themeName:null}]:[],..._.map(S=>({themeId:S.themeId,themeName:S.themeName}))];return{layoutSections:me(f.layoutSections)?f.layoutSections:{},widgets:me(f.widgets)?f.widgets:{},content:me(f.content)?f.content:void 0,modules:Array.isArray(f.modules)?f.modules:[],cascadeRoots:Fn(),extraRoots:_,suppliedThemes:w.filter(S=>S.themeId!==null||S.themeName!==null)}}function xi(f){let _=wn(f),w=[f,_];for(let S of Fn())_.startsWith(`${S.portalRoot}/`)&&w.push(_.slice(S.portalRoot.length+1));for(let S of w)if(S&&ut(i,S))return S;return null}async function Ti(f,_){let w=Ri(f),S=typeof f.templatePath=="string"?f.templatePath.trim():"",N=S?xi(S):null,L,D;if(!S)L="the page names no template";else if(!N)L=`its template ${JSON.stringify(S)} resolves to no file in the theme supplied`;else try{let U=await kt(N,_,w);return{...U.result,page:oa(U.pageModules??[],!0)}}catch(U){if(U instanceof X&&U.code===T.CONTENT_STATE_UNKNOWN)throw U;D=U instanceof Error?U.message:String(U),L=`its template ${JSON.stringify(S)} failed to render`}let B=await $n(w,_),W=P(T.PAGE_TEMPLATE_NOT_DRAWN,`The page's template was not drawn \u2014 ${L}${D?` (${D})`:""} \u2014 so its ${Object.keys(w.layoutSections).length} drag-and-drop area(s) are shown in a neutral scaffold, without the template's header, footer or layout around them.`,{templatePath:S||null,reason:L,...D?{error:D}:{}});return{...B.result,diagnostics:[W,...B.result.diagnostics],page:oa(B.pageModules,!1)}}async function ki(f,_={},w){let S=F(w),{theme:N,presetName:L}=Ce(w),{state:D,diagnostics:B}=it(w,null),W=Ee(N,L,{contentState:D}),{html:U,diagnostics:Y,reactModules:Q,layoutSections:G}=ei(W,f,_);return{html:S.html(U),diagnostics:[..._e,...B,...Ge(Q),...Y,...M(S)],layoutSections:G}}async function dr(f,_,w,S){let N=`{% global_partial path="${f}" type="${_}" %}`,{html:L,diagnostics:D,reactModules:B,cssLinks:W,jsLinks:U,moduleScripts:Y,inlineScripts:Q,headMarkup:G}=ei(w,N),ee=await ot(L,void 0,[],S);return{...ee,diagnostics:[...await ht(D,ee),...ee.diagnostics],reactModules:B,cssLinks:W,jsLinks:U,moduleScripts:Y,inlineScripts:Q,headMarkup:G}}async function pr(f,_,w,S,N,L,D,B,W){if(!B)return{html:f,css:_,islands:w,sharedStates:S,diagnostics:[],reactModules:[],cssLinks:N,...L};let[U,Y]=await Promise.all([dr("../partials/header.hubl.html","HEADER",D,W),dr("../partials/footer.hubl.html","FOOTER",D,W)]);return{html:`${U.html}
-${f}
-${Y.html}`,css:[U.css,_,Y.css].filter(Boolean).join(`
-`),islands:[...U.islands,...w,...Y.islands],sharedStates:{...U.sharedStates,...S,...Y.sharedStates},diagnostics:[...U.diagnostics,...Y.diagnostics],reactModules:[...U.reactModules,...Y.reactModules],cssLinks:[...U.cssLinks,...N,...Y.cssLinks],jsLinks:[...U.jsLinks,...L.jsLinks,...Y.jsLinks],moduleScripts:[...U.moduleScripts,...L.moduleScripts,...Y.moduleScripts],inlineScripts:[...U.inlineScripts,...L.inlineScripts,...Y.inlineScripts],headMarkup:[...U.headMarkup,...L.headMarkup,...Y.headMarkup]}}async function Ai(f,_,w){re?.resetCssCache();let S=F(w),{theme:N,css:L,cssDiagnostics:D,fontLinks:B,presetName:W}=Ce(w),{state:U,diagnostics:Y}=it(w,pn(f)??"blog-post"),Q={state:w?.state?U:void 0,theme:N,presetName:W},G=Ee(N,W,{contentState:U}),{env:ee,collector:pe}=Ir(G),Ye=Or({env:ee,collector:pe,themeRoots:i,themeRoot:o,modulePath:f,props:_,contextCtx:{},moduleNumber:++pe.moduleCounter,preprocess:Yt}),Ve=await ot(Ye,void 0,[],Q),he={html:Ve.html,css:Ve.css,islands:Ve.islands,sharedStates:Ve.sharedStates},Re=[...await ht(pe.diagnostics,Ve),...Ve.diagnostics],q=[...pe.reactModules],Oe=w?.multiSurface?a0.map(({surface:xe,label:lt})=>`
-          <section class="themespot-preview-surface" data-themespot-surface="${xe}">
-            <header class="themespot-preview-surface__label">${lt}</header>
-            <div class="themespot-preview-surface__body">${he.html}</div>
-          </section>
-        `).join(""):he.html,ae=await pr(Oe,he.css,he.islands,he.sharedStates??{},pe.cssLinks,{jsLinks:pe.jsLinks,moduleScripts:pe.moduleScripts,inlineScripts:pe.inlineScripts,headMarkup:pe.headMarkup},G,w?.includeGlobalPartials===!0,Q),Pe=st(G,ae.cssLinks,N,W);return{html:at(ae.html,ae.css,ae.islands,ae.sharedStates,{themeCss:S.css(L),fontLinks:B,inEditor:U?.is_in_editor===!0,surfaceScheme:w?.multiSurface?void 0:w?.surfaceScheme,presetName:W,themeMode:or(N),multiSurface:w?.multiSurface,previewNavigation:w?.previewNavigation,assets:S,requireCss:Pe.markup,themeScripts:Mr(ae.jsLinks,ae.moduleScripts,ae.inlineScripts,ce,C),headScripts:jr(ae.inlineScripts),headMarkup:Ur(ae.headMarkup)}),diagnostics:[..._e,...Y,...D,...Pe.diagnostics,...Ge([...q,...ae.reactModules]),...Re,...ae.diagnostics,...M(S)]}}async function zr(f,_,w){re?.resetCssCache();let S=F(w),{theme:N,css:L,cssDiagnostics:D,fontLinks:B,presetName:W}=Ce(w),U=`{% include_dnd_partial path="${f}" %}`,{state:Y,diagnostics:Q}=it(w,"blog-post"),G={state:Y,theme:N,presetName:W},ee=Ee(N,W,{contentState:Y}),{html:pe,diagnostics:Ye,reactModules:Ve,cssLinks:he,jsLinks:Re,moduleScripts:q,inlineScripts:Oe,headMarkup:ae,layoutSections:Pe}=ei(ee,U),fe=await ot(pe,_,Ye,G),xe=await pr(fe.html,fe.css,fe.islands,fe.sharedStates,he,{jsLinks:Re,moduleScripts:q,inlineScripts:Oe,headMarkup:ae},ee,w?.includeGlobalPartials===!0,G),lt=st(ee,xe.cssLinks,N,W);return{html:at(xe.html,xe.css,xe.islands,xe.sharedStates,{themeCss:S.css(L),fontLinks:B,inEditor:Y?.is_in_editor===!0,surfaceScheme:w?.surfaceScheme,presetName:W,themeMode:or(N),previewNavigation:w?.previewNavigation,assets:S,requireCss:lt.markup,themeScripts:Mr(xe.jsLinks,xe.moduleScripts,xe.inlineScripts,ce,C),headScripts:jr(xe.inlineScripts),headMarkup:Ur(xe.headMarkup)}),diagnostics:[..._e,...Q,...D,...lt.diagnostics,...Ge([...Ve,...xe.reactModules]),...await ht(Ye,fe),...fe.diagnostics,...xe.diagnostics,...M(S)],layoutSections:Pe}}async function Yr(f,_){re?.resetCssCache();let w=F(_),{theme:S,css:N,cssDiagnostics:L,fontLinks:D,presetName:B}=Ce(_),{state:W,diagnostics:U}=it(_,null),Y=Ee(S,B,{contentState:W}),Q=/footer/i.test(f)?"FOOTER":"HEADER",G=await dr(`../partials/${f}`,Q,Y,{state:W,theme:S,presetName:B}),ee=st(Y,G.cssLinks,S,B);return{html:at(G.html,G.css,G.islands,G.sharedStates,{themeCss:w.css(N),fontLinks:D,surfaceScheme:_?.surfaceScheme,presetName:B,themeMode:or(S),previewNavigation:_?.previewNavigation,assets:w,requireCss:ee.markup,themeScripts:Mr(G.jsLinks,G.moduleScripts,G.inlineScripts,ce,C),headScripts:jr(G.inlineScripts),headMarkup:Ur(G.headMarkup)}),diagnostics:[..._e,...U,...L,...ee.diagnostics,...Ge(G.reactModules),...G.diagnostics,...M(w)]}}let hn=new Map;function Xr(f){let{css:_,presetName:w}=Ce(f),S=`${w}::${f?.themeOverrides?JSON.stringify(f.themeOverrides):""}`,N=hn.get(S);if(!N){let L=[_],D=$e(i,Tt);if(D)try{L.push(A.readFileSync(D,"utf-8"))}catch{}N=Mf(L.join(`
-`)),hn.size>64&&hn.clear(),hn.set(S,N)}return[...N]}function Zr(f){for(let _ of f){let w=$e(i,_);if(w&&A.existsSync(w))return{relative:_,absolute:w}}return null}async function Qr(f){let _=Zr(If),w=Zr(Df);if(!_&&!w)return{status:404,html:Kf(o),diagnostics:[]};let S=re?.loadThemeSourceModule;if(!S){let he=ue?.message??"the bridge in use cannot evaluate theme source files.";return{status:503,html:qf(he),diagnostics:ue?[ue]:[]}}let N=[],L=(he,Re)=>{let q=Re instanceof Error?Re.message:String(Re);N.push(P(T.SPECIMEN_SOURCE_FAILED,`${he} could not be evaluated for the specimen, so what it declares is missing from it \u2014 ${q}`,{file:he,error:q}))},D={file:_?.relative??null,samples:[]};if(_){let he="";try{he=A.readFileSync(_.absolute,"utf-8")}catch{}let Re=Bf(he);if(!Re)D.note="it exports no string-union type named \u2026Role, so it declares no text roles";else{D.typeName=Re.name;try{let q=await S(_.absolute),Oe=q.exports.Text,ae=q.exports.textClass;typeof Oe=="function"||Oe!==null&&typeof Oe=="object"?D.samples=Re.members.map(Pe=>({role:Pe,html:q.renderToStaticMarkup(Oe,{role:Pe},Sl)})):typeof ae=="function"?D.samples=Re.members.map(Pe=>({role:Pe,html:`<p class="${Ze(String(ae(Pe)))}">${Sl}</p>`})):D.note=`it declares ${Re.name} but exports neither Text nor textClass to render a role with`}catch(q){D.samples=[],D.note="it could not be evaluated (see the diagnostics)",L(_.relative,q)}}}let B={file:w?.relative??null,classes:[]};if(w){let he=wl(w.absolute,ui);try{let q=(await S(w.absolute)).exports.proseClass;typeof q!="function"?B.note="it exports no proseClass":he?(B.typeName=ui,B.classes=he.members.map(Oe=>({tone:Oe,className:String(q({tone:Oe}))}))):(B.note=`no ${ui} string union is declared in or re-exported through it, so only proseClass() with no tone is shown`,B.classes=[{tone:"default",className:String(q())}])}catch(Re){B.classes=[],B.note="it could not be evaluated (see the diagnostics)",L(w.relative,Re)}}let W=F(f),{theme:U,css:Y,cssDiagnostics:Q,fontLinks:G,presetName:ee}=Ce(f),pe=Ee(U,ee),Ye=st(pe,[],U,ee);return{status:200,html:at(Gf({roles:D,tones:B,surfaces:Xr(f)}),"",[],{},{themeCss:W.css(Y),fontLinks:G,presetName:ee,themeMode:or(U),assets:W,requireCss:Ye.markup,chromeStyles:Wf(a.tokenPrefix??"--themespot--")}),diagnostics:[..._e,...Q,...Ye.diagnostics,...N,...M(W)]}}async function h(f){if(!re)throw new Error("SSR bridge not available \u2014 module rendering is disabled");return re.getModuleFieldMetadata(f)}function b(){return{theme:ge.theme,fields:l,presets:E,defaultPreset:t,manifest:a}}async function v(){re&&await re.close()}return{renderPage:Pn,renderPageContent:Ti,renderString:ki,renderModule:Ai,renderSection:zr,renderPartial:Yr,renderSpecimen:Qr,getThemeSurfaces:Xr,getModuleFieldMetadata:h,getThemeMetadata:b,getResolvedCss:f=>F(f).css(Ce(f).css),viteMiddleware:re?.viteMiddleware??null,close:v}}function ar(e){return String(e).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}function or(e){return e?.group_foundation?.theme_mode}function o0(e){return`<script>
-(function () {
-  var templates = ${JSON.stringify(e)};
-  function findTemplate(href) {
-    var trimmed = href.replace(/^\\/+/, '').replace(/\\/+$/, '').split('?')[0].split('#')[0];
-    if (!trimmed) trimmed = 'home';
-    var candidates = [trimmed + '.hubl.html', trimmed.replace(/\\//g, '-') + '.hubl.html'];
-    var first = trimmed.split('/')[0];
-    candidates.push(first + '.hubl.html');
-    for (var i = 0; i < candidates.length; i++) {
-      if (templates.indexOf(candidates[i]) !== -1) return candidates[i];
+// src/theme-validator.ts
+import path from "path";
+
+// src/browser/diagnostics.ts
+var UNKNOWN_CODE_SEVERITY = "error";
+var SEVERITY_BY_CODE = Object.assign(/* @__PURE__ */ Object.create(null), {
+  [DIAGNOSTIC_CODES.MODULE_RENDER_ERROR]: "error",
+  [DIAGNOSTIC_CODES.HUBL_MODULE_ERROR]: "error",
+  [DIAGNOSTIC_CODES.CSS_RENDER_ERROR]: "error",
+  [DIAGNOSTIC_CODES.MODULE_SHAPE_UNRECOGNISED]: "warning",
+  [DIAGNOSTIC_CODES.HUBL_DATA_TEMPLATE_FAILED]: "error",
+  [DIAGNOSTIC_CODES.HUBL_DATA_TEMPLATE_INVALID]: "error",
+  [DIAGNOSTIC_CODES.HUBL_DATA_FIXTURE_INVALID]: "warning",
+  [DIAGNOSTIC_CODES.CRM_OBJECT_FIXTURE_INVALID]: "warning",
+  [DIAGNOSTIC_CODES.CRM_OBJECT_QUERY_NOT_APPLIED]: "info",
+  [DIAGNOSTIC_CODES.SPECIMEN_SOURCE_FAILED]: "error",
+  [DIAGNOSTIC_CODES.CONTENT_FIXTURE_INVALID]: "warning",
+  [DIAGNOSTIC_CODES.CONTENT_STATE_UNKNOWN]: "error",
+  [DIAGNOSTIC_CODES.SSR_BRIDGE_UNAVAILABLE]: "warning",
+  [DIAGNOSTIC_CODES.SSR_BRIDGE_REQUEST_FAILED]: "error",
+  [DIAGNOSTIC_CODES.REACT_MODULE_NOT_RENDERED]: "warning",
+  [DIAGNOSTIC_CODES.HUBL_FILTER_UNSUPPORTED]: "warning",
+  [DIAGNOSTIC_CODES.HUBL_FILTER_UNIMPLEMENTED]: "warning",
+  [DIAGNOSTIC_CODES.HUBL_GLOBAL_UNIMPLEMENTED]: "warning",
+  [DIAGNOSTIC_CODES.HUBL_TRANSLATIONS_UNRESOLVED]: "warning",
+  [DIAGNOSTIC_CODES.HUBL_WIDGET_EDITOR_ONLY]: "info",
+  [DIAGNOSTIC_CODES.HUBL_TAG_UNSUPPORTED]: "warning",
+  [DIAGNOSTIC_CODES.HUBL_FOR_RECURSIVE_DEGRADED]: "warning",
+  [DIAGNOSTIC_CODES.HUBL_DO_NO_OP]: "warning",
+  [DIAGNOSTIC_CODES.HUBL_SCOPE_CSS_UNSCOPED]: "warning",
+  [DIAGNOSTIC_CODES.HUBL_SCOPE_CSS_APPROXIMATE]: "info",
+  [DIAGNOSTIC_CODES.FIELD_TYPE_UNSUPPORTED]: "warning",
+  [DIAGNOSTIC_CODES.THEME_MANIFEST_FALLBACK]: "info",
+  [DIAGNOSTIC_CODES.TEMPLATE_CONTEXT_UNREADABLE]: "info",
+  [DIAGNOSTIC_CODES.INHERITANCE_PARENT_MISSING]: "error",
+  [DIAGNOSTIC_CODES.INHERITANCE_TOO_DEEP]: "error",
+  [DIAGNOSTIC_CODES.DND_HIERARCHY_VIOLATION]: "warning",
+  [DIAGNOSTIC_CODES.DND_ARGUMENT_SERIALISED]: "warning",
+  [DIAGNOSTIC_CODES.FIELD_BOOLEAN_FORMAT]: "warning",
+  [DIAGNOSTIC_CODES.FIELD_REQUIRED_NO_DEFAULT]: "error",
+  [DIAGNOSTIC_CODES.FIELD_CONTENT_LINK_UNRESOLVABLE]: "error",
+  [DIAGNOSTIC_CODES.CONTENT_LINK_UNRESOLVED]: "warning",
+  [DIAGNOSTIC_CODES.FIELD_NAME_RESERVED]: "error",
+  [DIAGNOSTIC_CODES.TEMPLATE_REQUIRED_VARIABLE_MISSING]: "warning",
+  [DIAGNOSTIC_CODES.HUBL_PARTIAL_NOT_FOUND]: "error",
+  [DIAGNOSTIC_CODES.MODULE_NOT_FOUND]: "error",
+  [DIAGNOSTIC_CODES.HUBSPOT_INTERNAL_MODULE]: "info",
+  [DIAGNOSTIC_CODES.HUBSPOT_DEFAULT_MODULE_UNAVAILABLE]: "warning",
+  [DIAGNOSTIC_CODES.HUBSPOT_DEFAULT_MODULE_NEEDS_PORTAL_DATA]: "info",
+  [DIAGNOSTIC_CODES.HUBSPOT_DEFAULT_MODULE_APPROXIMATED]: "info",
+  [DIAGNOSTIC_CODES.REACT_MODULE_FIELD_SCHEMA_UNAVAILABLE]: "warning",
+  [DIAGNOSTIC_CODES.REACT_MODULE_FIELD_DEFAULT_UNEVALUABLE]: "info",
+  [DIAGNOSTIC_CODES.VALIDATION_SOURCE_UNREADABLE]: "error",
+  [DIAGNOSTIC_CODES.ASSET_BASE_URL_MISSING]: "info",
+  [DIAGNOSTIC_CODES.ASSET_URL_UNRESOLVED]: "warning",
+  [DIAGNOSTIC_CODES.ASSET_BASE_URL_INVALID]: "error",
+  [DIAGNOSTIC_CODES.PAGE_MODULE_NOT_DRAWN]: "warning",
+  [DIAGNOSTIC_CODES.PAGE_TEMPLATE_NOT_DRAWN]: "warning",
+  [DIAGNOSTIC_CODES.PAGE_LAYOUT_UNBOUND]: "warning",
+  [DIAGNOSTIC_CODES.PAGE_WIDGET_UNBOUND]: "warning",
+  [DIAGNOSTIC_CODES.PAGE_LAYOUT_INVALID]: "warning",
+  [DIAGNOSTIC_CODES.PAGE_THEME_ROOT_FILE_REJECTED]: "error"
+});
+
+// src/hubl-structure.ts
+var DND_TAGS = [
+  "dnd_area",
+  "dnd_section",
+  "dnd_column",
+  "dnd_row",
+  "dnd_module"
+];
+var ALLOWED_DND_CHILDREN = {
+  dnd_area: ["dnd_section"],
+  dnd_section: ["dnd_column", "dnd_module"],
+  dnd_column: ["dnd_row"],
+  dnd_row: ["dnd_column", "dnd_module"],
+  dnd_module: []
+};
+var CONTROL_TAGS = /* @__PURE__ */ new Set(["if", "for"]);
+var BLOCK_TAGS = /* @__PURE__ */ new Set(["block", "macro", "call", "filter", "with", "module_block"]);
+var CONTROL_END_TAGS = {
+  endif: "if",
+  endfor: "for",
+  endblock: "block",
+  endmacro: "macro",
+  endcall: "call",
+  endfilter: "filter",
+  endwith: "with",
+  end_module_block: "module_block"
+};
+var VOID_ELEMENTS = /* @__PURE__ */ new Set([
+  "area",
+  "base",
+  "br",
+  "col",
+  "embed",
+  "hr",
+  "img",
+  "input",
+  "link",
+  "meta",
+  "param",
+  "source",
+  "track",
+  "wbr"
+]);
+var MODULE_TAGS = /* @__PURE__ */ new Set(["dnd_module", "module", "module_block"]);
+function isDndTag(name) {
+  return DND_TAGS.includes(name);
+}
+__name(isDndTag, "isDndTag");
+function parseTemplateAnnotations(source) {
+  const match = /^\s*<!--([\s\S]*?)-->/.exec(source);
+  if (!match) return {};
+  const annotations = {};
+  const templateType = /^\s*templateType\s*:\s*(\S+)\s*$/m.exec(match[1]);
+  if (templateType) annotations.templateType = templateType[1];
+  const label = /^\s*label\s*:\s*(.+?)\s*$/m.exec(match[1]);
+  if (label) annotations.label = label[1].replace(/^["']|["']$/g, "");
+  const available = /^\s*isAvailableForNewContent\s*:\s*(true|false)\s*$/m.exec(match[1]);
+  if (available) annotations.isAvailableForNewContent = available[1] === "true";
+  return annotations;
+}
+__name(parseTemplateAnnotations, "parseTemplateAnnotations");
+function blank(text) {
+  return text.replace(/[^\n]/g, " ");
+}
+__name(blank, "blank");
+function maskHublNoise(source) {
+  return source.replace(/\{%-?\s*raw\s*-?%\}[\s\S]*?\{%-?\s*endraw\s*-?%\}/g, blank).replace(/\{#[\s\S]*?#\}/g, blank).replace(/<!--[\s\S]*?-->/g, blank).replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, blank);
+}
+__name(maskHublNoise, "maskHublNoise");
+function readStatement(source, openIndex) {
+  let i = openIndex + 2;
+  if (source[i] === "-") i++;
+  while (i < source.length && /\s/.test(source[i])) i++;
+  const nameStart = i;
+  while (i < source.length && /[A-Za-z0-9_]/.test(source[i])) i++;
+  if (i === nameStart) return null;
+  const name = source.slice(nameStart, i);
+  const bodyStart = i;
+  let quote = null;
+  while (i < source.length) {
+    const char = source[i];
+    if (quote) {
+      if (char === "\\") {
+        i += 2;
+        continue;
+      }
+      if (char === quote) quote = null;
+      i++;
+      continue;
     }
-    // Fallback: the first template whose name starts with "<first>-"
-    // (e.g. "/blog" \u2192 "blog-listing.hubl.html", "/services" \u2192 "service-page.hubl.html"
-    // if naming matches). First match wins, so adjust menu data when the
-    // implicit pick is wrong.
-    for (var j = 0; j < templates.length; j++) {
-      if (templates[j].indexOf(first + '-') === 0) return templates[j];
+    if (char === '"' || char === "'") {
+      quote = char;
+      i++;
+      continue;
+    }
+    if (char === "%" && source[i + 1] === "}") {
+      const rawEnd = source[i - 1] === "-" ? i - 1 : i;
+      return { name, raw: source.slice(bodyStart, rawEnd).trim(), end: i + 2 };
+    }
+    i++;
+  }
+  return { name, raw: "", end: bodyStart };
+}
+__name(readStatement, "readStatement");
+var HTML_TAG_RE = /<(\/?)([A-Za-z][A-Za-z0-9:-]*)((?:"[^"]*"|'[^']*'|[^>"'])*)>/g;
+function lineStarts(source) {
+  const starts = [0];
+  for (let i = 0; i < source.length; i++) {
+    if (source[i] === "\n") starts.push(i + 1);
+  }
+  return starts;
+}
+__name(lineStarts, "lineStarts");
+function lineAt(starts, index) {
+  let low = 0;
+  let high = starts.length - 1;
+  while (low < high) {
+    const mid = Math.ceil((low + high) / 2);
+    if (starts[mid] <= index) low = mid;
+    else high = mid - 1;
+  }
+  return low + 1;
+}
+__name(lineAt, "lineAt");
+function scanDndStructure(source, options = {}) {
+  const masked = maskHublNoise(source);
+  const starts = lineStarts(masked);
+  const violations = [];
+  const stack = [];
+  const isPageTemplate = options.templateType === "page";
+  const nearestDnd = /* @__PURE__ */ __name(() => {
+    for (let i = stack.length - 1; i >= 0; i--) {
+      const frame = stack[i];
+      if (frame.kind === "dnd") return frame.tag;
     }
     return null;
-  }
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest ? e.target.closest('a[href]') : null;
-    if (!a) return;
-    var href = a.getAttribute('href');
-    if (!href) return;
-    if (href[0] === '#' || href[0] === '?') return;
-    if (/^(https?:|mailto:|tel:|javascript:|data:)/i.test(href)) return;
-    var match = findTemplate(href);
-    if (match) {
-      e.preventDefault();
-      window.location.href = '?template=' + encodeURIComponent(match);
+  }, "nearestDnd");
+  const closeTo = /* @__PURE__ */ __name((match, stopAtDnd) => {
+    for (let i = stack.length - 1; i >= 0; i--) {
+      const frame = stack[i];
+      if (match(frame)) {
+        stack.length = i;
+        return;
+      }
+      if (stopAtDnd && frame.kind === "dnd") return;
     }
-  }, true);
-})();
-</script>`}var a0=[{surface:"canvas",label:"Section 1 \u2014 Canvas"},{surface:"subtle",label:"Section 2 \u2014 Subtle"},{surface:"accent",label:"Section 3 \u2014 Accent"},{surface:"emphasis",label:"Section 4 \u2014 Emphasis"},{surface:"primary",label:"Section 5 \u2014 Primary accent"},{surface:"complementary",label:"Section 6 \u2014 Complementary"}];function l0(e="--themespot--"){return`<style id="themespot-preview-surface-styles">
-  .themespot-preview-surface {
-    background-color: var(--color-background, var(${e}surface__backgroundColor, #fff));
-    color: var(--color-foreground, var(${e}surface__textColor, inherit));
-    padding: 24px 0;
-    border-bottom: 1px dashed rgba(127,127,127,0.3);
+  }, "closeTo");
+  let htmlMatch = null;
+  let htmlExhausted = false;
+  const htmlMatchFrom = /* @__PURE__ */ __name((from) => {
+    if (htmlExhausted) return null;
+    if (htmlMatch && htmlMatch.index >= from) return htmlMatch;
+    HTML_TAG_RE.lastIndex = from;
+    htmlMatch = HTML_TAG_RE.exec(masked);
+    if (!htmlMatch) htmlExhausted = true;
+    return htmlMatch;
+  }, "htmlMatchFrom");
+  let index = 0;
+  while (index < masked.length) {
+    const nextStatement = masked.indexOf("{%", index);
+    const currentHtml = htmlMatchFrom(index);
+    const nextHtml = currentHtml ? currentHtml.index : -1;
+    if (nextStatement === -1 && nextHtml === -1) break;
+    if (nextStatement === -1 || nextHtml !== -1 && nextHtml < nextStatement) {
+      const [full, closing, rawName, attributes] = currentHtml;
+      const name2 = rawName.toLowerCase();
+      if (closing === "/") {
+        closeTo((frame) => frame.kind === "html" && frame.tag === name2, true);
+      } else if (!VOID_ELEMENTS.has(name2) && !attributes.trimEnd().endsWith("/")) {
+        stack.push({ kind: "html", tag: name2, line: lineAt(starts, nextHtml) });
+      }
+      index = nextHtml + full.length;
+      continue;
+    }
+    const statement = readStatement(masked, nextStatement);
+    if (!statement) {
+      index = nextStatement + 2;
+      continue;
+    }
+    const line = lineAt(starts, nextStatement);
+    const { name } = statement;
+    if (isDndTag(name)) {
+      const parentTag = nearestDnd();
+      if (parentTag === null) {
+        if (isPageTemplate && name !== "dnd_area") {
+          violations.push({
+            rule: 4,
+            tag: name,
+            parentTag: null,
+            line,
+            message: `Tag '${name}' must be within a 'dnd_area' and will be skipped.`
+          });
+        }
+      } else if (!ALLOWED_DND_CHILDREN[parentTag].includes(name)) {
+        violations.push({
+          rule: catalogueRule(parentTag, name),
+          tag: name,
+          parentTag,
+          line,
+          message: `Tag ${name} cannot be a descendant of tag ${parentTag} and will be ignored.`
+        });
+      }
+      stack.push({ kind: "dnd", tag: name, line });
+      index = statement.end;
+      continue;
+    }
+    if (name.startsWith("end_dnd_")) {
+      const opening = name.slice("end_".length);
+      closeTo((frame) => frame.kind === "dnd" && frame.tag === opening, false);
+      index = statement.end;
+      continue;
+    }
+    if (CONTROL_TAGS.has(name) || BLOCK_TAGS.has(name)) {
+      const top = stack[stack.length - 1];
+      if (CONTROL_TAGS.has(name) && top && top.kind === "dnd" && top.tag === "dnd_column") {
+        violations.push({
+          rule: 3,
+          tag: name,
+          parentTag: "dnd_column",
+          line,
+          message: `Tag ${name} cannot be a descendant of tag dnd_column and will be ignored.`
+        });
+      }
+      stack.push({ kind: "control", tag: name, line });
+      index = statement.end;
+      continue;
+    }
+    const closes = CONTROL_END_TAGS[name];
+    if (closes) {
+      closeTo((frame) => frame.kind === "control" && frame.tag === closes, true);
+    }
+    index = statement.end;
   }
-  .themespot-preview-surface:last-child { border-bottom: none; }
-  .themespot-preview-surface__label {
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    opacity: 0.55;
-    padding: 0 24px 12px;
+  return violations;
+}
+__name(scanDndStructure, "scanDndStructure");
+function catalogueRule(parentTag, tag) {
+  if (parentTag === "dnd_section" && tag === "dnd_row") return 1;
+  if (parentTag === "dnd_column" && tag === "dnd_module") return 2;
+  return null;
+}
+__name(catalogueRule, "catalogueRule");
+function extractModuleTags(source) {
+  const masked = maskHublNoise(source);
+  const starts = lineStarts(masked);
+  const found = [];
+  let index = 0;
+  while (index < masked.length) {
+    const openIndex = masked.indexOf("{%", index);
+    if (openIndex === -1) break;
+    const statement = readStatement(masked, openIndex);
+    if (!statement) {
+      index = openIndex + 2;
+      continue;
+    }
+    if (MODULE_TAGS.has(statement.name)) {
+      found.push({
+        tag: statement.name,
+        raw: statement.raw,
+        line: lineAt(starts, openIndex)
+      });
+    }
+    index = statement.end;
   }
-  .themespot-preview-surface__body > * { margin-top: 0; margin-bottom: 0; }
-</style>`}function c0(e,t){if(!e&&!t)return;if(!e)return t;if(!t)return e;let n=JSON.parse(JSON.stringify(e));function s(r,i){for(let o of Object.keys(i))i[o]&&typeof i[o]=="object"&&!Array.isArray(i[o])&&r[o]&&typeof r[o]=="object"&&!Array.isArray(r[o])?s(r[o],i[o]):r[o]=i[o]}return s(n,t),n}function u0(e,t){let n=ut(e,t);if(!n)return H(e.themeRoot,we.join("templates",t)),Vf(t,"it resolves to no file in the theme");let s;try{s=A.readFileSync(n,"utf-8")}catch(r){let i=r?.code;return Vf(t,`reading it failed (${typeof i=="string"?i:"the host filesystem gave no error code"})`)}return{context:{},diagnostics:[],contentKind:li(s)}}function Vf(e,t){return{context:{},contentKind:null,diagnostics:[P(T.TEMPLATE_CONTEXT_UNREADABLE,`Template ${JSON.stringify(e)} could not be read to detect its templateType, so it renders with no page context (no blog post \`content\`, no listing \`contents\`) \u2014 ${t}.`,{templatePath:e,reason:t})]}}function d0(e,t){if(t?.kind==="blog-post")return{...e,builtin_body_classes:`blog-post hs-content-id-${t.content.id??"preview"} hs-blog-post`};if(t?.kind==="blog-listing"){let n=t.group?.id??t.content.id??"preview";return{...e,builtin_body_classes:`blog-listing hs-content-id-${n} hs-blog-listing`}}return e}function p0(e,t={},n){if(e.length===0)return"";let s=o=>n?n.props(o):o,r=JSON.stringify(e.filter(o=>o.modulePath).map(o=>({id:o.id,modulePath:o.modulePath,props:s(o.props),hydrateOn:o.hydrateOn,identifierPrefix:o.identifierPrefix,sharedStateID:o.sharedStateID,moduleId:o.moduleId,moduleName:o.moduleName,supplementalFieldValues:s(o.supplementalFieldValues),resolvedDataDependencies:s(o.resolvedDataDependencies)})));return[Object.keys(t).length>0?`<script>window.__hsSSInit = Object.assign(window.__hsSSInit || {}, ${JSON.stringify(s(t))});</script>`:"<script>window.__hsSSInit = window.__hsSSInit || {};</script>",`<script type="application/json" id="__themespot_islands__">${r}</script>`,'<script type="module" src="/@id/__x00__virtual:themespot-island-hydrate"></script>'].join(`
-  `)}function h0(e){let t=new Set;function n(r){if(!(!r||typeof r!="object")){r.font_set==="GOOGLE"&&r.font&&t.add(r.font);for(let i of Object.values(r))i&&typeof i=="object"&&n(i)}}return n(e),t.size===0?"":['<link rel="preconnect" href="https://fonts.googleapis.com">','<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',...Array.from(t).map(r=>`<link href="https://fonts.googleapis.com/css2?family=${r.replace(/ /g,"+")}:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">`)].join(`
-  `)}var f0="main.hubl.css",m0=we.join("assets","_hs","css"),g0="css";function _0(e,t){let n=i=>({cssDir:H(e.themeRoot,i),cssDirs:e.roots.map(o=>H(o,i))}),s=n(m0);if(s.cssDirs.some(i=>A.existsSync(i)))return{...s,convention:"themespot"};let r=n(g0);return r.cssDirs.some(i=>A.existsSync(i))?{...r,convention:"hubspot"}:{...s,convention:"themespot"}}function Mr(e,t,n,s,r,i){let o=[],a=new Set;for(let c of e??[]){if(!c)continue;if(/^https?:\/\//i.test(c)){if(a.has(c))continue;a.add(c),o.push(`<script src="${ar(c)}"></script>`);continue}let u=r(c),d=u??c;if(a.has(d))continue;a.add(d);let p=i?.(c)??(u?s(u):null);o.push(`<script src="${ar(p??c)}"></script>`)}let l=new Set;for(let c of t??[])l.has(c)||(l.add(c),o.push(El(c)));for(let c of n??[])c.position==="footer"&&o.push(El(c.source));return o.join(`
-  `)}function El(e){return`<script>${e.replace(/<\/(script)/gi,"<\\/$1")}</script>`}function jr(e){return(e??[]).filter(t=>t.position==="head").map(t=>El(t.source)).join(`
-  `)}function Ur(e){let t=new Set,n=[];for(let s of e??[]){let r=s.trim();!r||t.has(r)||(t.add(r),n.push(r))}return n.join(`
-  `)}function vl(e,t,n,s,r,i){let o=[];if(!e||e.length===0)return{markup:"",diagnostics:o};let a=[],l=new Set;for(let c of e){if(!c)continue;if(/^https?:\/\//i.test(c)){a.push(`<link rel="stylesheet" href="${ar(c)}">`);continue}let u=n(c);if(!(!u||l.has(u))&&!s(u)){l.add(u);try{let d=Dd(u,t);o.push(...d.diagnostics);let p=r(u),m=g=>`<style data-themespot-template-css="${ar(we.basename(u))}">${g}</style>`;a.push(i?.(u,d.css,m)??m(p?Yf(d.css,p):d.css))}catch(d){o.push(P(T.CSS_RENDER_ERROR,`Template stylesheet could not be read: ${we.basename(u)} \u2014 ${d instanceof Error?d.message:String(d)}`,{sourceFile:we.basename(u)}))}}}return{markup:a.join(`
-  `),diagnostics:o}}var b0=/url\(\s*(?:"([^"]*)"|'([^']*)'|([^()'"\s]+))\s*\)/g;function Yf(e,t){return e.replace(b0,(n,s,r,i)=>{let o=s!==void 0?'"':r!==void 0?"'":"",a=(s??r??i??"").trim();if(a===""||a.startsWith("/")||a.startsWith("#")||a.startsWith("//")||/^[a-z][a-z0-9+.-]*:/i.test(a))return n;let l=new URL(a,`http://theme.invalid${t}`);return`url(${o}${l.pathname}${l.search}${l.hash}${o})`})}function Jf(e){if(!e.startsWith("file://"))return null;let t=e.slice(7);/^\/[A-Za-z]:/.test(t)&&(t=t.slice(1));try{return decodeURI(t)}catch{return t}}import y0 from"path";var w0=new Set(["layouts","partials"]),S0=16;function lr(e){let t=new Map,n=[{root:e.themeRoot,label:"theme"}];e.parentThemeRoot&&n.push({root:e.parentThemeRoot,label:"parent"});for(let{root:s,label:r}of n)for(let i of em(s,r,"templates",w0))t.has(i.name)||t.set(i.name,i);return[...t.values()].sort((s,r)=>s.name<r.name?-1:s.name>r.name?1:0)}function Zf(e,t){let n=new Map,s=[{root:e.themeRoot,label:"theme"}];e.parentThemeRoot&&s.push({root:e.parentThemeRoot,label:"parent"});for(let{root:r,label:i}of s)for(let o of em(r,i,t,new Set))n.has(o.name)||n.set(o.name,o);return[...n.values()].sort((r,i)=>r.name<i.name?-1:r.name>i.name?1:0)}function Rl(e){let t=e.trim().replace(/\\/g,"/");for(;t.startsWith("./");)t=t.slice(2);return t.startsWith("templates/")&&(t=t.slice(10)),t}function Qf(e,t){let n=Rl(t);return e.find(s=>s.name===n)??null}function em(e,t,n,s){let r;try{r=H(e,n)}catch(l){if(l instanceof X)return[];throw l}if(!Xf(r))return[];let i=[],o=new Set,a=(l,c,u)=>{if(u>S0||o.has(l))return;o.add(l);let d;try{d=A.readdirSync(l).slice().sort()}catch{return}for(let p of d){if(c.length===0&&s.has(p))continue;let m;try{m=H(e,y0.join(l,p))}catch(g){if(g instanceof X)continue;throw g}Xf(m)?a(m,[...c,p],u+1):p.toLowerCase().endsWith(".html")&&v0(m)&&i.push({name:[...c,p].join("/"),root:t,path:m})}};return a(r,[],0),i}function Xf(e){try{return A.existsSync(e)&&A.statSync(e).isDirectory()}catch{return!1}}function v0(e){try{return A.existsSync(e)&&A.statSync(e).isFile()}catch{return!1}}import wt from"path";var tm={menu:"menu.json",menus:"menus.json",blogPosts:"blog-posts.json",hubdbRows:"hubdb-rows.json",form:"form.json",forms:"forms.json",brandSettings:"brand-settings.json",subscriptionTypes:"subscription-types.json"};var Mt=["template","module","section","partial","state"],ze=["template","module","section","partial"],xl="modules",pi="sections",Tl="templates/partials",E0=/^[A-Za-z0-9._/-]+\.html$/,R0=/^(?:\.\.\/)*[A-Za-z0-9._@-][A-Za-z0-9._/@-]*$/;function x0(e){for(let t of["module.hubl.html","module.html"])try{if(A.existsSync(wt.join(e,t)))return t}catch{}return null}function T0(e){let t=new Map,n=[{root:e.themeRoot,label:"theme"}];e.parentThemeRoot&&n.push({root:e.parentThemeRoot,label:"parent"});for(let{root:s,label:r}of n){let i;try{i=H(s,xl)}catch(a){if(a instanceof X)continue;throw a}let o;try{if(!A.existsSync(i)||!A.statSync(i).isDirectory())continue;o=A.readdirSync(i).slice().sort()}catch{continue}for(let a of o){let l;try{l=H(s,wt.join(i,a))}catch(d){if(d instanceof X)continue;throw d}if(Ar(l)!=="hubl")continue;let c=x0(l);if(!c)continue;let u=`../${xl}/${a.replace(/\.module$/,"")}`;t.has(u)||t.set(u,{name:u,root:r,file:`${xl}/${a}/${c}`})}}return[...t.values()].sort((s,r)=>s.name<r.name?-1:s.name>r.name?1:0)}function nm(e,t){return Zf(e,t).filter(n=>kl(n.name)===null).map(n=>({name:n.name,root:n.root,file:`${t}/${n.name}`}))}function k0(e){return ir(e).kinds.flatMap(t=>t.states.map(n=>({name:n.id,root:n.source==="theme"?"theme":"embedded",file:`fixtures/${Dr(t.kind,n.name)}`,label:n.label,source:n.source,required:n.required})))}function St(e,t){switch(t){case"template":return lr(e).map(n=>({name:n.name,root:n.root,file:`templates/${n.name}`}));case"module":return T0(e);case"section":return nm(e,pi);case"partial":return nm(e,Tl);case"state":return k0(e.themeRoot)}}function kl(e){return E0.test(e)?e.split("/").some(t=>t===""||t==="."||t==="..")||e.includes("..")?'it must not contain "..", an empty segment or a leading "/"':null:'it must be a relative .html file name of letters, digits, ".", "_", "-" and "/"'}function Al(e,t){let n=t.trim().replace(/\\/g,"/");if(n.startsWith("@hubspot/"))return sn(n)!==null?{ok:!0,reference:n,directory:null,shape:"hubspot-default"}:{ok:!1,reason:"a HubSpot default module is written @hubspot/<name>"};if(!R0.test(n)||n.replace(/^(?:\.\.\/)+/,"").split("/").some(i=>i===".."||i===""))return{ok:!1,reason:"it is not a module reference (../modules/<name>, or a path inside the theme)"};let s=null;try{let i=Me({childThemeRoot:e.themeRoot,parentThemeRoot:e.parentThemeRoot});s=yt(i,n)}catch(i){if(!(i instanceof X))throw i}if(!s)return{ok:!1,reason:"no module directory in the theme answers to it"};let r=Ar(s);return r==="unrecognised"?{ok:!1,reason:"it names a directory that holds neither module.html nor a React entry"}:{ok:!0,reference:n,directory:s,shape:r}}function hi(e,t){let n=()=>St(e,"module").map(o=>o.name),s=Al(e,t);if(!s.ok)return{ok:!1,reason:s.reason,listing:n()};if(s.shape==="hubspot-default"||!s.directory)return{ok:!1,reason:"a HubSpot default module's fields are not in the theme",listing:n()};if(s.shape==="react")return{ok:!0,module:s.reference,directory:s.directory,shape:"react",fields:[],note:"React module: not read"};let r=wt.join(s.directory,"fields.json");if(!A.existsSync(r))return{ok:!0,module:s.reference,directory:s.directory,shape:"hubl",fields:[],note:"The module has no fields.json."};let i;try{i=JSON.parse(A.readFileSync(r,"utf-8"))}catch(o){return{ok:!1,unreadable:!0,reason:`its fields.json is not valid JSON (${o instanceof Error?o.message:String(o)})`,listing:[]}}return Array.isArray(i)?{ok:!0,module:s.reference,directory:s.directory,shape:"hubl",fields:tr(i)}:{ok:!1,unreadable:!0,reason:"its fields.json is not a list of fields",listing:[]}}var A0="Fixtures are read from the theme root only: a parent theme's fixtures are not read. A file in the --fixtures directory is read instead of the theme's file at the same path; a file the theme lacks falls back to the renderer's embedded copy where there is one.";function rm(e){try{return A.existsSync(e)&&A.statSync(e).isFile()}catch{return!1}}function O0(e){try{return!A.existsSync(e)||!A.statSync(e).isDirectory()?[]:A.readdirSync(e).filter(t=>t.toLowerCase().endsWith(".json")).sort()}catch{return[]}}function fi(e,t=null){let n=wt.join(e,"fixtures"),s=p=>t&&rm(wt.join(t,p))?wt.join(t,p):wt.join(n,p),r=p=>rm(wt.join(n,p)),i=[];for(let p of Object.values(tm)){let m=op[p];if(!m)throw new Error(`The fixture contract does not describe ${p}.`);let g=Object.hasOwn(gt,p)?gt[p]:void 0;i.push({kind:p,path:s(p),present:r(p),embeddedDefault:g===void 0?null:p,whenAbsent:g===void 0?m.whenAbsent??"nothing":"the renderer's embedded copy",description:m.description,schema:null,example:m.authoredExample!==void 0?structuredClone(m.authoredExample):ap(g,m.fileType)})}let o=ir(e);for(let p of Object.keys(dn)){let g=(o.kinds.find(y=>y.kind===p)?.states??[]).map(y=>{let E=Dr(p,y.name);return{name:y.id,path:s(E),present:r(E),embeddedDefault:Object.hasOwn(gt,E)?E:null}});i.push({kind:`${xn}/${p}/<state>.json`,path:wt.join(n,xn,p,"<state>.json"),present:g.some(y=>y.present),embeddedDefault:`${xn}/${p}/<state>.json`,whenAbsent:`the renderer's embedded state, for the states every ${p} has (${dn[p].join(", ")}); a state only the theme adds has no fallback`,description:`A page a ${p} render binds as content, request, blog and the rest; rendered with --state ${p}/<state>. The first required state is the default.`,schema:sp(p),example:null,files:g})}let a=wt.join(n,Kt),l=`${Kt}/`,c=Object.keys(gt).filter(p=>p.startsWith(l)).sort(),d=[...new Set([...O0(a),...c.map(p=>p.slice(l.length))])].sort().map(p=>{let m=`${l}${p}`;return{name:p.slice(0,-5),path:s(m),present:r(m),embeddedDefault:c.includes(m)?m:null}});return i.push({kind:`${Kt}/<objectType>.json`,path:wt.join(a,"<objectType>.json"),present:d.some(p=>p.present),embeddedDefault:c.length>0?c.join(", "):null,whenAbsent:"no records for an object type no file answers",description:"A CRM object type and its records: what crm_objects, crm_object and crm_associations answer. A file answers the type named by its objectTypeId, name or fullyQualifiedName, or its own file name, compared without regard to case; the theme's files are tried before the renderer's.",schema:ip(),example:null,files:d}),{themeRoot:e,fixturesDirectory:n,overlay:t,note:A0,kinds:i}}function sm(e,t,n){if(e!==null&&typeof e=="object"&&!Array.isArray(e)&&Object.keys(e).length>0)for(let[s,r]of Object.entries(e))sm(r,t?`${t}.${s}`:s,n);else t&&n.push(t);return n}async function mi(e){let t=await di({childThemeRoot:e.themeRoot,parentThemeRoot:e.parentThemeRoot});try{let n=t.getThemeMetadata();return{theme:n.theme,settingsKeys:sm(n.theme,"",[]),fields:n.fields,presets:n.presets,defaultPreset:n.defaultPreset,surfaces:t.getThemeSurfaces(),manifest:n.manifest}}finally{await t.close().catch(()=>{})}}var Hr="PREVIEW_PROPS_INVALID";function Br(e){return e!==null&&typeof e=="object"&&!Array.isArray(e)}function N0(e){let t=e.replace(/ /g,"+").replace(/-/g,"+").replace(/_/g,"/").replace(/\s+/g,""),n=t.length%4;return n===0?t:t+"=".repeat(4-n)}function im(e){let t=(r,i)=>({ok:!1,status:400,body:{error:{code:Hr,message:`?${r}= could not be read: ${i}. `+(r==="props64"?"Send base64 of a JSON object, URL-encoded (encodeURIComponent), e.g. ?props64=eyJ0aXRsZSI6IkhpIn0%3D.":"Send a JSON object, URL-encoded (encodeURIComponent), e.g. ?props=%7B%22title%22%3A%22Hi%22%7D."),param:r}}}),n=e.get("props64");if(n!==null&&n!==""){let r;try{r=Vn(N0(n))}catch{return t("props64","it is not base64")}let i;try{i=JSON.parse(r)}catch{return t("props64","it decodes to text that is not JSON")}return Br(i)?{ok:!0,props:i}:t("props64","it decodes to JSON that is not an object")}let s=e.get("props");if(s!==null&&s!==""){let r;try{r=JSON.parse(s)}catch{return t("props","it is not JSON (a raw `&`, `#` or `+` in the value is the usual cause)")}return Br(r)?{ok:!0,props:r}:t("props","it is JSON but not an object")}return{ok:!0,props:null}}function om(e,t){if(t==null||t==="")return{ok:!0,state:void 0};if(typeof t=="string"&&Rn(e,t).state)return{ok:!0,state:t};let n=typeof t=="string"?t:JSON.stringify(t)??String(t),s=yl(e,n),r=typeof t=="string"?s.message:`A content state is a string written <kind>/<name>, not ${n}. ${s.message.replace(/^[^.]*\.\s*/,"")}`;return{ok:!1,status:400,body:{error:{code:s.code,message:r,...s.details??{},requested:t}}}}var L0=["preset","settings"];function am(e,t){let n=e;if(e.startsWith("@")){let r=e.slice(1);if(r==="")return{ok:!1,reason:"a value starting with @ names a file, and none was given"};try{n=t(r)}catch(i){let o=i?.code,a=typeof o=="string"?o:i instanceof Error?i.message:String(i);return{ok:!1,reason:`the file ${JSON.stringify(r)} could not be read (${a})`}}}let s;try{s=JSON.parse(n)}catch(r){return{ok:!1,reason:`it is not JSON (${r instanceof Error?r.message:String(r)})`}}return Br(s)?{ok:!0,value:s}:{ok:!1,reason:`it is JSON but not an object (got ${Array.isArray(s)?"a list":s===null?"null":typeof s})`}}function lm(e){if(!Br(e))return'it must be a JSON object: { "preset"?: string, "settings"?: object }';let t=Object.keys(e).filter(n=>!L0.includes(n));return t.length>0?`it carries ${t.map(s=>JSON.stringify(s)).join(", ")}; the only keys are "preset" and "settings"`:"preset"in e&&(typeof e.preset!="string"||e.preset==="")?'"preset" must be a preset name (a non-empty string)':"settings"in e&&!Br(e.settings)?'"settings" must be an object of theme settings':null}import C0 from"path";var dm=new Set(["target-unknown","props-invalid","overrides-invalid"]),Qt={TEMPLATE_UNKNOWN:"TEMPLATE_UNKNOWN",TARGET_UNKNOWN:"TARGET_UNKNOWN",PROPS_INVALID:Hr,OVERRIDES_INVALID:"OVERRIDES_INVALID",RENDER_FAILED:"RENDER_FAILED"};function gi(e){let t=[e.message];e.listingTitle!==void 0&&e.listing.length>0&&t.push(e.listingTitle,...e.listing);for(let n of e.related??[])t.push(`${n.code}: ${n.message.replace(/\s*\n\s*/g," ")}`);return`${t.join(`
-`)}
-`}function cm(e){return{code:e.code,message:e.message,...e.details!==void 0?{details:e.details}:{}}}function P0(e){let t=[];return/\s/.test(e)&&t.push("whitespace"),/["']/.test(e)&&t.push("quotes"),/[()]/.test(e)&&t.push("parentheses"),/[<>]/.test(e)&&t.push("angle brackets"),/`/.test(e)&&t.push("backticks"),t.join(", ")||"characters it does not accept"}function $0(e){return oi({baseUrl:e}).report().invalidBaseUrl??null}function F0(e,t){let n=P0(e);return t==="theme-root"?`The theme root's file URL ${e} contains ${n}, which the renderer refuses in an asset base. Pass --asset-base <url>, or use the serve command, which serves the theme over HTTP.`:`The asset base ${JSON.stringify(e)} contains ${n}, which the renderer refuses. Pass a base without them, or use the serve command.`}function I0(e){return ir(e).kinds.flatMap(t=>t.states.map(n=>n.id))}function D0(e,t){try{return Rn(e,t).state!==null}catch{return!1}}function Nl(e,t){try{return ai(e,void 0,t).state?.id??null}catch{return null}}function M0(e,t){let n;try{n=A.readFileSync(t.path,"utf-8")}catch{return null}return Nl(e,li(n))}function j0(e,t){let n="blog-post";if(t)try{let s=JSON.parse(A.readFileSync(C0.join(t,"meta.json"),"utf-8"));n=ci(s?.content_types)}catch{}return Nl(e,n)}function U0(e,t){if(!e)return t.name;try{return ut(e,t.name)===t.path?t.name:`templates/${t.name}`}catch{return t.name}}function B0(e){try{return Me({childThemeRoot:e.themeRoot,parentThemeRoot:e.parentThemeRoot})}catch{return null}}function jt(e,t){return e.assetBaseOrigin==="serve"?t:`--${t}`}var Ol={template:"Page templates:",module:"Modules:",section:"Sections:",partial:"Partials:"};function vt(e,t,n,s){let r={};return n.param!==void 0&&(r.param=n.param),n.listingTitle!==void 0&&(r.available=n.listing),{html:null,failure:n,json:{ok:!1,kind:e.target.kind,target:e.target.name,template:t.template,state:t.state,props:t.props,overrides:t.overrides,out:null,html:null,assetBase:e.assetBase,diagnostics:[...n.related??[],{code:s,message:n.message,...Object.keys(r).length>0?{details:r}:{}}]}}}function um(e){return e!==null&&typeof e=="object"&&!Array.isArray(e)}async function _i(e){let t={themeRoot:e.themeRoot,parentThemeRoot:e.parentThemeRoot},{kind:n}=e.target,s=e.props??null,r={template:null,state:e.state??null,props:s,overrides:um(e.overrides)?e.overrides:null},i=jt(e,n);if(!ze.includes(n))return vt(e,r,{kind:"target-unknown",message:`A render target is one of ${ze.join(", ")}.`,listing:[],param:i},Qt.TARGET_UNKNOWN);let o=null,a=null,l=e.target.name;if(n==="template"){let m=lr(t),g=Rl(e.target.name);if(o=Qf(m,e.target.name),r.template=o?.name??g,!o){let y=m.length>0?`There is no page template ${JSON.stringify(g)} in this theme.`:`There is no page template ${JSON.stringify(g)}: this theme has no page templates under templates/.`;return vt(e,r,{kind:"template-unknown",message:y,param:i,listing:m.map(E=>E.name),listingTitle:Ol.template},Qt.TEMPLATE_UNKNOWN)}}else if(n==="module"){let m=Al(t,e.target.name);if(!m.ok)return vt(e,r,{kind:"target-unknown",message:`${i} ${JSON.stringify(e.target.name)} names no module: ${m.reason}.`,param:i,listing:St(t,"module").map(g=>g.name),listingTitle:Ol.module},Qt.TARGET_UNKNOWN);a=m.directory,l=m.reference}else{let m=n==="section"?`${pi}/`:`${Tl}/`,g=St(t,n).map(x=>x.name),y=kl(e.target.name);if(!(y===null&&g.includes(e.target.name))){let x=y!==null?`${i} takes a file name under ${m}, and ${JSON.stringify(e.target.name)} is not one: ${y}.`:`${i} ${JSON.stringify(e.target.name)} names no ${n}: there is no such file under ${m} in this theme.`;return vt(e,r,{kind:"target-unknown",message:x,param:i,listing:g,listingTitle:Ol[n]},Qt.TARGET_UNKNOWN)}}if(s!==null&&n!=="module")return vt(e,r,{kind:"props-invalid",message:`props apply to ${jt(e,"module")} only: this render's target is ${i} ${e.target.name}, which no props reach in this build.`,param:jt(e,"props"),listing:[]},Qt.PROPS_INVALID);if(s!==null&&!um(s))return vt(e,r,{kind:"props-invalid",message:`${jt(e,"props")} must be a JSON object.`,param:jt(e,"props"),listing:[]},Qt.PROPS_INVALID);let c=null;if(e.overrides!==void 0&&e.overrides!==null){let m=lm(e.overrides);if(m)return vt(e,r,{kind:"overrides-invalid",message:`${jt(e,"overrides")} could not be used: ${m}.`,param:jt(e,"overrides"),listing:[]},Qt.OVERRIDES_INVALID);c=e.overrides}if($0(e.assetBase)!==null)return vt(e,r,{kind:"asset-base-refused",message:F0(e.assetBase,e.assetBaseOrigin),listing:[]},T.ASSET_BASE_URL_INVALID);let u;if(e.state!==void 0){if(!D0(e.themeRoot,e.state))return vt(e,r,{kind:"state-unknown",message:`There is no content state ${JSON.stringify(e.state)}. A state is written <kind>/<name>.`,param:jt(e,"state"),listing:I0(e.themeRoot),listingTitle:"Content states:"},T.CONTENT_STATE_UNKNOWN);u=e.state}else n==="template"?u=M0(e.themeRoot,o):n==="module"?u=j0(e.themeRoot,a):n==="section"?u=Nl(e.themeRoot,"blog-post"):u=null;r.state=u;let d=B0(e),p=null;try{if(p=await di({childThemeRoot:e.themeRoot,parentThemeRoot:e.parentThemeRoot}),c?.preset!==void 0){let y=p.getThemeMetadata().presets;if(!y.includes(c.preset))return vt(e,r,{kind:"overrides-invalid",message:`${jt(e,"overrides")} names the preset ${JSON.stringify(c.preset)}, which this theme does not have.`,param:jt(e,"overrides"),listing:y,listingTitle:"Presets:"},Qt.OVERRIDES_INVALID)}let m={assetBaseUrl:e.assetBase,...e.state!==void 0?{state:e.state}:{},...c?.preset!==void 0?{presetName:c.preset}:{},...c?.settings!==void 0?{themeOverrides:c.settings}:{}},g;switch(n){case"template":g=await p.renderPage(U0(d,o),m);break;case"module":g=await p.renderModule(l,s??{},m);break;case"section":g=await p.renderSection(`../${pi}/${e.target.name}`,void 0,m);break;default:g=await p.renderPartial(e.target.name,m);break}return{html:g.html,json:{ok:!0,kind:n,target:e.target.name,template:n==="template"?o.name:null,state:u,props:s,overrides:c,out:null,html:g.html,assetBase:e.assetBase,diagnostics:g.diagnostics.map(cm)}}}catch(m){let g=m instanceof Error?m.message:String(m),y=m instanceof X?m.code:Qt.RENDER_FAILED,E=n==="template"?o.name:e.target.name;return vt(e,r,{kind:"render-failed",message:`Rendering ${E} failed: ${g.replace(/\s*\n\s*/g," ")}`,listing:[],related:(d?.diagnostics??[]).map(cm)},y)}finally{p&&await p.close().catch(()=>{})}}import Ll from"fs";import W0 from"http";import Kr from"path";import Tn from"path";function H0(e,t,n){let s=Tn.relative(e,Tn.resolve(n));return s===""?t:s.startsWith("..")||Tn.isAbsolute(s)?null:Tn.join(t,s)}function G0(e,t,n){let s=Tn.resolve(t,"fixtures"),r=Tn.resolve(n),i=c=>H0(s,r,c),o=c=>c!==null&&e.existsSync(c),a=c=>{try{return e.statSync(c)}catch{return null}},l=c=>{try{return e.readdirSync(c)}catch{return null}};return{existsSync:c=>o(i(c))||e.existsSync(c),readFileSync:(c,u)=>{let d=i(c);return o(d)&&a(d)?.isFile()?e.readFileSync(d,u):e.readFileSync(c,u)},readdirSync:c=>{let u=i(c),d=o(u)&&a(u)?.isDirectory()?l(u):null;if(!d)return e.readdirSync(c);let p=l(c)??[];return[...p,...d.filter(m=>!p.includes(m))]},statSync:c=>{let u=i(c);if(o(u)){let d=a(u);if(d?.isFile()||!e.existsSync(c))return d??e.statSync(u)}return e.statSync(c)},realpathSync:{native:c=>{try{return e.realpathSync.native(c)}catch(u){if(o(i(c)))return Tn.resolve(c);throw u}}},mkdirSync:(c,u)=>e.mkdirSync(c,u),writeFileSync:(c,u,d)=>e.writeFileSync(c,u,d)}}function Gr(e,t){let n=gd();return go(G0(n,e,t)),()=>go(n)}var kn="1.0.101";var wi="/theme-assets/",An="127.0.0.1",Cl=1024*1024,K0={".avif":"image/avif",".css":"text/css; charset=utf-8",".eot":"application/vnd.ms-fontobject",".gif":"image/gif",".htm":"text/html; charset=utf-8",".html":"text/html; charset=utf-8",".ico":"image/x-icon",".jpeg":"image/jpeg",".jpg":"image/jpeg",".js":"text/javascript; charset=utf-8",".json":"application/json; charset=utf-8",".map":"application/json; charset=utf-8",".mjs":"text/javascript; charset=utf-8",".mp4":"video/mp4",".otf":"font/otf",".pdf":"application/pdf",".png":"image/png",".svg":"image/svg+xml",".ttf":"font/ttf",".txt":"text/plain; charset=utf-8",".webm":"video/webm",".webp":"image/webp",".woff":"font/woff",".woff2":"font/woff2"},Ut="text/plain; charset=utf-8",tt="application/json; charset=utf-8",ym="text/html; charset=utf-8";function Pl(e){return e.replace(/\s*[\r\n]+\s*/g," ").trim()}function bi(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}function q0(e){try{let t=JSON.parse(A.readFileSync(H(e,"theme.json"),"utf-8"));if(t&&typeof t.label=="string"&&t.label.trim())return t.label.trim()}catch{}return Kr.basename(Kr.resolve(e))}function wm(e,t){return e.path==="*"?!0:e.path.endsWith("/*")?t.startsWith(e.path.slice(0,-1)):e.path===t}var V0={template:"A page template, as /api/list?kind=template lists it. Exactly one of template, module, section, partial.",module:"A module, as a template references it (../modules/<name>), or @hubspot/<name>. Exactly one of template, module, section, partial.",section:"A file name under sections/. Exactly one of template, module, section, partial.",partial:"A file name under templates/partials/. Exactly one of template, module, section, partial."};function pm(e){return[...ze.map(t=>({name:t,type:"string",required:!1,values:e.targets(t),description:V0[t]})),{name:"state",type:"string",required:!1,values:e.targets("state"),description:"The content state to render as, <kind>/<name>. Omitted, the target's default."},{name:"props",type:"json",required:!1,description:"Field values for a module target, a URL-encoded JSON object. Refused with any other target."},{name:"props64",type:"base64-json",required:!1,description:"The same as props, base64-encoded; wins over props."},{name:"overrides",type:"json",required:!1,description:'A URL-encoded JSON object { "preset"?: string, "settings"?: object }; /api/metadata lists the presets and settings keys.'}]}function hm(e){return[{name:"target",type:"json",required:!0,description:`An object with exactly one of ${ze.join(", ")}, each as GET /render takes it.`},{name:"state",type:"string",required:!1,values:e.targets("state"),description:"The content state to render as, <kind>/<name>."},{name:"props",type:"json",required:!1,description:"Field values for a module target: a JSON object."},{name:"overrides",type:"json",required:!1,description:'{ "preset"?: string, "settings"?: object }.'}]}function fm(e,t){let n=[];for(let o of ze){let a=e.targets(o)[0];a!==void 0&&n.push({method:"GET",path:`${t}?${o}=${encodeURIComponent(a)}`,status:200})}let s=e.targets("template")[0],r=e.targets("state")[0];s!==void 0&&r!==void 0&&n.push({method:"GET",path:`${t}?template=${encodeURIComponent(s)}&state=${encodeURIComponent(r)}`,status:200});let i=e.targets("module")[0];return i!==void 0&&n.push({method:"GET",path:`${t}?module=${encodeURIComponent(i)}&props=${encodeURIComponent("{}")}`,status:200}),s!==void 0&&n.push({method:"GET",path:`${t}?template=${encodeURIComponent(s)}&overrides=${encodeURIComponent('{"preset":"default"}')}`,status:200}),n.length===0&&n.push({method:"GET",path:`${t}?template=home.html`,status:404}),n}function mm(e,t){let n=[];for(let s of ze){let r=e.targets(s)[0];r!==void 0&&n.push({method:"POST",path:t,body:{target:{[s]:r}},status:200})}return n.length===0&&n.push({method:"POST",path:t,body:{target:{template:"home.html"}},status:404}),n}var qr=[{method:"GET",path:"/",description:"An index page: the theme's templates, modules, sections, partials and content states as links.",params:()=>[],returns:"text/html",examples:()=>[{method:"GET",path:"/",status:200}],handle:async(e,t,n)=>n(200,ym,X0(e))},{method:"GET",path:"/api/index",description:"This description: every route, its parameters, what it returns and example requests.",params:()=>[],returns:"application/json: { version, themeRoot, parentThemeRoot, routes }",examples:()=>[{method:"GET",path:"/api/index",status:200}],handle:async(e,t,n)=>n(200,tt,`${JSON.stringify(J0(e),null,2)}
-`)},{method:"GET",path:"/render",description:"Render one target to an HTML document. A refusal is plain text naming the parameter and what it may be.",params:pm,returns:"text/html; 400 (a bad parameter), 404 (an unknown template) or 500 (a failed render) as text/plain",examples:e=>fm(e,"/render"),handle:(e,t,n,s)=>_m(e,t,n,s,!1)},{method:"GET",path:"/diagnostics",description:"The same render as /render, answered as the JSON render --json prints, with html null.",params:pm,returns:"application/json: { ok, kind, target, template, state, props, overrides, out, html, assetBase, diagnostics }",examples:e=>fm(e,"/diagnostics"),handle:(e,t,n,s)=>_m(e,t,n,s,!0)},{method:"POST",path:"/api/render",description:"The /render route with a JSON body: { target: { template|module|section|partial }, state?, props?, overrides? }.",params:hm,returns:`text/html, as /render; 400 { error: { code, message, param } } for a body that is not that shape; 413 for a body over ${Cl} bytes`,examples:e=>mm(e,"/api/render"),handle:(e,t,n,s)=>bm(e,t,n,s,!1)},{method:"POST",path:"/api/diagnostics",description:"The /diagnostics route with the /api/render body.",params:hm,returns:"application/json, as /diagnostics; 400 and 413 as /api/render",examples:e=>mm(e,"/api/diagnostics"),handle:(e,t,n,s)=>bm(e,t,n,s,!0)},{method:"GET",path:"/api/list",description:"What list --json prints: the names render accepts, of one kind or of every kind.",params:()=>[{name:"kind",type:"string",required:!1,values:[...Mt],description:"One kind; omitted, every kind."}],returns:"application/json: { kind, items: [{ name, root, file }] }, or { kinds: [...] } without kind",examples:()=>[{method:"GET",path:"/api/list",status:200},...Mt.map(e=>({method:"GET",path:`/api/list?kind=${e}`,status:200}))],handle:async(e,t,n)=>{let s=t.query.get("kind");if(s===null||s===""){n(200,tt,`${JSON.stringify(z0(e.options))}
-`);return}if(!Mt.includes(s)){Wr(n,!0,"LIST_KIND_UNKNOWN",`There is no kind ${JSON.stringify(s)}.`,"kind",[...Mt]);return}n(200,tt,`${JSON.stringify({kind:s,items:St(e.options,s)})}
-`)}},{method:"GET",path:"/api/fixtures",description:"What fixtures --json prints: every fixture kind, where it is read from, whether the theme has it, the built-in that applies otherwise, and a schema or an example.",params:()=>[],returns:"application/json: { themeRoot, fixturesDirectory, overlay, note, kinds: [{ kind, path, present, embeddedDefault, whenAbsent, description, schema, example, files? }] }",examples:()=>[{method:"GET",path:"/api/fixtures",status:200}],handle:async(e,t,n)=>n(200,tt,`${JSON.stringify(fi(e.options.themeRoot,e.options.fixturesDir?Kr.resolve(e.options.fixturesDir):null))}
-`)},{method:"GET",path:"/api/fields",description:"What fields --json prints: a module's fields, read from its fields.json.",params:e=>[{name:"module",type:"string",required:!0,values:e.targets("module"),description:"A module, as a template references it."}],returns:"application/json: { module, directory, shape, fields, note? }; 400 for an unknown module; 422 for a fields.json that cannot be read",examples:e=>{let t=e.targets("module")[0];return t!==void 0?[{method:"GET",path:`/api/fields?module=${encodeURIComponent(t)}`,status:200}]:[{method:"GET",path:"/api/fields",status:400}]},handle:async(e,t,n)=>{let s=t.query.get("module");if(s===null||s===""){Wr(n,!0,"MODULE_REQUIRED","Name a module: ?module=<reference>.","module",e.targets("module"));return}let r=hi(e.options,s);if(!r.ok){if(r.unreadable){n(422,tt,`${JSON.stringify({error:{code:"FIELDS_UNREADABLE",message:`The module ${JSON.stringify(s)}: ${r.reason}.`,param:"module"}})}
-`);return}Wr(n,!0,"TARGET_UNKNOWN",`module ${JSON.stringify(s)} names no module: ${r.reason}.`,"module",r.listing);return}let{ok:i,...o}=r;n(200,tt,`${JSON.stringify(o)}
-`)}},{method:"GET",path:"/api/metadata",description:"What metadata --json prints: the theme's settings, its settings keys, presets and surfaces.",params:()=>[],returns:"application/json: { theme, settingsKeys, fields, presets, defaultPreset, surfaces, manifest }",examples:()=>[{method:"GET",path:"/api/metadata",status:200}],handle:async(e,t,n,s)=>{let r=await s(()=>mi(e.options));n(200,tt,`${JSON.stringify(r)}
-`)}},{method:"GET",path:`${wi}*`,description:"A file from the theme root, then from the parent theme root; never from outside either. Rendered pages load their assets from here.",params:()=>[{name:"path",type:"path",required:!0,description:"The file, relative to the theme root, after /theme-assets/."}],returns:"the file, typed by its extension; 403 for a path outside the theme; 404 when no root has it",examples:e=>[{method:"GET",path:`${wi}${Y0(e.options)}`,status:200}],handle:async(e,t,n)=>Z0(e.options,t.pathname.slice(wi.length),n)},{method:"ANY",path:"*",description:"Anything else: 404.",params:()=>[],returns:"text/plain 404",examples:()=>[{method:"GET",path:"/no-such-route",status:404}],handle:async(e,t,n)=>n(404,Ut,`Not found. GET /api/index lists the routes.
-`)}];function J0(e){return{version:kn,themeRoot:e.options.themeRoot,parentThemeRoot:e.options.parentThemeRoot??null,routes:qr.map(t=>({method:t.method,path:t.path,description:t.description,params:t.params(e),returns:t.returns,examples:t.examples(e)}))}}function z0(e){return{kinds:Mt.map(t=>({kind:t,items:St(e,t)}))}}function Y0(e){for(let t of["theme.json","fields.json"])try{if(Ll.statSync(H(e.themeRoot,t)).isFile())return t}catch{}return"theme.json"}function Wr(e,t,n,s,r,i){if(t){e(400,tt,`${JSON.stringify({error:{code:n,message:s,param:r,...i?{available:i}:{}}})}
-`);return}let o=[s,...i&&i.length>0?[`Valid values for ${r}:`,...i]:[]];e(400,Ut,`${o.join(`
-`)}
-`)}function gm(e){let t=e.failure?.kind;return t==="template-unknown"?404:t==="render-failed"||t===void 0?500:400}function Sm(e,t,n){if(n){e(t.failure?gm(t):200,tt,`${JSON.stringify({...t.json,html:null})}
-`);return}if(t.failure||t.html===null){let s=t.failure?gi(t.failure):`The render produced no document.
-`;e(gm(t),Ut,s);return}e(200,ym,t.html)}function vm(e,t,n,s){return t(()=>_i({themeRoot:e.options.themeRoot,parentThemeRoot:e.options.parentThemeRoot,target:n,...s.state?{state:s.state}:{},props:s.props,...s.overrides!==void 0?{overrides:s.overrides}:{},assetBase:wi,assetBaseOrigin:"serve"}))}function Em(e){return ze.flatMap(t=>e.targets(t).map(n=>`${t}=${n}`))}async function _m(e,t,n,s,r){let i=ze.filter(p=>{let m=t.query.get(p);return m!==null&&m!==""});if(i.length!==1){let p=i.length===0?"Name exactly one target: ?template=, ?module=, ?section= or ?partial=.":`Name exactly one target; this request names ${i.map(m=>`?${m}=`).join(" and ")}.`;Wr(n,r,"TARGET_REQUIRED",p,ze.join("|"),Em(e));return}let o=i[0],a=im(t.query);if(!a.ok){n(a.status,tt,`${JSON.stringify(a.body,null,2)}
-`);return}let l,c=t.query.get("overrides");if(c!==null&&c!=="")try{l=JSON.parse(c)}catch{Wr(n,r,"OVERRIDES_INVALID",'?overrides= could not be read: it is not JSON. Send a URL-encoded JSON object { "preset"?: string, "settings"?: object }.',"overrides");return}let u=t.query.get("state")??void 0,d=await vm(e,s,{kind:o,name:t.query.get(o)},{state:u||void 0,props:a.props,overrides:l});Sm(n,d,r)}function yi(e){return e!==null&&typeof e=="object"&&!Array.isArray(e)}async function bm(e,t,n,s,r){let i=(p,m,g,y)=>n(400,tt,`${JSON.stringify({error:{code:p,message:m,param:g,...y?{available:y}:{}}})}
-`),o;try{o=JSON.parse((t.body??Buffer.alloc(0)).toString("utf-8"))}catch(p){i("REQUEST_BODY_INVALID",`The request body is not JSON (${Pl(p instanceof Error?p.message:String(p))}).`,"body");return}if(!yi(o)){i("REQUEST_BODY_INVALID","The request body must be a JSON object: { target, state?, props?, overrides? }.","body");return}let a=Object.keys(o).filter(p=>!["target","state","props","overrides"].includes(p));if(a.length>0){i("REQUEST_BODY_INVALID",`The request body carries ${a.map(p=>JSON.stringify(p)).join(", ")}; its keys are target, state, props and overrides.`,a[0]);return}let l=o.target,c=yi(l)?ze.filter(p=>l[p]!==void 0):[];if(!yi(l)||c.length!==1||Object.keys(l).length!==1||typeof l[c[0]]!="string"||l[c[0]]===""){i("TARGET_REQUIRED",`"target" must be an object with exactly one of ${ze.map(p=>JSON.stringify(p)).join(", ")}, a non-empty string.`,"target",Em(e));return}if(o.props!==void 0&&o.props!==null&&!yi(o.props)){i(Hr,'"props" must be a JSON object of field values.',"props");return}let u=om(e.options.themeRoot,o.state);if(!u.ok){n(u.status,tt,`${JSON.stringify({error:{...u.body.error,param:"state"}})}
-`);return}let d=await vm(e,s,{kind:c[0],name:l[c[0]]},{state:u.state,props:o.props??null,overrides:o.overrides??void 0});Sm(n,d,r)}function X0(e){let t=bi(q0(e.options.themeRoot)),n=(o,a,l)=>{let c=e.targets(a),u=c.length>0?`<ul>
-${c.map(d=>`  <li><a href="/render?${a}=${encodeURIComponent(d)}">${bi(d)}</a></li>`).join(`
-`)}
-</ul>`:`<p>${l}</p>`;return`<h2>${o}</h2>
-${u}`},s=e.targets("state"),r=["template","section"].map(o=>({kind:o,name:e.targets(o)[0]})).find(o=>o.name!==void 0),i=s.length>0?`<ul>
-${s.map(o=>r?`  <li><a href="/render?${r.kind}=${encodeURIComponent(r.name)}&amp;state=${encodeURIComponent(o)}">${bi(o)}</a></li>`:`  <li>${bi(o)}</li>`).join(`
-`)}
-</ul>`:"<p>No content states.</p>";return`<!DOCTYPE html>
+  return found;
+}
+__name(extractModuleTags, "extractModuleTags");
+
+// src/field-metadata-extractor.ts
+function fieldsJsonToFieldMetadata(fields) {
+  const out = [];
+  if (!Array.isArray(fields)) return out;
+  for (const field of fields) {
+    if (!field || !field.name) continue;
+    const meta = { name: field.name, type: field.type ?? "unknown" };
+    if (field.label !== void 0) meta.label = field.label;
+    if (field.default !== void 0) meta.default = field.default;
+    const help = field.help_text ?? field.inline_help_text;
+    if (help !== void 0) meta.helpText = help;
+    if (field.choices) meta.choices = field.choices;
+    if (field.id !== void 0) meta.id = field.id;
+    if (field.display !== void 0) meta.display = field.display;
+    if (field.required !== void 0) meta.required = field.required;
+    if (field.occurrence !== void 0) meta.occurrence = field.occurrence;
+    if (field.visibility) meta.visibility = field.visibility;
+    if (field.advanced_visibility) meta.advancedVisibility = field.advanced_visibility;
+    if (Array.isArray(field.children)) meta.children = fieldsJsonToFieldMetadata(field.children);
+    out.push(meta);
+  }
+  return out;
+}
+__name(fieldsJsonToFieldMetadata, "fieldsJsonToFieldMetadata");
+function flattenFieldMetadata(fields, prefix = "") {
+  const map = /* @__PURE__ */ new Map();
+  for (const field of fields) {
+    const path9 = prefix ? `${prefix}.${field.name}` : field.name;
+    map.set(path9, field);
+    if (field.children) {
+      const childMap = flattenFieldMetadata(field.children, path9);
+      for (const [childPath, childMeta] of childMap) {
+        map.set(childPath, childMeta);
+      }
+    }
+  }
+  return map;
+}
+__name(flattenFieldMetadata, "flattenFieldMetadata");
+
+// src/module-field-validator.ts
+var RESERVED_FIELD_NAMES = /* @__PURE__ */ new Set([
+  "label",
+  "name",
+  "id",
+  "type",
+  "module_id",
+  "style",
+  "class",
+  "tag"
+]);
+var BOOLEAN_FIELD_TYPES = /* @__PURE__ */ new Set(["BooleanField", "boolean"]);
+var CONTAINER_FIELD_TYPES = /* @__PURE__ */ new Set(["FieldGroup", "RepeatedFieldGroup", "group"]);
+function isBooleanField(field) {
+  return BOOLEAN_FIELD_TYPES.has(field.type);
+}
+__name(isBooleanField, "isBooleanField");
+function isContainerField(field) {
+  return CONTAINER_FIELD_TYPES.has(field.type) || Array.isArray(field.children) && field.children.length > 0;
+}
+__name(isContainerField, "isContainerField");
+function isQuotedBoolean(value) {
+  return typeof value === "string" && /^(?:true|false)$/i.test(value.trim());
+}
+__name(isQuotedBoolean, "isQuotedBoolean");
+var DEFAULT_FIELD_RULES = [
+  "visibility-path",
+  "reserved-name",
+  "link-default"
+];
+var OFFLINE_VALIDATION_FIELD_RULES = [
+  "boolean-format",
+  "required-no-default"
+];
+function validateModuleFields(fields, options = {}) {
+  const rules = new Set(options.rules ?? DEFAULT_FIELD_RULES);
+  const errors = [];
+  const knownPaths = new Set(flattenFieldMetadata(fields).keys());
+  function walk(items, prefix = "") {
+    for (const field of items) {
+      const fieldPath = prefix ? `${prefix}.${field.name}` : field.name;
+      if (rules.has("reserved-name") && RESERVED_FIELD_NAMES.has(field.name)) {
+        errors.push({
+          kind: "reserved-name",
+          fieldPath,
+          message: `${fieldPath}: field name cannot be '${field.name}'`
+        });
+      }
+      if (rules.has("visibility-path")) {
+        checkVisibility(fieldPath, field.visibility, knownPaths, errors);
+        checkVisibility(fieldPath, field.advancedVisibility, knownPaths, errors);
+      }
+      if (rules.has("link-default") && field.type === "LinkField" && field.default !== void 0) {
+        const reason = invalidLinkDefaultReason(field.default);
+        if (reason) {
+          errors.push({
+            kind: "link-default",
+            fieldPath,
+            message: `Link field at path ${fieldPath} has an invalid default value (${reason})`
+          });
+        }
+      }
+      if (rules.has("boolean-format") && isBooleanField(field) && isQuotedBoolean(field.default)) {
+        errors.push({
+          kind: "boolean-format",
+          fieldPath,
+          message: `${fieldPath}: the format for the boolean value is invalid (default is the string "${field.default}"; booleans must be unquoted)`
+        });
+      }
+      if (rules.has("required-no-default") && field.required === true && field.default === void 0 && !isContainerField(field)) {
+        errors.push({
+          kind: "required-no-default",
+          fieldPath,
+          message: `'${fieldPath}' is required but no default is set`
+        });
+      }
+      if (field.children) walk(field.children, fieldPath);
+    }
+  }
+  __name(walk, "walk");
+  walk(fields);
+  return errors;
+}
+__name(validateModuleFields, "validateModuleFields");
+var MODULE_TAG_PARAMS = /* @__PURE__ */ new Set([
+  "path",
+  "offset",
+  "width",
+  "horizontal_alignment",
+  "vertical_alignment",
+  "flexbox_positioning",
+  "label",
+  "class",
+  "overrideable",
+  "no_wrapper",
+  "extra_classes",
+  "unique_id",
+  "export_to_template_context",
+  "type",
+  "_positional"
+]);
+function validateModuleParams(fields, params, options = {}) {
+  const ignore = new Set(options.ignoreKeys ?? MODULE_TAG_PARAMS);
+  const errors = [];
+  function walk(items, values, prefix, top) {
+    const byName = /* @__PURE__ */ new Map();
+    for (const field of items) {
+      byName.set(field.name, field);
+      if (field.id) byName.set(field.id, field);
+    }
+    for (const [key, value] of Object.entries(values)) {
+      const field = byName.get(key);
+      if (!field && top && key === "fields" && isPlainObject(value)) {
+        walk(items, value, prefix, false);
+        continue;
+      }
+      if (!field) continue;
+      if (top && ignore.has(key)) continue;
+      const fieldPath = prefix ? `${prefix}.${field.name}` : field.name;
+      if (isBooleanField(field) && isQuotedBoolean(value)) {
+        errors.push({
+          kind: "boolean-format",
+          fieldPath,
+          message: `${fieldPath}: the format for the boolean value is invalid (passed the string "${value}"; booleans must be unquoted)`
+        });
+        continue;
+      }
+      if (!field.children) continue;
+      if (isPlainObject(value)) {
+        walk(field.children, value, fieldPath, false);
+      } else if (Array.isArray(value)) {
+        value.forEach((entry, occurrence) => {
+          if (isPlainObject(entry)) walk(field.children, entry, `${fieldPath}[${occurrence}]`, false);
+        });
+      }
+    }
+  }
+  __name(walk, "walk");
+  walk(fields, params, "", true);
+  return errors;
+}
+__name(validateModuleParams, "validateModuleParams");
+function isPlainObject(value) {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+__name(isPlainObject, "isPlainObject");
+function checkVisibility(fieldPath, vis, knownPaths, errors) {
+  if (!vis || typeof vis !== "object") return;
+  if (typeof vis.controlling_field_path === "string" && !knownPaths.has(vis.controlling_field_path)) {
+    errors.push({
+      kind: "visibility-path",
+      fieldPath,
+      message: `${fieldPath}: no controlling_field with path '${vis.controlling_field_path}' exists`
+    });
+  }
+  if (Array.isArray(vis.criteria)) {
+    for (const criterion of vis.criteria) {
+      checkVisibility(fieldPath, criterion, knownPaths, errors);
+    }
+  }
+  if (vis.children && typeof vis.children === "object") {
+    checkVisibility(fieldPath, vis.children, knownPaths, errors);
+  }
+}
+__name(checkVisibility, "checkVisibility");
+function invalidLinkDefaultReason(value) {
+  if (value === null || typeof value !== "object") {
+    return "expected an object";
+  }
+  if (Array.isArray(value)) {
+    return "expected an object, got an array";
+  }
+  if (!value.url || typeof value.url !== "object" || Array.isArray(value.url)) {
+    return "missing required 'url' object";
+  }
+  if (typeof value.url.type !== "string" || value.url.type.length === 0) {
+    return "'url.type' is required (e.g. 'EXTERNAL')";
+  }
+  return null;
+}
+__name(invalidLinkDefaultReason, "invalidLinkDefaultReason");
+
+// src/browser/template-scan.ts
+var TEMPLATE_SEARCH_DIRS = ["templates", "sections", "helpers", "partials", ""];
+var QUOTED = String.raw`(?:"([^"]*)"|'([^']*)')`;
+var PATTERNS = [
+  { kind: "extends", regex: new RegExp(String.raw`\{%-?\s*extends\s+${QUOTED}`, "g") },
+  { kind: "include", regex: new RegExp(String.raw`\{%-?\s*include\s+${QUOTED}`, "g") },
+  { kind: "import", regex: new RegExp(String.raw`\{%-?\s*(?:from|import)\s+${QUOTED}`, "g") },
+  { kind: "dnd-partial", regex: new RegExp(String.raw`\{%-?\s*include_dnd_partial[^%]*?\bpath\s*=\s*${QUOTED}`, "g") },
+  { kind: "global-partial", regex: new RegExp(String.raw`\{%-?\s*global_partial[^%]*?\bpath\s*=\s*${QUOTED}`, "g") },
+  { kind: "module", regex: new RegExp(String.raw`\{%-?\s*(?:dnd_module|module|module_block)\b[^%]*?\bpath\s*=\s*${QUOTED}`, "g") },
+  { kind: "asset", regex: new RegExp(String.raw`get_asset_url\(\s*${QUOTED}`, "g") }
+];
+var CSS_IMPORT = new RegExp(String.raw`@import\s+(?:url\(\s*)?${QUOTED}`, "g");
+var CSS_HUBL_REF = new RegExp(String.raw`\{%-?\s*(?:include|import)\s+${QUOTED}`, "g");
+function normaliseThemePath(pathname) {
+  const segments = [];
+  for (const segment of pathname.replace(/\\/g, "/").split("/")) {
+    if (segment === "" || segment === ".") continue;
+    if (segment === "..") {
+      segments.pop();
+      continue;
+    }
+    segments.push(segment);
+  }
+  return segments.join("/");
+}
+__name(normaliseThemePath, "normaliseThemePath");
+function templateCandidates(ref, fromDir = "") {
+  const bare = ref.replace(/^(?:\.\.\/)+/, "");
+  const candidates = /* @__PURE__ */ new Set();
+  if (fromDir && (ref.startsWith("./") || ref.startsWith("../"))) {
+    candidates.add(normaliseThemePath(`${fromDir}/${ref}`));
+  }
+  for (const dir of TEMPLATE_SEARCH_DIRS) {
+    candidates.add(normaliseThemePath(dir ? `${dir}/${bare}` : bare));
+  }
+  candidates.add(normaliseThemePath(ref));
+  return [...candidates].filter(Boolean);
+}
+__name(templateCandidates, "templateCandidates");
+
+// src/theme-validator.ts
+var HUBSPOT_MODULE_PREFIX = "@hubspot/";
+var SKIPPED_DIRECTORIES = /* @__PURE__ */ new Set([
+  "node_modules",
+  ".git",
+  ".hs",
+  "dist",
+  "build",
+  "coverage",
+  ".next",
+  ".vite",
+  ".turbo",
+  "test-results",
+  "playwright-report"
+]);
+var TEMPLATE_EXTENSION = ".html";
+function severityOf(error) {
+  return SEVERITY_BY_CODE[error.code] ?? UNKNOWN_CODE_SEVERITY;
+}
+__name(severityOf, "severityOf");
+function validateTheme(options) {
+  const diagnostics = [];
+  const { themeRoots: themeRoots2, resolved } = resolveRootsForValidation(options, diagnostics);
+  const root = themeRoots2.themeRoot;
+  diagnostics.push(...themeRoots2.diagnostics);
+  const filesScanned = [];
+  const walk = collectThemeFiles(root, options.maxFiles ?? 5e3, diagnostics);
+  const moduleFields = /* @__PURE__ */ new Map();
+  const cascadeComplete = resolved && !themeRoots2.diagnostics.some(
+    (entry) => entry.code === DIAGNOSTIC_CODES.INHERITANCE_PARENT_MISSING || entry.code === DIAGNOSTIC_CODES.INHERITANCE_TOO_DEEP
+  );
+  const includeScans = /* @__PURE__ */ new Map();
+  for (const relativePath of walk.templates) {
+    filesScanned.push(relativePath);
+    const source = readTextFile(root, relativePath, diagnostics);
+    if (source === null) continue;
+    validateTemplate({
+      root,
+      relativePath,
+      source,
+      themeRoots: themeRoots2,
+      diagnostics,
+      moduleFields,
+      cascadeComplete,
+      includeScans
+    });
+  }
+  for (const relativePath of walk.fieldFiles) {
+    filesScanned.push(relativePath);
+    const source = readTextFile(root, relativePath, diagnostics);
+    if (source === null) continue;
+    validateFieldsFile(relativePath, source, diagnostics);
+  }
+  for (const relativePath of walk.schemaFiles) {
+    filesScanned.push(relativePath);
+    const source = readTextFile(root, relativePath, diagnostics);
+    if (source === null) continue;
+    validateFieldSchemaFile(relativePath, source, diagnostics);
+  }
+  diagnostics.sort(compareDiagnostics);
+  const counts = { error: 0, warning: 0, info: 0 };
+  for (const entry of diagnostics) counts[severityOf(entry)]++;
+  return { diagnostics, filesScanned, truncated: walk.truncated, counts };
+}
+__name(validateTheme, "validateTheme");
+function resolveRootsForValidation(options, diagnostics) {
+  try {
+    return {
+      themeRoots: resolveThemeRoots({
+        childThemeRoot: options.themeRoot,
+        parentThemeRoot: options.parentThemeRoot,
+        projects: options.projects
+      }),
+      resolved: true
+    };
+  } catch (err) {
+    diagnostics.push(
+      err instanceof RendererError ? err : diagnostic(
+        DIAGNOSTIC_CODES.VALIDATION_SOURCE_UNREADABLE,
+        `Theme cascade resolution failed: ${err instanceof Error ? err.message : String(err)}. Validation continued against ${options.themeRoot} alone, so nothing inherited was checked.`,
+        { file: "theme.json" }
+      )
+    );
+    return { themeRoots: resolveThemeRoots({ themeRoot: options.themeRoot }), resolved: false };
+  }
+}
+__name(resolveRootsForValidation, "resolveRootsForValidation");
+function isFieldSchemaFile(relative) {
+  const segments = relative.split("/");
+  return segments.length >= 2 && segments[segments.length - 2] === FIELD_SCHEMA_DIR && segments[segments.length - 1].endsWith(FIELD_SCHEMA_SUFFIX);
+}
+__name(isFieldSchemaFile, "isFieldSchemaFile");
+function collectThemeFiles(root, maxFiles, diagnostics) {
+  const templates = [];
+  const fieldFiles = [];
+  const schemaFiles = [];
+  let seen = 0;
+  let truncated = false;
+  const visit = /* @__PURE__ */ __name((directory, prefix) => {
+    if (truncated) return;
+    let entries;
+    try {
+      entries = hostFs.readdirSync(directory);
+    } catch (err) {
+      diagnostics.push(
+        diagnostic(
+          DIAGNOSTIC_CODES.VALIDATION_SOURCE_UNREADABLE,
+          `Could not list ${prefix || "."}: ${err instanceof Error ? err.message : String(err)}. Nothing inside that directory was validated.`,
+          { file: prefix || "." }
+        )
+      );
+      return;
+    }
+    for (const entry of entries.slice().sort()) {
+      if (truncated) return;
+      const absolute = path.join(directory, entry);
+      const relative = prefix ? `${prefix}/${entry}` : entry;
+      let isDirectory3;
+      try {
+        isDirectory3 = hostFs.statSync(absolute).isDirectory();
+      } catch (err) {
+        diagnostics.push(
+          diagnostic(
+            DIAGNOSTIC_CODES.VALIDATION_SOURCE_UNREADABLE,
+            `Could not stat ${relative}: ${err instanceof Error ? err.message : String(err)}. It was skipped, so any fault in it is unreported.`,
+            { file: relative }
+          )
+        );
+        continue;
+      }
+      if (isDirectory3) {
+        if (SKIPPED_DIRECTORIES.has(entry)) continue;
+        visit(absolute, relative);
+        continue;
+      }
+      if (++seen > maxFiles) {
+        truncated = true;
+        return;
+      }
+      if (entry.toLowerCase().endsWith(TEMPLATE_EXTENSION)) templates.push(relative);
+      else if (entry === "fields.json") fieldFiles.push(relative);
+      else if (isFieldSchemaFile(relative)) schemaFiles.push(relative);
+    }
+  }, "visit");
+  visit(root, "");
+  return { templates, fieldFiles, schemaFiles, truncated };
+}
+__name(collectThemeFiles, "collectThemeFiles");
+function readTextFile(root, relativePath, diagnostics) {
+  try {
+    return hostFs.readFileSync(resolveSafePath(root, relativePath), "utf-8");
+  } catch (err) {
+    diagnostics.push(
+      diagnostic(
+        DIAGNOSTIC_CODES.VALIDATION_SOURCE_UNREADABLE,
+        `Could not read ${relativePath}: ${err instanceof Error ? err.message : String(err)}. It was skipped, so any fault inside it is unreported.`,
+        { file: relativePath }
+      )
+    );
+    return null;
+  }
+}
+__name(readTextFile, "readTextFile");
+function validateTemplate(input) {
+  const { relativePath, source, themeRoots: themeRoots2, diagnostics, moduleFields } = input;
+  const annotations = parseTemplateAnnotations(source);
+  const fromDir = relativePath.split("/").slice(0, -1).join("/");
+  for (const violation of scanDndStructure(source, { templateType: annotations.templateType })) {
+    diagnostics.push(dndDiagnostic(relativePath, violation));
+  }
+  if (input.cascadeComplete && requiresStandardIncludes(annotations)) {
+    let missing;
+    try {
+      missing = missingRequiredVariables(input);
+    } catch (err) {
+      if (!(err instanceof RendererError)) throw err;
+      missing = null;
+    }
+    if (missing && missing.length > 0) {
+      diagnostics.push(requiredVariableDiagnostic(relativePath, annotations.templateType, missing));
+    }
+  }
+  const reportedHubSpotModules = /* @__PURE__ */ new Set();
+  for (const invocation of extractModuleTags(source)) {
+    let kwargs;
+    try {
+      kwargs = parseSimpleKwargs(invocation.raw);
+    } catch {
+      continue;
+    }
+    const modulePath = typeof kwargs.path === "string" ? kwargs.path : "";
+    if (!modulePath) continue;
+    for (const [parameter, value] of Object.entries(kwargs)) {
+      if (parameter === "path") continue;
+      for (const link of findUnresolvableContentLinks(value, parameter)) {
+        diagnostics.push(
+          contentLinkDiagnostic(relativePath, link, { line: invocation.line, modulePath, parameter })
+        );
+      }
+    }
+    if (modulePath.startsWith(HUBSPOT_MODULE_PREFIX)) {
+      if (reportedHubSpotModules.has(modulePath)) continue;
+      reportedHubSpotModules.add(modulePath);
+      diagnostics.push(hubspotInternalDiagnostic(relativePath, modulePath, invocation.line));
+      continue;
+    }
+    const cacheKey = `${fromDir}\0${modulePath}`;
+    let fields = moduleFields.get(cacheKey);
+    if (fields === void 0) {
+      fields = loadModuleFields(themeRoots2, modulePath, fromDir);
+      moduleFields.set(cacheKey, fields);
+    }
+    if (!fields) continue;
+    for (const error of validateModuleParams(fields, kwargs)) {
+      diagnostics.push(
+        booleanFormatDiagnostic(relativePath, error, {
+          line: invocation.line,
+          modulePath,
+          origin: "template"
+        })
+      );
+    }
+  }
+}
+__name(validateTemplate, "validateTemplate");
+function isDirectory(pathname) {
+  try {
+    return hostFs.statSync(pathname).isDirectory();
+  } catch {
+    return false;
+  }
+}
+__name(isDirectory, "isDirectory");
+function resolveModuleDirFrom(themeRoots2, modulePath, fromDir) {
+  if (fromDir && /^\.\.?\//.test(modulePath)) {
+    const candidate = normaliseThemePath(`${fromDir}/${modulePath}`);
+    if (candidate) {
+      try {
+        const resolved = resolveInThemeCascade(themeRoots2, candidate);
+        if (resolved && isDirectory(resolved)) return resolved;
+      } catch (err) {
+        if (!(err instanceof RendererError)) throw err;
+      }
+    }
+  }
+  try {
+    return resolveModuleDir(themeRoots2, modulePath);
+  } catch (err) {
+    if (err instanceof RendererError) return null;
+    throw err;
+  }
+}
+__name(resolveModuleDirFrom, "resolveModuleDirFrom");
+function loadModuleFields(themeRoots2, modulePath, fromDir) {
+  const moduleDir = resolveModuleDirFrom(themeRoots2, modulePath, fromDir);
+  if (!moduleDir) return null;
+  let fieldsPath;
+  try {
+    fieldsPath = resolveSafePath(moduleDir, "fields.json");
+  } catch {
+    return null;
+  }
+  if (!hostFs.existsSync(fieldsPath)) return null;
+  try {
+    return fieldsJsonToFieldMetadata(JSON.parse(hostFs.readFileSync(fieldsPath, "utf-8")));
+  } catch {
+    return null;
+  }
+}
+__name(loadModuleFields, "loadModuleFields");
+function validateFieldsFile(relativePath, source, diagnostics) {
+  let parsed;
+  try {
+    parsed = JSON.parse(source);
+  } catch (err) {
+    diagnostics.push(
+      diagnostic(
+        DIAGNOSTIC_CODES.VALIDATION_SOURCE_UNREADABLE,
+        `${relativePath} is not valid JSON (${err instanceof Error ? err.message : String(err)}), so its field definitions could not be validated.`,
+        { file: relativePath }
+      )
+    );
+    return;
+  }
+  if (!Array.isArray(parsed)) return;
+  if (!isHubspotAuthoredFile(relativePath)) {
+    for (const entry of reservedFieldNameEntries(parsed)) {
+      diagnostics.push(reservedFieldNameDiagnostic(relativePath, entry));
+    }
+  }
+  const fields = fieldsJsonToFieldMetadata(parsed);
+  for (const error of validateModuleFields(fields, { rules: OFFLINE_VALIDATION_FIELD_RULES })) {
+    if (error.kind === "boolean-format") {
+      diagnostics.push(booleanFormatDiagnostic(relativePath, error, { origin: "default" }));
+    } else if (error.kind === "required-no-default") {
+      diagnostics.push(requiredNoDefaultDiagnostic(relativePath, error));
+    }
+  }
+  for (const { link, declaredOn } of contentLinksInFieldDefaults(parsed)) {
+    diagnostics.push(contentLinkDiagnostic(relativePath, link, { declaredOn }));
+  }
+}
+__name(validateFieldsFile, "validateFieldsFile");
+function validateFieldSchemaFile(relativePath, source, diagnostics) {
+  let parsed;
+  try {
+    parsed = JSON.parse(source);
+  } catch (err) {
+    diagnostics.push(
+      diagnostic(
+        DIAGNOSTIC_CODES.VALIDATION_SOURCE_UNREADABLE,
+        `${relativePath} is not valid JSON (${err instanceof Error ? err.message : String(err)}), so the module defaults it carries could not be validated.`,
+        { file: relativePath }
+      )
+    );
+    return;
+  }
+  if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) return;
+  const schema = parsed;
+  const fields = [
+    ...Array.isArray(schema.contentFields) ? schema.contentFields : [],
+    ...Array.isArray(schema.styleFields) ? schema.styleFields : []
+  ];
+  for (const { link, declaredOn } of contentLinksInFieldDefaults(fields)) {
+    diagnostics.push(contentLinkDiagnostic(relativePath, link, { declaredOn }));
+  }
+}
+__name(validateFieldSchemaFile, "validateFieldSchemaFile");
+function contentLinksInFieldDefaults(fields, prefix = "") {
+  const found = [];
+  if (!Array.isArray(fields)) return found;
+  for (const field of fields) {
+    if (field === null || typeof field !== "object" || Array.isArray(field)) continue;
+    const { name, default: value, children } = field;
+    if (typeof name !== "string" || name === "") continue;
+    const fieldPath = prefix ? `${prefix}.${name}` : name;
+    if (value !== void 0) {
+      for (const link of findUnresolvableContentLinks(value, fieldPath)) {
+        found.push({ link, declaredOn: fieldPath });
+      }
+    }
+    found.push(...contentLinksInFieldDefaults(children, fieldPath));
+  }
+  return found;
+}
+__name(contentLinksInFieldDefaults, "contentLinksInFieldDefaults");
+var RESERVED_FIELD_RENAMES = /* @__PURE__ */ new Map([
+  ["label", "item_label"],
+  ["body", "body_text"],
+  ["name", "item_name"]
+]);
+function isHubspotAuthoredFile(relativePath) {
+  return relativePath.split("/").some((segment) => segment === "@hubspot");
+}
+__name(isHubspotAuthoredFile, "isHubspotAuthoredFile");
+function reservedFieldNameEntries(fields, prefix = "") {
+  const found = [];
+  if (!Array.isArray(fields)) return found;
+  for (const field of fields) {
+    if (field === null || typeof field !== "object" || Array.isArray(field)) continue;
+    const { name, type, children } = field;
+    if (typeof name !== "string" || name === "") continue;
+    const fieldPath = prefix ? `${prefix}.${name}` : name;
+    const rename = RESERVED_FIELD_RENAMES.get(name);
+    if (rename !== void 0) {
+      found.push({ fieldPath, name, rename, type: typeof type === "string" ? type : null });
+    }
+    found.push(...reservedFieldNameEntries(children, fieldPath));
+  }
+  return found;
+}
+__name(reservedFieldNameEntries, "reservedFieldNameEntries");
+var REQUIRED_TEMPLATE_VARIABLES = ["standard_header_includes", "standard_footer_includes"];
+var REQUIRED_VARIABLE_TEMPLATE_TYPES = /* @__PURE__ */ new Set(["page", "blog", "blog_post", "blog_listing"]);
+var MAX_INCLUDE_WALK_FILES = 200;
+function requiresStandardIncludes(annotations) {
+  if (!annotations.templateType || !REQUIRED_VARIABLE_TEMPLATE_TYPES.has(annotations.templateType)) return false;
+  return annotations.isAvailableForNewContent !== false;
+}
+__name(requiresStandardIncludes, "requiresStandardIncludes");
+function maskHublComments(source) {
+  return source.replace(/\{%-?\s*raw\s*-?%\}[\s\S]*?\{%-?\s*endraw\s*-?%\}/g, " ").replace(/\{#[\s\S]*?#\}/g, " ");
+}
+__name(maskHublComments, "maskHublComments");
+var INCLUDE_STATEMENT_RE = /\{%-?\s*(include_dnd_partial|global_partial|extends|include|import|from)\b([\s\S]*?)-?%\}/g;
+function printsVariable(source, variable) {
+  return new RegExp(`\\{\\{-?\\s*${variable}\\s*(?:\\|[^{}]*?)?-?\\}\\}`).test(source);
+}
+__name(printsVariable, "printsVariable");
+function literalString(text) {
+  const match = /^\s*(?:"([^"]*)"|'([^']*)')/.exec(text);
+  if (!match) return null;
+  const value = match[1] ?? match[2];
+  return value.includes("{{") || value.includes("{%") ? null : value;
+}
+__name(literalString, "literalString");
+function scanIncludes(source) {
+  const masked = maskHublComments(source);
+  const variables = /* @__PURE__ */ new Set();
+  for (const variable of REQUIRED_TEMPLATE_VARIABLES) {
+    if (printsVariable(masked, variable)) variables.add(variable);
+  }
+  const references = [];
+  INCLUDE_STATEMENT_RE.lastIndex = 0;
+  let match;
+  while ((match = INCLUDE_STATEMENT_RE.exec(masked)) !== null) {
+    const [, tag, args2] = match;
+    if (tag === "import" || tag === "from") {
+      references.push({ tag, target: null });
+      continue;
+    }
+    if (tag === "extends" || tag === "include") {
+      references.push({ tag, target: literalString(args2) });
+      continue;
+    }
+    const pathArg = /\bpath\s*=\s*([\s\S]*)$/.exec(args2);
+    if (!pathArg) continue;
+    references.push({ tag, target: literalString(pathArg[1]) });
+  }
+  return { variables, references };
+}
+__name(scanIncludes, "scanIncludes");
+function isFile(pathname) {
+  try {
+    return hostFs.statSync(pathname).isFile();
+  } catch {
+    return false;
+  }
+}
+__name(isFile, "isFile");
+function resolveIncludeTarget(themeRoots2, fromRelative, tag, target) {
+  const fromDir = fromRelative.split("/").slice(0, -1).join("/");
+  const candidates = templateCandidates(target, fromDir);
+  if (tag === "global_partial") {
+    const base = target.split("/").pop() ?? target;
+    candidates.push(normaliseThemePath(`templates/layouts/${target}`), normaliseThemePath(`partials/${base}`));
+  }
+  for (const candidate of candidates) {
+    if (!candidate) continue;
+    try {
+      const resolved = resolveInThemeCascade(themeRoots2, candidate);
+      if (resolved && isFile(resolved)) return resolved;
+    } catch (err) {
+      if (!(err instanceof RendererError)) throw err;
+    }
+  }
+  return null;
+}
+__name(resolveIncludeTarget, "resolveIncludeTarget");
+function cascadeRelativePath(absolute, themeRoots2) {
+  const dir = themeRelativeDirectory(absolute, themeRoots2);
+  if (dir === null) return null;
+  const base = path.basename(absolute);
+  return dir ? `${dir}/${base}` : base;
+}
+__name(cascadeRelativePath, "cascadeRelativePath");
+function missingRequiredVariables(input) {
+  const { root, relativePath, source, themeRoots: themeRoots2, includeScans } = input;
+  const found = /* @__PURE__ */ new Set();
+  const entry = resolveSafePath(root, relativePath);
+  const queue = [
+    { absolute: entry, relative: relativePath, source }
+  ];
+  const visited = /* @__PURE__ */ new Set();
+  while (queue.length > 0) {
+    const next = queue.shift();
+    if (visited.has(next.absolute)) continue;
+    visited.add(next.absolute);
+    if (visited.size > MAX_INCLUDE_WALK_FILES) return null;
+    let scan = includeScans.get(next.absolute);
+    if (scan === void 0) {
+      let text = next.source;
+      if (text === null) {
+        try {
+          text = hostFs.readFileSync(next.absolute, "utf-8");
+        } catch {
+          text = null;
+        }
+      }
+      scan = text === null ? null : scanIncludes(text);
+      includeScans.set(next.absolute, scan);
+    }
+    if (scan === null) return null;
+    for (const variable of scan.variables) found.add(variable);
+    if (found.size === REQUIRED_TEMPLATE_VARIABLES.length) return [];
+    for (const reference of scan.references) {
+      if (reference.target === null) return null;
+      const resolved = resolveIncludeTarget(themeRoots2, next.relative, reference.tag, reference.target);
+      if (resolved === null) return null;
+      const relative = cascadeRelativePath(resolved, themeRoots2);
+      if (relative === null) return null;
+      queue.push({ absolute: resolved, relative, source: null });
+    }
+  }
+  return REQUIRED_TEMPLATE_VARIABLES.filter((variable) => !found.has(variable));
+}
+__name(missingRequiredVariables, "missingRequiredVariables");
+var RULE_REMEDIES = {
+  1: "A dnd_section holds dnd_column and dnd_module directly. Drop the dnd_row wrapper, or put the row inside a dnd_column.",
+  2: "Modules are columns themselves, so a dnd_module cannot sit directly in a dnd_column. Wrap it in a dnd_row.",
+  3: "Wrap the conditional in an HTML element so the control-flow tag lives inside HTML rather than directly inside the dnd_column.",
+  4: "Enclose it in a dnd_area > dnd_section > dnd_column chain. dnd_area ids must be literal strings \u2014 HubL interpolation is not supported there."
+};
+function dndDiagnostic(file, violation) {
+  const remedy = violation.rule ? ` ${RULE_REMEDIES[violation.rule]}` : "";
+  return diagnostic(
+    DIAGNOSTIC_CODES.DND_HIERARCHY_VIOLATION,
+    `${file}:${violation.line} \u2014 ${violation.message}${remedy}`,
+    {
+      file,
+      sourceFile: file,
+      line: violation.line,
+      rule: violation.rule,
+      tag: violation.tag,
+      parentTag: violation.parentTag,
+      hubspotMessage: violation.message
+    }
+  );
+}
+__name(dndDiagnostic, "dndDiagnostic");
+function booleanFormatDiagnostic(file, error, context) {
+  const at = context.line ? `${file}:${context.line}` : file;
+  const target = context.modulePath ? ` passed to ${context.modulePath}` : "";
+  return diagnostic(
+    DIAGNOSTIC_CODES.FIELD_BOOLEAN_FORMAT,
+    `${at} \u2014 ${error.message}${target}. HubSpot reports this as "The format for the boolean value is invalid." and ignores the value.`,
+    {
+      file,
+      sourceFile: file,
+      ...context.line ? { line: context.line } : {},
+      ...context.modulePath ? { modulePath: context.modulePath } : {},
+      fieldPath: error.fieldPath,
+      origin: context.origin
+    }
+  );
+}
+__name(booleanFormatDiagnostic, "booleanFormatDiagnostic");
+function requiredNoDefaultDiagnostic(file, error) {
+  return diagnostic(
+    DIAGNOSTIC_CODES.FIELD_REQUIRED_NO_DEFAULT,
+    `${file} \u2014 ${error.message}. HubSpot fails the build on this, because an empty editor state can never satisfy the field. Give it a default, or make it optional.`,
+    { file, sourceFile: file, fieldPath: error.fieldPath }
+  );
+}
+__name(requiredNoDefaultDiagnostic, "requiredNoDefaultDiagnostic");
+var CONTENT_LINK_REMEDY = 'Internal defaults should ship EXTERNAL with a relative href (e.g. {"type": "EXTERNAL", "href": "/contact"}) until the page exists; an editor re-points the link to CONTENT once it does.';
+function contentLinkDiagnostic(file, link, context) {
+  const at = context.line ? `${file}:${context.line}` : file;
+  const where = context.parameter !== void 0 ? `'${link.path}' passed to ${context.modulePath}` : `'${link.path}' in the default of field '${context.declaredOn}'`;
+  const consequence = context.parameter !== void 0 ? "so the link renders empty on the page" : "so every page that keeps this default renders the link empty";
+  return diagnostic(
+    DIAGNOSTIC_CODES.FIELD_CONTENT_LINK_UNRESOLVABLE,
+    `${at} \u2014 ${where} is a CONTENT link with content_id ${describeContentId(link.contentId)}, which names no page. HubSpot resolves a CONTENT link by content_id and ignores its href, ${consequence}. ${CONTENT_LINK_REMEDY}`,
+    {
+      file,
+      sourceFile: file,
+      ...context.line ? { line: context.line } : {},
+      ...context.modulePath ? { modulePath: context.modulePath } : {},
+      fieldPath: link.path,
+      ...context.declaredOn !== void 0 ? { declaredOn: context.declaredOn } : {},
+      ...context.parameter !== void 0 ? { parameter: context.parameter } : {},
+      contentId: link.contentId ?? null,
+      origin: context.parameter !== void 0 ? "template" : "default"
+    }
+  );
+}
+__name(contentLinkDiagnostic, "contentLinkDiagnostic");
+function reservedFieldNameDiagnostic(file, entry) {
+  const scope = file === "fields.json" ? "theme" : "module";
+  const kind = entry.type === "group" ? "group" : "field";
+  return diagnostic(
+    DIAGNOSTIC_CODES.FIELD_NAME_RESERVED,
+    `${file} \u2014 ${kind} '${entry.fieldPath}' is named '${entry.name}', which HubSpot refuses at upload ("field name cannot be '${entry.name}'") whether the entry is a field, a group or a repeater. Rename it, for example to '${entry.rename}', and every ${scope}.${entry.fieldPath} reference with it. HubSpot reports one refused name per upload, so fix every one this run lists before uploading again.`,
+    {
+      file,
+      sourceFile: file,
+      fieldPath: entry.fieldPath,
+      fieldName: entry.name,
+      fieldType: entry.type,
+      suggestedName: entry.rename
+    }
+  );
+}
+__name(reservedFieldNameDiagnostic, "reservedFieldNameDiagnostic");
+function requiredVariableDiagnostic(file, templateType, missing) {
+  const names = missing.map((variable) => `{{ ${variable} }}`).join(" and ");
+  return diagnostic(
+    DIAGNOSTIC_CODES.TEMPLATE_REQUIRED_VARIABLE_MISSING,
+    `${file} \u2014 this ${templateType} template has no ${names}, neither in the file nor in anything it extends or includes. HubSpot requires both in a template or its partials before the template can be published and used; add the missing one to the template or to the layout it extends. A template that is not meant for new content can say so with isAvailableForNewContent: false instead.`,
+    { file, sourceFile: file, templateType, missing }
+  );
+}
+__name(requiredVariableDiagnostic, "requiredVariableDiagnostic");
+function hubspotInternalDiagnostic(file, modulePath, line) {
+  return diagnostic(
+    DIAGNOSTIC_CODES.HUBSPOT_INTERNAL_MODULE,
+    `${file}:${line} \u2014 ${modulePath} is a HubSpot-shipped module. Upload warnings originating inside it (typically "Cannot resolve property 'style' in ''") come from HubSpot's own template, which cannot be edited, so they are informational. Passing a minimal style={} silences the common one.`,
+    { file, sourceFile: file, line, modulePath }
+  );
+}
+__name(hubspotInternalDiagnostic, "hubspotInternalDiagnostic");
+function compareDiagnostics(a, b) {
+  const fileA = String(a.details?.file ?? "");
+  const fileB = String(b.details?.file ?? "");
+  if (fileA !== fileB) return fileA < fileB ? -1 : 1;
+  const lineA = typeof a.details?.line === "number" ? a.details.line : 0;
+  const lineB = typeof b.details?.line === "number" ? b.details.line : 0;
+  if (lineA !== lineB) return lineA - lineB;
+  return a.code < b.code ? -1 : a.code > b.code ? 1 : 0;
+}
+__name(compareDiagnostics, "compareDiagnostics");
+function formatValidationReport(result, options = {}) {
+  const lines = [];
+  const where = options.themeRoot ? ` in ${options.themeRoot}` : "";
+  for (const entry of result.diagnostics) {
+    lines.push(`${severityOf(entry).padEnd(7)} ${entry.code}  ${entry.message}`);
+  }
+  if (result.diagnostics.length === 0) {
+    lines.push(`No template validation faults found${where}.`);
+  }
+  lines.push("");
+  lines.push(
+    `${result.filesScanned.length} file(s) scanned${where}: ${result.counts.error} error(s), ${result.counts.warning} warning(s), ${result.counts.info} informational.`
+  );
+  if (result.truncated) {
+    lines.push("WARNING: the file walk hit its maxFiles limit; this report is incomplete.");
+  }
+  return lines.join("\n");
+}
+__name(formatValidationReport, "formatValidationReport");
+
+// src/cli-commands.ts
+import fs2 from "fs";
+import path7 from "path";
+import { pathToFileURL } from "url";
+
+// src/theme-templates.ts
+import path2 from "path";
+var NON_PAGE_TEMPLATE_DIRECTORIES = /* @__PURE__ */ new Set(["layouts", "partials"]);
+var MAX_TEMPLATE_DEPTH = 16;
+function listPageTemplates(roots) {
+  const byName = /* @__PURE__ */ new Map();
+  const sources = [{ root: roots.themeRoot, label: "theme" }];
+  if (roots.parentThemeRoot) sources.push({ root: roots.parentThemeRoot, label: "parent" });
+  for (const { root, label } of sources) {
+    for (const entry of htmlFilesUnder(root, label, "templates", NON_PAGE_TEMPLATE_DIRECTORIES)) {
+      if (!byName.has(entry.name)) byName.set(entry.name, entry);
+    }
+  }
+  return [...byName.values()].sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+}
+__name(listPageTemplates, "listPageTemplates");
+function listHtmlFilesUnder(roots, directory) {
+  const byName = /* @__PURE__ */ new Map();
+  const sources = [{ root: roots.themeRoot, label: "theme" }];
+  if (roots.parentThemeRoot) sources.push({ root: roots.parentThemeRoot, label: "parent" });
+  for (const { root, label } of sources) {
+    for (const entry of htmlFilesUnder(root, label, directory, /* @__PURE__ */ new Set())) {
+      if (!byName.has(entry.name)) byName.set(entry.name, entry);
+    }
+  }
+  return [...byName.values()].sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+}
+__name(listHtmlFilesUnder, "listHtmlFilesUnder");
+function normaliseTemplateName(input) {
+  let name = input.trim().replace(/\\/g, "/");
+  while (name.startsWith("./")) name = name.slice(2);
+  if (name.startsWith("templates/")) name = name.slice("templates/".length);
+  return name;
+}
+__name(normaliseTemplateName, "normaliseTemplateName");
+function findPageTemplate(templates, input) {
+  const name = normaliseTemplateName(input);
+  return templates.find((entry) => entry.name === name) ?? null;
+}
+__name(findPageTemplate, "findPageTemplate");
+function htmlFilesUnder(root, label, directory, skipTopLevel) {
+  let templatesDir;
+  try {
+    templatesDir = resolveSafePath(root, directory);
+  } catch (err) {
+    if (err instanceof RendererError) return [];
+    throw err;
+  }
+  if (!isDirectory2(templatesDir)) return [];
+  const found = [];
+  const visited = /* @__PURE__ */ new Set();
+  const walk = /* @__PURE__ */ __name((dir, relative, depth) => {
+    if (depth > MAX_TEMPLATE_DEPTH || visited.has(dir)) return;
+    visited.add(dir);
+    let names;
+    try {
+      names = hostFs.readdirSync(dir).slice().sort();
+    } catch {
+      return;
+    }
+    for (const name of names) {
+      if (relative.length === 0 && skipTopLevel.has(name)) continue;
+      let candidate;
+      try {
+        candidate = resolveSafePath(root, path2.join(dir, name));
+      } catch (err) {
+        if (err instanceof RendererError) continue;
+        throw err;
+      }
+      if (isDirectory2(candidate)) {
+        walk(candidate, [...relative, name], depth + 1);
+      } else if (name.toLowerCase().endsWith(".html") && isFile2(candidate)) {
+        found.push({ name: [...relative, name].join("/"), root: label, path: candidate });
+      }
+    }
+  }, "walk");
+  walk(templatesDir, [], 0);
+  return found;
+}
+__name(htmlFilesUnder, "htmlFilesUnder");
+function isDirectory2(candidate) {
+  try {
+    return hostFs.existsSync(candidate) && hostFs.statSync(candidate).isDirectory();
+  } catch {
+    return false;
+  }
+}
+__name(isDirectory2, "isDirectory");
+function isFile2(candidate) {
+  try {
+    return hostFs.existsSync(candidate) && hostFs.statSync(candidate).isFile();
+  } catch {
+    return false;
+  }
+}
+__name(isFile2, "isFile");
+
+// src/theme-inventory.ts
+import path3 from "path";
+
+// src/browser/portal-context.ts
+var SNAPSHOT_FIXTURE_FILES = {
+  menu: "menu.json",
+  menus: "menus.json",
+  blogPosts: "blog-posts.json",
+  hubdbRows: "hubdb-rows.json",
+  form: "form.json",
+  forms: "forms.json",
+  brandSettings: "brand-settings.json",
+  subscriptionTypes: "subscription-types.json"
+};
+
+// src/theme-inventory.ts
+var LIST_KINDS = ["template", "module", "section", "partial", "state"];
+var TARGET_KINDS = ["template", "module", "section", "partial"];
+var MODULES_DIRECTORY = "modules";
+var SECTIONS_DIRECTORY = "sections";
+var PARTIALS_DIRECTORY = "templates/partials";
+var FILE_TARGET_PATTERN = /^[A-Za-z0-9._/-]+\.html$/;
+var MODULE_REFERENCE_PATTERN = /^(?:\.\.\/)*[A-Za-z0-9._@-][A-Za-z0-9._/@-]*$/;
+function moduleTemplateFile(dir) {
+  for (const name of ["module.hubl.html", "module.html"]) {
+    try {
+      if (hostFs.existsSync(path3.join(dir, name))) return name;
+    } catch {
+    }
+  }
+  return null;
+}
+__name(moduleTemplateFile, "moduleTemplateFile");
+function listModules(roots) {
+  const byName = /* @__PURE__ */ new Map();
+  const sources = [{ root: roots.themeRoot, label: "theme" }];
+  if (roots.parentThemeRoot) sources.push({ root: roots.parentThemeRoot, label: "parent" });
+  for (const { root, label } of sources) {
+    let dir;
+    try {
+      dir = resolveSafePath(root, MODULES_DIRECTORY);
+    } catch (err) {
+      if (err instanceof RendererError) continue;
+      throw err;
+    }
+    let names;
+    try {
+      if (!hostFs.existsSync(dir) || !hostFs.statSync(dir).isDirectory()) continue;
+      names = hostFs.readdirSync(dir).slice().sort();
+    } catch {
+      continue;
+    }
+    for (const entry of names) {
+      let moduleDir;
+      try {
+        moduleDir = resolveSafePath(root, path3.join(dir, entry));
+      } catch (err) {
+        if (err instanceof RendererError) continue;
+        throw err;
+      }
+      if (classifyModuleDir(moduleDir) !== "hubl") continue;
+      const template = moduleTemplateFile(moduleDir);
+      if (!template) continue;
+      const name = `../${MODULES_DIRECTORY}/${entry.replace(/\.module$/, "")}`;
+      if (byName.has(name)) continue;
+      byName.set(name, { name, root: label, file: `${MODULES_DIRECTORY}/${entry}/${template}` });
+    }
+  }
+  return [...byName.values()].sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+}
+__name(listModules, "listModules");
+function listFiles(roots, directory) {
+  return listHtmlFilesUnder(roots, directory).filter((entry) => fileTargetSpellingProblem(entry.name) === null).map((entry) => ({ name: entry.name, root: entry.root, file: `${directory}/${entry.name}` }));
+}
+__name(listFiles, "listFiles");
+function listStates(themeRoot) {
+  return listContentStates(themeRoot).kinds.flatMap(
+    (kind) => kind.states.map((state) => ({
+      name: state.id,
+      root: state.source === "theme" ? "theme" : "embedded",
+      file: `fixtures/${contentFixtureFile(kind.kind, state.name)}`,
+      label: state.label,
+      source: state.source,
+      required: state.required
+    }))
+  );
+}
+__name(listStates, "listStates");
+function listThemeTargets(roots, kind) {
+  switch (kind) {
+    case "template":
+      return listPageTemplates(roots).map((entry) => ({ name: entry.name, root: entry.root, file: `templates/${entry.name}` }));
+    case "module":
+      return listModules(roots);
+    case "section":
+      return listFiles(roots, SECTIONS_DIRECTORY);
+    case "partial":
+      return listFiles(roots, PARTIALS_DIRECTORY);
+    case "state":
+      return listStates(roots.themeRoot);
+  }
+}
+__name(listThemeTargets, "listThemeTargets");
+function fileTargetSpellingProblem(name) {
+  if (!FILE_TARGET_PATTERN.test(name)) return 'it must be a relative .html file name of letters, digits, ".", "_", "-" and "/"';
+  if (name.split("/").some((segment) => segment === "" || segment === "." || segment === "..") || name.includes("..")) {
+    return 'it must not contain "..", an empty segment or a leading "/"';
+  }
+  return null;
+}
+__name(fileTargetSpellingProblem, "fileTargetSpellingProblem");
+function resolveModuleReference(roots, input) {
+  const reference = input.trim().replace(/\\/g, "/");
+  if (reference.startsWith("@hubspot/")) {
+    return hubspotDefaultModuleSlug(reference) !== null ? { ok: true, reference, directory: null, shape: "hubspot-default" } : { ok: false, reason: "a HubSpot default module is written @hubspot/<name>" };
+  }
+  if (!MODULE_REFERENCE_PATTERN.test(reference) || reference.replace(/^(?:\.\.\/)+/, "").split("/").some((segment) => segment === ".." || segment === "")) {
+    return { ok: false, reason: "it is not a module reference (../modules/<name>, or a path inside the theme)" };
+  }
+  let directory = null;
+  try {
+    const cascade = resolveThemeRoots({ childThemeRoot: roots.themeRoot, parentThemeRoot: roots.parentThemeRoot });
+    directory = resolveModuleDir(cascade, reference);
+  } catch (err) {
+    if (!(err instanceof RendererError)) throw err;
+  }
+  if (!directory) return { ok: false, reason: "no module directory in the theme answers to it" };
+  const shape = classifyModuleDir(directory);
+  if (shape === "unrecognised") return { ok: false, reason: "it names a directory that holds neither module.html nor a React entry" };
+  return { ok: true, reference, directory, shape };
+}
+__name(resolveModuleReference, "resolveModuleReference");
+function readModuleFields(roots, input) {
+  const listing = /* @__PURE__ */ __name(() => listThemeTargets(roots, "module").map((item) => item.name), "listing");
+  const resolved = resolveModuleReference(roots, input);
+  if (!resolved.ok) return { ok: false, reason: resolved.reason, listing: listing() };
+  if (resolved.shape === "hubspot-default" || !resolved.directory) {
+    return { ok: false, reason: "a HubSpot default module's fields are not in the theme", listing: listing() };
+  }
+  if (resolved.shape === "react") {
+    return { ok: true, module: resolved.reference, directory: resolved.directory, shape: "react", fields: [], note: "React module: not read" };
+  }
+  const file = path3.join(resolved.directory, "fields.json");
+  if (!hostFs.existsSync(file)) {
+    return { ok: true, module: resolved.reference, directory: resolved.directory, shape: "hubl", fields: [], note: "The module has no fields.json." };
+  }
+  let parsed;
+  try {
+    parsed = JSON.parse(hostFs.readFileSync(file, "utf-8"));
+  } catch (err) {
+    return { ok: false, unreadable: true, reason: `its fields.json is not valid JSON (${err instanceof Error ? err.message : String(err)})`, listing: [] };
+  }
+  if (!Array.isArray(parsed)) return { ok: false, unreadable: true, reason: "its fields.json is not a list of fields", listing: [] };
+  return { ok: true, module: resolved.reference, directory: resolved.directory, shape: "hubl", fields: fieldsJsonToFieldMetadata(parsed) };
+}
+__name(readModuleFields, "readModuleFields");
+var FIXTURES_NOTE = "Fixtures are read from the theme root only: a parent theme's fixtures are not read. A file in the --fixtures directory is read instead of the theme's file at the same path; a file the theme lacks falls back to the renderer's embedded copy where there is one.";
+function isFile3(candidate) {
+  try {
+    return hostFs.existsSync(candidate) && hostFs.statSync(candidate).isFile();
+  } catch {
+    return false;
+  }
+}
+__name(isFile3, "isFile");
+function jsonFilesIn(dir) {
+  try {
+    if (!hostFs.existsSync(dir) || !hostFs.statSync(dir).isDirectory()) return [];
+    return hostFs.readdirSync(dir).filter((name) => name.toLowerCase().endsWith(".json")).sort();
+  } catch {
+    return [];
+  }
+}
+__name(jsonFilesIn, "jsonFilesIn");
+function describeFixtures(themeRoot, overlay = null) {
+  const fixturesDirectory = path3.join(themeRoot, "fixtures");
+  const readPath = /* @__PURE__ */ __name((relative) => {
+    if (overlay && isFile3(path3.join(overlay, relative))) return path3.join(overlay, relative);
+    return path3.join(fixturesDirectory, relative);
+  }, "readPath");
+  const present = /* @__PURE__ */ __name((relative) => isFile3(path3.join(fixturesDirectory, relative)), "present");
+  const kinds = [];
+  for (const file of Object.values(SNAPSHOT_FIXTURE_FILES)) {
+    const contract = UNTYPED_FIXTURE_KINDS[file];
+    if (!contract) throw new Error(`The fixture contract does not describe ${file}.`);
+    const embedded = Object.hasOwn(EMBEDDED_FIXTURES, file) ? EMBEDDED_FIXTURES[file] : void 0;
+    kinds.push({
+      kind: file,
+      path: readPath(file),
+      present: present(file),
+      embeddedDefault: embedded === void 0 ? null : file,
+      whenAbsent: embedded === void 0 ? contract.whenAbsent ?? "nothing" : "the renderer's embedded copy",
+      description: contract.description,
+      schema: null,
+      example: contract.authoredExample !== void 0 ? structuredClone(contract.authoredExample) : exampleFromEmbedded(embedded, contract.fileType)
+    });
+  }
+  const states = listContentStates(themeRoot);
+  for (const kind of Object.keys(CONTENT_FIXTURE_KINDS)) {
+    const summary = states.kinds.find((entry) => entry.kind === kind);
+    const files = (summary?.states ?? []).map((state) => {
+      const relative = contentFixtureFile(kind, state.name);
+      return {
+        name: state.id,
+        path: readPath(relative),
+        present: present(relative),
+        embeddedDefault: Object.hasOwn(EMBEDDED_FIXTURES, relative) ? relative : null
+      };
+    });
+    kinds.push({
+      kind: `${CONTENT_FIXTURE_DIRECTORY}/${kind}/<state>.json`,
+      path: path3.join(fixturesDirectory, CONTENT_FIXTURE_DIRECTORY, kind, "<state>.json"),
+      present: files.some((entry) => entry.present),
+      embeddedDefault: `${CONTENT_FIXTURE_DIRECTORY}/${kind}/<state>.json`,
+      whenAbsent: `the renderer's embedded state, for the states every ${kind} has (${CONTENT_FIXTURE_KINDS[kind].join(", ")}); a state only the theme adds has no fallback`,
+      description: `A page a ${kind} render binds as content, request, blog and the rest; rendered with --state ${kind}/<state>. The first required state is the default.`,
+      schema: contentStateSchema(kind),
+      example: null,
+      files
+    });
+  }
+  const crmDirectory = path3.join(fixturesDirectory, CRM_OBJECT_FIXTURE_DIRECTORY);
+  const prefix = `${CRM_OBJECT_FIXTURE_DIRECTORY}/`;
+  const embeddedCrm = Object.keys(EMBEDDED_FIXTURES).filter((key) => key.startsWith(prefix)).sort();
+  const crmNames = [.../* @__PURE__ */ new Set([...jsonFilesIn(crmDirectory), ...embeddedCrm.map((key) => key.slice(prefix.length))])].sort();
+  const crmFiles = crmNames.map((name) => {
+    const relative = `${prefix}${name}`;
+    return {
+      name: name.slice(0, -".json".length),
+      path: readPath(relative),
+      present: present(relative),
+      embeddedDefault: embeddedCrm.includes(relative) ? relative : null
+    };
+  });
+  kinds.push({
+    kind: `${CRM_OBJECT_FIXTURE_DIRECTORY}/<objectType>.json`,
+    path: path3.join(crmDirectory, "<objectType>.json"),
+    present: crmFiles.some((entry) => entry.present),
+    embeddedDefault: embeddedCrm.length > 0 ? embeddedCrm.join(", ") : null,
+    whenAbsent: "no records for an object type no file answers",
+    description: "A CRM object type and its records: what crm_objects, crm_object and crm_associations answer. A file answers the type named by its objectTypeId, name or fullyQualifiedName, or its own file name, compared without regard to case; the theme's files are tried before the renderer's.",
+    schema: crmObjectFixtureSchema(),
+    example: null,
+    files: crmFiles
+  });
+  return { themeRoot, fixturesDirectory, overlay, note: FIXTURES_NOTE, kinds };
+}
+__name(describeFixtures, "describeFixtures");
+function leafPaths(value, prefix, out) {
+  if (value !== null && typeof value === "object" && !Array.isArray(value) && Object.keys(value).length > 0) {
+    for (const [key, child] of Object.entries(value)) leafPaths(child, prefix ? `${prefix}.${key}` : key, out);
+  } else if (prefix) {
+    out.push(prefix);
+  }
+  return out;
+}
+__name(leafPaths, "leafPaths");
+async function readThemeMetadata(roots) {
+  const renderer = await createPageRenderer({ childThemeRoot: roots.themeRoot, parentThemeRoot: roots.parentThemeRoot });
+  try {
+    const metadata = renderer.getThemeMetadata();
+    return {
+      theme: metadata.theme,
+      settingsKeys: leafPaths(metadata.theme, "", []),
+      fields: metadata.fields,
+      presets: metadata.presets,
+      defaultPreset: metadata.defaultPreset,
+      surfaces: renderer.getThemeSurfaces(),
+      manifest: metadata.manifest
+    };
+  } finally {
+    await renderer.close().catch(() => void 0);
+  }
+}
+__name(readThemeMetadata, "readThemeMetadata");
+
+// src/render-inputs.ts
+var PREVIEW_PROPS_INVALID = "PREVIEW_PROPS_INVALID";
+function isPlainObject2(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+__name(isPlainObject2, "isPlainObject");
+function normaliseBase64Param(value) {
+  const standard = value.replace(/ /g, "+").replace(/-/g, "+").replace(/_/g, "/").replace(/\s+/g, "");
+  const remainder = standard.length % 4;
+  return remainder === 0 ? standard : standard + "=".repeat(4 - remainder);
+}
+__name(normaliseBase64Param, "normaliseBase64Param");
+function readPropsParam(params) {
+  const refuse = /* @__PURE__ */ __name((param, reason) => ({
+    ok: false,
+    status: 400,
+    body: {
+      error: {
+        code: PREVIEW_PROPS_INVALID,
+        message: `?${param}= could not be read: ${reason}. ` + (param === "props64" ? "Send base64 of a JSON object, URL-encoded (encodeURIComponent), e.g. ?props64=eyJ0aXRsZSI6IkhpIn0%3D." : "Send a JSON object, URL-encoded (encodeURIComponent), e.g. ?props=%7B%22title%22%3A%22Hi%22%7D."),
+        param
+      }
+    }
+  }), "refuse");
+  const b64 = params.get("props64");
+  if (b64 !== null && b64 !== "") {
+    let text;
+    try {
+      text = decodeBase64Utf8(normaliseBase64Param(b64));
+    } catch {
+      return refuse("props64", "it is not base64");
+    }
+    let value;
+    try {
+      value = JSON.parse(text);
+    } catch {
+      return refuse("props64", "it decodes to text that is not JSON");
+    }
+    if (!isPlainObject2(value)) return refuse("props64", "it decodes to JSON that is not an object");
+    return { ok: true, props: value };
+  }
+  const raw = params.get("props");
+  if (raw !== null && raw !== "") {
+    let value;
+    try {
+      value = JSON.parse(raw);
+    } catch {
+      return refuse("props", "it is not JSON (a raw `&`, `#` or `+` in the value is the usual cause)");
+    }
+    if (!isPlainObject2(value)) return refuse("props", "it is JSON but not an object");
+    return { ok: true, props: value };
+  }
+  return { ok: true, props: null };
+}
+__name(readPropsParam, "readPropsParam");
+function checkContentStateParam(themeRoot, value) {
+  if (value === void 0 || value === null || value === "") return { ok: true, state: void 0 };
+  if (typeof value === "string" && loadContentState(themeRoot, value).state) return { ok: true, state: value };
+  const requested = typeof value === "string" ? value : JSON.stringify(value) ?? String(value);
+  const refusal = unknownContentStateError(themeRoot, requested);
+  const message = typeof value === "string" ? refusal.message : `A content state is a string written <kind>/<name>, not ${requested}. ${refusal.message.replace(/^[^.]*\.\s*/, "")}`;
+  return {
+    ok: false,
+    status: 400,
+    body: { error: { code: refusal.code, message, ...refusal.details ?? {}, requested: value } }
+  };
+}
+__name(checkContentStateParam, "checkContentStateParam");
+var OVERRIDES_KEYS = ["preset", "settings"];
+function readJsonObjectArgument(raw, readFile) {
+  let text = raw;
+  if (raw.startsWith("@")) {
+    const file = raw.slice(1);
+    if (file === "") return { ok: false, reason: "a value starting with @ names a file, and none was given" };
+    try {
+      text = readFile(file);
+    } catch (err) {
+      const code = err?.code;
+      const why = typeof code === "string" ? code : err instanceof Error ? err.message : String(err);
+      return { ok: false, reason: `the file ${JSON.stringify(file)} could not be read (${why})` };
+    }
+  }
+  let value;
+  try {
+    value = JSON.parse(text);
+  } catch (err) {
+    return { ok: false, reason: `it is not JSON (${err instanceof Error ? err.message : String(err)})` };
+  }
+  if (!isPlainObject2(value)) {
+    const got = Array.isArray(value) ? "a list" : value === null ? "null" : typeof value;
+    return { ok: false, reason: `it is JSON but not an object (got ${got})` };
+  }
+  return { ok: true, value };
+}
+__name(readJsonObjectArgument, "readJsonObjectArgument");
+function overridesShapeProblem(value) {
+  if (!isPlainObject2(value)) return 'it must be a JSON object: { "preset"?: string, "settings"?: object }';
+  const unknown = Object.keys(value).filter((key) => !OVERRIDES_KEYS.includes(key));
+  if (unknown.length > 0) {
+    const named = unknown.map((key) => JSON.stringify(key)).join(", ");
+    return `it carries ${named}; the only keys are "preset" and "settings"`;
+  }
+  if ("preset" in value && (typeof value.preset !== "string" || value.preset === "")) {
+    return '"preset" must be a preset name (a non-empty string)';
+  }
+  if ("settings" in value && !isPlainObject2(value.settings)) return '"settings" must be an object of theme settings';
+  return null;
+}
+__name(overridesShapeProblem, "overridesShapeProblem");
+
+// src/render-job.ts
+import path4 from "path";
+var ARGUMENT_FAILURES = /* @__PURE__ */ new Set(["target-unknown", "props-invalid", "overrides-invalid"]);
+var RENDER_JOB_CODES = {
+  TEMPLATE_UNKNOWN: "TEMPLATE_UNKNOWN",
+  TARGET_UNKNOWN: "TARGET_UNKNOWN",
+  PROPS_INVALID: PREVIEW_PROPS_INVALID,
+  OVERRIDES_INVALID: "OVERRIDES_INVALID",
+  RENDER_FAILED: "RENDER_FAILED"
+};
+function failureText(failure) {
+  const lines = [failure.message];
+  if (failure.listingTitle !== void 0 && failure.listing.length > 0) lines.push(failure.listingTitle, ...failure.listing);
+  for (const entry of failure.related ?? []) lines.push(`${entry.code}: ${entry.message.replace(/\s*\n\s*/g, " ")}`);
+  return `${lines.join("\n")}
+`;
+}
+__name(failureText, "failureText");
+function toJsonDiagnostic(entry) {
+  return {
+    code: entry.code,
+    message: entry.message,
+    ...entry.details !== void 0 ? { details: entry.details } : {}
+  };
+}
+__name(toJsonDiagnostic, "toJsonDiagnostic");
+function refusedCharacters(base) {
+  const named = [];
+  if (/\s/.test(base)) named.push("whitespace");
+  if (/["']/.test(base)) named.push("quotes");
+  if (/[()]/.test(base)) named.push("parentheses");
+  if (/[<>]/.test(base)) named.push("angle brackets");
+  if (/`/.test(base)) named.push("backticks");
+  return named.join(", ") || "characters it does not accept";
+}
+__name(refusedCharacters, "refusedCharacters");
+function refusedAssetBase(base) {
+  return createAssetUrlRewriter({ baseUrl: base }).report().invalidBaseUrl ?? null;
+}
+__name(refusedAssetBase, "refusedAssetBase");
+function assetBaseRefusal(base, origin) {
+  const characters = refusedCharacters(base);
+  if (origin === "theme-root") {
+    return `The theme root's file URL ${base} contains ${characters}, which the renderer refuses in an asset base. Pass --asset-base <url>, or use the serve command, which serves the theme over HTTP.`;
+  }
+  return `The asset base ${JSON.stringify(base)} contains ${characters}, which the renderer refuses. Pass a base without them, or use the serve command.`;
+}
+__name(assetBaseRefusal, "assetBaseRefusal");
+function availableStateIds(themeRoot) {
+  return listContentStates(themeRoot).kinds.flatMap((kind) => kind.states.map((state) => state.id));
+}
+__name(availableStateIds, "availableStateIds");
+function stateExists(themeRoot, id) {
+  try {
+    return loadContentState(themeRoot, id).state !== null;
+  } catch {
+    return false;
+  }
+}
+__name(stateExists, "stateExists");
+function defaultStateOfKind(themeRoot, kind) {
+  try {
+    return resolveContentState(themeRoot, void 0, kind).state?.id ?? null;
+  } catch {
+    return null;
+  }
+}
+__name(defaultStateOfKind, "defaultStateOfKind");
+function defaultStateFor(themeRoot, entry) {
+  let source;
+  try {
+    source = hostFs.readFileSync(entry.path, "utf-8");
+  } catch {
+    return null;
+  }
+  return defaultStateOfKind(themeRoot, contentKindForTemplateSource(source));
+}
+__name(defaultStateFor, "defaultStateFor");
+function defaultModuleState(themeRoot, directory) {
+  let kind = "blog-post";
+  if (directory) {
+    try {
+      const meta = JSON.parse(hostFs.readFileSync(path4.join(directory, "meta.json"), "utf-8"));
+      kind = contentKindForModuleContentTypes(meta?.content_types);
+    } catch {
+    }
+  }
+  return defaultStateOfKind(themeRoot, kind);
+}
+__name(defaultModuleState, "defaultModuleState");
+function loaderName(roots, entry) {
+  if (!roots) return entry.name;
+  try {
+    return locateTemplate(roots, entry.name) === entry.path ? entry.name : `templates/${entry.name}`;
+  } catch {
+    return entry.name;
+  }
+}
+__name(loaderName, "loaderName");
+function cascadeFor(request) {
+  try {
+    return resolveThemeRoots({ childThemeRoot: request.themeRoot, parentThemeRoot: request.parentThemeRoot });
+  } catch {
+    return null;
+  }
+}
+__name(cascadeFor, "cascadeFor");
+function spell(request, name) {
+  return request.assetBaseOrigin === "serve" ? name : `--${name}`;
+}
+__name(spell, "spell");
+var LISTING_TITLES = {
+  template: "Page templates:",
+  module: "Modules:",
+  section: "Sections:",
+  partial: "Partials:"
+};
+function refused(request, echo, failure, code) {
+  const details = {};
+  if (failure.param !== void 0) details.param = failure.param;
+  if (failure.listingTitle !== void 0) details.available = failure.listing;
+  return {
+    html: null,
+    failure,
+    json: {
+      ok: false,
+      kind: request.target.kind,
+      target: request.target.name,
+      template: echo.template,
+      state: echo.state,
+      props: echo.props,
+      overrides: echo.overrides,
+      out: null,
+      html: null,
+      assetBase: request.assetBase,
+      diagnostics: [
+        ...failure.related ?? [],
+        { code, message: failure.message, ...Object.keys(details).length > 0 ? { details } : {} }
+      ]
+    }
+  };
+}
+__name(refused, "refused");
+function isPlainObject3(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+__name(isPlainObject3, "isPlainObject");
+async function renderTarget(request) {
+  const roots = { themeRoot: request.themeRoot, parentThemeRoot: request.parentThemeRoot };
+  const { kind } = request.target;
+  const props = request.props ?? null;
+  const echo = { template: null, state: request.state ?? null, props, overrides: isPlainObject3(request.overrides) ? request.overrides : null };
+  const param = spell(request, kind);
+  if (!TARGET_KINDS.includes(kind)) {
+    return refused(
+      request,
+      echo,
+      { kind: "target-unknown", message: `A render target is one of ${TARGET_KINDS.join(", ")}.`, listing: [], param },
+      RENDER_JOB_CODES.TARGET_UNKNOWN
+    );
+  }
+  let entry = null;
+  let moduleDirectory = null;
+  let renderName = request.target.name;
+  if (kind === "template") {
+    const templates = listPageTemplates(roots);
+    const requestedName = normaliseTemplateName(request.target.name);
+    entry = findPageTemplate(templates, request.target.name);
+    echo.template = entry?.name ?? requestedName;
+    if (!entry) {
+      const message = templates.length > 0 ? `There is no page template ${JSON.stringify(requestedName)} in this theme.` : `There is no page template ${JSON.stringify(requestedName)}: this theme has no page templates under templates/.`;
+      return refused(
+        request,
+        echo,
+        { kind: "template-unknown", message, param, listing: templates.map((template) => template.name), listingTitle: LISTING_TITLES.template },
+        RENDER_JOB_CODES.TEMPLATE_UNKNOWN
+      );
+    }
+  } else if (kind === "module") {
+    const resolved = resolveModuleReference(roots, request.target.name);
+    if (!resolved.ok) {
+      return refused(
+        request,
+        echo,
+        {
+          kind: "target-unknown",
+          message: `${param} ${JSON.stringify(request.target.name)} names no module: ${resolved.reason}.`,
+          param,
+          listing: listThemeTargets(roots, "module").map((item) => item.name),
+          listingTitle: LISTING_TITLES.module
+        },
+        RENDER_JOB_CODES.TARGET_UNKNOWN
+      );
+    }
+    moduleDirectory = resolved.directory;
+    renderName = resolved.reference;
+  } else {
+    const where = kind === "section" ? `${SECTIONS_DIRECTORY}/` : `${PARTIALS_DIRECTORY}/`;
+    const listing = listThemeTargets(roots, kind).map((item) => item.name);
+    const spelling = fileTargetSpellingProblem(request.target.name);
+    const known = spelling === null && listing.includes(request.target.name);
+    if (!known) {
+      const why = spelling !== null ? `${param} takes a file name under ${where}, and ${JSON.stringify(request.target.name)} is not one: ${spelling}.` : `${param} ${JSON.stringify(request.target.name)} names no ${kind}: there is no such file under ${where} in this theme.`;
+      return refused(
+        request,
+        echo,
+        { kind: "target-unknown", message: why, param, listing, listingTitle: LISTING_TITLES[kind] },
+        RENDER_JOB_CODES.TARGET_UNKNOWN
+      );
+    }
+  }
+  if (props !== null && kind !== "module") {
+    return refused(
+      request,
+      echo,
+      {
+        kind: "props-invalid",
+        message: `props apply to ${spell(request, "module")} only: this render's target is ${param} ${request.target.name}, which no props reach in this build.`,
+        param: spell(request, "props"),
+        listing: []
+      },
+      RENDER_JOB_CODES.PROPS_INVALID
+    );
+  }
+  if (props !== null && !isPlainObject3(props)) {
+    return refused(
+      request,
+      echo,
+      { kind: "props-invalid", message: `${spell(request, "props")} must be a JSON object.`, param: spell(request, "props"), listing: [] },
+      RENDER_JOB_CODES.PROPS_INVALID
+    );
+  }
+  let overrides = null;
+  if (request.overrides !== void 0 && request.overrides !== null) {
+    const problem = overridesShapeProblem(request.overrides);
+    if (problem) {
+      return refused(
+        request,
+        echo,
+        { kind: "overrides-invalid", message: `${spell(request, "overrides")} could not be used: ${problem}.`, param: spell(request, "overrides"), listing: [] },
+        RENDER_JOB_CODES.OVERRIDES_INVALID
+      );
+    }
+    overrides = request.overrides;
+  }
+  if (refusedAssetBase(request.assetBase) !== null) {
+    return refused(
+      request,
+      echo,
+      { kind: "asset-base-refused", message: assetBaseRefusal(request.assetBase, request.assetBaseOrigin), listing: [] },
+      DIAGNOSTIC_CODES.ASSET_BASE_URL_INVALID
+    );
+  }
+  let state;
+  if (request.state !== void 0) {
+    if (!stateExists(request.themeRoot, request.state)) {
+      return refused(
+        request,
+        echo,
+        {
+          kind: "state-unknown",
+          message: `There is no content state ${JSON.stringify(request.state)}. A state is written <kind>/<name>.`,
+          param: spell(request, "state"),
+          listing: availableStateIds(request.themeRoot),
+          listingTitle: "Content states:"
+        },
+        DIAGNOSTIC_CODES.CONTENT_STATE_UNKNOWN
+      );
+    }
+    state = request.state;
+  } else if (kind === "template") {
+    state = defaultStateFor(request.themeRoot, entry);
+  } else if (kind === "module") {
+    state = defaultModuleState(request.themeRoot, moduleDirectory);
+  } else if (kind === "section") {
+    state = defaultStateOfKind(request.themeRoot, "blog-post");
+  } else {
+    state = null;
+  }
+  echo.state = state;
+  const cascade = cascadeFor(request);
+  let renderer = null;
+  try {
+    renderer = await createPageRenderer({ childThemeRoot: request.themeRoot, parentThemeRoot: request.parentThemeRoot });
+    if (overrides?.preset !== void 0) {
+      const presets = renderer.getThemeMetadata().presets;
+      if (!presets.includes(overrides.preset)) {
+        return refused(
+          request,
+          echo,
+          {
+            kind: "overrides-invalid",
+            message: `${spell(request, "overrides")} names the preset ${JSON.stringify(overrides.preset)}, which this theme does not have.`,
+            param: spell(request, "overrides"),
+            listing: presets,
+            listingTitle: "Presets:"
+          },
+          RENDER_JOB_CODES.OVERRIDES_INVALID
+        );
+      }
+    }
+    const options = {
+      assetBaseUrl: request.assetBase,
+      ...request.state !== void 0 ? { state: request.state } : {},
+      ...overrides?.preset !== void 0 ? { presetName: overrides.preset } : {},
+      ...overrides?.settings !== void 0 ? { themeOverrides: overrides.settings } : {}
+    };
+    let result;
+    switch (kind) {
+      case "template":
+        result = await renderer.renderPage(loaderName(cascade, entry), options);
+        break;
+      case "module":
+        result = await renderer.renderModule(renderName, props ?? {}, options);
+        break;
+      case "section":
+        result = await renderer.renderSection(`../${SECTIONS_DIRECTORY}/${request.target.name}`, void 0, options);
+        break;
+      default:
+        result = await renderer.renderPartial(request.target.name, options);
+        break;
+    }
+    return {
+      html: result.html,
+      json: {
+        ok: true,
+        kind,
+        target: request.target.name,
+        template: kind === "template" ? entry.name : null,
+        state,
+        props,
+        overrides,
+        out: null,
+        html: result.html,
+        assetBase: request.assetBase,
+        diagnostics: result.diagnostics.map(toJsonDiagnostic)
+      }
+    };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    const code = err instanceof RendererError ? err.code : RENDER_JOB_CODES.RENDER_FAILED;
+    const label = kind === "template" ? entry.name : request.target.name;
+    return refused(
+      request,
+      echo,
+      {
+        kind: "render-failed",
+        message: `Rendering ${label} failed: ${message.replace(/\s*\n\s*/g, " ")}`,
+        listing: [],
+        related: (cascade?.diagnostics ?? []).map(toJsonDiagnostic)
+      },
+      code
+    );
+  } finally {
+    if (renderer) await renderer.close().catch(() => void 0);
+  }
+}
+__name(renderTarget, "renderTarget");
+
+// src/serve.ts
+import fs from "fs";
+import http from "http";
+import path6 from "path";
+
+// src/fixture-overlay.ts
+import path5 from "path";
+function overlayPathFor(fixturesRoot, overlayDir, pathname) {
+  const relative = path5.relative(fixturesRoot, path5.resolve(pathname));
+  if (relative === "") return overlayDir;
+  if (relative.startsWith("..") || path5.isAbsolute(relative)) return null;
+  return path5.join(overlayDir, relative);
+}
+__name(overlayPathFor, "overlayPathFor");
+function createFixtureOverlay(base, themeRoot, overlayDir) {
+  const fixturesRoot = path5.resolve(themeRoot, "fixtures");
+  const overlayRoot = path5.resolve(overlayDir);
+  const mapped = /* @__PURE__ */ __name((pathname) => overlayPathFor(fixturesRoot, overlayRoot, pathname), "mapped");
+  const exists = /* @__PURE__ */ __name((pathname) => pathname !== null && base.existsSync(pathname), "exists");
+  const statOf = /* @__PURE__ */ __name((pathname) => {
+    try {
+      return base.statSync(pathname);
+    } catch {
+      return null;
+    }
+  }, "statOf");
+  const listing = /* @__PURE__ */ __name((pathname) => {
+    try {
+      return base.readdirSync(pathname);
+    } catch {
+      return null;
+    }
+  }, "listing");
+  return {
+    existsSync: /* @__PURE__ */ __name((pathname) => exists(mapped(pathname)) || base.existsSync(pathname), "existsSync"),
+    readFileSync: /* @__PURE__ */ __name((pathname, encoding) => {
+      const overlay = mapped(pathname);
+      if (exists(overlay) && statOf(overlay)?.isFile()) return base.readFileSync(overlay, encoding);
+      return base.readFileSync(pathname, encoding);
+    }, "readFileSync"),
+    readdirSync: /* @__PURE__ */ __name((pathname) => {
+      const overlay = mapped(pathname);
+      const fromOverlay = exists(overlay) && statOf(overlay)?.isDirectory() ? listing(overlay) : null;
+      if (!fromOverlay) return base.readdirSync(pathname);
+      const fromTheme = listing(pathname) ?? [];
+      return [...fromTheme, ...fromOverlay.filter((name) => !fromTheme.includes(name))];
+    }, "readdirSync"),
+    statSync: /* @__PURE__ */ __name((pathname) => {
+      const overlay = mapped(pathname);
+      if (exists(overlay)) {
+        const stat = statOf(overlay);
+        if (stat?.isFile() || !base.existsSync(pathname)) return stat ?? base.statSync(overlay);
+      }
+      return base.statSync(pathname);
+    }, "statSync"),
+    realpathSync: {
+      native: /* @__PURE__ */ __name((pathname) => {
+        try {
+          return base.realpathSync.native(pathname);
+        } catch (err) {
+          if (exists(mapped(pathname))) return path5.resolve(pathname);
+          throw err;
+        }
+      }, "native")
+    },
+    mkdirSync: /* @__PURE__ */ __name((pathname, options) => base.mkdirSync(pathname, options), "mkdirSync"),
+    writeFileSync: /* @__PURE__ */ __name((pathname, data, encoding) => base.writeFileSync(pathname, data, encoding), "writeFileSync")
+  };
+}
+__name(createFixtureOverlay, "createFixtureOverlay");
+function installFixtureOverlay(themeRoot, overlayDir) {
+  const previous = getHostFs();
+  setHostFs(createFixtureOverlay(previous, themeRoot, overlayDir));
+  return () => setHostFs(previous);
+}
+__name(installFixtureOverlay, "installFixtureOverlay");
+
+// src/version.ts
+var RENDERER_VERSION = true ? "1.0.102" : "0.0.0-unbundled";
+
+// src/serve.ts
+var SERVE_ASSET_BASE = "/theme-assets/";
+var SERVE_HOST = "127.0.0.1";
+var MAX_BODY_BYTES = 1024 * 1024;
+var CONTENT_TYPES = {
+  ".avif": "image/avif",
+  ".css": "text/css; charset=utf-8",
+  ".eot": "application/vnd.ms-fontobject",
+  ".gif": "image/gif",
+  ".htm": "text/html; charset=utf-8",
+  ".html": "text/html; charset=utf-8",
+  ".ico": "image/x-icon",
+  ".jpeg": "image/jpeg",
+  ".jpg": "image/jpeg",
+  ".js": "text/javascript; charset=utf-8",
+  ".json": "application/json; charset=utf-8",
+  ".map": "application/json; charset=utf-8",
+  ".mjs": "text/javascript; charset=utf-8",
+  ".mp4": "video/mp4",
+  ".otf": "font/otf",
+  ".pdf": "application/pdf",
+  ".png": "image/png",
+  ".svg": "image/svg+xml",
+  ".ttf": "font/ttf",
+  ".txt": "text/plain; charset=utf-8",
+  ".webm": "video/webm",
+  ".webp": "image/webp",
+  ".woff": "font/woff",
+  ".woff2": "font/woff2"
+};
+var TEXT = "text/plain; charset=utf-8";
+var JSON_TYPE = "application/json; charset=utf-8";
+var HTML = "text/html; charset=utf-8";
+function oneLine(message) {
+  return message.replace(/\s*[\r\n]+\s*/g, " ").trim();
+}
+__name(oneLine, "oneLine");
+function escapeHtml(value) {
+  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+__name(escapeHtml, "escapeHtml");
+function themeLabel(themeRoot) {
+  try {
+    const manifest = JSON.parse(hostFs.readFileSync(resolveSafePath(themeRoot, "theme.json"), "utf-8"));
+    if (manifest && typeof manifest.label === "string" && manifest.label.trim()) return manifest.label.trim();
+  } catch {
+  }
+  return path6.basename(path6.resolve(themeRoot));
+}
+__name(themeLabel, "themeLabel");
+function matchesPath(route, pathname) {
+  if (route.path === "*") return true;
+  if (route.path.endsWith("/*")) return pathname.startsWith(route.path.slice(0, -1));
+  return route.path === pathname;
+}
+__name(matchesPath, "matchesPath");
+var TARGET_DESCRIPTIONS = {
+  template: "A page template, as /api/list?kind=template lists it. Exactly one of template, module, section, partial.",
+  module: "A module, as a template references it (../modules/<name>), or @hubspot/<name>. Exactly one of template, module, section, partial.",
+  section: "A file name under sections/. Exactly one of template, module, section, partial.",
+  partial: "A file name under templates/partials/. Exactly one of template, module, section, partial."
+};
+function renderParams(ctx) {
+  return [
+    ...TARGET_KINDS.map((kind) => ({ name: kind, type: "string", required: false, values: ctx.targets(kind), description: TARGET_DESCRIPTIONS[kind] })),
+    { name: "state", type: "string", required: false, values: ctx.targets("state"), description: "The content state to render as, <kind>/<name>. Omitted, the target's default." },
+    { name: "props", type: "json", required: false, description: "Field values for a module target, a URL-encoded JSON object. Refused with any other target." },
+    { name: "props64", type: "base64-json", required: false, description: "The same as props, base64-encoded; wins over props." },
+    { name: "overrides", type: "json", required: false, description: 'A URL-encoded JSON object { "preset"?: string, "settings"?: object }; /api/metadata lists the presets and settings keys.' }
+  ];
+}
+__name(renderParams, "renderParams");
+function bodyParams(ctx) {
+  return [
+    { name: "target", type: "json", required: true, description: `An object with exactly one of ${TARGET_KINDS.join(", ")}, each as GET /render takes it.` },
+    { name: "state", type: "string", required: false, values: ctx.targets("state"), description: "The content state to render as, <kind>/<name>." },
+    { name: "props", type: "json", required: false, description: "Field values for a module target: a JSON object." },
+    { name: "overrides", type: "json", required: false, description: '{ "preset"?: string, "settings"?: object }.' }
+  ];
+}
+__name(bodyParams, "bodyParams");
+function renderExamples(ctx, route) {
+  const examples = [];
+  for (const kind of TARGET_KINDS) {
+    const first = ctx.targets(kind)[0];
+    if (first !== void 0) examples.push({ method: "GET", path: `${route}?${kind}=${encodeURIComponent(first)}`, status: 200 });
+  }
+  const template = ctx.targets("template")[0];
+  const state = ctx.targets("state")[0];
+  if (template !== void 0 && state !== void 0) {
+    examples.push({ method: "GET", path: `${route}?template=${encodeURIComponent(template)}&state=${encodeURIComponent(state)}`, status: 200 });
+  }
+  const module = ctx.targets("module")[0];
+  if (module !== void 0) {
+    examples.push({ method: "GET", path: `${route}?module=${encodeURIComponent(module)}&props=${encodeURIComponent("{}")}`, status: 200 });
+  }
+  if (template !== void 0) {
+    examples.push({ method: "GET", path: `${route}?template=${encodeURIComponent(template)}&overrides=${encodeURIComponent('{"preset":"default"}')}`, status: 200 });
+  }
+  if (examples.length === 0) examples.push({ method: "GET", path: `${route}?template=home.html`, status: 404 });
+  return examples;
+}
+__name(renderExamples, "renderExamples");
+function postExamples(ctx, route) {
+  const examples = [];
+  for (const kind of TARGET_KINDS) {
+    const first = ctx.targets(kind)[0];
+    if (first !== void 0) examples.push({ method: "POST", path: route, body: { target: { [kind]: first } }, status: 200 });
+  }
+  if (examples.length === 0) examples.push({ method: "POST", path: route, body: { target: { template: "home.html" } }, status: 404 });
+  return examples;
+}
+__name(postExamples, "postExamples");
+var ROUTES = [
+  {
+    method: "GET",
+    path: "/",
+    description: "An index page: the theme's templates, modules, sections, partials and content states as links.",
+    params: /* @__PURE__ */ __name(() => [], "params"),
+    returns: "text/html",
+    examples: /* @__PURE__ */ __name(() => [{ method: "GET", path: "/", status: 200 }], "examples"),
+    handle: /* @__PURE__ */ __name(async (ctx, _request, respond) => respond(200, HTML, indexPage(ctx)), "handle")
+  },
+  {
+    method: "GET",
+    path: "/api/index",
+    description: "This description: every route, its parameters, what it returns and example requests.",
+    params: /* @__PURE__ */ __name(() => [], "params"),
+    returns: "application/json: { version, themeRoot, parentThemeRoot, routes }",
+    examples: /* @__PURE__ */ __name(() => [{ method: "GET", path: "/api/index", status: 200 }], "examples"),
+    handle: /* @__PURE__ */ __name(async (ctx, _request, respond) => respond(200, JSON_TYPE, `${JSON.stringify(apiIndex(ctx), null, 2)}
+`), "handle")
+  },
+  {
+    method: "GET",
+    path: "/render",
+    description: "Render one target to an HTML document. A refusal is plain text naming the parameter and what it may be.",
+    params: renderParams,
+    returns: "text/html; 400 (a bad parameter), 404 (an unknown template) or 500 (a failed render) as text/plain",
+    examples: /* @__PURE__ */ __name((ctx) => renderExamples(ctx, "/render"), "examples"),
+    handle: /* @__PURE__ */ __name((ctx, request, respond, serial) => handleGetRender(ctx, request, respond, serial, false), "handle")
+  },
+  {
+    method: "GET",
+    path: "/diagnostics",
+    description: "The same render as /render, answered as the JSON render --json prints, with html null.",
+    params: renderParams,
+    returns: "application/json: { ok, kind, target, template, state, props, overrides, out, html, assetBase, diagnostics }",
+    examples: /* @__PURE__ */ __name((ctx) => renderExamples(ctx, "/diagnostics"), "examples"),
+    handle: /* @__PURE__ */ __name((ctx, request, respond, serial) => handleGetRender(ctx, request, respond, serial, true), "handle")
+  },
+  {
+    method: "POST",
+    path: "/api/render",
+    description: "The /render route with a JSON body: { target: { template|module|section|partial }, state?, props?, overrides? }.",
+    params: bodyParams,
+    returns: `text/html, as /render; 400 { error: { code, message, param } } for a body that is not that shape; 413 for a body over ${MAX_BODY_BYTES} bytes`,
+    examples: /* @__PURE__ */ __name((ctx) => postExamples(ctx, "/api/render"), "examples"),
+    handle: /* @__PURE__ */ __name((ctx, request, respond, serial) => handlePostRender(ctx, request, respond, serial, false), "handle")
+  },
+  {
+    method: "POST",
+    path: "/api/diagnostics",
+    description: "The /diagnostics route with the /api/render body.",
+    params: bodyParams,
+    returns: "application/json, as /diagnostics; 400 and 413 as /api/render",
+    examples: /* @__PURE__ */ __name((ctx) => postExamples(ctx, "/api/diagnostics"), "examples"),
+    handle: /* @__PURE__ */ __name((ctx, request, respond, serial) => handlePostRender(ctx, request, respond, serial, true), "handle")
+  },
+  {
+    method: "GET",
+    path: "/api/list",
+    description: "What list --json prints: the names render accepts, of one kind or of every kind.",
+    params: /* @__PURE__ */ __name(() => [{ name: "kind", type: "string", required: false, values: [...LIST_KINDS], description: "One kind; omitted, every kind." }], "params"),
+    returns: "application/json: { kind, items: [{ name, root, file }] }, or { kinds: [...] } without kind",
+    examples: /* @__PURE__ */ __name(() => [
+      { method: "GET", path: "/api/list", status: 200 },
+      ...LIST_KINDS.map((kind) => ({ method: "GET", path: `/api/list?kind=${kind}`, status: 200 }))
+    ], "examples"),
+    handle: /* @__PURE__ */ __name(async (ctx, request, respond) => {
+      const kind = request.query.get("kind");
+      if (kind === null || kind === "") {
+        respond(200, JSON_TYPE, `${JSON.stringify(listAll(ctx.options))}
+`);
+        return;
+      }
+      if (!LIST_KINDS.includes(kind)) {
+        badRequest(respond, true, "LIST_KIND_UNKNOWN", `There is no kind ${JSON.stringify(kind)}.`, "kind", [...LIST_KINDS]);
+        return;
+      }
+      respond(200, JSON_TYPE, `${JSON.stringify({ kind, items: listThemeTargets(ctx.options, kind) })}
+`);
+    }, "handle")
+  },
+  {
+    method: "GET",
+    path: "/api/fixtures",
+    description: "What fixtures --json prints: every fixture kind, where it is read from, whether the theme has it, the built-in that applies otherwise, and a schema or an example.",
+    params: /* @__PURE__ */ __name(() => [], "params"),
+    returns: "application/json: { themeRoot, fixturesDirectory, overlay, note, kinds: [{ kind, path, present, embeddedDefault, whenAbsent, description, schema, example, files? }] }",
+    examples: /* @__PURE__ */ __name(() => [{ method: "GET", path: "/api/fixtures", status: 200 }], "examples"),
+    handle: /* @__PURE__ */ __name(async (ctx, _request, respond) => respond(200, JSON_TYPE, `${JSON.stringify(describeFixtures(ctx.options.themeRoot, ctx.options.fixturesDir ? path6.resolve(ctx.options.fixturesDir) : null))}
+`), "handle")
+  },
+  {
+    method: "GET",
+    path: "/api/fields",
+    description: "What fields --json prints: a module's fields, read from its fields.json.",
+    params: /* @__PURE__ */ __name((ctx) => [{ name: "module", type: "string", required: true, values: ctx.targets("module"), description: "A module, as a template references it." }], "params"),
+    returns: "application/json: { module, directory, shape, fields, note? }; 400 for an unknown module; 422 for a fields.json that cannot be read",
+    examples: /* @__PURE__ */ __name((ctx) => {
+      const module = ctx.targets("module")[0];
+      return module !== void 0 ? [{ method: "GET", path: `/api/fields?module=${encodeURIComponent(module)}`, status: 200 }] : [{ method: "GET", path: "/api/fields", status: 400 }];
+    }, "examples"),
+    handle: /* @__PURE__ */ __name(async (ctx, request, respond) => {
+      const module = request.query.get("module");
+      if (module === null || module === "") {
+        badRequest(respond, true, "MODULE_REQUIRED", "Name a module: ?module=<reference>.", "module", ctx.targets("module"));
+        return;
+      }
+      const report = readModuleFields(ctx.options, module);
+      if (!report.ok) {
+        if (report.unreadable) {
+          respond(422, JSON_TYPE, `${JSON.stringify({ error: { code: "FIELDS_UNREADABLE", message: `The module ${JSON.stringify(module)}: ${report.reason}.`, param: "module" } })}
+`);
+          return;
+        }
+        badRequest(respond, true, "TARGET_UNKNOWN", `module ${JSON.stringify(module)} names no module: ${report.reason}.`, "module", report.listing);
+        return;
+      }
+      const { ok: _ok, ...fields } = report;
+      respond(200, JSON_TYPE, `${JSON.stringify(fields)}
+`);
+    }, "handle")
+  },
+  {
+    method: "GET",
+    path: "/api/metadata",
+    description: "What metadata --json prints: the theme's settings, its settings keys, presets and surfaces.",
+    params: /* @__PURE__ */ __name(() => [], "params"),
+    returns: "application/json: { theme, settingsKeys, fields, presets, defaultPreset, surfaces, manifest }",
+    examples: /* @__PURE__ */ __name(() => [{ method: "GET", path: "/api/metadata", status: 200 }], "examples"),
+    handle: /* @__PURE__ */ __name(async (ctx, _request, respond, serial) => {
+      const metadata = await serial(() => readThemeMetadata(ctx.options));
+      respond(200, JSON_TYPE, `${JSON.stringify(metadata)}
+`);
+    }, "handle")
+  },
+  {
+    method: "GET",
+    path: `${SERVE_ASSET_BASE}*`,
+    description: "A file from the theme root, then from the parent theme root; never from outside either. Rendered pages load their assets from here.",
+    params: /* @__PURE__ */ __name(() => [{ name: "path", type: "path", required: true, description: "The file, relative to the theme root, after /theme-assets/." }], "params"),
+    returns: "the file, typed by its extension; 403 for a path outside the theme; 404 when no root has it",
+    examples: /* @__PURE__ */ __name((ctx) => [{ method: "GET", path: `${SERVE_ASSET_BASE}${firstThemeFile(ctx.options)}`, status: 200 }], "examples"),
+    handle: /* @__PURE__ */ __name(async (ctx, request, respond) => serveThemeAsset(ctx.options, request.pathname.slice(SERVE_ASSET_BASE.length), respond), "handle")
+  },
+  {
+    method: "ANY",
+    path: "*",
+    description: "Anything else: 404.",
+    params: /* @__PURE__ */ __name(() => [], "params"),
+    returns: "text/plain 404",
+    examples: /* @__PURE__ */ __name(() => [{ method: "GET", path: "/no-such-route", status: 404 }], "examples"),
+    handle: /* @__PURE__ */ __name(async (_ctx, _request, respond) => respond(404, TEXT, "Not found. GET /api/index lists the routes.\n"), "handle")
+  }
+];
+function apiIndex(ctx) {
+  return {
+    version: RENDERER_VERSION,
+    themeRoot: ctx.options.themeRoot,
+    parentThemeRoot: ctx.options.parentThemeRoot ?? null,
+    routes: ROUTES.map((route) => ({
+      method: route.method,
+      path: route.path,
+      description: route.description,
+      params: route.params(ctx),
+      returns: route.returns,
+      examples: route.examples(ctx)
+    }))
+  };
+}
+__name(apiIndex, "apiIndex");
+function listAll(options) {
+  return { kinds: LIST_KINDS.map((kind) => ({ kind, items: listThemeTargets(options, kind) })) };
+}
+__name(listAll, "listAll");
+function firstThemeFile(options) {
+  for (const candidate of ["theme.json", "fields.json"]) {
+    try {
+      if (fs.statSync(resolveSafePath(options.themeRoot, candidate)).isFile()) return candidate;
+    } catch {
+    }
+  }
+  return "theme.json";
+}
+__name(firstThemeFile, "firstThemeFile");
+function badRequest(respond, json, code, message, param, available) {
+  if (json) {
+    respond(400, JSON_TYPE, `${JSON.stringify({ error: { code, message, param, ...available ? { available } : {} } })}
+`);
+    return;
+  }
+  const lines = [message, ...available && available.length > 0 ? [`Valid values for ${param}:`, ...available] : []];
+  respond(400, TEXT, `${lines.join("\n")}
+`);
+}
+__name(badRequest, "badRequest");
+function refusalStatus(outcome) {
+  const kind = outcome.failure?.kind;
+  if (kind === "template-unknown") return 404;
+  if (kind === "render-failed" || kind === void 0) return 500;
+  return 400;
+}
+__name(refusalStatus, "refusalStatus");
+function answerOutcome(respond, outcome, json) {
+  if (json) {
+    respond(outcome.failure ? refusalStatus(outcome) : 200, JSON_TYPE, `${JSON.stringify({ ...outcome.json, html: null })}
+`);
+    return;
+  }
+  if (outcome.failure || outcome.html === null) {
+    const text = outcome.failure ? failureText(outcome.failure) : "The render produced no document.\n";
+    respond(refusalStatus(outcome), TEXT, text);
+    return;
+  }
+  respond(200, HTML, outcome.html);
+}
+__name(answerOutcome, "answerOutcome");
+function runRender(ctx, serial, target, extra) {
+  return serial(
+    () => renderTarget({
+      themeRoot: ctx.options.themeRoot,
+      parentThemeRoot: ctx.options.parentThemeRoot,
+      target,
+      ...extra.state ? { state: extra.state } : {},
+      props: extra.props,
+      ...extra.overrides !== void 0 ? { overrides: extra.overrides } : {},
+      assetBase: SERVE_ASSET_BASE,
+      assetBaseOrigin: "serve"
+    })
+  );
+}
+__name(runRender, "runRender");
+function targetChoices(ctx) {
+  return TARGET_KINDS.flatMap((kind) => ctx.targets(kind).map((name) => `${kind}=${name}`));
+}
+__name(targetChoices, "targetChoices");
+async function handleGetRender(ctx, request, respond, serial, json) {
+  const named = TARGET_KINDS.filter((kind2) => {
+    const value = request.query.get(kind2);
+    return value !== null && value !== "";
+  });
+  if (named.length !== 1) {
+    const message = named.length === 0 ? "Name exactly one target: ?template=, ?module=, ?section= or ?partial=." : `Name exactly one target; this request names ${named.map((kind2) => `?${kind2}=`).join(" and ")}.`;
+    badRequest(respond, json, "TARGET_REQUIRED", message, TARGET_KINDS.join("|"), targetChoices(ctx));
+    return;
+  }
+  const kind = named[0];
+  const propsRead = readPropsParam(request.query);
+  if (!propsRead.ok) {
+    respond(propsRead.status, JSON_TYPE, `${JSON.stringify(propsRead.body, null, 2)}
+`);
+    return;
+  }
+  let overrides;
+  const rawOverrides = request.query.get("overrides");
+  if (rawOverrides !== null && rawOverrides !== "") {
+    try {
+      overrides = JSON.parse(rawOverrides);
+    } catch {
+      badRequest(
+        respond,
+        json,
+        "OVERRIDES_INVALID",
+        '?overrides= could not be read: it is not JSON. Send a URL-encoded JSON object { "preset"?: string, "settings"?: object }.',
+        "overrides"
+      );
+      return;
+    }
+  }
+  const state = request.query.get("state") ?? void 0;
+  const outcome = await runRender(ctx, serial, { kind, name: request.query.get(kind) }, { state: state || void 0, props: propsRead.props, overrides });
+  answerOutcome(respond, outcome, json);
+}
+__name(handleGetRender, "handleGetRender");
+function isPlainObject4(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+__name(isPlainObject4, "isPlainObject");
+async function handlePostRender(ctx, request, respond, serial, json) {
+  const refuse = /* @__PURE__ */ __name((code, message, param, available) => respond(400, JSON_TYPE, `${JSON.stringify({ error: { code, message, param, ...available ? { available } : {} } })}
+`), "refuse");
+  let body;
+  try {
+    body = JSON.parse((request.body ?? Buffer.alloc(0)).toString("utf-8"));
+  } catch (err) {
+    refuse("REQUEST_BODY_INVALID", `The request body is not JSON (${oneLine(err instanceof Error ? err.message : String(err))}).`, "body");
+    return;
+  }
+  if (!isPlainObject4(body)) {
+    refuse("REQUEST_BODY_INVALID", "The request body must be a JSON object: { target, state?, props?, overrides? }.", "body");
+    return;
+  }
+  const unknownKeys = Object.keys(body).filter((key) => !["target", "state", "props", "overrides"].includes(key));
+  if (unknownKeys.length > 0) {
+    refuse("REQUEST_BODY_INVALID", `The request body carries ${unknownKeys.map((key) => JSON.stringify(key)).join(", ")}; its keys are target, state, props and overrides.`, unknownKeys[0]);
+    return;
+  }
+  const target = body.target;
+  const named = isPlainObject4(target) ? TARGET_KINDS.filter((kind) => target[kind] !== void 0) : [];
+  if (!isPlainObject4(target) || named.length !== 1 || Object.keys(target).length !== 1 || typeof target[named[0]] !== "string" || target[named[0]] === "") {
+    refuse(
+      "TARGET_REQUIRED",
+      `"target" must be an object with exactly one of ${TARGET_KINDS.map((kind) => JSON.stringify(kind)).join(", ")}, a non-empty string.`,
+      "target",
+      targetChoices(ctx)
+    );
+    return;
+  }
+  if (body.props !== void 0 && body.props !== null && !isPlainObject4(body.props)) {
+    refuse(PREVIEW_PROPS_INVALID, '"props" must be a JSON object of field values.', "props");
+    return;
+  }
+  const state = checkContentStateParam(ctx.options.themeRoot, body.state);
+  if (!state.ok) {
+    respond(state.status, JSON_TYPE, `${JSON.stringify({ error: { ...state.body.error, param: "state" } })}
+`);
+    return;
+  }
+  const outcome = await runRender(ctx, serial, { kind: named[0], name: target[named[0]] }, {
+    state: state.state,
+    props: body.props ?? null,
+    overrides: body.overrides ?? void 0
+  });
+  answerOutcome(respond, outcome, json);
+}
+__name(handlePostRender, "handlePostRender");
+function indexPage(ctx) {
+  const label = escapeHtml(themeLabel(ctx.options.themeRoot));
+  const section = /* @__PURE__ */ __name((title, kind, empty) => {
+    const names = ctx.targets(kind);
+    const body = names.length > 0 ? `<ul>
+${names.map((name) => `  <li><a href="/render?${kind}=${encodeURIComponent(name)}">${escapeHtml(name)}</a></li>`).join("\n")}
+</ul>` : `<p>${empty}</p>`;
+    return `<h2>${title}</h2>
+${body}`;
+  }, "section");
+  const states = ctx.targets("state");
+  const host = ["template", "section"].map((kind) => ({ kind, name: ctx.targets(kind)[0] })).find((entry) => entry.name !== void 0);
+  const stateList = states.length > 0 ? `<ul>
+${states.map(
+    (state) => host ? `  <li><a href="/render?${host.kind}=${encodeURIComponent(host.name)}&amp;state=${encodeURIComponent(state)}">${escapeHtml(state)}</a></li>` : `  <li>${escapeHtml(state)}</li>`
+  ).join("\n")}
+</ul>` : "<p>No content states.</p>";
+  return `<!DOCTYPE html>
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${t} \u2014 ThemeSpot preview</title>
+<title>${label} \u2014 ThemeSpot preview</title>
 <style>body{font-family:system-ui,sans-serif;line-height:1.5;margin:2rem;max-width:48rem;color:#1f2328;background:#fff}a{color:#0b57d0}li{margin:.25rem 0}h2{margin-top:1.5rem}</style>
 </head>
 <body>
-<h1>${t}</h1>
+<h1>${label}</h1>
 <p>React modules are not drawn in this build: each one shows a placeholder naming the module.</p>
 <p>Every route, its parameters and example requests: <a href="/api/index">/api/index</a>.</p>
-${n("Page templates","template","This theme has no page templates under <code>templates/</code>.")}
-${n("Modules","module","No HubL modules under <code>modules/</code>.")}
-${n("Sections","section","No sections under <code>sections/</code>.")}
-${n("Partials","partial","No partials under <code>templates/partials/</code>.")}
+${section("Page templates", "template", "This theme has no page templates under <code>templates/</code>.")}
+${section("Modules", "module", "No HubL modules under <code>modules/</code>.")}
+${section("Sections", "section", "No sections under <code>sections/</code>.")}
+${section("Partials", "partial", "No partials under <code>templates/partials/</code>.")}
 <h2>Content states</h2>
-${i}
+${stateList}
 </body>
 </html>
-`}function Z0(e,t,n){let s;try{s=decodeURIComponent(t)}catch{n(400,Ut,`Bad request: the asset path is not valid percent-encoding.
-`);return}if(s===""||s.includes("\0")){n(400,Ut,`Bad request: no asset path.
-`);return}let r=!1;for(let i of[e.themeRoot,e.parentThemeRoot]){if(!i)continue;let o;try{o=H(i,s)}catch(c){if(c instanceof X){r=!0;continue}throw c}let a;try{a=Ll.statSync(o)}catch{continue}if(!a.isFile())continue;let l=K0[Kr.extname(o).toLowerCase()]??"application/octet-stream";n(200,l,Ll.readFileSync(o),{"Cache-Control":"no-cache"});return}if(r){n(403,Ut,`Forbidden: that path is outside the theme.
-`);return}n(404,Ut,`Not found.
-`)}function Q0(e){let t=new Set;for(let n of qr)n.path==="*"||!wm(n,e)||(n.method==="GET"?(t.add("GET"),t.add("HEAD")):n.method==="POST"&&t.add("POST"));return[...t]}function eT(e,t){let n=e==="HEAD"?"GET":e;return qr.find(s=>s.path!=="*"&&wm(s,t)&&s.method===n)??null}function tT(e,t){return new Promise((n,s)=>{let r=[],i=0,o=!1;e.on("data",a=>{if(i+=a.length,i>t){o=!0,r.length=0;return}r.push(a)}),e.on("end",()=>n(o?null:Buffer.concat(r))),e.on("error",s)})}function Rm(e){let t=Promise.resolve(),n=a=>{let l=t.then(a,a);return t=l.catch(()=>{}),l},s=e.fixturesDir?Gr(e.themeRoot,Kr.resolve(e.fixturesDir)):null,r={options:e,targets:a=>St(e,a).map(l=>l.name)},i=qr[qr.length-1],o=W0.createServer((a,l)=>{let c=(u,d,p,m={})=>{l.headersSent||(l.writeHead(u,{"Content-Type":d,"Content-Length":String(Buffer.byteLength(p)),"X-Content-Type-Options":"nosniff","Cache-Control":"no-store",...m}),l.end(a.method==="HEAD"?void 0:p))};(async()=>{let u=a.method??"GET";if(u!=="GET"&&u!=="HEAD"&&u!=="POST"){a.resume(),c(405,Ut,`Method not allowed.
-`,{Allow:"GET, HEAD, POST"});return}let d=a.url??"/",p=d.indexOf("?"),m=p===-1?d:d.slice(0,p),g=new URLSearchParams(p===-1?"":d.slice(p+1)),y=eT(u,m);if(!y){a.resume();let x=Q0(m);if(x.length>0){c(405,Ut,`Method not allowed: ${m} answers ${x.join(", ")}.
-`,{Allow:x.join(", ")});return}await i.handle(r,{method:u,pathname:m,query:g,body:null},c,n);return}let E=null;if(u==="POST"){if(E=await tT(a,Cl),E===null){c(413,tt,`${JSON.stringify({error:{code:"REQUEST_BODY_TOO_LARGE",message:`The request body is over ${Cl} bytes.`,param:"body"}})}
-`);return}}else a.resume();await y.handle(r,{method:u,pathname:m,query:g,body:E},c,n)})().catch(u=>{try{c(500,Ut,`Internal error: ${Pl(u instanceof Error?u.message:String(u))}
-`)}catch{l.destroy()}})});return new Promise((a,l)=>{let c=d=>{o.removeListener("listening",u),s?.(),l(d)},u=()=>{o.removeListener("error",c),o.on("error",g=>{process.stderr.write(`serve: ${Pl(g instanceof Error?g.message:String(g))}
-`)});let d=o.address(),p=typeof d=="object"&&d?d.address:An,m=typeof d=="object"&&d?d.port:e.port;a({address:p,port:m,url:`http://${p}:${m}/`,httpServer:o,close:()=>new Promise(g=>{o.close(()=>{s?.(),g()}),o.closeAllConnections?.()})})};o.once("error",c),o.once("listening",u),o.listen(e.port,An)})}import{mkdirSync as nT,readFileSync as rT,writeFileSync as xm}from"fs";import{join as Tm,resolve as km}from"path";import{deflateSync as sT,inflateSync as iT}from"zlib";var Om=24,oT=.05,Dl=3,aT=5,lT=24,$l=16,cT=1600,Fl=8,Nm=Buffer.from([137,80,78,71,13,10,26,10]),nt=class extends Error{constructor(t){super(t),this.name="UnsupportedPngError"}},Si;function uT(e){if(!Si){Si=new Uint32Array(256);for(let n=0;n<256;n++){let s=n;for(let r=0;r<8;r++)s=s&1?3988292384^s>>>1:s>>>1;Si[n]=s>>>0}}let t=4294967295;for(let n=0;n<e.length;n++)t=Si[(t^e[n])&255]^t>>>8;return(t^4294967295)>>>0}function dT(e,t,n){let s=e+t-n,r=Math.abs(s-e),i=Math.abs(s-t),o=Math.abs(s-n);return r<=i&&r<=o?e:i<=o?t:n}function pT(e){if(e.length<8||!e.subarray(0,8).equals(Nm))throw new nt("not a PNG file (bad signature)");let t=8,n,s=[];for(;t+12<=e.length;){let y=e.readUInt32BE(t),E=e.toString("latin1",t+4,t+8);if(t+12+y>e.length)throw new nt(`truncated ${E} chunk`);let x=e.subarray(t+8,t+8+y);if(E==="IHDR"){if(y!==13)throw new nt(`IHDR chunk is ${y} bytes; a PNG header is 13`);n={width:x.readUInt32BE(0),height:x.readUInt32BE(4),bitDepth:x[8],colourType:x[9],interlace:x[12]}}else if(E==="IDAT")s.push(x);else if(E==="IEND")break;t+=12+y}if(!n)throw new nt("no IHDR chunk");let{width:r,height:i,bitDepth:o,colourType:a,interlace:l}=n;if(r===0||i===0)throw new nt(`image is ${r}x${i}; an empty image cannot be compared`);if(o!==8||a!==2&&a!==6||l!==0)throw new nt(`bit depth ${o}, colour type ${a}${l?", interlaced":""}; only 8-bit RGB or RGBA non-interlaced PNGs (browser screenshots) are supported`);if(s.length===0||s.every(y=>y.length===0))throw new nt("no image data");let c=a===6?4:3,u=r*c,d;try{d=iT(Buffer.concat(s))}catch(y){throw new nt(`image data does not inflate (${y instanceof Error?y.message:String(y)})`)}if(d.length<i*(u+1))throw new nt("image data is shorter than the header says");let p=Buffer.alloc(r*i*4),m=Buffer.alloc(u),g=Buffer.alloc(u);for(let y=0;y<i;y++){let E=y*(u+1),x=d[E];for(let R=0;R<u;R++){let O=R>=c?g[R-c]:0,k=m[R],C=R>=c?m[R-c]:0,I=d[E+1+R];switch(x){case 0:break;case 1:I+=O;break;case 2:I+=k;break;case 3:I+=O+k>>1;break;case 4:I+=dT(O,k,C);break;default:throw new nt(`unknown filter type ${x} on row ${y}`)}g[R]=I&255}for(let R=0;R<r;R++){let O=R*c,k=(y*r+R)*4;p[k]=g[O],p[k+1]=g[O+1],p[k+2]=g[O+2],p[k+3]=c===4?g[O+3]:255}[m,g]=[g,m]}return{width:r,height:i,data:p}}function Il(e,t){let n=Buffer.alloc(4);n.writeUInt32BE(t.length,0);let s=Buffer.concat([Buffer.from(e,"latin1"),t]),r=Buffer.alloc(4);return r.writeUInt32BE(uT(s),0),Buffer.concat([n,s,r])}function Am({width:e,height:t,data:n}){let s=e*4,r=Buffer.alloc((s+1)*t);for(let o=0;o<t;o++)r[o*(s+1)]=0,n.copy(r,o*(s+1)+1,o*s,(o+1)*s);let i=Buffer.alloc(13);return i.writeUInt32BE(e,0),i.writeUInt32BE(t,4),i[8]=8,i[9]=6,i[10]=0,i[11]=0,i[12]=0,Buffer.concat([Nm,Il("IHDR",i),Il("IDAT",sT(r)),Il("IEND",Buffer.alloc(0))])}var Lm=e=>Math.round(e*100)/100;function hT(e,t,{mergeGap:n=lT,limit:s=aT}={}){let r=[],i=null;for(let o=0;o<e.length;o++)e[o]!==0&&(i&&o-i.yEnd-1<n?(i.yEnd=o,i.differingPixels+=e[o]):(i&&r.push(i),i={yStart:o,yEnd:o,differingPixels:e[o],percent:0}));i&&r.push(i);for(let o of r){let a=o.yEnd-o.yStart+1;o.percent=t>0?Lm(o.differingPixels/(a*t)*100):0}return r.sort((o,a)=>a.differingPixels-o.differingPixels||o.yStart-a.yStart),r.slice(0,s)}function fT(e,t,{threshold:n=Om}={}){let s=Math.min(e.width,t.width),r=Math.min(e.height,t.height),i=e.height>0?t.height/e.height:null,o=i===null?t.height!==e.height:Math.abs(i-1)>oT,a=new Uint32Array(r),l=new Uint8Array(s*r),c=0;for(let d=0;d<r;d++){let p=0;for(let m=0;m<s;m++){let g=(d*e.width+m)*4,y=(d*t.width+m)*4;(Math.abs(e.data[g]-t.data[y])>n||Math.abs(e.data[g+1]-t.data[y+1])>n||Math.abs(e.data[g+2]-t.data[y+2])>n||Math.abs(e.data[g+3]-t.data[y+3])>n)&&(l[d*s+m]=1,p++)}a[d]=p,c+=p}let u=s*r;return{reference:{width:e.width,height:e.height},render:{width:t.width,height:t.height},heightRatio:i===null?null:Math.round(i*1e3)/1e3,layoutMismatch:o,widthMismatch:e.width!==t.width,comparedArea:{width:s,height:r},uncomparedRows:Math.abs(e.height-t.height),threshold:n,differingPixels:c,differingPercent:u===0?0:Lm(c/u*100),ranges:hT(a,s),mask:l}}function mT(e,t){return e.width===t.width&&e.height===t.height&&e.data.equals(t.data)}function gT(e,t){let{width:n,height:s}=t.comparedArea,r=Buffer.alloc(n*s*4);for(let i=0;i<s;i++)for(let o=0;o<n;o++){let a=(i*n+o)*4;if(t.mask[i*n+o])r[a]=230,r[a+1]=0,r[a+2]=40;else{let l=(i*e.width+o)*4,c=.299*e.data[l]+.587*e.data[l+1]+.114*e.data[l+2],u=Math.round(c*.3+255*.7);r[a]=u,r[a+1]=u,r[a+2]=u}r[a+3]=255}return{width:n,height:s,data:r}}function _T(e,t,n,s){let r=Math.max(0,n-$l),i=Math.min(s+$l,r+cT-1,Math.max(e.height,t.height)-1),o=i-r+1,a=e.width+Fl+t.width,l=Buffer.alloc(a*o*4);for(let u=0;u<a*o;u++)l[u*4]=214,l[u*4+1]=214,l[u*4+2]=214,l[u*4+3]=255;let c=(u,d)=>{for(let p=r;p<=i&&p<u.height;p++)u.data.copy(l,((p-r)*a+d)*4,p*u.width*4,(p+1)*u.width*4)};c(e,0);for(let u=0;u<o;u++)for(let d=e.width;d<e.width+Fl;d++){let p=(u*a+d)*4;l[p]=255,l[p+1]=0,l[p+2]=160}return c(t,e.width+Fl),{image:{width:a,height:o,data:l},y0:r,y1:i,truncated:i<s+$l&&i<Math.max(e.height,t.height)-1}}function bT(e,t,n,s){nT(s,{recursive:!0});let r=[],i=Tm(s,"diff.png");return xm(i,Am(gT(e,n))),r.push({kind:"diff",path:i}),n.ranges.forEach((o,a)=>{let l=_T(e,t,o.yStart,o.yEnd),c=Tm(s,`range-${a+1}.png`);xm(c,Am(l.image)),r.push({kind:"range",range:a+1,path:c,rows:[l.y0,l.y1],truncated:l.truncated})}),r}var en=class extends Error{};function yT(e){let t=[],n={out:null,json:!1,help:!1,threshold:Om},s=!1;for(let r=0;r<e.length;r++){let i=e[r];if(i==="--json")n.json=!0;else if(i==="--help"||i==="-h")n.help=!0;else if(i==="--out"){if(e[r+1]===void 0)throw new en("--out needs a directory");n.out=e[++r]}else if(i.startsWith("--out="))n.out=i.slice(6);else if(i==="--threshold"||i.startsWith("--threshold=")){let o=i==="--threshold"?e[++r]:i.slice(12);if(o===void 0)throw new en("--threshold needs a number");if(!/^\d{1,3}$/.test(o)||Number(o)>255)throw new en(`--threshold expects a whole number from 0 to 255, got ${JSON.stringify(o)}`);if(s)throw new en("--threshold is given more than once");s=!0,n.threshold=Number(o)}else{if(i.startsWith("-"))throw new en(`unknown option ${i}`);t.push(i)}}if(!n.help&&t.length!==2)throw new en("expected exactly two PNG files: <reference.png> <render.png>");return{reference:t[0],render:t[1],...n}}function wT(e,t,n){let s=[],r=e.reference,i=e.render;if(s.push(`reference ${r.width}x${r.height}, render ${i.width}x${i.height}, height ratio ${e.heightRatio??"n/a"}`),e.layoutMismatch){let o=e.heightRatio===null?"an undefined share":`${Math.round(Math.abs(e.heightRatio-1)*1e3)/10}%`;s.push(`LAYOUT MISMATCH: the render's height differs from the reference by ${o} (limit 5%). Everything below the first shifted band is offset, so fix layout and spacing before reading the percentages below.`)}e.widthMismatch&&s.push("WIDTH MISMATCH: the images were not captured at the same viewport width. Recapture like with like."),s.push(`compared area ${e.comparedArea.width}x${e.comparedArea.height}: ${e.differingPercent}% of pixels differ (a pixel differs when any channel differs by more than ${e.threshold})`),e.uncomparedRows&&s.push(`${e.uncomparedRows} rows of the taller image were not compared`),e.ranges.length===0?s.push("no differing ranges"):(s.push(`largest differing ranges (y-start..y-end, share of the range that differs; target under ${Dl}%):`),e.ranges.forEach((o,a)=>{let l=o.percent>=Dl?"  over target":"";s.push(`  ${a+1}. y ${o.yStart}..${o.yEnd}  ${o.percent}%${l}`)})),s.push(t?"identical: every pixel is equal":"not identical (identical means equal dimensions and every channel of every pixel equal)");for(let o of n)o.kind==="diff"?s.push(`diff image: ${o.path}`):s.push(`range ${o.range} crop (reference | render, rows ${o.rows[0]}..${o.rows[1]}${o.truncated?", truncated":""}): ${o.path}`);return s.join(`
-`)}function Cm(e,t){let n;try{n=yT(e)}catch(a){if(!(a instanceof en))throw a;return t.stderr(`compare: ${a.message}. Run themespot-render compare --help for usage.
-`),2}if(n.help)return t.stdout(t.help),0;let s={};for(let a of["reference","render"]){let l;try{l=rT(km(n[a]))}catch(c){let u=c?.code;return t.stderr(`compare: cannot read ${a} image ${n[a]} (${typeof u=="string"?u:c instanceof Error?c.message:String(c)})
-`),1}try{s[a]=pT(l)}catch(c){let u=c instanceof nt?c.message:`could not decode (${String(c instanceof Error?c.message:c).split(`
-`)[0]})`;return t.stderr(`compare: unsupported PNG ${n[a]}: ${u}
-`),3}}let r=fT(s.reference,s.render,{threshold:n.threshold}),i=mT(s.reference,s.render),o=n.out?bT(s.reference,s.render,r,km(n.out)):[];if(n.json){let{mask:a,...l}=r;t.stdout(`${JSON.stringify({...l,identical:i,rangeTargetPercent:Dl,outputs:o},null,2)}
-`)}else t.stdout(`${wT(r,i,o)}
-`);return 0}var Pm=3456,On="Exit codes: 0 done (diagnostics may be reported), 1 could not be done, 2 bad arguments.",$m={"--theme-root <dir>":["The theme to work on (a child theme, when it has a parent)."],"--parent-theme-root <dir>":["Its parent theme. Without it, a theme whose theme.json extends","a parent renders from its own files and reports","INHERITANCE_PARENT_MISSING."],"--template <name>":["A page template, as templates lists it (home.html,","blog/post.hubl.html); a leading templates/ is accepted."],"--module <ref>":["A module, as a template references it: ../modules/<name> (the","names list --kind module prints), a path inside the theme, or","@hubspot/<name> for one of HubSpot's default modules. render","draws it on its own, with no header or footer."],"--section <name>":["A file name under sections/ (cards.html), as list --kind section","prints it. Drawn on its own, with no header or footer."],"--partial <name>":["A file name under templates/partials/ (header.html), as list","--kind partial prints it."],"--state <id>":["The content state to render as, written <kind>/<name>","(blog-post/minimal); list --kind state prints them. Omitted, the","target's default."],"--props <json|@file>":["Field values for --module: a JSON object, or @file naming a file","that holds one. Refused with any other target: nothing else in","this build reads props."],"--overrides <json|@file>":['Settings for this render: { "preset"?: string, "settings"?: object },',"or @file. settings are theme settings merged over the defaults;","metadata lists the presets and every settings key."],"--fixtures <dir>":["A folder of fixture files read instead of the theme's","fixtures/<same path>, file by file; fixtures lists the files."],"--out <file.html>":["Write the document to this file, creating its folders, and print","the file's absolute path."],"--asset-base <url>":["Where theme assets (images, fonts, scripts) are loaded from.","Default: the file:// URL of --theme-root, which makes the","document machine-specific: it loads its assets only from this","path on this machine, and a file only the parent theme holds does","not resolve from it. Use serve, or pass a base, for anything else."],"--kind <kind>":["list: template, module, section, partial or state. Omitted, every",'kind, one "<kind><tab><name>" per line.'],"--json":["Print exactly one JSON object instead of text."],"--port <n>":[`serve: the port on ${An} (default ${Pm}; 0 picks a free one).`,"A port in use is an error; nothing else on it is touched."],"--out <dir>":["compare: write diff.png and a side-by-side crop (reference | render)","for each of the largest differing ranges."],"--threshold <n>":["compare: a pixel differs when any channel differs by more than n","(0-255, default 24). identical is always the threshold-0 answer."],"--max-warnings <n>":["validate: fail on more warnings than n (default: warnings never fail)."],"--max-files <n>":["validate: stop after n files, and fail, saying the walk was truncated."],"--preset <name>":["generate-css: the preset to render the CSS with."],"--output <file>":["generate-css: where to write the stylesheet."],"--help":["Show the help: every command, or the one named."],"--version":["Print the version."]},Jr={render:{usage:["themespot-render render --theme-root <dir> (--template <name> | --module <ref> | --section <name> | --partial <name>)","                        [--parent-theme-root <dir>] [--state <id>] [--props <json|@file>]","                        [--overrides <json|@file>] [--fixtures <dir>] [--out <file.html>]","                        [--asset-base <url>] [--json]"],summary:["Render exactly one target to a full HTML document: a page template, one module,","one section or one global partial. The document goes to standard output, or to","--out; diagnostics go to standard error, one per line. With --json, one object:","{ ok, kind, target, template, state, props, overrides, out, html, assetBase,","diagnostics }; html is null with --out, template is null for the other kinds."],flags:["--theme-root <dir>","--parent-theme-root <dir>","--template <name>","--module <ref>","--section <name>","--partial <name>","--state <id>","--props <json|@file>","--overrides <json|@file>","--fixtures <dir>","--out <file.html>","--asset-base <url>","--json"],exitCodes:`${On} A missing or second target, unreadable --props or --overrides, props on anything but --module, an unknown preset and a module, section or partial the theme does not have are 2; an unknown template or state is 1.`},serve:{usage:["themespot-render serve --theme-root <dir> [--parent-theme-root <dir>] [--port 3456] [--fixtures <dir>]"],summary:[`Preview the theme at http://${An}:<port>/ (this machine only), re-read from disk`,"on every request. GET /api/index describes every route, its parameters and","example requests: /render and /diagnostics take template, module, section or","partial with state, props and overrides; POST /api/render and /api/diagnostics","take the same as a JSON body; /api/list, /api/fixtures, /api/fields and","/api/metadata answer what the commands print with --json; /theme-assets/<path>","serves the theme's files. Stop it with Ctrl+C."],flags:["--theme-root <dir>","--parent-theme-root <dir>","--port <n>","--fixtures <dir>"],exitCodes:On},list:{usage:["themespot-render list --theme-root <dir> [--parent-theme-root <dir>] [--kind template|module|section|partial|state] [--json]"],summary:["Print the names render accepts, one per line: page templates, HubL modules under","modules/, sections, global partials and content states. With --json,","{ kind, items: [{ name, root, file }] }, or { kinds: [...] } without --kind."],flags:["--theme-root <dir>","--parent-theme-root <dir>","--kind <kind>","--json"],exitCodes:On},templates:{usage:["themespot-render templates --theme-root <dir> [--parent-theme-root <dir>] [--json]"],summary:["List the page templates, one name per line: .html files under templates/, except","templates/layouts/ and templates/partials/. The same as list --kind template;","with --json, { templates: [{ name, root }] }."],flags:["--theme-root <dir>","--parent-theme-root <dir>","--json"],exitCodes:On},fixtures:{usage:["themespot-render fixtures --theme-root <dir> [--fixtures <dir>] [--json]"],summary:["Describe the fixture files that stand in for portal data: for each kind, where it","is read from, whether the theme has it, the built-in used otherwise, and a JSON","Schema (content states, CRM object types) or an example. Fixtures are read from","the theme root only; a parent theme's fixtures are not read."],flags:["--theme-root <dir>","--fixtures <dir>","--json"],exitCodes:On},fields:{usage:["themespot-render fields --theme-root <dir> --module <ref> [--parent-theme-root <dir>] [--json]"],summary:["Print a module's fields, read from its fields.json. A React module's fields are","not read by this build: it answers an empty list and says so."],flags:["--theme-root <dir>","--parent-theme-root <dir>","--module <ref>","--json"],exitCodes:On},metadata:{usage:["themespot-render metadata --theme-root <dir> [--parent-theme-root <dir>] [--json]"],summary:["Print the theme's settings: their resolved defaults, every settings key (what","--overrides settings may set), the presets and the surfaces its stylesheets","declare."],flags:["--theme-root <dir>","--parent-theme-root <dir>","--json"],exitCodes:On},compare:{usage:["themespot-render compare <reference.png> <render.png> [--out <dir>] [--threshold 24] [--json]"],summary:["Compare two screenshots taken at the same viewport, pixel by pixel: 8-bit RGB or","RGBA PNGs, as browsers capture them. Reports the share of pixels that differ,","the largest differing vertical ranges, a height difference over 5% as a layout","mismatch, and identical (equal dimensions, every pixel equal). This build","captures nothing: take the screenshots with any browser tool."],flags:["--out <dir>","--threshold <n>","--json"],exitCodes:"Exit codes: 0 compared (whatever the result), 1 an image could not be read, 2 bad arguments, 3 a PNG this command cannot decode."},validate:{usage:["themespot-render validate --theme-root <dir> [--parent-theme-root <dir>] [--json]","                          [--max-warnings <n>] [--max-files <n>]"],summary:["Check the theme against HubSpot's template-level upload rules, offline."],flags:["--theme-root <dir>","--parent-theme-root <dir>","--json","--max-warnings <n>","--max-files <n>"],exitCodes:"Exit codes: 0 clean, 1 an error, more warnings than --max-warnings, a truncated walk or bad arguments."},"generate-css":{usage:["themespot-render generate-css --theme-root <dir> [--preset <name>] [--output <file>]"],summary:["Render the theme's CSS to one resolved stylesheet."],flags:["--theme-root <dir>","--preset <name>","--output <file>"],exitCodes:"Exit codes: 0 written (CSS diagnostics are printed), 1 no fields.json."}},Ml=Object.keys(Jr),Fm=["React modules are not drawn by this build: each one renders as a placeholder naming the",'module, marked data-module-not-rendered="react", and the render reports',"REACT_MODULE_NOT_RENDERED; surface and token previews are not part of this build.","Rendered pages may load fonts, icons and placeholder images from the network."];function Im(e){return e.flatMap(n=>{let[s,...r]=$m[n]??[""],i=`  ${n}`;return[i.length+1>27?`${i}
-${" ".repeat(27)}${s}`:`${i.padEnd(27)}${s}`,...r.map(o=>`${" ".repeat(27)}${o}`)]})}var Dm=`themespot-render ${kn}
+`;
+}
+__name(indexPage, "indexPage");
+function serveThemeAsset(options, encoded, respond) {
+  let relative;
+  try {
+    relative = decodeURIComponent(encoded);
+  } catch {
+    respond(400, TEXT, "Bad request: the asset path is not valid percent-encoding.\n");
+    return;
+  }
+  if (relative === "" || relative.includes("\0")) {
+    respond(400, TEXT, "Bad request: no asset path.\n");
+    return;
+  }
+  let rejected = false;
+  for (const root of [options.themeRoot, options.parentThemeRoot]) {
+    if (!root) continue;
+    let candidate;
+    try {
+      candidate = resolveSafePath(root, relative);
+    } catch (err) {
+      if (err instanceof RendererError) {
+        rejected = true;
+        continue;
+      }
+      throw err;
+    }
+    let stat;
+    try {
+      stat = fs.statSync(candidate);
+    } catch {
+      continue;
+    }
+    if (!stat.isFile()) continue;
+    const contentType = CONTENT_TYPES[path6.extname(candidate).toLowerCase()] ?? "application/octet-stream";
+    respond(200, contentType, fs.readFileSync(candidate), { "Cache-Control": "no-cache" });
+    return;
+  }
+  if (rejected) {
+    respond(403, TEXT, "Forbidden: that path is outside the theme.\n");
+    return;
+  }
+  respond(404, TEXT, "Not found.\n");
+}
+__name(serveThemeAsset, "serveThemeAsset");
+function allowedMethods(pathname) {
+  const methods = /* @__PURE__ */ new Set();
+  for (const route of ROUTES) {
+    if (route.path === "*" || !matchesPath(route, pathname)) continue;
+    if (route.method === "GET") {
+      methods.add("GET");
+      methods.add("HEAD");
+    } else if (route.method === "POST") {
+      methods.add("POST");
+    }
+  }
+  return [...methods];
+}
+__name(allowedMethods, "allowedMethods");
+function routeFor(method, pathname) {
+  const wanted = method === "HEAD" ? "GET" : method;
+  return ROUTES.find((route) => route.path !== "*" && matchesPath(route, pathname) && route.method === wanted) ?? null;
+}
+__name(routeFor, "routeFor");
+function readBody(req, limit) {
+  return new Promise((resolve2, reject) => {
+    const chunks = [];
+    let size = 0;
+    let tooLarge = false;
+    req.on("data", (chunk) => {
+      size += chunk.length;
+      if (size > limit) {
+        tooLarge = true;
+        chunks.length = 0;
+        return;
+      }
+      chunks.push(chunk);
+    });
+    req.on("end", () => resolve2(tooLarge ? null : Buffer.concat(chunks)));
+    req.on("error", reject);
+  });
+}
+__name(readBody, "readBody");
+function startPreviewServer(options) {
+  let queue = Promise.resolve();
+  const serial = /* @__PURE__ */ __name((work) => {
+    const run = queue.then(work, work);
+    queue = run.catch(() => void 0);
+    return run;
+  }, "serial");
+  const restoreFixtures = options.fixturesDir ? installFixtureOverlay(options.themeRoot, path6.resolve(options.fixturesDir)) : null;
+  const ctx = {
+    options,
+    targets: /* @__PURE__ */ __name((kind) => listThemeTargets(options, kind).map((item) => item.name), "targets")
+  };
+  const catchAll = ROUTES[ROUTES.length - 1];
+  const server = http.createServer((req, res) => {
+    const respond = /* @__PURE__ */ __name((status, contentType, body, headers = {}) => {
+      if (res.headersSent) return;
+      res.writeHead(status, {
+        "Content-Type": contentType,
+        "Content-Length": String(Buffer.byteLength(body)),
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "no-store",
+        ...headers
+      });
+      res.end(req.method === "HEAD" ? void 0 : body);
+    }, "respond");
+    void (async () => {
+      const method = req.method ?? "GET";
+      if (method !== "GET" && method !== "HEAD" && method !== "POST") {
+        req.resume();
+        respond(405, TEXT, "Method not allowed.\n", { Allow: "GET, HEAD, POST" });
+        return;
+      }
+      const rawUrl = req.url ?? "/";
+      const queryAt = rawUrl.indexOf("?");
+      const pathname = queryAt === -1 ? rawUrl : rawUrl.slice(0, queryAt);
+      const query = new URLSearchParams(queryAt === -1 ? "" : rawUrl.slice(queryAt + 1));
+      const route = routeFor(method, pathname);
+      if (!route) {
+        req.resume();
+        const allow = allowedMethods(pathname);
+        if (allow.length > 0) {
+          respond(405, TEXT, `Method not allowed: ${pathname} answers ${allow.join(", ")}.
+`, { Allow: allow.join(", ") });
+          return;
+        }
+        await catchAll.handle(ctx, { method, pathname, query, body: null }, respond, serial);
+        return;
+      }
+      let body = null;
+      if (method === "POST") {
+        body = await readBody(req, MAX_BODY_BYTES);
+        if (body === null) {
+          respond(413, JSON_TYPE, `${JSON.stringify({ error: { code: "REQUEST_BODY_TOO_LARGE", message: `The request body is over ${MAX_BODY_BYTES} bytes.`, param: "body" } })}
+`);
+          return;
+        }
+      } else {
+        req.resume();
+      }
+      await route.handle(ctx, { method, pathname, query, body }, respond, serial);
+    })().catch((err) => {
+      try {
+        respond(500, TEXT, `Internal error: ${oneLine(err instanceof Error ? err.message : String(err))}
+`);
+      } catch {
+        res.destroy();
+      }
+    });
+  });
+  return new Promise((resolve2, reject) => {
+    const onError = /* @__PURE__ */ __name((err) => {
+      server.removeListener("listening", onListening);
+      restoreFixtures?.();
+      reject(err);
+    }, "onError");
+    const onListening = /* @__PURE__ */ __name(() => {
+      server.removeListener("error", onError);
+      server.on("error", (err) => {
+        process.stderr.write(`serve: ${oneLine(err instanceof Error ? err.message : String(err))}
+`);
+      });
+      const bound = server.address();
+      const address = typeof bound === "object" && bound ? bound.address : SERVE_HOST;
+      const port = typeof bound === "object" && bound ? bound.port : options.port;
+      resolve2({
+        address,
+        port,
+        url: `http://${address}:${port}/`,
+        httpServer: server,
+        close: /* @__PURE__ */ __name(() => new Promise((done) => {
+          server.close(() => {
+            restoreFixtures?.();
+            done();
+          });
+          server.closeAllConnections?.();
+        }), "close")
+      });
+    }, "onListening");
+    server.once("error", onError);
+    server.once("listening", onListening);
+    server.listen(options.port, SERVE_HOST);
+  });
+}
+__name(startPreviewServer, "startPreviewServer");
+
+// src/compare.ts
+import { mkdirSync, readFileSync, writeFileSync } from "fs";
+import { join, resolve } from "path";
+import { deflateSync, inflateSync } from "zlib";
+var CHANNEL_THRESHOLD = 24;
+var HEIGHT_MISMATCH_RATIO = 0.05;
+var RANGE_TARGET_PERCENT = 3;
+var MAX_RANGES = 5;
+var RANGE_MERGE_GAP = 24;
+var CROP_PADDING = 16;
+var CROP_MAX_HEIGHT = 1600;
+var CROP_SEPARATOR = 8;
+var PNG_SIGNATURE = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+var UnsupportedPngError = class extends Error {
+  static {
+    __name(this, "UnsupportedPngError");
+  }
+  constructor(message) {
+    super(message);
+    this.name = "UnsupportedPngError";
+  }
+};
+var crcTable;
+function crc32(buffer) {
+  if (!crcTable) {
+    crcTable = new Uint32Array(256);
+    for (let n = 0; n < 256; n++) {
+      let c = n;
+      for (let k = 0; k < 8; k++) c = c & 1 ? 3988292384 ^ c >>> 1 : c >>> 1;
+      crcTable[n] = c >>> 0;
+    }
+  }
+  let crc = 4294967295;
+  for (let i = 0; i < buffer.length; i++) crc = crcTable[(crc ^ buffer[i]) & 255] ^ crc >>> 8;
+  return (crc ^ 4294967295) >>> 0;
+}
+__name(crc32, "crc32");
+function paeth(a, b, c) {
+  const p = a + b - c;
+  const pa = Math.abs(p - a);
+  const pb = Math.abs(p - b);
+  const pc = Math.abs(p - c);
+  if (pa <= pb && pa <= pc) return a;
+  if (pb <= pc) return b;
+  return c;
+}
+__name(paeth, "paeth");
+function decodePng(buffer) {
+  if (buffer.length < 8 || !buffer.subarray(0, 8).equals(PNG_SIGNATURE)) {
+    throw new UnsupportedPngError("not a PNG file (bad signature)");
+  }
+  let offset = 8;
+  let header;
+  const idat = [];
+  while (offset + 12 <= buffer.length) {
+    const length = buffer.readUInt32BE(offset);
+    const type = buffer.toString("latin1", offset + 4, offset + 8);
+    if (offset + 12 + length > buffer.length) {
+      throw new UnsupportedPngError(`truncated ${type} chunk`);
+    }
+    const data = buffer.subarray(offset + 8, offset + 8 + length);
+    if (type === "IHDR") {
+      if (length !== 13) throw new UnsupportedPngError(`IHDR chunk is ${length} bytes; a PNG header is 13`);
+      header = {
+        width: data.readUInt32BE(0),
+        height: data.readUInt32BE(4),
+        bitDepth: data[8],
+        colourType: data[9],
+        interlace: data[12]
+      };
+    } else if (type === "IDAT") {
+      idat.push(data);
+    } else if (type === "IEND") {
+      break;
+    }
+    offset += 12 + length;
+  }
+  if (!header) throw new UnsupportedPngError("no IHDR chunk");
+  const { width, height, bitDepth, colourType, interlace } = header;
+  if (width === 0 || height === 0) throw new UnsupportedPngError(`image is ${width}x${height}; an empty image cannot be compared`);
+  if (bitDepth !== 8 || colourType !== 2 && colourType !== 6 || interlace !== 0) {
+    throw new UnsupportedPngError(
+      `bit depth ${bitDepth}, colour type ${colourType}${interlace ? ", interlaced" : ""}; only 8-bit RGB or RGBA non-interlaced PNGs (browser screenshots) are supported`
+    );
+  }
+  if (idat.length === 0 || idat.every((chunk) => chunk.length === 0)) throw new UnsupportedPngError("no image data");
+  const channels = colourType === 6 ? 4 : 3;
+  const stride = width * channels;
+  let raw;
+  try {
+    raw = inflateSync(Buffer.concat(idat));
+  } catch (error) {
+    throw new UnsupportedPngError(`image data does not inflate (${error instanceof Error ? error.message : String(error)})`);
+  }
+  if (raw.length < height * (stride + 1)) {
+    throw new UnsupportedPngError("image data is shorter than the header says");
+  }
+  const out = Buffer.alloc(width * height * 4);
+  let previous = Buffer.alloc(stride);
+  let current = Buffer.alloc(stride);
+  for (let y = 0; y < height; y++) {
+    const rowStart = y * (stride + 1);
+    const filter = raw[rowStart];
+    for (let i = 0; i < stride; i++) {
+      const a = i >= channels ? current[i - channels] : 0;
+      const b = previous[i];
+      const c = i >= channels ? previous[i - channels] : 0;
+      let value = raw[rowStart + 1 + i];
+      switch (filter) {
+        case 0:
+          break;
+        case 1:
+          value += a;
+          break;
+        case 2:
+          value += b;
+          break;
+        case 3:
+          value += a + b >> 1;
+          break;
+        case 4:
+          value += paeth(a, b, c);
+          break;
+        default:
+          throw new UnsupportedPngError(`unknown filter type ${filter} on row ${y}`);
+      }
+      current[i] = value & 255;
+    }
+    for (let x = 0; x < width; x++) {
+      const s = x * channels;
+      const d = (y * width + x) * 4;
+      out[d] = current[s];
+      out[d + 1] = current[s + 1];
+      out[d + 2] = current[s + 2];
+      out[d + 3] = channels === 4 ? current[s + 3] : 255;
+    }
+    [previous, current] = [current, previous];
+  }
+  return { width, height, data: out };
+}
+__name(decodePng, "decodePng");
+function pngChunk(type, data) {
+  const length = Buffer.alloc(4);
+  length.writeUInt32BE(data.length, 0);
+  const typeAndData = Buffer.concat([Buffer.from(type, "latin1"), data]);
+  const crc = Buffer.alloc(4);
+  crc.writeUInt32BE(crc32(typeAndData), 0);
+  return Buffer.concat([length, typeAndData, crc]);
+}
+__name(pngChunk, "pngChunk");
+function encodePng({ width, height, data }) {
+  const stride = width * 4;
+  const raw = Buffer.alloc((stride + 1) * height);
+  for (let y = 0; y < height; y++) {
+    raw[y * (stride + 1)] = 0;
+    data.copy(raw, y * (stride + 1) + 1, y * stride, (y + 1) * stride);
+  }
+  const header = Buffer.alloc(13);
+  header.writeUInt32BE(width, 0);
+  header.writeUInt32BE(height, 4);
+  header[8] = 8;
+  header[9] = 6;
+  header[10] = 0;
+  header[11] = 0;
+  header[12] = 0;
+  return Buffer.concat([
+    PNG_SIGNATURE,
+    pngChunk("IHDR", header),
+    pngChunk("IDAT", deflateSync(raw)),
+    pngChunk("IEND", Buffer.alloc(0))
+  ]);
+}
+__name(encodePng, "encodePng");
+var round2 = /* @__PURE__ */ __name((n) => Math.round(n * 100) / 100, "round2");
+function findRanges(rowDiffs, width, { mergeGap = RANGE_MERGE_GAP, limit = MAX_RANGES } = {}) {
+  const ranges = [];
+  let open = null;
+  for (let y = 0; y < rowDiffs.length; y++) {
+    if (rowDiffs[y] === 0) continue;
+    if (open && y - open.yEnd - 1 < mergeGap) {
+      open.yEnd = y;
+      open.differingPixels += rowDiffs[y];
+    } else {
+      if (open) ranges.push(open);
+      open = { yStart: y, yEnd: y, differingPixels: rowDiffs[y], percent: 0 };
+    }
+  }
+  if (open) ranges.push(open);
+  for (const range of ranges) {
+    const rows = range.yEnd - range.yStart + 1;
+    range.percent = width > 0 ? round2(range.differingPixels / (rows * width) * 100) : 0;
+  }
+  ranges.sort((a, b) => b.differingPixels - a.differingPixels || a.yStart - b.yStart);
+  return ranges.slice(0, limit);
+}
+__name(findRanges, "findRanges");
+function compareImages(reference, render, { threshold = CHANNEL_THRESHOLD } = {}) {
+  const width = Math.min(reference.width, render.width);
+  const height = Math.min(reference.height, render.height);
+  const heightRatio = reference.height > 0 ? render.height / reference.height : null;
+  const layoutMismatch = heightRatio === null ? render.height !== reference.height : Math.abs(heightRatio - 1) > HEIGHT_MISMATCH_RATIO;
+  const rowDiffs = new Uint32Array(height);
+  const mask = new Uint8Array(width * height);
+  let differingPixels = 0;
+  for (let y = 0; y < height; y++) {
+    let rowCount = 0;
+    for (let x = 0; x < width; x++) {
+      const r = (y * reference.width + x) * 4;
+      const s = (y * render.width + x) * 4;
+      if (Math.abs(reference.data[r] - render.data[s]) > threshold || Math.abs(reference.data[r + 1] - render.data[s + 1]) > threshold || Math.abs(reference.data[r + 2] - render.data[s + 2]) > threshold || Math.abs(reference.data[r + 3] - render.data[s + 3]) > threshold) {
+        mask[y * width + x] = 1;
+        rowCount++;
+      }
+    }
+    rowDiffs[y] = rowCount;
+    differingPixels += rowCount;
+  }
+  const area = width * height;
+  return {
+    reference: { width: reference.width, height: reference.height },
+    render: { width: render.width, height: render.height },
+    heightRatio: heightRatio === null ? null : Math.round(heightRatio * 1e3) / 1e3,
+    layoutMismatch,
+    widthMismatch: reference.width !== render.width,
+    comparedArea: { width, height },
+    uncomparedRows: Math.abs(reference.height - render.height),
+    threshold,
+    differingPixels,
+    differingPercent: area === 0 ? 0 : round2(differingPixels / area * 100),
+    ranges: findRanges(rowDiffs, width),
+    mask
+  };
+}
+__name(compareImages, "compareImages");
+function imagesIdentical(reference, render) {
+  return reference.width === render.width && reference.height === render.height && reference.data.equals(render.data);
+}
+__name(imagesIdentical, "imagesIdentical");
+function diffImage(reference, result) {
+  const { width, height } = result.comparedArea;
+  const data = Buffer.alloc(width * height * 4);
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const d = (y * width + x) * 4;
+      if (result.mask[y * width + x]) {
+        data[d] = 230;
+        data[d + 1] = 0;
+        data[d + 2] = 40;
+      } else {
+        const r = (y * reference.width + x) * 4;
+        const grey = 0.299 * reference.data[r] + 0.587 * reference.data[r + 1] + 0.114 * reference.data[r + 2];
+        const faded = Math.round(grey * 0.3 + 255 * 0.7);
+        data[d] = faded;
+        data[d + 1] = faded;
+        data[d + 2] = faded;
+      }
+      data[d + 3] = 255;
+    }
+  }
+  return { width, height, data };
+}
+__name(diffImage, "diffImage");
+function sideBySide(reference, render, yStart, yEnd) {
+  const y0 = Math.max(0, yStart - CROP_PADDING);
+  const y1 = Math.min(yEnd + CROP_PADDING, y0 + CROP_MAX_HEIGHT - 1, Math.max(reference.height, render.height) - 1);
+  const height = y1 - y0 + 1;
+  const width = reference.width + CROP_SEPARATOR + render.width;
+  const data = Buffer.alloc(width * height * 4);
+  for (let i = 0; i < width * height; i++) {
+    data[i * 4] = 214;
+    data[i * 4 + 1] = 214;
+    data[i * 4 + 2] = 214;
+    data[i * 4 + 3] = 255;
+  }
+  const blit = /* @__PURE__ */ __name((image, left) => {
+    for (let y = y0; y <= y1 && y < image.height; y++) {
+      image.data.copy(data, ((y - y0) * width + left) * 4, y * image.width * 4, (y + 1) * image.width * 4);
+    }
+  }, "blit");
+  blit(reference, 0);
+  for (let y = 0; y < height; y++) {
+    for (let x = reference.width; x < reference.width + CROP_SEPARATOR; x++) {
+      const d = (y * width + x) * 4;
+      data[d] = 255;
+      data[d + 1] = 0;
+      data[d + 2] = 160;
+    }
+  }
+  blit(render, reference.width + CROP_SEPARATOR);
+  return { image: { width, height, data }, y0, y1, truncated: y1 < yEnd + CROP_PADDING && y1 < Math.max(reference.height, render.height) - 1 };
+}
+__name(sideBySide, "sideBySide");
+function writeOutputs(reference, render, result, outDir) {
+  mkdirSync(outDir, { recursive: true });
+  const outputs = [];
+  const diffPath = join(outDir, "diff.png");
+  writeFileSync(diffPath, encodePng(diffImage(reference, result)));
+  outputs.push({ kind: "diff", path: diffPath });
+  result.ranges.forEach((range, index) => {
+    const crop = sideBySide(reference, render, range.yStart, range.yEnd);
+    const path9 = join(outDir, `range-${index + 1}.png`);
+    writeFileSync(path9, encodePng(crop.image));
+    outputs.push({ kind: "range", range: index + 1, path: path9, rows: [crop.y0, crop.y1], truncated: crop.truncated });
+  });
+  return outputs;
+}
+__name(writeOutputs, "writeOutputs");
+var CompareUsageError = class extends Error {
+  static {
+    __name(this, "CompareUsageError");
+  }
+};
+function parseCompareArgs(argv) {
+  const positional = [];
+  const options = { out: null, json: false, help: false, threshold: CHANNEL_THRESHOLD };
+  let thresholdSeen = false;
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+    if (arg === "--json") options.json = true;
+    else if (arg === "--help" || arg === "-h") options.help = true;
+    else if (arg === "--out") {
+      if (argv[i + 1] === void 0) throw new CompareUsageError("--out needs a directory");
+      options.out = argv[++i];
+    } else if (arg.startsWith("--out=")) options.out = arg.slice(6);
+    else if (arg === "--threshold" || arg.startsWith("--threshold=")) {
+      const value = arg === "--threshold" ? argv[++i] : arg.slice("--threshold=".length);
+      if (value === void 0) throw new CompareUsageError("--threshold needs a number");
+      if (!/^\d{1,3}$/.test(value) || Number(value) > 255) {
+        throw new CompareUsageError(`--threshold expects a whole number from 0 to 255, got ${JSON.stringify(value)}`);
+      }
+      if (thresholdSeen) throw new CompareUsageError("--threshold is given more than once");
+      thresholdSeen = true;
+      options.threshold = Number(value);
+    } else if (arg.startsWith("-")) throw new CompareUsageError(`unknown option ${arg}`);
+    else positional.push(arg);
+  }
+  if (!options.help && positional.length !== 2) throw new CompareUsageError("expected exactly two PNG files: <reference.png> <render.png>");
+  return { reference: positional[0], render: positional[1], ...options };
+}
+__name(parseCompareArgs, "parseCompareArgs");
+function formatReport(result, identical, outputs) {
+  const lines = [];
+  const ref = result.reference;
+  const ren = result.render;
+  lines.push(`reference ${ref.width}x${ref.height}, render ${ren.width}x${ren.height}, height ratio ${result.heightRatio ?? "n/a"}`);
+  if (result.layoutMismatch) {
+    const pct = result.heightRatio === null ? "an undefined share" : `${Math.round(Math.abs(result.heightRatio - 1) * 1e3) / 10}%`;
+    lines.push(
+      `LAYOUT MISMATCH: the render's height differs from the reference by ${pct} (limit 5%). Everything below the first shifted band is offset, so fix layout and spacing before reading the percentages below.`
+    );
+  }
+  if (result.widthMismatch) {
+    lines.push("WIDTH MISMATCH: the images were not captured at the same viewport width. Recapture like with like.");
+  }
+  lines.push(
+    `compared area ${result.comparedArea.width}x${result.comparedArea.height}: ${result.differingPercent}% of pixels differ (a pixel differs when any channel differs by more than ${result.threshold})`
+  );
+  if (result.uncomparedRows) lines.push(`${result.uncomparedRows} rows of the taller image were not compared`);
+  if (result.ranges.length === 0) {
+    lines.push("no differing ranges");
+  } else {
+    lines.push(`largest differing ranges (y-start..y-end, share of the range that differs; target under ${RANGE_TARGET_PERCENT}%):`);
+    result.ranges.forEach((range, index) => {
+      const flag = range.percent >= RANGE_TARGET_PERCENT ? "  over target" : "";
+      lines.push(`  ${index + 1}. y ${range.yStart}..${range.yEnd}  ${range.percent}%${flag}`);
+    });
+  }
+  lines.push(identical ? "identical: every pixel is equal" : "not identical (identical means equal dimensions and every channel of every pixel equal)");
+  for (const output of outputs) {
+    if (output.kind === "diff") lines.push(`diff image: ${output.path}`);
+    else lines.push(`range ${output.range} crop (reference | render, rows ${output.rows[0]}..${output.rows[1]}${output.truncated ? ", truncated" : ""}): ${output.path}`);
+  }
+  return lines.join("\n");
+}
+__name(formatReport, "formatReport");
+function runCompare(argv, io) {
+  let args2;
+  try {
+    args2 = parseCompareArgs(argv);
+  } catch (error) {
+    if (!(error instanceof CompareUsageError)) throw error;
+    io.stderr(`compare: ${error.message}. Run themespot-render compare --help for usage.
+`);
+    return 2;
+  }
+  if (args2.help) {
+    io.stdout(io.help);
+    return 0;
+  }
+  const images = {};
+  for (const key of ["reference", "render"]) {
+    let buffer;
+    try {
+      buffer = readFileSync(resolve(args2[key]));
+    } catch (error) {
+      const code = error?.code;
+      io.stderr(`compare: cannot read ${key} image ${args2[key]} (${typeof code === "string" ? code : error instanceof Error ? error.message : String(error)})
+`);
+      return 1;
+    }
+    try {
+      images[key] = decodePng(buffer);
+    } catch (error) {
+      const reason = error instanceof UnsupportedPngError ? error.message : `could not decode (${String(error instanceof Error ? error.message : error).split("\n")[0]})`;
+      io.stderr(`compare: unsupported PNG ${args2[key]}: ${reason}
+`);
+      return 3;
+    }
+  }
+  const result = compareImages(images.reference, images.render, { threshold: args2.threshold });
+  const identical = imagesIdentical(images.reference, images.render);
+  const outputs = args2.out ? writeOutputs(images.reference, images.render, result, resolve(args2.out)) : [];
+  if (args2.json) {
+    const { mask: _mask, ...report } = result;
+    io.stdout(`${JSON.stringify({ ...report, identical, rangeTargetPercent: RANGE_TARGET_PERCENT, outputs }, null, 2)}
+`);
+  } else {
+    io.stdout(`${formatReport(result, identical, outputs)}
+`);
+  }
+  return 0;
+}
+__name(runCompare, "runCompare");
+
+// src/cli-commands.ts
+var DEFAULT_SERVE_PORT = 3456;
+var STANDARD_EXIT = "Exit codes: 0 done (diagnostics may be reported), 1 could not be done, 2 bad arguments.";
+var FLAG_HELP = {
+  "--theme-root <dir>": ["The theme to work on (a child theme, when it has a parent)."],
+  "--parent-theme-root <dir>": [
+    "Its parent theme. Without it, a theme whose theme.json extends",
+    "a parent renders from its own files and reports",
+    "INHERITANCE_PARENT_MISSING."
+  ],
+  "--template <name>": ["A page template, as templates lists it (home.html,", "blog/post.hubl.html); a leading templates/ is accepted."],
+  "--module <ref>": [
+    "A module, as a template references it: ../modules/<name> (the",
+    "names list --kind module prints), a path inside the theme, or",
+    "@hubspot/<name> for one of HubSpot's default modules. render",
+    "draws it on its own, with no header or footer."
+  ],
+  "--section <name>": ["A file name under sections/ (cards.html), as list --kind section", "prints it. Drawn on its own, with no header or footer."],
+  "--partial <name>": ["A file name under templates/partials/ (header.html), as list", "--kind partial prints it."],
+  "--state <id>": [
+    "The content state to render as, written <kind>/<name>",
+    "(blog-post/minimal); list --kind state prints them. Omitted, the",
+    "target's default."
+  ],
+  "--props <json|@file>": [
+    "Field values for --module: a JSON object, or @file naming a file",
+    "that holds one. Refused with any other target: nothing else in",
+    "this build reads props."
+  ],
+  "--overrides <json|@file>": [
+    'Settings for this render: { "preset"?: string, "settings"?: object },',
+    "or @file. settings are theme settings merged over the defaults;",
+    "metadata lists the presets and every settings key."
+  ],
+  "--fixtures <dir>": [
+    "A folder of fixture files read instead of the theme's",
+    "fixtures/<same path>, file by file; fixtures lists the files."
+  ],
+  "--out <file.html>": ["Write the document to this file, creating its folders, and print", "the file's absolute path."],
+  "--asset-base <url>": [
+    "Where theme assets (images, fonts, scripts) are loaded from.",
+    "Default: the file:// URL of --theme-root, which makes the",
+    "document machine-specific: it loads its assets only from this",
+    "path on this machine, and a file only the parent theme holds does",
+    "not resolve from it. Use serve, or pass a base, for anything else."
+  ],
+  "--kind <kind>": ["list: template, module, section, partial or state. Omitted, every", 'kind, one "<kind><tab><name>" per line.'],
+  "--json": ["Print exactly one JSON object instead of text."],
+  "--port <n>": [
+    `serve: the port on ${SERVE_HOST} (default ${DEFAULT_SERVE_PORT}; 0 picks a free one).`,
+    "A port in use is an error; nothing else on it is touched."
+  ],
+  "--out <dir>": ["compare: write diff.png and a side-by-side crop (reference | render)", "for each of the largest differing ranges."],
+  "--threshold <n>": [
+    "compare: a pixel differs when any channel differs by more than n",
+    "(0-255, default 24). identical is always the threshold-0 answer."
+  ],
+  "--max-warnings <n>": ["validate: fail on more warnings than n (default: warnings never fail)."],
+  "--max-files <n>": ["validate: stop after n files, and fail, saying the walk was truncated."],
+  "--preset <name>": ["generate-css: the preset to render the CSS with."],
+  "--output <file>": ["generate-css: where to write the stylesheet."],
+  "--help": ["Show the help: every command, or the one named."],
+  "--version": ["Print the version."]
+};
+var COMMAND_HELP = {
+  render: {
+    usage: [
+      "themespot-render render --theme-root <dir> (--template <name> | --module <ref> | --section <name> | --partial <name>)",
+      "                        [--parent-theme-root <dir>] [--state <id>] [--props <json|@file>]",
+      "                        [--overrides <json|@file>] [--fixtures <dir>] [--out <file.html>]",
+      "                        [--asset-base <url>] [--json]"
+    ],
+    summary: [
+      "Render exactly one target to a full HTML document: a page template, one module,",
+      "one section or one global partial. The document goes to standard output, or to",
+      "--out; diagnostics go to standard error, one per line. With --json, one object:",
+      "{ ok, kind, target, template, state, props, overrides, out, html, assetBase,",
+      "diagnostics }; html is null with --out, template is null for the other kinds."
+    ],
+    flags: [
+      "--theme-root <dir>",
+      "--parent-theme-root <dir>",
+      "--template <name>",
+      "--module <ref>",
+      "--section <name>",
+      "--partial <name>",
+      "--state <id>",
+      "--props <json|@file>",
+      "--overrides <json|@file>",
+      "--fixtures <dir>",
+      "--out <file.html>",
+      "--asset-base <url>",
+      "--json"
+    ],
+    exitCodes: `${STANDARD_EXIT} A missing or second target, unreadable --props or --overrides, props on anything but --module, an unknown preset and a module, section or partial the theme does not have are 2; an unknown template or state is 1.`
+  },
+  serve: {
+    usage: ["themespot-render serve --theme-root <dir> [--parent-theme-root <dir>] [--port 3456] [--fixtures <dir>]"],
+    summary: [
+      `Preview the theme at http://${SERVE_HOST}:<port>/ (this machine only), re-read from disk`,
+      "on every request. GET /api/index describes every route, its parameters and",
+      "example requests: /render and /diagnostics take template, module, section or",
+      "partial with state, props and overrides; POST /api/render and /api/diagnostics",
+      "take the same as a JSON body; /api/list, /api/fixtures, /api/fields and",
+      "/api/metadata answer what the commands print with --json; /theme-assets/<path>",
+      "serves the theme's files. Stop it with Ctrl+C."
+    ],
+    flags: ["--theme-root <dir>", "--parent-theme-root <dir>", "--port <n>", "--fixtures <dir>"],
+    exitCodes: STANDARD_EXIT
+  },
+  list: {
+    usage: ["themespot-render list --theme-root <dir> [--parent-theme-root <dir>] [--kind template|module|section|partial|state] [--json]"],
+    summary: [
+      "Print the names render accepts, one per line: page templates, HubL modules under",
+      "modules/, sections, global partials and content states. With --json,",
+      "{ kind, items: [{ name, root, file }] }, or { kinds: [...] } without --kind."
+    ],
+    flags: ["--theme-root <dir>", "--parent-theme-root <dir>", "--kind <kind>", "--json"],
+    exitCodes: STANDARD_EXIT
+  },
+  templates: {
+    usage: ["themespot-render templates --theme-root <dir> [--parent-theme-root <dir>] [--json]"],
+    summary: [
+      "List the page templates, one name per line: .html files under templates/, except",
+      "templates/layouts/ and templates/partials/. The same as list --kind template;",
+      "with --json, { templates: [{ name, root }] }."
+    ],
+    flags: ["--theme-root <dir>", "--parent-theme-root <dir>", "--json"],
+    exitCodes: STANDARD_EXIT
+  },
+  fixtures: {
+    usage: ["themespot-render fixtures --theme-root <dir> [--fixtures <dir>] [--json]"],
+    summary: [
+      "Describe the fixture files that stand in for portal data: for each kind, where it",
+      "is read from, whether the theme has it, the built-in used otherwise, and a JSON",
+      "Schema (content states, CRM object types) or an example. Fixtures are read from",
+      "the theme root only; a parent theme's fixtures are not read."
+    ],
+    flags: ["--theme-root <dir>", "--fixtures <dir>", "--json"],
+    exitCodes: STANDARD_EXIT
+  },
+  fields: {
+    usage: ["themespot-render fields --theme-root <dir> --module <ref> [--parent-theme-root <dir>] [--json]"],
+    summary: [
+      "Print a module's fields, read from its fields.json. A React module's fields are",
+      "not read by this build: it answers an empty list and says so."
+    ],
+    flags: ["--theme-root <dir>", "--parent-theme-root <dir>", "--module <ref>", "--json"],
+    exitCodes: STANDARD_EXIT
+  },
+  metadata: {
+    usage: ["themespot-render metadata --theme-root <dir> [--parent-theme-root <dir>] [--json]"],
+    summary: [
+      "Print the theme's settings: their resolved defaults, every settings key (what",
+      "--overrides settings may set), the presets and the surfaces its stylesheets",
+      "declare."
+    ],
+    flags: ["--theme-root <dir>", "--parent-theme-root <dir>", "--json"],
+    exitCodes: STANDARD_EXIT
+  },
+  compare: {
+    usage: ["themespot-render compare <reference.png> <render.png> [--out <dir>] [--threshold 24] [--json]"],
+    summary: [
+      "Compare two screenshots taken at the same viewport, pixel by pixel: 8-bit RGB or",
+      "RGBA PNGs, as browsers capture them. Reports the share of pixels that differ,",
+      "the largest differing vertical ranges, a height difference over 5% as a layout",
+      "mismatch, and identical (equal dimensions, every pixel equal). This build",
+      "captures nothing: take the screenshots with any browser tool."
+    ],
+    flags: ["--out <dir>", "--threshold <n>", "--json"],
+    exitCodes: "Exit codes: 0 compared (whatever the result), 1 an image could not be read, 2 bad arguments, 3 a PNG this command cannot decode."
+  },
+  validate: {
+    usage: [
+      "themespot-render validate --theme-root <dir> [--parent-theme-root <dir>] [--json]",
+      "                          [--max-warnings <n>] [--max-files <n>]"
+    ],
+    summary: ["Check the theme against HubSpot's template-level upload rules, offline."],
+    flags: ["--theme-root <dir>", "--parent-theme-root <dir>", "--json", "--max-warnings <n>", "--max-files <n>"],
+    exitCodes: "Exit codes: 0 clean, 1 an error, more warnings than --max-warnings, a truncated walk or bad arguments."
+  },
+  "generate-css": {
+    usage: ["themespot-render generate-css --theme-root <dir> [--preset <name>] [--output <file>]"],
+    summary: ["Render the theme's CSS to one resolved stylesheet."],
+    flags: ["--theme-root <dir>", "--preset <name>", "--output <file>"],
+    exitCodes: "Exit codes: 0 written (CSS diagnostics are printed), 1 no fields.json."
+  }
+};
+var COMMAND_NAMES = Object.keys(COMMAND_HELP);
+var NOTES = [
+  "React modules are not drawn by this build: each one renders as a placeholder naming the",
+  'module, marked data-module-not-rendered="react", and the render reports',
+  "REACT_MODULE_NOT_RENDERED; surface and token previews are not part of this build.",
+  "Rendered pages may load fonts, icons and placeholder images from the network."
+];
+function flagLines(flags) {
+  const width = 27;
+  return flags.flatMap((flag) => {
+    const [first, ...rest] = FLAG_HELP[flag] ?? [""];
+    const head = `  ${flag}`;
+    return [
+      head.length + 1 > width ? `${head}
+${" ".repeat(width)}${first}` : `${head.padEnd(width)}${first}`,
+      ...rest.map((line) => `${" ".repeat(width)}${line}`)
+    ];
+  });
+}
+__name(flagLines, "flagLines");
+var HEADER = `themespot-render ${RENDERER_VERSION}
 Renders HubSpot CMS themes written in HubL to HTML on this machine.
-`;function Rt(e){let t=Object.hasOwn(Jr,e)?Jr[e]:void 0;return t?[Dm,"Usage:",...t.usage.map(n=>`  ${n}`),"",...t.summary,"","Flags:",...Im([...t.flags,"--help"]),"",...e==="render"||e==="serve"?[...Fm,""]:[],t.exitCodes,""].join(`
-`):null}var Ei=[Dm,"Usage:",...Ml.flatMap(e=>Jr[e].usage.map(t=>`  ${t}`)),"  themespot-render help [<command>] | <command> --help | --version","","Commands:",...Ml.flatMap(e=>[`  ${e}`,...Jr[e].summary.map(t=>`      ${t}`)]),"  help        Show this help, or one command's: help <command>, or <command> --help.","","Flags:",...Im([...Object.keys($m)]),"",...Fm,"","Exit codes for render, serve, list, templates, fixtures, fields and metadata: 0 done","(diagnostics may be reported), 1 could not be done, 2 bad arguments or an unknown","flag. compare: 0 compared, 1 an image could not be read, 2 bad arguments, 3 a PNG it","cannot decode. validate: 0 clean, 1 otherwise.",""].join(`
-`);function Mm(e){if(e.length===0)return process.stdout.write(Ei),0;let t=e.length===1?Rt(e[0]):null;return t===null?(process.stderr.write(`Error: help takes one command name: ${Ml.join(", ")}.
-`),2):(process.stdout.write(t),0)}var rt=class extends Error{};function Nn(e,t){let n=new Map;for(let s=0;s<e.length;s++){let r=e[s];if(!r.startsWith("--"))throw new rt(`unexpected argument ${JSON.stringify(r)}`);let i=r.indexOf("="),o=i===-1?r:r.slice(0,i),a=t[o];if(!a)throw new rt(`unknown flag ${o}`);if(n.has(o))throw new rt(`${o} is given more than once`);if(a==="boolean"){if(i!==-1)throw new rt(`${o} takes no value`);n.set(o,!0);continue}let l=i===-1?e[++s]:r.slice(i+1);if(l===void 0||l===""||i===-1&&l.startsWith("--"))throw new rt(`${o} expects a value`);n.set(o,l)}return n}function pt(e,t){let n=e.get(t);return typeof n=="string"?n:void 0}var vT={"--template":"name","--module":"ref"};function Et(e,t){let n=pt(e,t);if(n===void 0)throw new rt(`${t} <${vT[t]??"dir"}> is required`);return n}function ET(e,t){return process.stderr.write(`Error: ${e.message}. Run themespot-render help ${t} for usage.
-`),2}function Ln(e,t){try{return t()}catch(n){if(n instanceof rt)return ET(n,e);throw n}}function cr(e,t){let n=vi.resolve(t),s=!1;try{s=Vr.statSync(n).isDirectory(),s&&Vr.readdirSync(n)}catch{s=!1}return s?n:(process.stderr.write(`Error: ${e} ${n} is not a readable directory.
-`),null)}function ur(e){let t=cr("--theme-root",Et(e,"--theme-root"));if(!t)return null;let n=pt(e,"--parent-theme-root");if(n===void 0)return{themeRoot:t};let s=cr("--parent-theme-root",n);return s===null?null:{themeRoot:t,parentThemeRoot:s}}function RT(e){return`${e.code}: ${e.message.replace(/\s*\n\s*/g," ")}
-`}function xT(e){return Vr.readFileSync(vi.resolve(e),"utf-8")}var TT={"--theme-root":"value","--parent-theme-root":"value","--template":"value","--module":"value","--section":"value","--partial":"value","--state":"value","--props":"value","--overrides":"value","--fixtures":"value","--out":"value","--asset-base":"value","--json":"boolean","--help":"boolean"};async function jm(e){let t=Ln("render",()=>{let y=Nn(e,TT);if(y.has("--help"))return{help:!0};Et(y,"--theme-root");let E=ze.filter(O=>y.has(`--${O}`));if(E.length!==1)throw new rt(E.length===0?"name exactly one target: --template <name>, --module <ref>, --section <name> or --partial <name>":`name exactly one target, not ${E.map(O=>`--${O}`).join(" and ")}: --template <name>, --module <ref>, --section <name> or --partial <name>`);let x={kind:E[0],name:pt(y,`--${E[0]}`)},R=O=>{let k=pt(y,O);if(k===void 0)return;let C=am(k,xT);if(!C.ok)throw new rt(`${O} could not be read: ${C.reason}`);return C.value};return{help:!1,flags:y,target:x,props:R("--props")??null,overrides:R("--overrides")}});if(typeof t=="number")return t;if(t.help)return process.stdout.write(Rt("render")),0;let{flags:n,target:s,props:r,overrides:i}=t,o=ur(n);if(!o)return 1;let a=pt(n,"--fixtures");if(a!==void 0){let y=cr("--fixtures",a);if(!y)return 1;Gr(o.themeRoot,y)}let l=pt(n,"--asset-base"),c=l??`${ST(o.themeRoot).href.replace(/\/+$/,"")}/`,u=n.has("--json"),d=pt(n,"--out"),p=pt(n,"--state"),m=await _i({...o,target:s,...p!==void 0?{state:p}:{},props:r,...i!==void 0?{overrides:i}:{},assetBase:c,assetBaseOrigin:l===void 0?"theme-root":"flag"});if(m.failure||m.html===null)return m.failure&&process.stderr.write(gi(m.failure)),u&&process.stdout.write(`${JSON.stringify(m.json)}
-`),m.failure&&dm.has(m.failure.kind)?2:1;let g={...m.json};if(d!==void 0){let y=vi.resolve(d);try{Vr.mkdirSync(vi.dirname(y),{recursive:!0}),Vr.writeFileSync(y,m.html,"utf-8")}catch(E){let x=E instanceof Error?E.message:String(E);return process.stderr.write(`Error: could not write ${y}: ${x}
-`),u&&process.stdout.write(`${JSON.stringify({...g,ok:!1,html:null,diagnostics:[...g.diagnostics,{code:"OUTPUT_UNWRITABLE",message:`Could not write ${y}: ${x}`}]})}
-`),1}g.out=y,g.html=null}if(u)return process.stdout.write(`${JSON.stringify(g)}
-`),0;for(let y of g.diagnostics)process.stderr.write(RT(y));return process.stdout.write(g.out!==null?`${g.out}
-`:m.html),0}var kT={"--theme-root":"value","--parent-theme-root":"value","--json":"boolean","--help":"boolean"};function Um(e){let t=Ln("templates",()=>{let r=Nn(e,kT);return r.has("--help")||Et(r,"--theme-root"),r});if(typeof t=="number")return t;if(t.has("--help"))return process.stdout.write(Rt("templates")),0;let n=ur(t);if(!n)return 1;let s=lr(n);return t.has("--json")?process.stdout.write(`${JSON.stringify({templates:s.map(({name:r,root:i})=>({name:r,root:i}))})}
-`):s.length>0&&process.stdout.write(`${s.map(r=>r.name).join(`
-`)}
-`),0}var AT={"--theme-root":"value","--parent-theme-root":"value","--kind":"value","--json":"boolean","--help":"boolean"};function Bm(e){let t=Ln("list",()=>{let a=Nn(e,AT);if(a.has("--help"))return{flags:a,kind:null};Et(a,"--theme-root");let l=pt(a,"--kind");if(l!==void 0&&!Mt.includes(l))throw new rt(`--kind expects one of ${Mt.join(", ")}, got ${JSON.stringify(l)}`);return{flags:a,kind:l??null}});if(typeof t=="number")return t;let{flags:n,kind:s}=t;if(n.has("--help"))return process.stdout.write(Rt("list")),0;let r=ur(n);if(!r)return 1;let i=n.has("--json");if(s!==null){let a=St(r,s);return i?process.stdout.write(`${JSON.stringify({kind:s,items:a})}
-`):a.length>0&&process.stdout.write(`${a.map(l=>l.name).join(`
-`)}
-`),0}let o=Mt.map(a=>({kind:a,items:St(r,a)}));if(i)process.stdout.write(`${JSON.stringify({kinds:o})}
-`);else{let a=o.flatMap(l=>l.items.map(c=>`${l.kind}	${c.name}`));a.length>0&&process.stdout.write(`${a.join(`
-`)}
-`)}return 0}var OT={"--theme-root":"value","--fixtures":"value","--json":"boolean","--help":"boolean"};function Hm(e){let t=Ln("fixtures",()=>{let a=Nn(e,OT);return a.has("--help")||Et(a,"--theme-root"),a});if(typeof t=="number")return t;if(t.has("--help"))return process.stdout.write(Rt("fixtures")),0;let n=cr("--theme-root",Et(t,"--theme-root"));if(!n)return 1;let s=null,r=pt(t,"--fixtures");if(r!==void 0){if(s=cr("--fixtures",r),!s)return 1;Gr(n,s)}let i=fi(n,s);if(t.has("--json"))return process.stdout.write(`${JSON.stringify(i)}
-`),0;let o=[i.note,""];for(let a of i.kinds){o.push(`${a.kind}: ${a.present?"present":"absent"}, read from ${a.path}`),o.push(`  ${a.description}`),o.push(`  Otherwise: ${a.whenAbsent}.${a.schema?" --json carries its JSON Schema.":" --json carries an example."}`);for(let l of a.files??[])o.push(`  ${l.name}: ${l.present?"present":"absent"}${l.embeddedDefault?", built-in otherwise":""}`)}return process.stdout.write(`${o.join(`
-`)}
-`),0}var NT={"--theme-root":"value","--parent-theme-root":"value","--module":"value","--json":"boolean","--help":"boolean"};function Gm(e,t){return e.flatMap(n=>[`${"  ".repeat(t)}${n.name} (${n.type})${n.label?` ${n.label}`:""}${n.occurrence?" [repeated]":""}`,...Gm(n.children??[],t+1)])}function Wm(e){let t=Ln("fields",()=>{let l=Nn(e,NT);return l.has("--help")||(Et(l,"--theme-root"),Et(l,"--module")),l});if(typeof t=="number")return t;if(t.has("--help"))return process.stdout.write(Rt("fields")),0;let n=ur(t);if(!n)return 1;let s=Et(t,"--module"),r=hi(n,s);if(!r.ok){if(r.unreadable)return process.stderr.write(`Error: the module ${JSON.stringify(s)}: ${r.reason}.
-`),1;let l=[`Error: --module ${JSON.stringify(s)} names no module: ${r.reason}.`];return r.listing.length>0&&l.push("Modules:",...r.listing),process.stderr.write(`${l.join(`
-`)}
-`),2}let{ok:i,...o}=r;if(t.has("--json"))return process.stdout.write(`${JSON.stringify(o)}
-`),0;let a=[`${o.module} (${o.shape}): ${o.directory}`];return o.note&&a.push(o.note),a.push(...Gm(o.fields,0)),process.stdout.write(`${a.join(`
-`)}
-`),0}var LT={"--theme-root":"value","--parent-theme-root":"value","--json":"boolean","--help":"boolean"};async function Km(e){let t=Ln("metadata",()=>{let i=Nn(e,LT);return i.has("--help")||Et(i,"--theme-root"),i});if(typeof t=="number")return t;if(t.has("--help"))return process.stdout.write(Rt("metadata")),0;let n=ur(t);if(!n)return 1;let s=await mi(n);if(t.has("--json"))return process.stdout.write(`${JSON.stringify(s)}
-`),0;let r=[`Presets: ${s.presets.join(", ")} (default ${s.defaultPreset})`,`Surfaces: ${s.surfaces.join(", ")||"none"}`,`Settings keys (${s.settingsKeys.length}):`,...s.settingsKeys.map(i=>`  ${i}`)];return process.stdout.write(`${r.join(`
-`)}
-`),0}function qm(e){return Cm(e,{stdout:t=>process.stdout.write(t),stderr:t=>process.stderr.write(t),help:Rt("compare")})}var CT={"--theme-root":"value","--parent-theme-root":"value","--port":"value","--fixtures":"value","--help":"boolean"};async function Vm(e){let t=Ln("serve",()=>{let a=Nn(e,CT),l=Pm;if(a.has("--help"))return{flags:a,port:l};Et(a,"--theme-root");let c=pt(a,"--port");if(c!==void 0){if(!/^\d{1,5}$/.test(c)||Number(c)>65535)throw new rt(`--port expects a whole number from 0 to 65535, got ${JSON.stringify(c)}`);l=Number(c)}return{flags:a,port:l}});if(typeof t=="number")return t;let{flags:n,port:s}=t;if(n.has("--help"))return process.stdout.write(Rt("serve")),0;let r=ur(n);if(!r)return 1;let i=pt(n,"--fixtures"),o;if(i!==void 0){let a=cr("--fixtures",i);if(!a)return 1;o=a}try{let a=await Rm({...r,port:s,...o?{fixturesDir:o}:{}});return process.stdout.write(`Preview: ${a.url}
-`),null}catch(a){if(a?.code==="EADDRINUSE")process.stderr.write(`Error: port ${s} is already in use on ${An}. Try --port ${s+1}.
-`);else{let c=a instanceof Error?a.message:String(a);process.stderr.write(`Error: could not listen on ${An}:${s}: ${c}
-`)}return 1}}var PT=["Usage:","  cli.ts generate-css --theme-root <path> [--preset <name>] [--output <path>]","  cli.ts validate --theme-root <path> [--parent-theme-root <path>] [--json]","                  [--max-warnings <n>] [--max-files <n>]"].join(`
-`);function Jm(e){let t=e.indexOf("--theme-root");if(t!==-1&&e[t+1])return Cn.resolve(e[t+1]);if(process.env.THEME_ROOT)return Cn.resolve(process.env.THEME_ROOT);console.error("Error: --theme-root <path> is required (or set THEME_ROOT env var)"),process.exit(1)}function Ul(e,t){let n=e.indexOf(t);if(n===-1)return;let s=e[n+1];return(s===void 0||s.startsWith("--"))&&(console.error(`Error: ${t} expects a value.`),process.exit(1)),s}var ke=process.argv.slice(2),We=ke[0],$T=new Set(["generate-css","validate","render","serve","templates","list","fixtures","fields","metadata","compare"]);function zm(e){Promise.resolve().then(e).then(t=>{process.exitCode=t},t=>{console.error(t instanceof Error?t.message:String(t)),process.exitCode=1})}if($T.has(We)&&ke.slice(1).some(e=>e==="--help"||We==="compare"&&e==="-h"))process.stdout.write(Rt(We)??Ei);else if(We==="help")process.exitCode=Mm(ke.slice(1));else if(We==="generate-css"){let e=Jm(ke),t=ke.indexOf("--preset"),n=t!==-1?ke[t+1]:"default",s=ke.indexOf("--output"),r=s!==-1?Cn.resolve(ke[s+1]):Cn.resolve("resolved-theme.css"),i=Cn.join(e,"fields.json"),o=Cn.join(e,"assets","_hs","css");jl.existsSync(i)||(console.error(`fields.json not found at ${i}`),process.exit(1));let a=JSON.parse(jl.readFileSync(i,"utf-8")),l=fr(a);console.log("Resolved theme settings."),console.log(`Rendering CSS from ${o}...`);let c=Md({theme:l,cssDir:o,presetName:n},r);console.log(`Wrote resolved CSS to ${r}`);for(let u of c)console.warn(`  ${u.code}: ${u.message}`)}else if(We==="validate"){let e=Jm(ke);jl.existsSync(e)||(console.error(`Theme root not found: ${e}`),process.exit(1));let t=Ul(ke,"--parent-theme-root"),n=Ul(ke,"--max-warnings");n!==void 0&&!/^\d+$/.test(n)&&(console.error(`Error: --max-warnings expects a non-negative integer, got ${JSON.stringify(n)}`),process.exit(1));let s=n===void 0?1/0:Number(n),r=Ul(ke,"--max-files");r!==void 0&&!/^[1-9]\d*$/.test(r)&&(console.error(`Error: --max-files expects a positive integer, got ${JSON.stringify(r)}`),process.exit(1));let i=_f({themeRoot:e,parentThemeRoot:t?Cn.resolve(t):void 0,maxFiles:r===void 0?void 0:Number(r)});ke.includes("--json")?console.log(JSON.stringify({themeRoot:e,filesScanned:i.filesScanned,truncated:i.truncated,counts:i.counts,diagnostics:i.diagnostics.map(o=>({code:o.code,severity:ii(o),message:o.message,details:o.details??{}}))},null,2)):console.log(wf(i,{themeRoot:e})),(i.counts.error>0||i.counts.warning>s||i.truncated)&&process.exit(1)}else We==="render"?(process.stdout.on("error",e=>{if(e.code!=="EPIPE")throw e}),jm(ke.slice(1)).then(e=>{process.exitCode=e},e=>{console.error(e instanceof Error?e.message:String(e)),process.exitCode=1})):We==="templates"?process.exitCode=Um(ke.slice(1)):We==="list"?process.exitCode=Bm(ke.slice(1)):We==="fixtures"?process.exitCode=Hm(ke.slice(1)):We==="fields"?process.exitCode=Wm(ke.slice(1)):We==="metadata"?zm(()=>Km(ke.slice(1))):We==="compare"?zm(()=>qm(ke.slice(1))):We==="serve"?Vm(ke.slice(1)).then(e=>{e!==null&&(process.exitCode=e)},e=>{console.error(e instanceof Error?e.message:String(e)),process.exitCode=1}):We==="--help"&&ke.length===1?process.stdout.write(Ei):We==="--version"&&ke.length===1?process.stdout.write(`${kn}
-`):(console.error(`Unknown command: ${We}`),console.error(PT),process.exit(1));
+`;
+function commandHelp(command2) {
+  const help = Object.hasOwn(COMMAND_HELP, command2) ? COMMAND_HELP[command2] : void 0;
+  if (!help) return null;
+  return [
+    HEADER,
+    "Usage:",
+    ...help.usage.map((line) => `  ${line}`),
+    "",
+    ...help.summary,
+    "",
+    "Flags:",
+    ...flagLines([...help.flags, "--help"]),
+    "",
+    ...command2 === "render" || command2 === "serve" ? [...NOTES, ""] : [],
+    help.exitCodes,
+    ""
+  ].join("\n");
+}
+__name(commandHelp, "commandHelp");
+var HELP_TEXT = [
+  HEADER,
+  "Usage:",
+  ...COMMAND_NAMES.flatMap((name) => COMMAND_HELP[name].usage.map((line) => `  ${line}`)),
+  "  themespot-render help [<command>] | <command> --help | --version",
+  "",
+  "Commands:",
+  ...COMMAND_NAMES.flatMap((name) => [`  ${name}`, ...COMMAND_HELP[name].summary.map((line) => `      ${line}`)]),
+  "  help        Show this help, or one command's: help <command>, or <command> --help.",
+  "",
+  "Flags:",
+  ...flagLines([...Object.keys(FLAG_HELP)]),
+  "",
+  ...NOTES,
+  "",
+  "Exit codes for render, serve, list, templates, fixtures, fields and metadata: 0 done",
+  "(diagnostics may be reported), 1 could not be done, 2 bad arguments or an unknown",
+  "flag. compare: 0 compared, 1 an image could not be read, 2 bad arguments, 3 a PNG it",
+  "cannot decode. validate: 0 clean, 1 otherwise.",
+  ""
+].join("\n");
+function runHelpCommand(args2) {
+  if (args2.length === 0) {
+    process.stdout.write(HELP_TEXT);
+    return 0;
+  }
+  const section = args2.length === 1 ? commandHelp(args2[0]) : null;
+  if (section === null) {
+    process.stderr.write(`Error: help takes one command name: ${COMMAND_NAMES.join(", ")}.
+`);
+    return 2;
+  }
+  process.stdout.write(section);
+  return 0;
+}
+__name(runHelpCommand, "runHelpCommand");
+var UsageError = class extends Error {
+  static {
+    __name(this, "UsageError");
+  }
+};
+function parseFlags(args2, spec) {
+  const parsed = /* @__PURE__ */ new Map();
+  for (let index = 0; index < args2.length; index++) {
+    const arg = args2[index];
+    if (!arg.startsWith("--")) throw new UsageError(`unexpected argument ${JSON.stringify(arg)}`);
+    const equals = arg.indexOf("=");
+    const flag = equals === -1 ? arg : arg.slice(0, equals);
+    const kind = spec[flag];
+    if (!kind) throw new UsageError(`unknown flag ${flag}`);
+    if (parsed.has(flag)) throw new UsageError(`${flag} is given more than once`);
+    if (kind === "boolean") {
+      if (equals !== -1) throw new UsageError(`${flag} takes no value`);
+      parsed.set(flag, true);
+      continue;
+    }
+    const value = equals === -1 ? args2[++index] : arg.slice(equals + 1);
+    if (value === void 0 || value === "" || equals === -1 && value.startsWith("--")) {
+      throw new UsageError(`${flag} expects a value`);
+    }
+    parsed.set(flag, value);
+  }
+  return parsed;
+}
+__name(parseFlags, "parseFlags");
+function stringFlag(flags, flag) {
+  const value = flags.get(flag);
+  return typeof value === "string" ? value : void 0;
+}
+__name(stringFlag, "stringFlag");
+var PLACEHOLDERS = { "--template": "name", "--module": "ref" };
+function requiredFlag(flags, flag) {
+  const value = stringFlag(flags, flag);
+  if (value === void 0) throw new UsageError(`${flag} <${PLACEHOLDERS[flag] ?? "dir"}> is required`);
+  return value;
+}
+__name(requiredFlag, "requiredFlag");
+function usageFailure(error, command2) {
+  process.stderr.write(`Error: ${error.message}. Run themespot-render help ${command2} for usage.
+`);
+  return 2;
+}
+__name(usageFailure, "usageFailure");
+function withUsage(command2, body) {
+  try {
+    return body();
+  } catch (err) {
+    if (err instanceof UsageError) return usageFailure(err, command2);
+    throw err;
+  }
+}
+__name(withUsage, "withUsage");
+function readableDirectory(flag, value) {
+  const resolved = path7.resolve(value);
+  let isDirectory3 = false;
+  try {
+    isDirectory3 = fs2.statSync(resolved).isDirectory();
+    if (isDirectory3) fs2.readdirSync(resolved);
+  } catch {
+    isDirectory3 = false;
+  }
+  if (!isDirectory3) {
+    process.stderr.write(`Error: ${flag} ${resolved} is not a readable directory.
+`);
+    return null;
+  }
+  return resolved;
+}
+__name(readableDirectory, "readableDirectory");
+function themeRoots(flags) {
+  const themeRoot = readableDirectory("--theme-root", requiredFlag(flags, "--theme-root"));
+  if (!themeRoot) return null;
+  const parentArg = stringFlag(flags, "--parent-theme-root");
+  if (parentArg === void 0) return { themeRoot };
+  const parentThemeRoot = readableDirectory("--parent-theme-root", parentArg);
+  return parentThemeRoot === null ? null : { themeRoot, parentThemeRoot };
+}
+__name(themeRoots, "themeRoots");
+function diagnosticLine(entry) {
+  return `${entry.code}: ${entry.message.replace(/\s*\n\s*/g, " ")}
+`;
+}
+__name(diagnosticLine, "diagnosticLine");
+function readUtf8(file) {
+  return fs2.readFileSync(path7.resolve(file), "utf-8");
+}
+__name(readUtf8, "readUtf8");
+var RENDER_FLAGS = {
+  "--theme-root": "value",
+  "--parent-theme-root": "value",
+  "--template": "value",
+  "--module": "value",
+  "--section": "value",
+  "--partial": "value",
+  "--state": "value",
+  "--props": "value",
+  "--overrides": "value",
+  "--fixtures": "value",
+  "--out": "value",
+  "--asset-base": "value",
+  "--json": "boolean",
+  "--help": "boolean"
+};
+async function runRenderCommand(args2) {
+  const parsed = withUsage("render", () => {
+    const flags2 = parseFlags(args2, RENDER_FLAGS);
+    if (flags2.has("--help")) return { help: true };
+    requiredFlag(flags2, "--theme-root");
+    const named = TARGET_KINDS.filter((kind) => flags2.has(`--${kind}`));
+    if (named.length !== 1) {
+      throw new UsageError(
+        named.length === 0 ? "name exactly one target: --template <name>, --module <ref>, --section <name> or --partial <name>" : `name exactly one target, not ${named.map((kind) => `--${kind}`).join(" and ")}: --template <name>, --module <ref>, --section <name> or --partial <name>`
+      );
+    }
+    const target2 = { kind: named[0], name: stringFlag(flags2, `--${named[0]}`) };
+    const read = /* @__PURE__ */ __name((flag) => {
+      const raw = stringFlag(flags2, flag);
+      if (raw === void 0) return void 0;
+      const result2 = readJsonObjectArgument(raw, readUtf8);
+      if (!result2.ok) throw new UsageError(`${flag} could not be read: ${result2.reason}`);
+      return result2.value;
+    }, "read");
+    return { help: false, flags: flags2, target: target2, props: read("--props") ?? null, overrides: read("--overrides") };
+  });
+  if (typeof parsed === "number") return parsed;
+  if (parsed.help) {
+    process.stdout.write(commandHelp("render"));
+    return 0;
+  }
+  const { flags, target, props, overrides } = parsed;
+  const roots = themeRoots(flags);
+  if (!roots) return 1;
+  const fixturesArg = stringFlag(flags, "--fixtures");
+  if (fixturesArg !== void 0) {
+    const fixturesDir = readableDirectory("--fixtures", fixturesArg);
+    if (!fixturesDir) return 1;
+    installFixtureOverlay(roots.themeRoot, fixturesDir);
+  }
+  const assetBaseFlag = stringFlag(flags, "--asset-base");
+  const assetBase = assetBaseFlag ?? `${pathToFileURL(roots.themeRoot).href.replace(/\/+$/, "")}/`;
+  const json = flags.has("--json");
+  const outArg = stringFlag(flags, "--out");
+  const state = stringFlag(flags, "--state");
+  const outcome = await renderTarget({
+    ...roots,
+    target,
+    ...state !== void 0 ? { state } : {},
+    props,
+    ...overrides !== void 0 ? { overrides } : {},
+    assetBase,
+    assetBaseOrigin: assetBaseFlag === void 0 ? "theme-root" : "flag"
+  });
+  if (outcome.failure || outcome.html === null) {
+    if (outcome.failure) process.stderr.write(failureText(outcome.failure));
+    if (json) process.stdout.write(`${JSON.stringify(outcome.json)}
+`);
+    return outcome.failure && ARGUMENT_FAILURES.has(outcome.failure.kind) ? 2 : 1;
+  }
+  const result = { ...outcome.json };
+  if (outArg !== void 0) {
+    const outPath = path7.resolve(outArg);
+    try {
+      fs2.mkdirSync(path7.dirname(outPath), { recursive: true });
+      fs2.writeFileSync(outPath, outcome.html, "utf-8");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      process.stderr.write(`Error: could not write ${outPath}: ${message}
+`);
+      if (json) {
+        process.stdout.write(
+          `${JSON.stringify({ ...result, ok: false, html: null, diagnostics: [...result.diagnostics, { code: "OUTPUT_UNWRITABLE", message: `Could not write ${outPath}: ${message}` }] })}
+`
+        );
+      }
+      return 1;
+    }
+    result.out = outPath;
+    result.html = null;
+  }
+  if (json) {
+    process.stdout.write(`${JSON.stringify(result)}
+`);
+    return 0;
+  }
+  for (const entry of result.diagnostics) process.stderr.write(diagnosticLine(entry));
+  process.stdout.write(result.out !== null ? `${result.out}
+` : outcome.html);
+  return 0;
+}
+__name(runRenderCommand, "runRenderCommand");
+var TEMPLATES_FLAGS = {
+  "--theme-root": "value",
+  "--parent-theme-root": "value",
+  "--json": "boolean",
+  "--help": "boolean"
+};
+function runTemplatesCommand(args2) {
+  const flags = withUsage("templates", () => {
+    const parsed = parseFlags(args2, TEMPLATES_FLAGS);
+    if (!parsed.has("--help")) requiredFlag(parsed, "--theme-root");
+    return parsed;
+  });
+  if (typeof flags === "number") return flags;
+  if (flags.has("--help")) {
+    process.stdout.write(commandHelp("templates"));
+    return 0;
+  }
+  const roots = themeRoots(flags);
+  if (!roots) return 1;
+  const templates = listPageTemplates(roots);
+  if (flags.has("--json")) {
+    process.stdout.write(`${JSON.stringify({ templates: templates.map(({ name, root }) => ({ name, root })) })}
+`);
+  } else if (templates.length > 0) {
+    process.stdout.write(`${templates.map((entry) => entry.name).join("\n")}
+`);
+  }
+  return 0;
+}
+__name(runTemplatesCommand, "runTemplatesCommand");
+var LIST_FLAGS = {
+  "--theme-root": "value",
+  "--parent-theme-root": "value",
+  "--kind": "value",
+  "--json": "boolean",
+  "--help": "boolean"
+};
+function runListCommand(args2) {
+  const parsed = withUsage("list", () => {
+    const flags2 = parseFlags(args2, LIST_FLAGS);
+    if (flags2.has("--help")) return { flags: flags2, kind: null };
+    requiredFlag(flags2, "--theme-root");
+    const kind2 = stringFlag(flags2, "--kind");
+    if (kind2 !== void 0 && !LIST_KINDS.includes(kind2)) {
+      throw new UsageError(`--kind expects one of ${LIST_KINDS.join(", ")}, got ${JSON.stringify(kind2)}`);
+    }
+    return { flags: flags2, kind: kind2 ?? null };
+  });
+  if (typeof parsed === "number") return parsed;
+  const { flags, kind } = parsed;
+  if (flags.has("--help")) {
+    process.stdout.write(commandHelp("list"));
+    return 0;
+  }
+  const roots = themeRoots(flags);
+  if (!roots) return 1;
+  const json = flags.has("--json");
+  if (kind !== null) {
+    const items = listThemeTargets(roots, kind);
+    if (json) process.stdout.write(`${JSON.stringify({ kind, items })}
+`);
+    else if (items.length > 0) process.stdout.write(`${items.map((item) => item.name).join("\n")}
+`);
+    return 0;
+  }
+  const kinds = LIST_KINDS.map((each) => ({ kind: each, items: listThemeTargets(roots, each) }));
+  if (json) {
+    process.stdout.write(`${JSON.stringify({ kinds })}
+`);
+  } else {
+    const lines = kinds.flatMap((entry) => entry.items.map((item) => `${entry.kind}	${item.name}`));
+    if (lines.length > 0) process.stdout.write(`${lines.join("\n")}
+`);
+  }
+  return 0;
+}
+__name(runListCommand, "runListCommand");
+var FIXTURES_FLAGS = {
+  "--theme-root": "value",
+  "--fixtures": "value",
+  "--json": "boolean",
+  "--help": "boolean"
+};
+function runFixturesCommand(args2) {
+  const flags = withUsage("fixtures", () => {
+    const parsed = parseFlags(args2, FIXTURES_FLAGS);
+    if (!parsed.has("--help")) requiredFlag(parsed, "--theme-root");
+    return parsed;
+  });
+  if (typeof flags === "number") return flags;
+  if (flags.has("--help")) {
+    process.stdout.write(commandHelp("fixtures"));
+    return 0;
+  }
+  const themeRoot = readableDirectory("--theme-root", requiredFlag(flags, "--theme-root"));
+  if (!themeRoot) return 1;
+  let overlay = null;
+  const fixturesArg = stringFlag(flags, "--fixtures");
+  if (fixturesArg !== void 0) {
+    overlay = readableDirectory("--fixtures", fixturesArg);
+    if (!overlay) return 1;
+    installFixtureOverlay(themeRoot, overlay);
+  }
+  const report = describeFixtures(themeRoot, overlay);
+  if (flags.has("--json")) {
+    process.stdout.write(`${JSON.stringify(report)}
+`);
+    return 0;
+  }
+  const lines = [report.note, ""];
+  for (const kind of report.kinds) {
+    lines.push(`${kind.kind}: ${kind.present ? "present" : "absent"}, read from ${kind.path}`);
+    lines.push(`  ${kind.description}`);
+    lines.push(`  Otherwise: ${kind.whenAbsent}.${kind.schema ? " --json carries its JSON Schema." : " --json carries an example."}`);
+    for (const file of kind.files ?? []) lines.push(`  ${file.name}: ${file.present ? "present" : "absent"}${file.embeddedDefault ? ", built-in otherwise" : ""}`);
+  }
+  process.stdout.write(`${lines.join("\n")}
+`);
+  return 0;
+}
+__name(runFixturesCommand, "runFixturesCommand");
+var FIELDS_FLAGS = {
+  "--theme-root": "value",
+  "--parent-theme-root": "value",
+  "--module": "value",
+  "--json": "boolean",
+  "--help": "boolean"
+};
+function fieldLines(fields, depth) {
+  return fields.flatMap((field) => [
+    `${"  ".repeat(depth)}${field.name} (${field.type})${field.label ? ` ${field.label}` : ""}${field.occurrence ? " [repeated]" : ""}`,
+    ...fieldLines(field.children ?? [], depth + 1)
+  ]);
+}
+__name(fieldLines, "fieldLines");
+function runFieldsCommand(args2) {
+  const flags = withUsage("fields", () => {
+    const parsed = parseFlags(args2, FIELDS_FLAGS);
+    if (!parsed.has("--help")) {
+      requiredFlag(parsed, "--theme-root");
+      requiredFlag(parsed, "--module");
+    }
+    return parsed;
+  });
+  if (typeof flags === "number") return flags;
+  if (flags.has("--help")) {
+    process.stdout.write(commandHelp("fields"));
+    return 0;
+  }
+  const roots = themeRoots(flags);
+  if (!roots) return 1;
+  const module = requiredFlag(flags, "--module");
+  const report = readModuleFields(roots, module);
+  if (!report.ok) {
+    if (report.unreadable) {
+      process.stderr.write(`Error: the module ${JSON.stringify(module)}: ${report.reason}.
+`);
+      return 1;
+    }
+    const lines2 = [`Error: --module ${JSON.stringify(module)} names no module: ${report.reason}.`];
+    if (report.listing.length > 0) lines2.push("Modules:", ...report.listing);
+    process.stderr.write(`${lines2.join("\n")}
+`);
+    return 2;
+  }
+  const { ok: _ok, ...answer } = report;
+  if (flags.has("--json")) {
+    process.stdout.write(`${JSON.stringify(answer)}
+`);
+    return 0;
+  }
+  const lines = [`${answer.module} (${answer.shape}): ${answer.directory}`];
+  if (answer.note) lines.push(answer.note);
+  lines.push(...fieldLines(answer.fields, 0));
+  process.stdout.write(`${lines.join("\n")}
+`);
+  return 0;
+}
+__name(runFieldsCommand, "runFieldsCommand");
+var METADATA_FLAGS = {
+  "--theme-root": "value",
+  "--parent-theme-root": "value",
+  "--json": "boolean",
+  "--help": "boolean"
+};
+async function runMetadataCommand(args2) {
+  const flags = withUsage("metadata", () => {
+    const parsed = parseFlags(args2, METADATA_FLAGS);
+    if (!parsed.has("--help")) requiredFlag(parsed, "--theme-root");
+    return parsed;
+  });
+  if (typeof flags === "number") return flags;
+  if (flags.has("--help")) {
+    process.stdout.write(commandHelp("metadata"));
+    return 0;
+  }
+  const roots = themeRoots(flags);
+  if (!roots) return 1;
+  const metadata = await readThemeMetadata(roots);
+  if (flags.has("--json")) {
+    process.stdout.write(`${JSON.stringify(metadata)}
+`);
+    return 0;
+  }
+  const lines = [
+    `Presets: ${metadata.presets.join(", ")} (default ${metadata.defaultPreset})`,
+    `Surfaces: ${metadata.surfaces.join(", ") || "none"}`,
+    `Settings keys (${metadata.settingsKeys.length}):`,
+    ...metadata.settingsKeys.map((key) => `  ${key}`)
+  ];
+  process.stdout.write(`${lines.join("\n")}
+`);
+  return 0;
+}
+__name(runMetadataCommand, "runMetadataCommand");
+function runCompareCommand(args2) {
+  return runCompare(args2, {
+    stdout: /* @__PURE__ */ __name((text) => process.stdout.write(text), "stdout"),
+    stderr: /* @__PURE__ */ __name((text) => process.stderr.write(text), "stderr"),
+    help: commandHelp("compare")
+  });
+}
+__name(runCompareCommand, "runCompareCommand");
+var SERVE_FLAGS = {
+  "--theme-root": "value",
+  "--parent-theme-root": "value",
+  "--port": "value",
+  "--fixtures": "value",
+  "--help": "boolean"
+};
+async function runServeCommand(args2) {
+  const parsed = withUsage("serve", () => {
+    const flags2 = parseFlags(args2, SERVE_FLAGS);
+    let port2 = DEFAULT_SERVE_PORT;
+    if (flags2.has("--help")) return { flags: flags2, port: port2 };
+    requiredFlag(flags2, "--theme-root");
+    const portArg = stringFlag(flags2, "--port");
+    if (portArg !== void 0) {
+      if (!/^\d{1,5}$/.test(portArg) || Number(portArg) > 65535) {
+        throw new UsageError(`--port expects a whole number from 0 to 65535, got ${JSON.stringify(portArg)}`);
+      }
+      port2 = Number(portArg);
+    }
+    return { flags: flags2, port: port2 };
+  });
+  if (typeof parsed === "number") return parsed;
+  const { flags, port } = parsed;
+  if (flags.has("--help")) {
+    process.stdout.write(commandHelp("serve"));
+    return 0;
+  }
+  const roots = themeRoots(flags);
+  if (!roots) return 1;
+  const fixturesArg = stringFlag(flags, "--fixtures");
+  let fixturesDir;
+  if (fixturesArg !== void 0) {
+    const resolved = readableDirectory("--fixtures", fixturesArg);
+    if (!resolved) return 1;
+    fixturesDir = resolved;
+  }
+  try {
+    const server = await startPreviewServer({ ...roots, port, ...fixturesDir ? { fixturesDir } : {} });
+    process.stdout.write(`Preview: ${server.url}
+`);
+    return null;
+  } catch (err) {
+    const code = err?.code;
+    if (code === "EADDRINUSE") {
+      process.stderr.write(`Error: port ${port} is already in use on ${SERVE_HOST}. Try --port ${port + 1}.
+`);
+    } else {
+      const message = err instanceof Error ? err.message : String(err);
+      process.stderr.write(`Error: could not listen on ${SERVE_HOST}:${port}: ${message}
+`);
+    }
+    return 1;
+  }
+}
+__name(runServeCommand, "runServeCommand");
+
+// src/cli.ts
+var USAGE = [
+  "Usage:",
+  "  cli.ts generate-css --theme-root <path> [--preset <name>] [--output <path>]",
+  "  cli.ts validate --theme-root <path> [--parent-theme-root <path>] [--json]",
+  "                  [--max-warnings <n>] [--max-files <n>]"
+].join("\n");
+function resolveThemeRoot(args2) {
+  const idx = args2.indexOf("--theme-root");
+  if (idx !== -1 && args2[idx + 1]) return path8.resolve(args2[idx + 1]);
+  if (process.env.THEME_ROOT) return path8.resolve(process.env.THEME_ROOT);
+  console.error("Error: --theme-root <path> is required (or set THEME_ROOT env var)");
+  process.exit(1);
+}
+__name(resolveThemeRoot, "resolveThemeRoot");
+function optionValue(args2, flag) {
+  const idx = args2.indexOf(flag);
+  if (idx === -1) return void 0;
+  const value = args2[idx + 1];
+  if (value === void 0 || value.startsWith("--")) {
+    console.error(`Error: ${flag} expects a value.`);
+    process.exit(1);
+  }
+  return value;
+}
+__name(optionValue, "optionValue");
+var args = process.argv.slice(2);
+var command = args[0];
+var COMMANDS = /* @__PURE__ */ new Set(["generate-css", "validate", "render", "serve", "templates", "list", "fixtures", "fields", "metadata", "compare"]);
+function settle(run) {
+  Promise.resolve().then(run).then(
+    (code) => {
+      process.exitCode = code;
+    },
+    (err) => {
+      console.error(err instanceof Error ? err.message : String(err));
+      process.exitCode = 1;
+    }
+  );
+}
+__name(settle, "settle");
+if (COMMANDS.has(command) && args.slice(1).some((arg) => arg === "--help" || command === "compare" && arg === "-h")) {
+  process.stdout.write(commandHelp(command) ?? HELP_TEXT);
+} else if (command === "help") {
+  process.exitCode = runHelpCommand(args.slice(1));
+} else if (command === "generate-css") {
+  const THEME_ROOT = resolveThemeRoot(args);
+  const presetIdx = args.indexOf("--preset");
+  const presetName = presetIdx !== -1 ? args[presetIdx + 1] : "default";
+  const outputIdx = args.indexOf("--output");
+  const outputPath = outputIdx !== -1 ? path8.resolve(args[outputIdx + 1]) : path8.resolve("resolved-theme.css");
+  const fieldsJsonPath = path8.join(THEME_ROOT, "fields.json");
+  const cssDir = path8.join(THEME_ROOT, "assets", "_hs", "css");
+  if (!fs3.existsSync(fieldsJsonPath)) {
+    console.error(`fields.json not found at ${fieldsJsonPath}`);
+    process.exit(1);
+  }
+  const fieldsJson = JSON.parse(fs3.readFileSync(fieldsJsonPath, "utf-8"));
+  const theme = resolveThemeSettings(fieldsJson);
+  console.log("Resolved theme settings.");
+  console.log(`Rendering CSS from ${cssDir}...`);
+  const cssDiagnostics = renderThemeCssToFile({ theme, cssDir, presetName }, outputPath);
+  console.log(`Wrote resolved CSS to ${outputPath}`);
+  for (const entry of cssDiagnostics) {
+    console.warn(`  ${entry.code}: ${entry.message}`);
+  }
+} else if (command === "validate") {
+  const THEME_ROOT = resolveThemeRoot(args);
+  if (!fs3.existsSync(THEME_ROOT)) {
+    console.error(`Theme root not found: ${THEME_ROOT}`);
+    process.exit(1);
+  }
+  const parentRootArg = optionValue(args, "--parent-theme-root");
+  const maxWarningsArg = optionValue(args, "--max-warnings");
+  if (maxWarningsArg !== void 0 && !/^\d+$/.test(maxWarningsArg)) {
+    console.error(`Error: --max-warnings expects a non-negative integer, got ${JSON.stringify(maxWarningsArg)}`);
+    process.exit(1);
+  }
+  const maxWarnings = maxWarningsArg === void 0 ? Infinity : Number(maxWarningsArg);
+  const maxFilesArg = optionValue(args, "--max-files");
+  if (maxFilesArg !== void 0 && !/^[1-9]\d*$/.test(maxFilesArg)) {
+    console.error(`Error: --max-files expects a positive integer, got ${JSON.stringify(maxFilesArg)}`);
+    process.exit(1);
+  }
+  const result = validateTheme({
+    themeRoot: THEME_ROOT,
+    parentThemeRoot: parentRootArg ? path8.resolve(parentRootArg) : void 0,
+    maxFiles: maxFilesArg === void 0 ? void 0 : Number(maxFilesArg)
+  });
+  if (args.includes("--json")) {
+    console.log(JSON.stringify({
+      themeRoot: THEME_ROOT,
+      filesScanned: result.filesScanned,
+      truncated: result.truncated,
+      counts: result.counts,
+      diagnostics: result.diagnostics.map((entry) => ({
+        code: entry.code,
+        severity: severityOf(entry),
+        message: entry.message,
+        details: entry.details ?? {}
+      }))
+    }, null, 2));
+  } else {
+    console.log(formatValidationReport(result, { themeRoot: THEME_ROOT }));
+  }
+  if (result.counts.error > 0 || result.counts.warning > maxWarnings || result.truncated) {
+    process.exit(1);
+  }
+} else if (command === "render") {
+  process.stdout.on("error", (err) => {
+    if (err.code !== "EPIPE") throw err;
+  });
+  runRenderCommand(args.slice(1)).then(
+    (code) => {
+      process.exitCode = code;
+    },
+    (err) => {
+      console.error(err instanceof Error ? err.message : String(err));
+      process.exitCode = 1;
+    }
+  );
+} else if (command === "templates") {
+  process.exitCode = runTemplatesCommand(args.slice(1));
+} else if (command === "list") {
+  process.exitCode = runListCommand(args.slice(1));
+} else if (command === "fixtures") {
+  process.exitCode = runFixturesCommand(args.slice(1));
+} else if (command === "fields") {
+  process.exitCode = runFieldsCommand(args.slice(1));
+} else if (command === "metadata") {
+  settle(() => runMetadataCommand(args.slice(1)));
+} else if (command === "compare") {
+  settle(() => runCompareCommand(args.slice(1)));
+} else if (command === "serve") {
+  runServeCommand(args.slice(1)).then(
+    (code) => {
+      if (code !== null) process.exitCode = code;
+    },
+    (err) => {
+      console.error(err instanceof Error ? err.message : String(err));
+      process.exitCode = 1;
+    }
+  );
+} else if (command === "--help" && args.length === 1) {
+  process.stdout.write(HELP_TEXT);
+} else if (command === "--version" && args.length === 1) {
+  process.stdout.write(`${RENDERER_VERSION}
+`);
+} else {
+  console.error(`Unknown command: ${command}`);
+  console.error(USAGE);
+  process.exit(1);
+}

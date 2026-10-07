@@ -104,7 +104,7 @@ Keep it to what the design shows. Ask about anything that changes the scope (a b
 
 ## What HubSpot's boilerplate contains
 
-`hs cms theme create` copies HubSpot's `cms-theme-boilerplate`. At the time of writing it holds:
+The copy bundled with this plugin (`vendor/boilerplate/src/`, which `scripts/scaffold.mjs` copies at step 4) is HubSpot's `cms-theme-boilerplate` at the version and commit in `vendor/boilerplate/MANIFEST.json`. It holds:
 
 - `theme.json`, `fields.json` (the theme settings) and a placeholder `license.txt`.
 - `templates/layouts/base.html`: the shell (`<head>`, both required includes, header and footer global partials, a `body` block). Every page template extends it.
@@ -116,7 +116,7 @@ Keep it to what the design shows. Ask about anything that changes the scope (a b
 - `css/main.css` (pulls in the files under `css/` with HubL `include`), `css/theme-overrides.css` (reads the theme fields), `css/templates/` for blog and system pages, `js/main.js`.
 - `images/`: placeholders, icons and template and section preview images.
 
-The list can change: look at what was actually created before you name removals.
+HubSpot's latest boilerplate (from `hs cms theme create` or a clone) can differ: look at what was actually copied before you name removals.
 
 ### HubSpot's system templates
 

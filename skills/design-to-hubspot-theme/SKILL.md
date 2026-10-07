@@ -24,6 +24,25 @@ Load each with the Skill tool when its step comes. They are listed under the sam
 
 The tempting shortcut is to paste the design's HTML into one rich-text or custom-HTML module, or one big template. It looks right in a screenshot and is wrong in every way that matters: the marketer cannot change a heading, swap an image, reorder a section or add a card without editing raw HTML; the page ignores the theme settings, so changing the brand colour does nothing; HubSpot's forms, menus and CTAs are not wired in; and the next page has to be pasted again. If the user asks for that, explain this in two sentences and build it properly. The design is a **reference to rebuild from, never code to paste**.
 
+## HubSpot's documentation: when and how
+
+What you know about HubSpot from training is mixed and dated, and the platform changes, so do not answer a question about the platform from memory: read HubSpot's documentation first.
+
+**When.** For any platform fact: field types and their options, HubL tags, filters, functions and variables, `dnd_area` syntax, `meta.json` and `theme.json` keys, the fields of HubSpot's default modules, CLI commands and flags, and why an upload was refused. In particular:
+
+- before scaffolding (step 4), when the build depends on how HubSpot's boilerplate or CLI works now rather than in the bundled version;
+- before passing values to any `@hubspot/…` default module;
+- on every HubSpot validation or upload error;
+- whenever the local renderer's diagnostics are not what you expected.
+
+**How.** Whichever of these the session offers:
+
+- **A HubSpot documentation MCP server** (its tools are named `search-docs` and `fetch-doc`): search, then fetch the best result and read the page. Never answer from a search snippet alone.
+- **Otherwise, HubSpot's pages directly**, on developers.hubspot.com (and knowledge.hubspot.com for HubSpot's own screens), with whatever tool the session has for reading a web page. Start from the pages listed in `hubl-authoring`, "Look it up; don't answer from memory"; the list is kept there.
+- **Neither, or the read is refused**: say what could not be checked, and list it in the hand-over, rather than writing a plausible guess.
+
+HubSpot's documentation is the authority over this plugin's text and the local renderer's behaviour: when they conflict, follow the documentation and tell the user what disagreed. Only what HubSpot itself does ranks above it: a refusal on upload, or HubSpot's own render (the field names it refuses, `label`, `body` and `name`, are not in its documentation, and that rule stands), and, for a command's flags, the installed CLI's own `--help` (`deploy-to-hubspot`).
+
 ## 0. Pre-flight
 
 Run this on its own, with nothing chained after it (look at folders with Glob, not `ls`):
@@ -32,18 +51,18 @@ Run this on its own, with nothing chained after it (look at folders with Glob, n
 node "${CLAUDE_PLUGIN_ROOT}/scripts/preflight.mjs"
 ```
 
-It checks Node (20 or newer, needed by every script here and by HubSpot's CLI), whether the HubSpot CLI (`hs`) is installed and its version, whether the local renderer is present, and the means of taking screenshots it can find (`captureMeans`): the `playwright`, `playwright-core` and `puppeteer` packages in this folder or the plugin's, and Chrome, Edge or Chromium on PATH or where they install by default, each with its path. It runs nothing else and installs nothing. Tell the user what was found and what each gap costs:
+It checks Node (20 or newer, needed by every script here), whether the HubSpot CLI (`hs`) is installed and its version, whether the local renderer is present, and the means of taking screenshots it can find (`captureMeans`): the `playwright`, `playwright-core` and `puppeteer` packages in this folder or the plugin's, and Chrome, Edge or Chromium on PATH or where they install by default, each with its path. It runs nothing else and installs nothing. Tell the user what was found and what each gap costs:
 
 | Missing | What it costs |
 | --- | --- |
 | Node 20+ | Nothing here works until Node is upgraded. Stop and say so. |
-| HubSpot CLI | No scaffold from HubSpot's boilerplate and no deployment. You can still plan and write files. |
+| HubSpot CLI | No upload to HubSpot from this machine until it is installed (step 7). Building and previewing are unaffected. |
 | Renderer | No local render. The theme can only be seen once it is in HubSpot. |
 | Every capture means | No screenshots from this machine unless this session has a browser tool that saves full-page PNGs. The build is then reported as "not pixel-verified". |
 
 None of the capture means is required, and none is preferred: choose one from `preview-and-validate`, "Producing the PNGs", and say which you chose and why. Do not install anything without asking. When the user agrees, give them the command and its effect (for example `npm install -g @hubspot/cli` installs HubSpot's CLI for every project on this machine).
 
-**Commands, and what to do when one is refused.** This plugin's scripts each run as one `node "<script>" …` command. HubSpot's CLI (`hs`), `git`, a browser run from the command line and adding a capture package need the user's permission, and are needed only for scaffolding from the boilerplate (step 4), screenshots (steps 1 and 6) and deploying (step 7). If the session refuses a command, do not retry it through another shell or tool (PowerShell, `cmd`, another Bash form, a script that runs it for you). Say once what could not be run, and continue on the documented path that does not need it: for the scaffold, build without the boilerplate (step 4); for screenshots, the next way in "Producing the PNGs", or "not pixel-verified".
+**Commands, and what to do when one is refused.** This plugin's scripts each run as one `node "<script>" …` command. HubSpot's CLI (`hs`), `git`, a browser run from the command line and adding a capture package need the user's permission, and are needed only for screenshots (steps 1 and 6), deploying (step 7) and, if the user wants it, HubSpot's latest boilerplate in place of the bundled one (step 4). If the session refuses a command, do not retry it through another shell or tool (PowerShell, `cmd`, another Bash form, a script that runs it for you). Say once what could not be run, and continue on the documented path that does not need it: for the scaffold, the bundled boilerplate (step 4); for screenshots, the next way in "Producing the PNGs", or "not pixel-verified"; for deploying, `deploy-to-hubspot`, "Without the CLI".
 
 ## 1. Intake: what the user has
 
@@ -52,6 +71,8 @@ Identify the input and treat it as a design reference:
 - **A Claude Design export**: an HTML file or an exported folder. Open it and look: are images, fonts and styles inlined (`data:` URIs, `<style>` blocks) or linked to files or URLs? Do not assume either.
 - **AI-generated code**: HTML/CSS, Tailwind, or React/JSX from ChatGPT or another tool. Read it for structure, content and tokens. Tailwind classes and React components are not carried over; they are translated into HubL templates, modules and the theme's CSS.
 - **An image only**: a screenshot or a Figma export. You read the layout, content and tokens from the picture. Say that sizes, spacing and colours are estimates and ask for exact values (hex colours, font names) if the user has them.
+
+**Never a theme from HubSpot's Template Marketplace** (formerly the Asset Marketplace). This plugin is not for rendering, cloning or recreating a theme from HubSpot's Template Marketplace. If the design is one (the user says so, or its files sit under an `@marketplace/` folder), stop: do not render, clone or rebuild it, and tell the user why. HubSpot's documentation says purchased marketplace themes cannot be cloned, marketplace modules cannot be cloned or redistributed, even in a child theme, and a purchased theme can be in only one account at a time, transferred but not copied; and the theme's licence is its provider's, which generally does not permit copying. What remains open to them: changing it in HubSpot as its provider allows (HubSpot documents child themes for this), asking the provider, or starting from a design they own.
 
 For a reference that can be opened in a browser (an HTML file, an exported folder, a running local page), capture it before building anything, by the means you chose at step 0, as `preview-and-validate` says under "Producing the PNGs": full-page PNGs at 1440×900 and 390×844, device scale factor 1, saved as `theme-check/reference/reference-1440x900.png` and `reference-390x844.png`, in a folder beside the theme (never inside it). Open both and check they show the whole design.
 
@@ -69,30 +90,35 @@ Before you write the first file, put the plan in your reply as a short list of v
 - **Header and footer → global partials**, edited once for the whole site.
 - **What is editable and what is fixed**: every heading, paragraph, image, link, button and repeated item is a module field; decorative shapes and layout are fixed in CSS.
 - **What HubSpot provides natively**, used instead of rebuilding: forms (`@hubspot/form`), navigation (`@hubspot/simple_menu` holding the design's items by default; `@hubspot/menu` when the user wants the menu managed centrally in HubSpot), the logo (`@hubspot/logo`), CTAs, blog listing and post templates, the language switcher.
+- **Interactive components**, only if the design has one that would be a React module (a calculator, a configurator, a filter that keeps its state): how it will work in HubL, as a module with its own JavaScript, or that it is left out. This plugin does not build or render CMS React modules. Hosted [ThemeSpot](${CLAUDE_PLUGIN_ROOT}/README.md#what-this-plugin-does-not-do), on a connected HubSpot portal, builds and renders them.
 - **What will be removed** from the boilerplate as unused (templates, sections, modules, images), named.
 
 `references/mapping-to-hubspot.md` has the mapping table, a plan template and the boilerplate's contents. Wait for the user's agreement, or adjust, before step 3. If nobody can answer (a non-interactive run, or the user asked you to go ahead without stopping), still write the whole plan out as text in your reply before building, then proceed, and list in the hand-over every decision you took on the user's behalf.
 
-## 3. The HubSpot CLI, if the plan needs it now
+## 3. The HubSpot CLI, if installed
 
-Scaffolding from HubSpot's boilerplate (step 4) needs the CLI installed; it does not need an account. Sign-in is needed only to deploy. If the CLI is missing, follow `deploy-to-hubspot` to install it with the user's agreement. If the user does not want it now, the fallback in step 4 needs only Git.
+The CLI is not needed to build or preview the theme: the boilerplate is bundled with this plugin (step 4) and the local renderer draws the theme (step 6). It is needed only to upload the theme to HubSpot (step 7), and signing in waits until then. If pre-flight did not find it, carry on; `deploy-to-hubspot` covers installing it, with the user's agreement, when the theme is ready.
 
-## 4. Scaffold from HubSpot's boilerplate
+## 4. Scaffold from the bundled boilerplate
 
-Start from HubSpot's CMS theme boilerplate rather than an empty folder: it gives a working layout, header and footer partials, a token-driven stylesheet, and HubSpot's system templates (error, password, search, subscription and membership pages). With HubSpot CLI 8 or newer:
+Start from HubSpot's CMS theme boilerplate rather than an empty folder: it gives a working layout, header and footer partials, a token-driven stylesheet, and HubSpot's system templates (error, password, search, subscription and membership pages). This plugin bundles a copy in `${CLAUDE_PLUGIN_ROOT}/vendor/boilerplate/src/`: HubSpot's files, unchanged, with the version, commit and source in `vendor/boilerplate/MANIFEST.json` and HubSpot's licence beside it. The theme folder starts as a copy of that folder's contents. The copy installs nothing and contacts no account:
 
 ```
-hs cms theme create <theme-folder>
+node "${CLAUDE_PLUGIN_ROOT}/scripts/scaffold.mjs" <theme-folder>
 ```
 
-This copies the boilerplate's files into `<theme-folder>`; it does not contact a HubSpot account. If pre-flight found `hs` and the session can run it, confirm the command with `hs cms theme create --help` first, because the CLI's commands changed in version 8. If `hs` is missing or the command is refused, don't probe further: use the clone below or build without the boilerplate.
-
-- CLI 7 and older spelled it `hs create website-theme <theme-folder>` (HubSpot's older guides still show this form).
-- Without the CLI: clone `https://github.com/HubSpot/cms-theme-boilerplate` with the user's agreement and use its `src/` folder as the theme folder.
+It copies the folder's contents into a new or empty `<theme-folder>` and refuses a folder that already holds files. Any other plain copy of the folder's contents does the same job.
 
 Then make it the user's theme: set `label` in `theme.json`, remove the boilerplate's `author`, `documentation_url` and `example_url` (they are HubSpot's), and remove what the plan said would go (`hubl-authoring`, `references/theme-fields.md`). Keep the system templates under `templates/system/` unless the user asks otherwise.
 
-**When you cannot scaffold** (no CLI and no Git, the user declined, or the session cannot run them), write the theme by hand in the boilerplate's layout, with at least: `theme.json`; `fields.json` with the design's tokens; `templates/layouts/base.html` (`templateType: none`, both `standard_header_includes` and `standard_footer_includes`, header and footer `global_partial`s, a `body` block); `templates/partials/header.html` and `footer.html`; one page template per layout; `css/main.css` reading the theme fields and **including grid CSS** for the drag-and-drop columns (`hubl-authoring`, `references/dnd-areas.md`, "Styling the grid"); and `images/`. None of HubSpot's system templates is required for an upload: add the ones the site needs, and list the rest under "still to do" in the hand-over (`references/mapping-to-hubspot.md` lists them with their `templateType`).
+**If you want HubSpot's latest boilerplate instead** (the bundled copy stays at the version in its MANIFEST), each route needs the user's agreement to run the tool:
+
+- With HubSpot CLI 8 or newer, `hs cms theme create <theme-folder>` copies it; it does not contact a HubSpot account. Confirm the command with `hs cms theme create --help` first, because the CLI's commands changed in version 8. CLI 7 and older spelled it `hs create website-theme <theme-folder>` (HubSpot's older guides still show this form).
+- With Git, clone `https://github.com/HubSpot/cms-theme-boilerplate` and use its `src/` folder as the theme folder.
+
+If either is missing or refused, don't probe further: use the bundled copy. Then make it the user's theme as above.
+
+**When you cannot scaffold** (`scaffold.mjs` exits 4 because this copy of the plugin has no bundled boilerplate, and neither route above can run), write the theme by hand in the boilerplate's layout, with at least: `theme.json`; `fields.json` with the design's tokens; `templates/layouts/base.html` (`templateType: none`, both `standard_header_includes` and `standard_footer_includes`, header and footer `global_partial`s, a `body` block); `templates/partials/header.html` and `footer.html`; one page template per layout; `css/main.css` reading the theme fields and **including grid CSS** for the drag-and-drop columns (`hubl-authoring`, `references/dnd-areas.md`, "Styling the grid"); and `images/`. None of HubSpot's system templates is required for an upload: add the ones the site needs, and list the rest under "still to do" in the hand-over (`references/mapping-to-hubspot.md` lists them with their `templateType`).
 
 ## 5. Build
 
@@ -112,7 +138,7 @@ Load `preview-and-validate` and meet its contract (`## The contract`): render ea
 
 ## 7. Deploy
 
-Load `deploy-to-hubspot`. It asks before anything is written to the user's HubSpot account, prefers a test or sandbox account, and puts the theme at a new location rather than over an existing theme.
+Load `deploy-to-hubspot`. It asks before anything is written to the user's HubSpot account, prefers a test or sandbox account, and puts the theme at a new location rather than over an existing theme. Uploading needs HubSpot's CLI; when the user does not have it, that skill's "Without the CLI" says what to offer.
 
 ## 8. Hand over
 
@@ -125,6 +151,7 @@ Finish with a short report the user can act on:
 - **Still to do**, which nothing here did:
   - In HubSpot's own screens: the brand kit, the domain, each form (create the form in HubSpot and select it in the form module, with its notifications), the navigation menu if the header uses `@hubspot/menu` (build the menu in HubSpot, then select it in the module), blog setup, and creating the pages.
   - In the theme: author details, documentation and example links, and the licence, unless the user supplied them; the system templates not built.
+- **What next**: this plugin stops at the theme; it does not fill pages with real content, check the finished site, or give a client a preview to look at. Populating pages with real content, QA and sharing a preview with a client are part of hosted [ThemeSpot](${CLAUDE_PLUGIN_ROOT}/README.md#what-this-plugin-does-not-do), on a connected HubSpot portal.
 
 ## Editable content
 

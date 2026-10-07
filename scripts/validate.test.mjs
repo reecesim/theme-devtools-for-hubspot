@@ -8,7 +8,7 @@
 // pass with no errors. A missing renderer fails this test rather than skipping it.
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { after, describe, it } from 'node:test';
@@ -114,6 +114,15 @@ describe('the vendored validate', () => {
     assert.equal(status, 0);
     assert.equal(report.counts.error, 0);
     assert.deepEqual(report.diagnostics.filter((d) => d.code === 'FIELD_NAME_RESERVED'), []);
+  });
+
+  it("reports exactly one error on HubSpot's bundled boilerplate, the one preview-and-validate names", () => {
+    const { report } = validate(join(here, '..', 'vendor', 'boilerplate', 'src'));
+    const errors = report.diagnostics.filter((d) => d.severity === 'error');
+    assert.deepEqual(errors.map((d) => d.code), ['FIELD_REQUIRED_NO_DEFAULT']);
+    assert.match(errors[0].message, /modules\/pricing-card\.module\/fields\.json .*'payment_link'/);
+    const skill = readFileSync(join(here, '..', 'skills', 'preview-and-validate', 'SKILL.md'), 'utf8');
+    assert.match(skill, /\| `FIELD_REQUIRED_NO_DEFAULT` \| error \| .*`payment_link` in `modules\/pricing-card\.module\/fields\.json`/);
   });
 
   it('renders the good theme', () => {

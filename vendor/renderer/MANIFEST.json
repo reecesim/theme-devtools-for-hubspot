@@ -1,23 +1,89 @@
 {
   "artefact": "themespot-renderer",
-  "version": "1.0.101",
+  "version": "1.0.102",
   "licence": "Apache-2.0",
   "source": {
     "entry": "src/cli.ts",
-    "commit": "2fd7ceee7a63d09310dc1768af02bd28318092c3",
+    "commit": "42f6d9c7f33c27f92b984a044639b58637be880f",
     "treeClean": true
   },
   "files": [
     {
       "path": "themespot-render.mjs",
-      "size": 540304,
-      "sha256": "9910a97c1084eb5aae57064f1aa088493dbd1f8410fd017830b170f74c3f8d6b",
-      "origin": "esbuild bundle of src/cli.ts under coreShims() (platform node, ESM, target node20, minified, no source map, legal comments none): 52 repository sources under src/ and the packages a-sync-waterfall 1.0.1, asap 2.0.6, nunjucks 3.2.4; then renamed by renameWireNames in scripts/public-artefact.mjs: the 114 occurrences of the hosted product's wire-name prefix, which src/ keeps for that product's consumers, now read themespot, case-preserving (themespot, ThemeSpot, THEMESPOT)"
+      "size": 167698,
+      "sha256": "54bd81f2d02d3085d246a94870fe2fbc2c1e99a245c17d9500a0498372ecd0da",
+      "origin": "the entry of an esbuild build of src/cli.ts under coreShims() (platform node, ESM, target node20, not minified, names kept, no source map, legal comments inline, every src/ module's comments stripped before bundling), code-split into this file and the 11 files under chunks/ at the split points in scripts/public-artefact.mjs: 52 repository sources under src/ and the packages a-sync-waterfall 1.0.1, asap 2.0.6, nunjucks 3.2.4; this file holds src/browser/diagnostics.ts, src/browser/portal-context.ts, src/browser/template-scan.ts, src/cli-commands.ts, src/cli.ts, src/compare.ts, src/field-metadata-extractor.ts, src/fixture-overlay.ts, src/hubl-structure.ts, src/module-field-validator.ts, src/render-inputs.ts, src/render-job.ts, src/serve.ts, src/theme-inventory.ts, src/theme-templates.ts, src/theme-validator.ts, src/version.ts; then renamed by renameWireNames in scripts/public-artefact.mjs: the 124 occurrences of the hosted product's wire-name prefix across all 12 files, which src/ keeps for that product's consumers, now read themespot, case-preserving (themespot, ThemeSpot, THEMESPOT)"
+    },
+    {
+      "path": "chunks/chunk-7ICA6BQD.mjs",
+      "size": 11613,
+      "sha256": "9e5c1cb8e34c888401f05899d6f1b15e326432b826870d317b78c7a1db7868ab",
+      "origin": "a chunk of the build described on themespot-render.mjs, which imports it directly or through another chunk; holds src/hubspot-default-modules.ts; renamed with the rest"
+    },
+    {
+      "path": "chunks/chunk-DS7F6ODD.mjs",
+      "size": 198642,
+      "sha256": "1746bb30999a387bef95c4ccbcaf7f92160504ca67fe9ad262bb1b2e1e1fff5f",
+      "origin": "a chunk of the build described on themespot-render.mjs, which imports it directly or through another chunk; holds src/hubl-content-values.ts, src/hubl-engine.ts; renamed with the rest"
+    },
+    {
+      "path": "chunks/chunk-PPQVNGDG.mjs",
+      "size": 1929,
+      "sha256": "754921801b5f21664d5b9a09cfe7b07f8794aa13ac1d2cca497279403ed142ee",
+      "origin": "a chunk of the build described on themespot-render.mjs, which imports it directly or through another chunk; holds esbuild's own runtime helpers, shared by the other files; no repository source or package; renamed with the rest"
+    },
+    {
+      "path": "chunks/chunk-RZIZEC7B.mjs",
+      "size": 210121,
+      "sha256": "79f3a1062315a9e8bd1094a34d9d81aaa516874560250a88b0f1b4e1ea5e5338",
+      "origin": "a chunk of the build described on themespot-render.mjs, which imports it directly or through another chunk; holds a-sync-waterfall 1.0.1 (1 file); asap 2.0.6 (2 files); nunjucks 3.2.4 (21 files); the throwing stub for the optional chokidar require; renamed with the rest"
+    },
+    {
+      "path": "chunks/chunk-S62FVW6S.mjs",
+      "size": 140724,
+      "sha256": "daa98d8dda5a6f9f009e42021dbd6e2d7ba45775bcd22dae9ef8ca55788b7dfb",
+      "origin": "a chunk of the build described on themespot-render.mjs, which imports it directly or through another chunk; holds src/fixtures-embedded.ts; renamed with the rest"
+    },
+    {
+      "path": "chunks/chunk-SECO6OCJ.mjs",
+      "size": 28485,
+      "sha256": "d796d0950368fefd3a1a6fe6abe84da564c1425c072fe0fac8abfc3e78cd8695",
+      "origin": "a chunk of the build described on themespot-render.mjs, which imports it directly or through another chunk; holds src/layout-sections.ts, src/page-content.ts; renamed with the rest"
+    },
+    {
+      "path": "chunks/chunk-TILBP2YO.mjs",
+      "size": 4756,
+      "sha256": "ae2a2694c604c72ee3d0d087deacd96bb520c9de194f2229f0093de2193892d1",
+      "origin": "a chunk of the build described on themespot-render.mjs, which imports it directly or through another chunk; holds src/host-fs-default.ts, src/host-fs.ts, src/safe-path.ts; renamed with the rest"
+    },
+    {
+      "path": "chunks/chunk-W5TSNL56.mjs",
+      "size": 33592,
+      "sha256": "6680e5c71e1f5a4fd5cf43315ff4c318475ba1de180052289207fd2a3839141f",
+      "origin": "a chunk of the build described on themespot-render.mjs, which imports it directly or through another chunk; holds src/diagnostics.ts, src/hubl-filter-primitives.ts, src/scope-css.ts; renamed with the rest"
+    },
+    {
+      "path": "chunks/chunk-XGUSAY2R.mjs",
+      "size": 124855,
+      "sha256": "447c9e36a103fab8ae827e809733f6be29058b388ca5c956cc645a2c2b1a59d0",
+      "origin": "a chunk of the build described on themespot-render.mjs, which imports it directly or through another chunk; holds src/asset-urls.ts, src/content-fixtures.ts, src/page-renderer.ts, src/settings-resolver.ts, src/specimen.ts, src/ssr-bridge-default.core.ts, src/theme-fields.ts, src/theme-manifest.ts; renamed with the rest"
+    },
+    {
+      "path": "chunks/chunk-ZH4AFS5M.mjs",
+      "size": 29168,
+      "sha256": "e430e278e2761e5c8b2c503ad3adeacb7149f60219ebc63e11bb60114b36e880",
+      "origin": "a chunk of the build described on themespot-render.mjs, which imports it directly or through another chunk; holds src/css-renderer.ts, src/hostfs-loader.ts, src/hubl-operators.ts; renamed with the rest"
+    },
+    {
+      "path": "chunks/chunk-ZOOMNTJN.mjs",
+      "size": 78849,
+      "sha256": "461a6a9acd98c21e422c6e2a2b3d586eebbfc9d272b9dae11250215d78078d16",
+      "origin": "a chunk of the build described on themespot-render.mjs, which imports it directly or through another chunk; holds src/base64.ts, src/content-links.ts, src/field-css.ts, src/fixture-contract.ts, src/fixtures.ts, src/gradient.ts, src/module-field-schema.ts, src/module-loader.ts, src/provenance-attributes.ts, src/provenance.ts, src/theme-metadata-validator.ts, src/theme-roots.ts; renamed with the rest"
     },
     {
       "path": "package.json",
       "size": 291,
-      "sha256": "d201193e5ae201bc3b723c6cf8c8f664480fc46b1392855e7e5f0958f604c520",
+      "sha256": "a722f84f0cf8e3c8781c9851c56619af3ebe87f7a9abbcebde175c1feef710cd",
       "origin": "generated by scripts/build-public.mjs; version from the root package.json"
     },
     {
@@ -28,14 +94,14 @@
     },
     {
       "path": "NOTICE",
-      "size": 4384,
-      "sha256": "84a2942d57134f550ec77cf403d007742fc01f0bbdc85e99abda5fa738b1618c",
+      "size": 4411,
+      "sha256": "8a8a02d4c80ad9b7bf0b3d6e194a37134f31d69a08ba2cf21e2350bb93ec6637",
       "origin": "generated: the copyright line from LICENSOR in scripts/public-artefact.mjs (\"Copyright 2026 Reece Sim\"), then, from the esbuild metafile, each bundled package's package.json and licence file"
     },
     {
       "path": "README.md",
-      "size": 3057,
-      "sha256": "3de0711afa98219cbeb6080f65ccebdfa403c83fe62f1d23385844a5e910e94a",
+      "size": 3258,
+      "sha256": "98c381b01ca253c4497ca2e743564eddc57a4ac111e80644e931696a8ac45548",
       "origin": "scripts/public-artefact/README.md, copied"
     },
     {
@@ -109,7 +175,7 @@
           "Copyright (c) 2013 Elan Shanker"
         ],
         "files": 1,
-        "bytesInOutput": 1072
+        "bytesInOutput": 2966
       },
       {
         "name": "asap",
@@ -119,7 +185,7 @@
           "Copyright 2009–2014 Contributors. All rights reserved."
         ],
         "files": 2,
-        "bytesInOutput": 940
+        "bytesInOutput": 2557
       },
       {
         "name": "nunjucks",
@@ -129,7 +195,38 @@
           "Copyright (c) 2012-2015, James Long"
         ],
         "files": 21,
-        "bytesInOutput": 88624
+        "bytesInOutput": 203229
+      }
+    ],
+    "maxFileBytes": 262144,
+    "splitPoints": [
+      {
+        "module": "nunjucks",
+        "reason": "the template engine and its two dependencies, third-party code kept apart from the renderer"
+      },
+      {
+        "module": "src/fixtures-embedded.ts",
+        "reason": "the embedded sample fixtures, data rather than code"
+      },
+      {
+        "module": "src/module-loader.ts",
+        "reason": "module resolution and the HubL module render, with the theme-root and fixture support it reaches"
+      },
+      {
+        "module": "src/css-renderer.ts",
+        "reason": "the HubL CSS renderer, out of the HubL engine chunk"
+      },
+      {
+        "module": "src/page-content.ts",
+        "reason": "stored page content and dnd layout sections, out of the HubL engine chunk"
+      },
+      {
+        "module": "src/hubl-engine.ts",
+        "reason": "the HubL engine, the largest module, in a chunk of its own"
+      },
+      {
+        "module": "src/page-renderer.ts",
+        "reason": "page, module and section assembly, out of the entry file"
       }
     ]
   }

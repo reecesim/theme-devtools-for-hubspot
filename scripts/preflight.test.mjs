@@ -85,11 +85,12 @@ describe('preflight.mjs', () => {
     assert.equal(report.hubspotCli.version, '8.15.0');
   });
 
-  it('reports a missing HubSpot CLI with what it costs', () => {
+  it('reports a missing HubSpot CLI with what it costs: uploading, not building, previewing or scaffolding', () => {
     const result = run(['--json'], { PATH: '' });
     const report = JSON.parse(result.stdout);
     assert.equal(report.hubspotCli.ok, false);
-    assert.match(report.hubspotCli.note, /scaffold/);
+    assert.match(report.hubspotCli.note, /Building and previewing the theme do not need it \(the boilerplate is bundled\); uploading it to HubSpot does\./);
+    assert.doesNotMatch(report.hubspotCli.note, /scaffold/i);
   });
 
   it('prints one line per check in text mode, capture last', () => {

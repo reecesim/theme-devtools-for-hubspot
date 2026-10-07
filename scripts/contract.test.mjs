@@ -131,6 +131,20 @@ describe('the vendored renderer', { skip: vendored ? false : 'vendor/renderer is
     assert.deepEqual(onDisk.sort(), manifest.files.map((file) => file.path).sort());
   });
 
+  it('is the entry plus its chunks/, and every chunk an .mjs file imports is listed in MANIFEST.json', () => {
+    const listed = new Set(manifest.files.map((file) => file.path));
+    assert.ok(listed.has('themespot-render.mjs'), 'the entry is not listed');
+    const modules = [...listed].filter((path) => path.endsWith('.mjs'));
+    assert.ok(modules.some((path) => path.startsWith('chunks/')), 'no chunks/ listed');
+    for (const path of modules) {
+      const text = readFileSync(join(vendor, path), 'utf8');
+      for (const match of text.matchAll(/from\s*["'](\.{1,2}\/[^"']+)["']|import\(\s*["'](\.{1,2}\/[^"']+)["']\s*\)/g)) {
+        const target = join(dirname(path), match[1] ?? match[2]).split(sep).join('/');
+        assert.ok(listed.has(target), `${path} imports ${match[1] ?? match[2]}, which MANIFEST.json does not list`);
+      }
+    }
+  });
+
   it('has its version quoted in the changelog entry for this plugin version', () => {
     const { version } = JSON.parse(readFileSync(join(pluginRoot, '.claude-plugin', 'plugin.json'), 'utf8'));
     const changelog = readFileSync(join(pluginRoot, 'CHANGELOG.md'), 'utf8');
@@ -143,5 +157,110 @@ describe('README', () => {
   it('says no script makes a network call', () => {
     const readme = readFileSync(join(pluginRoot, 'README.md'), 'utf8');
     assert.ok(readme.includes('No script makes a network call; a capture tool loads only the pages you point it at.'));
+  });
+
+  it('says, in the same paragraph, what runs with permission and that Claude reads HubSpot\'s documentation from the web', () => {
+    const readme = readFileSync(join(pluginRoot, 'README.md'), 'utf8').replace(/\r\n/g, '\n');
+    const paragraph = readme.split('\n').find((line) => line.includes('No script makes a network call;'));
+    assert.match(paragraph, /HubSpot's CLI \(`hs`\), `git`, and a browser or capture package for screenshots run only when you allow them/);
+    assert.match(paragraph, /web fonts, icon scripts and placeholder images from the network/);
+    assert.match(paragraph, /HubSpot's documentation on developers\.hubspot\.com and knowledge\.hubspot\.com/);
+  });
+});
+
+// HubSpot's CMS theme boilerplate, copied unchanged from a pinned commit. Unlike the renderer
+// it is plain source the plugin always ships, so its absence fails rather than skips.
+const boilerplate = join(pluginRoot, 'vendor', 'boilerplate');
+const SYSTEM_TEMPLATES = [
+  '404',
+  '500',
+  'backup-unsubscribe',
+  'membership-login',
+  'membership-register',
+  'membership-reset-password-request',
+  'membership-reset-password',
+  'password-prompt',
+  'search-results',
+  'subscription-preferences',
+  'subscriptions-confirmation',
+];
+
+describe('the vendored boilerplate', () => {
+  const manifest = JSON.parse(readFileSync(join(boilerplate, 'MANIFEST.json'), 'utf8'));
+
+  it('records its source: the repository URL, a pinned commit and its date', () => {
+    assert.equal(manifest.source.url, 'https://github.com/HubSpot/cms-theme-boilerplate');
+    assert.match(manifest.source.commit, /^[0-9a-f]{40}$/);
+    assert.match(manifest.source.commitDate, /^\d{4}-\d{2}-\d{2}T/);
+    assert.match(manifest.copied, /^\d{4}-\d{2}-\d{2}$/);
+    assert.equal(manifest.licence, 'Apache-2.0');
+  });
+
+  it('matches every sha256 and size in its MANIFEST.json, with no unlisted file', () => {
+    for (const file of manifest.files) {
+      const bytes = readFileSync(join(boilerplate, file.path));
+      assert.equal(bytes.length, file.size, `${file.path} size`);
+      assert.equal(createHash('sha256').update(bytes).digest('hex'), file.sha256, `${file.path} sha256`);
+    }
+    const onDisk = walk(boilerplate).map((path) => relative(boilerplate, path).split(sep).join('/')).filter((path) => path !== 'MANIFEST.json');
+    assert.deepEqual(onDisk.sort(), manifest.files.map((file) => file.path).sort());
+  });
+
+  it("has a theme's essentials and HubSpot's system templates", () => {
+    for (const path of ['theme.json', 'fields.json', 'templates/layouts/base.html', ...SYSTEM_TEMPLATES.map((name) => `templates/system/${name}.html`)]) {
+      assert.ok(existsSync(join(boilerplate, 'src', path)), `src/${path} is missing`);
+    }
+  });
+
+  it("carries HubSpot's licence beside it, and the plugin's NOTICE and README attribute it", () => {
+    const licence = readFileSync(join(boilerplate, 'LICENSE'), 'utf8');
+    assert.match(licence, /Copyright 2020 {1,2}HubSpot, Inc\./);
+    assert.match(licence, /Apache License, Version 2\.0/);
+    const notice = readFileSync(join(pluginRoot, 'NOTICE'), 'utf8').replace(/\r\n/g, '\n');
+    assert.match(notice, /vendor\/boilerplate\/ contains HubSpot's CMS theme boilerplate \(https:\/\/github\.com\/HubSpot\/cms-theme-boilerplate\), Copyright 2020 HubSpot, Inc\., licensed under the Apache License, Version 2\.0/);
+    const readme = readFileSync(join(pluginRoot, 'README.md'), 'utf8');
+    assert.match(readme, /`vendor\/boilerplate\/` is Copyright 2020 HubSpot, Inc\./);
+  });
+});
+
+// What a plugin directory may hold to be accepted: file count, file types, file sizes, and no
+// attribute files, registry settings, root package manifests, lockfiles or package-runner launchers.
+// The runner names are assembled at run time so this file does not contain them.
+const RUNNERS = [['np', 'x'], ['bun', 'x']].map((parts) => parts.join(''));
+const IMAGE_OR_FONT = /\.(svg|png|jpe?g|gif|webp|woff2?|ttf|otf)$/i;
+const TEXT = /\.(md|mjs|js|json|css|html|txt)$|(^|\/)(LICENSE|NOTICE)$/;
+const SIZE_LIMIT = 256 * 1024;
+const LOCKFILES = ['package-lock.json', 'npm-shrinkwrap.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lock', 'bun.lockb'];
+
+describe('directory limits', () => {
+  it('holds at most 512 files', () => {
+    assert.ok(files.length <= 512, `${files.length} files`);
+  });
+
+  it('holds only text, SVG, PNG, JPEG, GIF, WebP and font files', () => {
+    const others = files.map((file) => file.name).filter((name) => !TEXT.test(name) && !IMAGE_OR_FONT.test(name));
+    assert.deepEqual(others, []);
+  });
+
+  it('keeps every file that is not an image or a font under 262,144 bytes (256 KiB), the renderer included, with no exception', () => {
+    assert.equal(SIZE_LIMIT, 262144);
+    const large = files
+      .filter((file) => !IMAGE_OR_FONT.test(file.name))
+      .filter((file) => readFileSync(file.path).length >= SIZE_LIMIT)
+      .map((file) => `${file.name} (${readFileSync(file.path).length} bytes)`);
+    assert.deepEqual(large, []);
+  });
+
+  it('has no attribute file, registry settings, root package.json or lockfile', () => {
+    const names = files.map((file) => file.name);
+    assert.deepEqual(names.filter((name) => /(^|\/)\.(gitattributes|npmrc)$/.test(name)), []);
+    assert.ok(!names.includes('package.json'), 'package.json at the plugin root');
+    assert.deepEqual(names.filter((name) => LOCKFILES.includes(name.split('/').pop())), []);
+  });
+
+  it('names no package-runner launcher anywhere', () => {
+    const pattern = new RegExp(`\\b(${RUNNERS.join('|')})\\b`, 'i');
+    const hits = files.filter((file) => !IMAGE_OR_FONT.test(file.name) && pattern.test(file.text)).map((file) => file.name);
+    assert.deepEqual(hits, []);
   });
 });

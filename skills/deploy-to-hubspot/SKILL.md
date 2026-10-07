@@ -34,6 +34,17 @@ To install or update (with the user's agreement; needs Node 20 or newer):
 npm install -g @hubspot/cli
 ```
 
+It installs HubSpot's CLI for every project on this machine. If the user cannot or does not want to install it, see "Without the CLI" below.
+
+## Without the CLI
+
+HubSpot's documentation, as read on 2026-10-07, gives no way to put a theme folder, or a zip of one, into the Design Manager from HubSpot's own screens. There, **File** > **New file** creates new templates, modules, stylesheets and JavaScript files; **File** > **New theme** starts a theme from one of HubSpot's starting points, such as its boilerplate, not from the user's folder; and `theme.json` and `fields.json` "can't currently be created in the design manager", the documentation says, and are uploaded with the CLI. Read the documentation again before telling the user this (`design-to-hubspot-theme`, "HubSpot's documentation: when and how"): an upload documented since would change the answer. Until then, uploading this theme needs HubSpot's CLI, on this machine or another; building and previewing it do not. Offer the user:
+
+- installing it here, with their agreement (step 1);
+- or handing the theme folder to someone who has the CLI and Design Manager access, with the checks in step 3 done and the destination agreed.
+
+This plugin has no other route, and it keeps the theme's source only in the user's folder. When the user has no way to run the CLI, or wants the source kept somewhere a client can see it, hosted [ThemeSpot](${CLAUDE_PLUGIN_ROOT}/README.md#what-this-plugin-does-not-do), on a connected HubSpot portal, keeps the source in managed Git with CI and deploys it from there.
+
 ## 2. Sign in
 
 The user runs this in their own terminal, because it opens a browser and prompts for the key:

@@ -6,3 +6,5 @@ This plugin is licensed under the Apache License, Version 2.0 (Apache-2.0); see 
 skills/hubl-authoring/ was adapted by the same author, Reece Sim, from his private HubL authoring guidance, and is granted under the same licence.
 
 The renderer bundled in vendor/renderer/ carries its own notice, including the third-party packages inside it: see vendor/renderer/NOTICE.
+
+vendor/boilerplate/ contains HubSpot's CMS theme boilerplate (https://github.com/HubSpot/cms-theme-boilerplate), Copyright 2020 HubSpot, Inc., licensed under the Apache License, Version 2.0 (see vendor/boilerplate/LICENSE). It is redistributed unchanged; vendor/boilerplate/MANIFEST.json records the commit it was copied from.

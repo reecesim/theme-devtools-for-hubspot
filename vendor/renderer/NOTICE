@@ -1,10 +1,10 @@
 Copyright 2026 Reece Sim
 
-themespot-render 1.0.101 is licensed under the Apache License, Version 2.0 (Apache-2.0); see LICENSE.
+themespot-render 1.0.102 is licensed under the Apache License, Version 2.0 (Apache-2.0); see LICENSE.
 
 The built-in @hubspot/* default modules in this renderer are original stand-ins that reuse HubSpot's public class names for compatibility.
 
-themespot-render.mjs includes the following third-party packages, each under its own licence:
+themespot-render.mjs and the files under chunks/ include the following third-party packages, each under its own licence:
 
 a-sync-waterfall 1.0.1 (MIT)
   Copyright (c) 2013 Elan Shanker

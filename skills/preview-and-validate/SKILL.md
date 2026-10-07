@@ -20,7 +20,7 @@ The local render is an approximation of HubSpot's HubL rendering. It is useful f
 - The rendered document wraps the template's output in the renderer's own page shell (its own `<head>` and a `<title>` of "Preview"); a layout's `<!doctype>`, `<html>`, `<head>` and `<body>` end up nested inside it. Browsers draw it normally; read the HTML with that in mind.
 - Pages may load fonts and placeholder images from the network, so a render without a connection can differ.
 
-Previewing a theme on a portal's real content, and drawing React modules, are part of hosted ThemeSpot and not of this plugin.
+When the user asks to see the theme with their real pages, posts or HubDB rows, say what the local render cannot do: it draws the theme's defaults and fixtures, never the account's content, and it draws no CMS React modules. Previewing the theme on the portal's own content is part of hosted [ThemeSpot](${CLAUDE_PLUGIN_ROOT}/README.md#what-this-plugin-does-not-do), on a connected HubSpot portal.
 
 ## The renderer
 
@@ -61,6 +61,7 @@ node "${CLAUDE_PLUGIN_ROOT}/scripts/render.mjs" <command> [options]
 | --- | --- | --- | --- |
 | `FIELD_NAME_RESERVED` | error | A field, group or repeater named `label`, `body` or `name`, at any depth, in a module's or the theme's `fields.json`. The message gives the field path and a suggested name (`details.fieldPath`, `details.suggestedName` in `--json`). | Rename it and every use of it (`hubl-authoring`, "Field names HubSpot refuses"). Fix every one listed before any upload. |
 | `TEMPLATE_REQUIRED_VARIABLE_MISSING` | warning | A page or blog template (by its `templateType`) without `standard_header_includes` or `standard_footer_includes` (the message names which), in the file and in everything it extends or includes. It counts only the printed form, `{{ standard_header_includes }}`; a template that uses `{% import %}` is not judged. | Add the missing one, printed, to the template or the layout it extends. Treat it as a fix, not a warning to leave. |
+| `FIELD_REQUIRED_NO_DEFAULT` | error | A field marked `required` with no `default`. HubSpot's boilerplate, as bundled, has one: `payment_link` in `modules/pricing-card.module/fields.json`, a payment field shown when the card's button target is "Use a payment link", the default. | In the theme's own modules, give the field a default or make it optional. For the boilerplate's `pricing-card` (and what places it: `sections/pricing.html`, `templates/qa-test.html`), remove it if the design has no pricing cards; otherwise do not change HubSpot's file silently: check HubSpot's documentation for the payment field, and tell the user what `validate` reported and what you did. Whether HubSpot's upload refuses the untouched module was not checked (`hubl-authoring`, `references/validation-errors.md`, has the related page error about payments). |
 | `HUBSPOT_INTERNAL_MODULE` | info | A note about a HubSpot-shipped module. | Informational. |
 
 The renderer does **not** report these, so check them yourself by reading the files:
@@ -72,6 +73,8 @@ The renderer does **not** report these, so check them yourself by reading the fi
 - a fixture file of the wrong shape (it can draw nothing, with no diagnostic).
 
 When a section or card you expected is missing from the render and there is no diagnostic, suspect one of these first.
+
+A diagnostic that raises a question about HubSpot itself (what fields a default module takes or what markup it draws, whether an `@hubspot/…` path exists, what a HubL tag, filter, function or variable does) is answered from HubSpot's documentation, not from the renderer's source or its stand-ins' output: the stand-ins approximate HubSpot's modules and do not describe them. `design-to-hubspot-theme`, "HubSpot's documentation: when and how", says when to look and how.
 
 ## The contract
 

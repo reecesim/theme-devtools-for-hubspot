@@ -1,0 +1,566 @@
+{
+  "artefact": "cms-theme-boilerplate",
+  "version": "3.14.2",
+  "licence": "Apache-2.0",
+  "copyright": "Copyright 2020 HubSpot, Inc.",
+  "source": {
+    "url": "https://github.com/HubSpot/cms-theme-boilerplate",
+    "tag": "v3.14.2",
+    "commit": "656aaeb758712d4728e95bda60d695f8fdbc22f2",
+    "commitDate": "2025-09-16T08:39:23-04:00",
+    "paths": [
+      "src/",
+      "LICENSE"
+    ]
+  },
+  "copied": "2026-10-07",
+  "method": "git archive of the commit above, for src/ and LICENSE only; every file checked against its blob with git hash-object",
+  "changes": "None. src/ and LICENSE are byte-for-byte copies of the commit above. Nothing was removed: no file in src/ is HubSpot marketing, and every file is text, SVG, PNG or JPEG.",
+  "files": [
+    {
+      "path": "LICENSE",
+      "size": 553,
+      "sha256": "09503d8de350785d02fd0def9419402fd834842db82023fab6ca79671ccc4587"
+    },
+    {
+      "path": "src/css/components/_default-modules.css",
+      "size": 1782,
+      "sha256": "2c1824edebad675db503de2a0f6937af3ad4a6a0cff407ef29e04d96750f7cb7"
+    },
+    {
+      "path": "src/css/components/_header.css",
+      "size": 14999,
+      "sha256": "bd9a1352534896ff5e3fff51457c72891f48b2d90ae1805a01431c7bcbcc77a4"
+    },
+    {
+      "path": "src/css/elements/_buttons.css",
+      "size": 690,
+      "sha256": "74bb99b325361819fa62236a028d3569a8269e2dc226af1182f647ba5bd7ab67"
+    },
+    {
+      "path": "src/css/elements/_forms.css",
+      "size": 3089,
+      "sha256": "22ddf0418cc490a1406c27a95897b97153877413fa4c1ba0c50cf6ddf93f5797"
+    },
+    {
+      "path": "src/css/elements/_tables.css",
+      "size": 220,
+      "sha256": "c41f3119135af90ce6979727f5cebdd3d0d88d0ea579fd0d5cb08969d7e0b86a"
+    },
+    {
+      "path": "src/css/elements/_typography.css",
+      "size": 1378,
+      "sha256": "6aa443970b32532ef372c27844eeabb32f424375e7f732cb044378536795b2de"
+    },
+    {
+      "path": "src/css/generic/_normalize.css",
+      "size": 4729,
+      "sha256": "540bc146324683171038418f5f6f011c5bb4c8a0521062b74650e24987ea9b0a"
+    },
+    {
+      "path": "src/css/generic/_reset.css",
+      "size": 51,
+      "sha256": "b6a1a9a364bf78dfefffc44945ae665c3aa304b50fb6f673d7c789af3f6416c7"
+    },
+    {
+      "path": "src/css/main.css",
+      "size": 1096,
+      "sha256": "fe4c26afedb9447f6aef68c0d74b1fd42ee9010581535ac2057bace95ce16f4b"
+    },
+    {
+      "path": "src/css/objects/_containers-dnd.css",
+      "size": 320,
+      "sha256": "df3d0f8101c69fd43073a0ac2a4706107022397fa46492066252949bac740d32"
+    },
+    {
+      "path": "src/css/objects/_layout.css",
+      "size": 813,
+      "sha256": "5e14e8a085cd9efb7849ce5f5fd9acc8381ea60026affec1b851688dc498d6b7"
+    },
+    {
+      "path": "src/css/templates/blog.css",
+      "size": 1277,
+      "sha256": "00d558c7496782c52040e53e93f874006833fc34cdae8be32bd31e841e9903aa"
+    },
+    {
+      "path": "src/css/templates/system.css",
+      "size": 2306,
+      "sha256": "05c7cb9b7cee57a88cf4d3ecc5628b899d9045925c9cba5bf49dba19f3e7a3c8"
+    },
+    {
+      "path": "src/css/theme-overrides.css",
+      "size": 21088,
+      "sha256": "d5e5921df4ffeb14f57f7d0fb8b5644d4f7596bfb8112e92c4a7a56452d43fd1"
+    },
+    {
+      "path": "src/css/tools/_macros.css",
+      "size": 1208,
+      "sha256": "736f74ade2147c91692c2582bf5796ebf34aaac1d536e2d860b9e94ce2e95656"
+    },
+    {
+      "path": "src/css/utilities/_helper.css",
+      "size": 649,
+      "sha256": "c7cd59501527f6449c054fa947f703fe8d2aa58e1d024c583d027aad06d18ea1"
+    },
+    {
+      "path": "src/fields.json",
+      "size": 55408,
+      "sha256": "ea81f987a37d97e88580a47fe36db79362703401c90a925c4fe7a7a256f3d32e"
+    },
+    {
+      "path": "src/images/email.png",
+      "size": 4539,
+      "sha256": "c5eee38e5ffd5b6b7d685364d6545f7f674f25b5ed857bebf02b4eb626592ed5"
+    },
+    {
+      "path": "src/images/grayscale-mountain.png",
+      "size": 2186,
+      "sha256": "684ec4af5198b8d8a9095aea112bc5c42d89667d2613a4f1aa9c38080f8615f1"
+    },
+    {
+      "path": "src/images/large-placeholder-image.png",
+      "size": 4460,
+      "sha256": "2d6d6840f130fcd5003e4a6e63a74ac423d1ad16a86e2076789fb85a8da403d3"
+    },
+    {
+      "path": "src/images/location.png",
+      "size": 5245,
+      "sha256": "21b4ab00125fec12d8ab5e5c86923061ecdddd8993e3975b611409e009ef5d50"
+    },
+    {
+      "path": "src/images/module-icons/blog.svg",
+      "size": 314,
+      "sha256": "fbdbf7ffbc58d658176e4c76c2c93cac0a7dd63e544e4e7f8a5dc39422274d03"
+    },
+    {
+      "path": "src/images/module-icons/cta.svg",
+      "size": 488,
+      "sha256": "409ac33c2d87cae556826caa676f72ba3b71499bc893076d92854e606d6d1e99"
+    },
+    {
+      "path": "src/images/module-icons/ellipses.svg",
+      "size": 764,
+      "sha256": "62ac960f8dd3a77ea70926a22fd8df3ffb3e592b1e6e298ae2d97fdb480d22b1"
+    },
+    {
+      "path": "src/images/module-icons/info-circle-solid.svg",
+      "size": 641,
+      "sha256": "2662665d1f90b6412498ce80871b30a379583fcca9fbeb1530a307170f2593e2"
+    },
+    {
+      "path": "src/images/module-icons/menu.svg",
+      "size": 720,
+      "sha256": "a0381f4a9bf4b4541fbcab5bc6cab4af871384a163bb236a3213fb7d76e27cb2"
+    },
+    {
+      "path": "src/images/module-icons/social.svg",
+      "size": 573,
+      "sha256": "c67cfe116674a83bbc048c229fe7b9e6bdd812604552fb68e13d1c197204edb0"
+    },
+    {
+      "path": "src/images/module-icons/table.svg",
+      "size": 555,
+      "sha256": "59fc7766d83bc78589cbc27d8d4be487769fab683d979332e0f9c2d7f6faa75a"
+    },
+    {
+      "path": "src/images/phone.png",
+      "size": 4822,
+      "sha256": "3efebf8485f42b9ceb5c073a3c9e35d68f1438abd266ee7193af5099a1688ec0"
+    },
+    {
+      "path": "src/images/section-previews/call-to-action.png",
+      "size": 154093,
+      "sha256": "f032ab6dff7666f97e1615b51a96809562be5471f9f76d25ec1efde68fc00195"
+    },
+    {
+      "path": "src/images/section-previews/cards.png",
+      "size": 233633,
+      "sha256": "e0edcc3e882085325a2ef35db478765e8902013cdc6cdfe5add64f9b300da9ae"
+    },
+    {
+      "path": "src/images/section-previews/hero-banner.png",
+      "size": 156768,
+      "sha256": "91137f1d8fe3f35fa9cd56dc19ccce25e5eb94734ae714f98b70f22d8ec189cb"
+    },
+    {
+      "path": "src/images/section-previews/multi-column-content.png",
+      "size": 211671,
+      "sha256": "68201e63d459a766658610984041743f05f2bbdc9322aea22d9cfd46bb211abc"
+    },
+    {
+      "path": "src/images/section-previews/multi-row-content.png",
+      "size": 141994,
+      "sha256": "85baf09ac3b85c32f120be3c66b68a3b14725c2cb02e8914398fa179a9ac46d9"
+    },
+    {
+      "path": "src/images/section-previews/pricing.png",
+      "size": 373337,
+      "sha256": "da1eefa872f9a65bd25c702e1ece6d08a832572f9d4b3a97590054cdbf5da0c2"
+    },
+    {
+      "path": "src/images/team-image.jpg",
+      "size": 33825,
+      "sha256": "f02ac3c2ef24df3f7586ec630d4fb180efbad0c78546a9b0c642a70ae31d19fa"
+    },
+    {
+      "path": "src/images/template-previews/404.png",
+      "size": 90583,
+      "sha256": "5be487762f26d0ff7b2cafd0d7d9428a779ba0c76fa112d2ce82ad33d501d1b6"
+    },
+    {
+      "path": "src/images/template-previews/500.png",
+      "size": 120656,
+      "sha256": "2fe083c0eea3f9aac90d99705f361fc7f58f3078c36b4e47d717c3c7f39f32bc"
+    },
+    {
+      "path": "src/images/template-previews/about.png",
+      "size": 358295,
+      "sha256": "ad7f01e70a58e2770d979a3db6859bf1758e9ef0481892d41a9885d0a3e6b36a"
+    },
+    {
+      "path": "src/images/template-previews/backup-unsubscribe.png",
+      "size": 90748,
+      "sha256": "9f8088837312d8fb6d910bd287fadb78299533458f5e5085771a0323704f086b"
+    },
+    {
+      "path": "src/images/template-previews/blog-index.png",
+      "size": 268248,
+      "sha256": "cbc814f779d8fcd01b434055886c839b1ecca704427ed84502462e16ae98119d"
+    },
+    {
+      "path": "src/images/template-previews/blog-post.png",
+      "size": 881089,
+      "sha256": "d1679e7e0fddf7d63cde6633743887d7441277b6dc2339fa52e2935c081ce476"
+    },
+    {
+      "path": "src/images/template-previews/contact.png",
+      "size": 120375,
+      "sha256": "80e22ede3e8cbc1c96a125426778ef03605d37c0fb2274e38de6af51cd3e2dc4"
+    },
+    {
+      "path": "src/images/template-previews/home.png",
+      "size": 455840,
+      "sha256": "8adfd928935c3e92daabbc63f2d2b96bd1d85242c8eb7852a010e361eff92281"
+    },
+    {
+      "path": "src/images/template-previews/hubdb.png",
+      "size": 90759,
+      "sha256": "cee5cc201d9121736f4ae6481c6090d74befcc72a6ecfa3cb518737efb8ada3c"
+    },
+    {
+      "path": "src/images/template-previews/landing-page.png",
+      "size": 231503,
+      "sha256": "9c2b2224d4b79eb26b1cbc9307e667d4588c14c05e4df93830031acc12efde84"
+    },
+    {
+      "path": "src/images/template-previews/membership-login.png",
+      "size": 102570,
+      "sha256": "89b398c463914e180750f46cad73025b2b920bc1dd4888c173f1a4434085194c"
+    },
+    {
+      "path": "src/images/template-previews/membership-register.png",
+      "size": 117823,
+      "sha256": "5a67f2e085c7a7d5ccec32f2abdd98d9b3d84ba30d5bdf4c6e57d178480fe167"
+    },
+    {
+      "path": "src/images/template-previews/membership-reset-password-request.png",
+      "size": 69940,
+      "sha256": "0e28d30f7b1ba1e128de3bba7f716cc584a974fe2f8da28fcc8d750244c1c687"
+    },
+    {
+      "path": "src/images/template-previews/membership-reset-password.png",
+      "size": 105593,
+      "sha256": "cbe58318a026fb3524923bfd46026d0783ffbd2d891a06a7f11ef3806cdee60a"
+    },
+    {
+      "path": "src/images/template-previews/password-prompt.png",
+      "size": 91904,
+      "sha256": "f059001b63b0725e6d59bff4344f769886dfc6346e746de4f877c8b3fc6a66c4"
+    },
+    {
+      "path": "src/images/template-previews/pricing.png",
+      "size": 272682,
+      "sha256": "b780eddca83f1c15033577f8465933effe733e95431b2027d2d15397c84f9097"
+    },
+    {
+      "path": "src/images/template-previews/search-results.png",
+      "size": 62186,
+      "sha256": "0ae32047b2613fc62187c15ce825151369f5e536d4071462c98b8e693634406c"
+    },
+    {
+      "path": "src/images/template-previews/subscription-preferences.png",
+      "size": 187081,
+      "sha256": "f2dea00f15d34560db9bad8b7ce4cea551661e8f19a95c54f59ebf01e9fc38f4"
+    },
+    {
+      "path": "src/images/template-previews/subscriptions-confirmation.png",
+      "size": 117417,
+      "sha256": "03d5120bca74d804343a1d8ae61b6993c9246b6b313d9f3dd63a29e0a31301c2"
+    },
+    {
+      "path": "src/js/main.js",
+      "size": 3619,
+      "sha256": "fb72312c6f2f576d609ade992ee69b660a6c3e4ffc46f5e892d019e531d4bc29"
+    },
+    {
+      "path": "src/license.txt",
+      "size": 497,
+      "sha256": "8a1e427fb927016a573b9663c755bca05692af2defa961b43be9c5f4d0b233f8"
+    },
+    {
+      "path": "src/modules/button.module/fields.json",
+      "size": 2238,
+      "sha256": "9d0f145321097b5aa66500433f6cb0df5610103bfbe1612219519d79bc489f06"
+    },
+    {
+      "path": "src/modules/button.module/meta.json",
+      "size": 337,
+      "sha256": "3b3dc15b0f196becc0fa3610ca6a06602559fdda04e95326673f8e64ec0ca4f5"
+    },
+    {
+      "path": "src/modules/button.module/module.html",
+      "size": 2070,
+      "sha256": "3021e524f5be71e7f04a13e1d8edb675a52cda5779b94a535184b24216b9f82a"
+    },
+    {
+      "path": "src/modules/card.module/fields.json",
+      "size": 5305,
+      "sha256": "c5f05bd47b01a797afc7037234558e43e7ce0fdca01067aa3f90475dc1fc2896"
+    },
+    {
+      "path": "src/modules/card.module/meta.json",
+      "size": 344,
+      "sha256": "929d8e8c1ee61c7d94d518ccac409d0ec83d45879452f80a29079d81469a48d0"
+    },
+    {
+      "path": "src/modules/card.module/module.css",
+      "size": 389,
+      "sha256": "5ffc5d9edb1e48f741de0b77266bd87d58a3bec5f43f3dc2151ac45a6f7b5d6b"
+    },
+    {
+      "path": "src/modules/card.module/module.html",
+      "size": 2361,
+      "sha256": "2b26e43c1c773204a3dac7321124b33b8fe55ce17b3282c204cb3685b1e6cee8"
+    },
+    {
+      "path": "src/modules/menu.module/fields.json",
+      "size": 2012,
+      "sha256": "9b8ce0414bf3d35eedfde435c6c3efd60bdd0f21619ab1549ed909a7c693fb3b"
+    },
+    {
+      "path": "src/modules/menu.module/meta.json",
+      "size": 361,
+      "sha256": "e6f94a9a0c652ed94fb9ac00abf732a7babd81ebd1c4b9544dae932020713bd5"
+    },
+    {
+      "path": "src/modules/menu.module/module.css",
+      "size": 5693,
+      "sha256": "7bfe1555b425bbb072f8feb8086a64b354aad1809d4bec87d45f1161d48250a4"
+    },
+    {
+      "path": "src/modules/menu.module/module.html",
+      "size": 5426,
+      "sha256": "cdc32f667112d80fdb61a49e8bc6703b0789f49d637e2b504c40cf8938dfb7bc"
+    },
+    {
+      "path": "src/modules/menu.module/module.js",
+      "size": 2504,
+      "sha256": "5d694063b53159a1605e59a942ea0ad9cab85e456b93049277c34282bc7eb7f4"
+    },
+    {
+      "path": "src/modules/pricing-card.module/fields.json",
+      "size": 10528,
+      "sha256": "c16f398026c888a33b207ec5b01731af903da4c8dd76a6329c9ef51e6a760ebc"
+    },
+    {
+      "path": "src/modules/pricing-card.module/meta.json",
+      "size": 336,
+      "sha256": "3c8450b2a4280f24e92c52793f0a6aee7c01b975620ae05aad85a197e8dd9732"
+    },
+    {
+      "path": "src/modules/pricing-card.module/module.css",
+      "size": 2742,
+      "sha256": "8347d475c7cb922c7ca0fb6615e4cecb324e566156381c759f15c142b0696397"
+    },
+    {
+      "path": "src/modules/pricing-card.module/module.html",
+      "size": 12670,
+      "sha256": "4fdabe9ba2136a390a57c1589090eff66f687e62b0e9112f21022278fddb6a70"
+    },
+    {
+      "path": "src/modules/social-follow.module/fields.json",
+      "size": 5828,
+      "sha256": "ebd17c3259e490c05c3cff474ef8fe5f5c92e3d1db2fc0c27e1a16806754b629"
+    },
+    {
+      "path": "src/modules/social-follow.module/meta.json",
+      "size": 365,
+      "sha256": "2af54019c29c8d72a6454c835e9e0b22af207c5184d55b1e8e41ce66286a4dc6"
+    },
+    {
+      "path": "src/modules/social-follow.module/module.css",
+      "size": 528,
+      "sha256": "9039e6bbf33239de26f113c852d4dc7ea29f685b34e84538d90d160a74b72511"
+    },
+    {
+      "path": "src/modules/social-follow.module/module.html",
+      "size": 4810,
+      "sha256": "faa0da19e748298e957e15bad25b3e9562890d227ad90b7222eb62e2e006fd5b"
+    },
+    {
+      "path": "src/sections/call-to-action.html",
+      "size": 1781,
+      "sha256": "7dab8a3d5670d4d5012f3797a847b05963208860d59fefddf18d2bc1d1e60ff2"
+    },
+    {
+      "path": "src/sections/cards.html",
+      "size": 2322,
+      "sha256": "d6e824c09ff275d1310825d485ed537fc7eccd634a0ce1434c7444834ddbaa88"
+    },
+    {
+      "path": "src/sections/hero-banner.html",
+      "size": 1374,
+      "sha256": "2828c8b9fe40cc293e84e3576e4e849c1f67547c6ba149571ec95619c02e2892"
+    },
+    {
+      "path": "src/sections/multi-column-content.html",
+      "size": 3421,
+      "sha256": "a24096b4da4ccbb5ad6c909e0953a0ae02a2985299115816f7c302ee14ea55f0"
+    },
+    {
+      "path": "src/sections/multi-row-content.html",
+      "size": 1115,
+      "sha256": "861708277c5d7e08776be6c382a3861ef80e5c85810509fd15d1d1a53212ce77"
+    },
+    {
+      "path": "src/sections/pricing.html",
+      "size": 3071,
+      "sha256": "1fa510751ead0a46bd40b743159a3c4f1c41cf29e0ebb8d4df003fee616861fb"
+    },
+    {
+      "path": "src/templates/about.html",
+      "size": 1104,
+      "sha256": "d64fe974e48e12653c2d33b29f2f3eed501aabf3d55d103aac62257083afd66f"
+    },
+    {
+      "path": "src/templates/blog-index.html",
+      "size": 1677,
+      "sha256": "84a008dc2c481862902c11b32f4a120247e2078ab459946f40dbf31ad9e692e8"
+    },
+    {
+      "path": "src/templates/blog-post.html",
+      "size": 3326,
+      "sha256": "43bde74bc488edf8a8b8eb4a47183ceb8910b078af957ea24a5dbd56cf486151"
+    },
+    {
+      "path": "src/templates/contact.html",
+      "size": 405,
+      "sha256": "8a985829f6b8069ff2edf187686491f2d9a601e9058cfe8940a5e51dce4195ef"
+    },
+    {
+      "path": "src/templates/home.html",
+      "size": 1855,
+      "sha256": "e8963b8da5e3325a7d619eecfe0b39bf99a2f6146b47a90397adf8b877143c36"
+    },
+    {
+      "path": "src/templates/hubdb.html",
+      "size": 4405,
+      "sha256": "fa3b70dac6f71a0b980e32149af8bd85560e1c4fe32e20d0578b0f65ad6a49da"
+    },
+    {
+      "path": "src/templates/landing-page.html",
+      "size": 905,
+      "sha256": "ac25cc9aaf3b93cb7523d2d08f963affe5b14ada259b82e253e84ba51270c4c5"
+    },
+    {
+      "path": "src/templates/layouts/base.html",
+      "size": 1958,
+      "sha256": "1ea2b2ed50541024b2c8e05f124cfea63cc177376fbcc3cf4d661b9cfb646d54"
+    },
+    {
+      "path": "src/templates/partials/footer.html",
+      "size": 1181,
+      "sha256": "3296ffd13846ab7c0e0a3411705f1743723b52b8ff390b0e03ba458efbcb0667"
+    },
+    {
+      "path": "src/templates/partials/header-no-navigation.html",
+      "size": 686,
+      "sha256": "c659cfa25117f50318af451031e835bf563079a995b17ba19877c66ac83cad28"
+    },
+    {
+      "path": "src/templates/partials/header.html",
+      "size": 6572,
+      "sha256": "669fadc672f1aaf3a3fbe8d70db0942e03e5cfc5ed1c4d533153c0000c98afa2"
+    },
+    {
+      "path": "src/templates/pricing.html",
+      "size": 409,
+      "sha256": "778aac95db3a5b48d3fcf7831968424086b51a54c03813b17e80c45bed741b8e"
+    },
+    {
+      "path": "src/templates/qa-test.html",
+      "size": 15543,
+      "sha256": "b8a9c2e6f9fcff109cf995d4335cb2d31574549506aa245f8d30528b864d5198"
+    },
+    {
+      "path": "src/templates/system/404.html",
+      "size": 900,
+      "sha256": "8de960f7ea171dc1dc99c35a7b02cb64de5004c43c0986be833a08bc3ed6e0a3"
+    },
+    {
+      "path": "src/templates/system/500.html",
+      "size": 722,
+      "sha256": "493422d4ca1e2e0af025c0d45109b56b39302584b4546e8c0b99eaa2fdf04198"
+    },
+    {
+      "path": "src/templates/system/backup-unsubscribe.html",
+      "size": 674,
+      "sha256": "6fb67eac137fac9524b0dc36ef96f09ab9fcf46824664a6bcf3529754b73e09b"
+    },
+    {
+      "path": "src/templates/system/membership-login.html",
+      "size": 1416,
+      "sha256": "5f461039dcd4f70c520daba20ff8dd1770804bb509d3c057682de6afd4680721"
+    },
+    {
+      "path": "src/templates/system/membership-register.html",
+      "size": 1391,
+      "sha256": "f68743dab7088c9800562508477cc2fa7cdae3fb0833f1c1fdd2f53b3f53e115"
+    },
+    {
+      "path": "src/templates/system/membership-reset-password-request.html",
+      "size": 1357,
+      "sha256": "098a5c854d04391a8fed930beb71fd6f7e7e26d9c4809c409eb4047699e16327"
+    },
+    {
+      "path": "src/templates/system/membership-reset-password.html",
+      "size": 1325,
+      "sha256": "e51ae53be8d26be908a9d8290389e08f145e87bc0c9bf4154a463a3b33c5d738"
+    },
+    {
+      "path": "src/templates/system/password-prompt.html",
+      "size": 827,
+      "sha256": "73159064b980a2c7a03543f4d18aadc5a7f3a5e2d2637a30c14f6af5d13bd17a"
+    },
+    {
+      "path": "src/templates/system/search-results.html",
+      "size": 1454,
+      "sha256": "facd4a459d064b7ce44b0b4b8644d2df0a30e96a5f0e42358fb6ae85b57d10c3"
+    },
+    {
+      "path": "src/templates/system/subscription-preferences.html",
+      "size": 663,
+      "sha256": "b832b13a8631de7130df89013bdf133866ed7314937b6615afd725aca1d47bdb"
+    },
+    {
+      "path": "src/templates/system/subscriptions-confirmation.html",
+      "size": 681,
+      "sha256": "5742e712a0a4aae1074dc105a49d901a7b9a920d3d699965b4aab22149388919"
+    },
+    {
+      "path": "src/theme.json",
+      "size": 676,
+      "sha256": "e7da69a06ed8648ab2222aee0a3a9be932c3fb126fb7e4545505d16406aaa363"
+    }
+  ]
+}

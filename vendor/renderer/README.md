@@ -1,9 +1,11 @@
 # themespot-render
 
 A command-line renderer for HubSpot CMS themes written in HubL. It turns a theme
-folder on your machine into HTML pages, with no HubSpot account involved. It
-needs Node.js 20 or later and nothing else: `themespot-render.mjs` is one file
-with its dependencies inside it.
+folder on your machine into HTML pages, with no HubSpot account involved, and
+needs Node.js 20 or later and nothing else. It is a readable, unminified esbuild
+build of the renderer's sources, comments left out: `themespot-render.mjs` is
+the command-line entry, and `chunks/` holds the code it imports (HubL engine,
+page renderer, fixtures, nunjucks), split so that no file reaches 256 KiB.
 
 ## Commands
 

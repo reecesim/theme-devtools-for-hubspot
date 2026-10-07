@@ -112,7 +112,7 @@ export function checkHubSpotCli(cwd = process.cwd()) {
   const executable = findOnPath('hs');
   const global = executable ? hubspotCliPackage(executable) : null;
   if (global || local) {
-    const where = global ? `on PATH at ${executable}` : 'in this project (run it with npx hs)';
+    const where = global ? `on PATH at ${executable}` : "in this project's node_modules";
     const version = (global || local).version;
     const major = Number(String(version).split('.')[0]);
     return {
@@ -132,8 +132,8 @@ export function checkHubSpotCli(cwd = process.cwd()) {
     version: null,
     location: null,
     note:
-      'HubSpot CLI not found. Needed to scaffold from HubSpot\'s boilerplate and to upload the theme; building and checking locally do not need it. ' +
-      'Install only with the user\'s agreement: npm install -g @hubspot/cli',
+      'HubSpot CLI not found. Building and previewing the theme do not need it (the boilerplate is bundled); uploading it to HubSpot does. ' +
+      'Install only with the user\'s agreement, when the theme is ready to upload: npm install -g @hubspot/cli',
   };
 }
 

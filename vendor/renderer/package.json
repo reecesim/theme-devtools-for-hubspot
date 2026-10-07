@@ -1,6 +1,6 @@
 {
   "name": "themespot-renderer",
-  "version": "1.0.101",
+  "version": "1.0.102",
   "description": "Renders HubSpot CMS themes written in HubL to HTML, locally.",
   "license": "Apache-2.0",
   "type": "module",

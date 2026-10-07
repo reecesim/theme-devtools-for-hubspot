@@ -127,3 +127,91 @@ describe('skills', () => {
     assert.match(first.body, /HubSpot is a trademark of HubSpot, Inc\. This plugin is not affiliated with or endorsed by HubSpot\./);
   });
 });
+
+/** The lines of a `## ` section, heading excluded, up to the next `## ` heading: { start, end, text }. */
+function section(markdown, heading) {
+  const lines = markdown.replace(/\r\n/g, '\n').split('\n');
+  const starts = lines.flatMap((line, index) => (line === heading ? [index] : []));
+  assert.equal(starts.length, 1, `expected one "${heading}" heading, found ${starts.length}`);
+  const next = lines.findIndex((line, index) => index > starts[0] && /^## /.test(line));
+  const end = next === -1 ? lines.length : next;
+  return { start: starts[0], end, text: lines.slice(starts[0] + 1, end).join('\n').trim() };
+}
+
+const DOCS_HEADING = "## HubSpot's documentation: when and how";
+
+describe("design-to-hubspot-theme: HubSpot's documentation", () => {
+  const entry = skills.find((s) => s.dir === 'design-to-hubspot-theme').body;
+  const docs = section(entry, DOCS_HEADING);
+
+  it('has its own section, before pre-flight, under 25 lines', () => {
+    assert.ok(docs.end <= section(entry, '## 0. Pre-flight').start, 'the section should come before ## 0. Pre-flight');
+    const lines = docs.text.split('\n').length;
+    assert.ok(lines < 25, `${lines} lines`);
+  });
+
+  it('names the MCP route (search-docs, then fetch-doc) and the web route (developers.hubspot.com)', () => {
+    assert.match(docs.text, /`search-docs`/);
+    assert.match(docs.text, /`fetch-doc`/);
+    assert.ok(docs.text.indexOf('`search-docs`') < docs.text.indexOf('`fetch-doc`'), 'search before fetch');
+    assert.match(docs.text, /search snippet alone/);
+    assert.match(docs.text, /developers\.hubspot\.com/);
+  });
+
+  it("says when: platform facts, default modules, every validation or upload error, unexpected diagnostics", () => {
+    assert.match(docs.text, /\*\*When\.\*\*/);
+    assert.match(docs.text, /from memory/);
+    assert.match(docs.text, /`@hubspot\/…` default module/);
+    assert.match(docs.text, /every HubSpot validation or upload error/);
+    assert.match(docs.text, /diagnostics are not what you expected/);
+  });
+
+  it('says the documentation wins over this plugin and the local render, and the agent says so', () => {
+    assert.match(docs.text, /authority over this plugin's text and the local renderer's behaviour/);
+    assert.match(docs.text, /tell the user what disagreed/);
+  });
+
+  it("links to hubl-authoring's URL list by its heading instead of repeating the URLs", () => {
+    const hubl = skills.find((s) => s.dir === 'hubl-authoring').body;
+    assert.ok(hubl.split(/\r?\n/).includes("## Look it up; don't answer from memory"), 'the heading the section points to is gone');
+    assert.match(docs.text, /`hubl-authoring`, "Look it up; don't answer from memory"/);
+    assert.doesNotMatch(docs.text, /\/docs\/cms\/reference\//, 'the URL list belongs in hubl-authoring');
+  });
+
+  it('is what preview-and-validate points to for questions about HubSpot itself', () => {
+    const preview = skills.find((s) => s.dir === 'preview-and-validate').body;
+    assert.match(preview, /`design-to-hubspot-theme`, "HubSpot's documentation: when and how"/);
+    assert.match(preview, /answered from HubSpot's documentation, not from the renderer's source/);
+  });
+});
+
+describe('design-to-hubspot-theme: no HubSpot CLI needed to build', () => {
+  const entry = skills.find((s) => s.dir === 'design-to-hubspot-theme').body;
+
+  it('scaffolds from the bundled boilerplate, naming its path and script before any CLI or Git command', () => {
+    const step = section(entry, '## 4. Scaffold from the bundled boilerplate').text;
+    const bundled = step.indexOf('${CLAUDE_PLUGIN_ROOT}/vendor/boilerplate/src/');
+    assert.ok(bundled >= 0, 'step 4 does not name the bundled path');
+    assert.ok(step.indexOf('node "${CLAUDE_PLUGIN_ROOT}/scripts/scaffold.mjs" <theme-folder>') > bundled);
+    for (const command of ['`hs ', 'hs cms theme create', 'git', 'clone']) {
+      const at = step.indexOf(command);
+      if (at !== -1) assert.ok(at > bundled, `${command} comes before the bundled path`);
+    }
+    assert.match(step, /\*\*If you want HubSpot's latest boilerplate instead\*\*/);
+  });
+
+  it('says in step 3 that the CLI is needed only to upload', () => {
+    const step = section(entry, '## 3. The HubSpot CLI, if installed').text;
+    assert.match(step, /not needed to build or preview/);
+    assert.match(step, /needed only to upload the theme to HubSpot \(step 7\)/);
+  });
+
+  it('no longer says in pre-flight that the CLI is needed to scaffold', () => {
+    const preflight = section(entry, '## 0. Pre-flight').text;
+    const row = preflight.split('\n').find((line) => line.startsWith('| HubSpot CLI |'));
+    assert.ok(row, 'the pre-flight table has no HubSpot CLI row');
+    assert.doesNotMatch(row, /scaffold/i);
+    assert.match(row, /Building and previewing are unaffected/);
+    assert.doesNotMatch(preflight, /needed by every script here and by HubSpot's CLI/);
+  });
+});

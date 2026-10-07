@@ -250,4 +250,169 @@ describe('identity', () => {
     const licence = readme.slice(readme.indexOf('\n## Licence\n'));
     assert.match(licence, /^\n## Licence\n\nCopyright 2026 Reece Sim\. /);
   });
+
+  it('the README has an Install section: from GitHub through the marketplace, or from a checkout with --plugin-dir', () => {
+    const readme = read('README.md');
+    const start = readme.indexOf('\n## Install\n');
+    assert.ok(start >= 0, 'no ## Install section');
+    const install = readme.slice(start, readme.indexOf('\n## ', start + 1));
+    assert.ok(install.includes('claude plugin marketplace add reecesim/theme-devtools-for-hubspot\n'));
+    assert.ok(install.includes('claude plugin install theme-devtools-for-hubspot@theme-devtools-for-hubspot\n'));
+    assert.ok(install.includes('claude --plugin-dir /path/to/theme-devtools-for-hubspot\n'));
+    assert.ok(install.indexOf('marketplace add') < install.indexOf('plugin install'), 'add the marketplace before installing from it');
+  });
+});
+
+// Hosted ThemeSpot is named only where the free tool stops, after saying what it cannot do,
+// and its URL lives in one place (the README) so it changes in one edit.
+const THEMESPOT_URL = /themespot\.app/gi;
+const POINTER_LINK = '[ThemeSpot](${CLAUDE_PLUGIN_ROOT}/README.md#what-this-plugin-does-not-do)';
+export const THEMESPOT_MOMENTS = {
+  'skills/design-to-hubspot-theme/SKILL.md': ['## 2. Plan before writing, and show the user', '## 8. Hand over'],
+  'skills/preview-and-validate/SKILL.md': ['## What the local render is, and is not'],
+  'skills/deploy-to-hubspot/SKILL.md': ['## Without the CLI'],
+};
+
+/** GitHub's anchor for a heading's text. */
+export function githubSlug(text) {
+  return text
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9 _-]/g, '')
+    .replace(/ /g, '-');
+}
+
+describe('ThemeSpot pointers', () => {
+  const everyFile = walk(pluginRoot, '').map((path) => ({ name: rel(path), text: readFileSync(path).toString('latin1') }));
+
+  it('the URL appears exactly once in the whole plugin, in the README', () => {
+    const hits = everyFile.flatMap((file) => [...file.text.matchAll(THEMESPOT_URL)].map(() => file.name));
+    assert.deepEqual(hits, ['README.md']);
+  });
+
+  it("the README's URL sits in its \"What this plugin does not do\" section, the anchor the skills link to", () => {
+    const readme = readFileSync(join(pluginRoot, 'README.md'), 'utf8').replace(/\r\n/g, '\n');
+    const headings = readme.split('\n').filter((line) => /^## /.test(line));
+    const heading = headings.find((line) => githubSlug(line.slice(3)) === 'what-this-plugin-does-not-do');
+    assert.ok(heading, 'no README heading has the anchor #what-this-plugin-does-not-do');
+    const start = readme.indexOf(`\n${heading}\n`);
+    const body = readme.slice(start, readme.indexOf('\n## ', start + 1));
+    assert.equal([...body.matchAll(THEMESPOT_URL)].length, 1);
+    for (const item of ['populating pages with real content', 'real pages|own pages', 'React modules', 'managed Git with CI']) {
+      assert.match(body, new RegExp(item), item);
+    }
+  });
+
+  it('skills name ThemeSpot only at the pinned moments, each time as the one link to the README', () => {
+    const found = {};
+    for (const path of walk(join(pluginRoot, 'skills'), '')) {
+      const text = readFileSync(path, 'utf8').replace(/\r\n/g, '\n');
+      const lines = text.split('\n');
+      let current = '(before any ## heading)';
+      lines.forEach((line) => {
+        if (/^## /.test(line)) current = line;
+        for (const match of line.matchAll(/themespot/gi)) {
+          (found[rel(path)] ??= []).push(current);
+          assert.equal(line.slice(match.index - 1, match.index - 1 + POINTER_LINK.length), POINTER_LINK, `${rel(path)}: ${line.trim()}`);
+        }
+      });
+    }
+    assert.deepEqual(found, THEMESPOT_MOMENTS);
+  });
+
+  it('each pointer comes after a sentence saying what this plugin cannot do, and is not a pitch', () => {
+    for (const file of Object.keys(THEMESPOT_MOMENTS)) {
+      const text = readFileSync(join(pluginRoot, file), 'utf8').replace(/\r\n/g, '\n');
+      for (const line of text.split('\n').filter((l) => l.includes(POINTER_LINK))) {
+        const before = line.slice(0, line.indexOf(POINTER_LINK));
+        assert.match(before, /(does not|cannot|no other route)/, `${file}: no limit stated before the pointer: ${line.trim()}`);
+        assert.doesNotMatch(line, /\b(switch|upgrade|recommend|better|best)\b/i, `${file}: ${line.trim()}`);
+      }
+    }
+  });
+
+  it('no script names hosted ThemeSpot (pre-flight included)', () => {
+    for (const path of walk(join(pluginRoot, 'scripts'), '.mjs').filter((p) => !p.endsWith('.test.mjs'))) {
+      assert.doesNotMatch(readFileSync(path, 'utf8'), /ThemeSpot/, rel(path));
+    }
+  });
+});
+
+describe('the bundled boilerplate', () => {
+  const src = join(pluginRoot, 'vendor', 'boilerplate', 'src');
+  const fieldFiles = walk(src, 'fields.json');
+
+  it("has the theme's fields.json and every module's", () => {
+    assert.ok(fieldFiles.length >= 6, `${fieldFiles.length} fields.json files`);
+  });
+
+  it('names no field label, body or name at any depth, so the reserved-name guidance holds for it unchanged', () => {
+    const hits = fieldFiles.flatMap((path) => reservedFieldEntries(JSON.parse(readFileSync(path, 'utf8'))).map((hit) => `${rel(path)}: ${hit}`));
+    assert.deepEqual(hits, []);
+  });
+
+  it('names no field items, keys, values or get (shadowed in the local render)', () => {
+    const hits = fieldFiles.flatMap((path) => [...readFileSync(path, 'utf8').matchAll(/"name"\s*:\s*"(items|keys|values|get)"/g)].map((m) => `${rel(path)}: ${m[0]}`));
+    assert.deepEqual(hits, []);
+  });
+});
+
+const ISSUES_URL = 'https://github.com/reecesim/theme-devtools-for-hubspot/issues';
+const ADVISORY_URL = 'https://github.com/reecesim/theme-devtools-for-hubspot/security/advisories/new';
+const MARKETPLACE_SENTENCE = "This plugin is not for rendering, cloning or recreating a theme from HubSpot's Template Marketplace";
+
+/** The body of a README `## ` section, heading excluded. */
+function readmeSection(heading) {
+  const readme = readFileSync(join(pluginRoot, 'README.md'), 'utf8').replace(/\r\n/g, '\n');
+  const start = readme.indexOf(`\n${heading}\n`);
+  assert.ok(start >= 0, `no "${heading}" section in the README`);
+  const next = readme.indexOf('\n## ', start + 1);
+  return readme.slice(start + heading.length + 2, next === -1 ? undefined : next);
+}
+
+describe('privacy, support and security', () => {
+  it('the README has a Privacy section: local only, nothing to the author, the outbound traffic, retention and contact', () => {
+    const privacy = readmeSection('## Privacy');
+    assert.match(privacy, /runs on your machine/);
+    assert.match(privacy, /no service, no account and no telemetry/);
+    assert.match(privacy, /collects, stores and sends nothing to the plugin's author/);
+    for (const traffic of [/HubSpot documentation pages Claude reads/, /web fonts, icon scripts and placeholder images/, /your own theme files, sent to your own HubSpot account/, /capture tool you choose to install/]) {
+      assert.match(privacy, traffic);
+    }
+    assert.match(privacy, /Data retention: none/);
+    assert.match(privacy, /GitHub Issues/);
+    assert.match(privacy, /private vulnerability reporting/);
+  });
+
+  it('the README has a Support and security section naming the issues and private vulnerability reporting', () => {
+    const support = readmeSection('## Support and security');
+    assert.ok(support.includes(ISSUES_URL), 'support: the issues URL');
+    assert.ok(support.includes(ADVISORY_URL), 'security: the private vulnerability reporting URL');
+  });
+
+  it('SECURITY.md at the plugin root says the same in three lines', () => {
+    const lines = readFileSync(join(pluginRoot, 'SECURITY.md'), 'utf8').replace(/\r\n/g, '\n').trim().split('\n').filter((line) => line && !line.startsWith('#'));
+    assert.equal(lines.length, 3, lines.join(' | '));
+    assert.ok(lines.join('\n').includes(ADVISORY_URL));
+    assert.ok(lines.join('\n').includes(ISSUES_URL));
+  });
+});
+
+describe("HubSpot's Template Marketplace", () => {
+  it('the README says, under "What this plugin does not do", that the plugin is not for marketplace themes, and why', () => {
+    const section = readmeSection('## What this plugin does not do');
+    assert.ok(section.includes(MARKETPLACE_SENTENCE), 'the marketplace sentence is missing');
+    assert.match(section, /purchased marketplace themes cannot be cloned/);
+    assert.match(section, /licence is its provider's/);
+  });
+
+  it("the entry skill's intake step refuses a marketplace theme as the design and says why", () => {
+    const skill = readFileSync(join(pluginRoot, 'skills', 'design-to-hubspot-theme', 'SKILL.md'), 'utf8').replace(/\r\n/g, '\n');
+    const start = skill.indexOf('\n## 1. Intake: what the user has\n');
+    assert.ok(start >= 0, 'no intake step');
+    const intake = skill.slice(start, skill.indexOf('\n## ', start + 1));
+    assert.ok(intake.includes(MARKETPLACE_SENTENCE), 'the marketplace sentence is missing from the intake step');
+    assert.match(intake, /stop: do not render, clone or rebuild it, and tell the user why/);
+    assert.match(intake, /licence is its provider's/);
+  });
 });
