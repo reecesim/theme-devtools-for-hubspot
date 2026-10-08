@@ -9,6 +9,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { PLUGIN_ID, TOOLS } from './hubspot-cli-server.mjs';
 
 const pluginRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const skillsDir = join(pluginRoot, 'skills');
@@ -213,5 +214,86 @@ describe('design-to-hubspot-theme: no HubSpot CLI needed to build', () => {
     assert.doesNotMatch(row, /scaffold/i);
     assert.match(row, /Building and previewing are unaffected/);
     assert.doesNotMatch(preflight, /needed by every script here and by HubSpot's CLI/);
+  });
+});
+
+// The Bash command each hubspot-cli tool runs, as the deploy skill spells it.
+const TOOL_FOR_COMMAND = {
+  'hs --version': 'hs_version',
+  'hs cms list': 'hs_cms_list',
+  'hs cms upload': 'hs_cms_upload',
+  'hs cms fetch': 'hs_cms_fetch',
+  'hs filemanager upload': 'hs_filemanager_upload',
+};
+
+describe('deploy-to-hubspot: two sign-in routes', () => {
+  const deploy = skills.find((s) => s.dir === 'deploy-to-hubspot').body.replace(/\r\n/g, '\n');
+  const signIn = section(deploy, '## 2. Sign in').text;
+
+  it("offers the plugin's configuration first (route a), then hs account auth in the user's own terminal (route b)", () => {
+    const configure = `/plugin configure ${PLUGIN_ID}`;
+    assert.ok(signIn.includes(configure), 'route a does not name the configuration dialog');
+    assert.ok(signIn.indexOf(configure) < signIn.indexOf('hs account auth'), 'route a should come first');
+    assert.ok(signIn.indexOf("**a. The plugin's configuration.**") < signIn.indexOf("**b. HubSpot's own sign-in.**"));
+    assert.match(signIn, /you never see it/);
+    assert.match(signIn, /they take no `--account`/);
+    assert.match(signIn, /On this route you run `hs` through Bash: .*`--account <name-or-id>`/);
+  });
+
+  it('names every tool the hubspot-cli server lists, and the tool-name prefix for permission rules', () => {
+    for (const tool of TOOLS) assert.ok(signIn.includes(`\`${tool.name}\``), `${tool.name} is not named under ## 2. Sign in`);
+    assert.ok(signIn.includes('`mcp__plugin_theme-devtools-for-hubspot_hubspot-cli__<tool>`'));
+  });
+
+  it('says how to tell which route applies, and not to retry a refusal through the other route', () => {
+    assert.match(signIn, /\*\*Which route applies\.\*\* Call `hs_version`\. `"configured": true` means route a/);
+    assert.match(signIn, /"This plugin is not configured"/);
+    assert.match(signIn, /do not retry it through the other route/);
+  });
+
+  it('says a key is entered in exactly two places, never in the chat, a file or a command line, and never asked for', () => {
+    const safe = section(deploy, '## Safe defaults').text;
+    assert.match(
+      safe,
+      /\*\*A key is entered in exactly two places\*\*: HubSpot's own `hs account auth` prompt in the user's terminal, or this plugin's configuration dialog \(step 2\)\. Never in the chat, a file, or a command line; never ask the user to paste it to you/,
+    );
+  });
+
+  it('names the account-writing tools beside their commands where it asks before writing, and applies every rule to the tools', () => {
+    const ask = section(deploy, '## Safe defaults').text.split('\n').find((line) => line.startsWith('- **Ask before any command that writes to the account**'));
+    assert.match(ask, /`hs cms upload` \(`hs_cms_upload`\)/);
+    assert.match(ask, /`hs filemanager upload` \(`hs_filemanager_upload`\)/);
+    assert.match(deploy, /A tool call counts as the command it runs: every rule here applies to the tools as it does to `hs` in Bash\./);
+  });
+
+  it('pairs every account command in its examples with its tool: route a without --account, route b with it', () => {
+    const blocks = [...deploy.matchAll(/^```[^\n]*\n([\s\S]*?)^```$/gm)].map((match) => match[1].trim().split('\n'));
+    let pairs = 0;
+    for (const lines of blocks) {
+      const routeB = lines.find((line) => line.startsWith('route b: '));
+      if (!routeB) {
+        for (const line of lines) {
+          for (const command of Object.keys(TOOL_FOR_COMMAND)) assert.ok(!line.startsWith(command), `"${line}" has no route a beside it`);
+        }
+        continue;
+      }
+      const command = Object.keys(TOOL_FOR_COMMAND).find((name) => routeB.slice('route b: '.length).startsWith(name));
+      assert.ok(command, `unknown route b command: ${routeB}`);
+      const routeA = lines.find((line) => line.startsWith('route a: '));
+      assert.ok(routeA, `${routeB} has no route a`);
+      assert.ok(routeA.startsWith(`route a: ${TOOL_FOR_COMMAND[command]}`), `${routeA} is not ${TOOL_FOR_COMMAND[command]}`);
+      assert.doesNotMatch(routeA, /--account/);
+      if (command !== 'hs --version') assert.match(routeB, /--account <name-or-id>$/);
+      pairs++;
+    }
+    assert.equal(pairs, 5, 'check, list, upload, fetch and File Manager upload each show both routes');
+  });
+
+  it('keeps watch, theme preview and lint on route b, saying no tool runs them', () => {
+    const flowing = section(deploy, '## 5. Keep changes flowing (optional)').text;
+    assert.match(flowing, /These two run through Bash only \(route b\); no `hubspot-cli` tool runs them\./);
+    const check = section(deploy, '## 3. Check before writing').text;
+    assert.match(check, /`hs cms lint <theme-folder>` sends each HubL file .* \(route b; no `hubspot-cli` tool runs it\)\./);
+    assert.match(signIn, /The tools offer no `hs cms lint`, `watch`/);
   });
 });

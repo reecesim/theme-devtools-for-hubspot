@@ -28,7 +28,7 @@ Ask Claude something like "turn the design in ./design into a HubSpot theme". Th
 - Claude Code.
 - Node.js 20 or newer.
 - For screenshots, any one of: Playwright or Puppeteer already in your project; `playwright-core` with Chrome or Edge installed (an npm package, no browser download); Chrome, Edge or Chromium on its own, run headless; or a browser tool in your Claude Code session that saves full-page PNGs. None is required, and nothing is added without your agreement. Without any of them the build is reported as not pixel-verified. The pixel comparison itself is the bundled renderer's `compare`, which needs only Node.
-- To upload the theme to HubSpot: HubSpot's CLI 8 or newer (`npm install -g @hubspot/cli`) and a HubSpot account with Design Manager access. Building and previewing the theme need neither: HubSpot's boilerplate comes with the plugin.
+- To upload the theme to HubSpot: HubSpot's CLI 8 or newer (`npm install -g @hubspot/cli`), a HubSpot account with Design Manager access, and one of two ways to sign in: a personal access key and account ID entered in the plugin's configuration (see "Configure"), after which Claude runs the CLI through the plugin's `hubspot-cli` MCP server; or `hs account auth` run in your own terminal, after which Claude runs `hs` in its shell. Building and previewing the theme need none of these: HubSpot's boilerplate comes with the plugin.
 
 ## Install
 
@@ -45,14 +45,28 @@ From a checkout of this repository, without installing:
 claude --plugin-dir /path/to/theme-devtools-for-hubspot
 ```
 
+### Configure
+
+To have Claude upload with HubSpot's CLI without your key ever reaching the chat, enter it in the plugin's configuration dialog. In Claude Code:
+
+```
+/plugin configure theme-devtools-for-hubspot@theme-devtools-for-hubspot
+```
+
+- **HubSpot personal access key**: a key from HubSpot's personal access key page with at least the Design Manager permission. Claude Code masks it as you type, keeps it in your system's secure credential store rather than its settings file, and passes it only to the plugin's `hubspot-cli` MCP server, which gives it to HubSpot's CLI as an environment variable. Claude never sees it.
+- **HubSpot account ID**: the numeric account (portal) ID the key belongs to. Every command the MCP server runs goes to this account.
+
+Both are optional. Leave them empty to sign in with `hs account auth` in your own terminal instead; Claude then runs `hs` in its shell. From a shell, `claude plugin configure theme-devtools-for-hubspot@theme-devtools-for-hubspot` shows which of the two are set.
+
 ## Scripts
 
-The skills run these with `node`. The renderer's own `--help` lists its commands, and its preview server describes its routes at `/api/index`.
+The skills run these with `node`, except the MCP server, which Claude Code starts. The renderer's own `--help` lists its commands, and its preview server describes its routes at `/api/index`.
 
 | Script | Purpose | Exit codes |
 | --- | --- | --- |
 | `scripts/preflight.mjs [--json]` | Reports Node, the HubSpot CLI, the renderer, and each means of taking screenshots it finds (`captureMeans`, with paths). Reads files only. | 0, or 1 when Node is older than 20 |
 | `scripts/render.mjs <command> …` | Runs the vendored HubL renderer (`render`, `serve`, `list`, `fields`, `fixtures`, `metadata`, `compare`, `validate` and more: see its `--help`). Its preview server, `serve`, listens on 127.0.0.1 only. | The renderer's own, or 4 when it is not vendored |
+| `scripts/hubspot-cli-server.mjs` | The `hubspot-cli` MCP server, started by Claude Code from `plugin.json` with the key and account ID from the plugin's configuration in its environment. Runs HubSpot's CLI with `--use-env` for five tools (`hs_version`, `hs_cms_list`, `hs_cms_upload`, `hs_cms_fetch`, `hs_filemanager_upload`), refuses arguments that start with `-`, offers no `cms lint`, `--clean`, `watch`, `--remove`, `theme preview` or `account` command, and replaces the key with `[redacted]` in everything it returns. With either value empty, every tool but `hs_version` refuses and runs nothing. | Runs until Claude Code closes it |
 | `scripts/scaffold.mjs <theme-folder> [--json]` | Copies the bundled HubSpot CMS theme boilerplate (`vendor/boilerplate/src/`) into a new or empty folder. Refuses a folder that already holds files; overwrites nothing. | 0, 1 when refused (nothing copied) or when a copy fails part-way (check the folder before trying again), 2 for bad arguments, 4 when the boilerplate is not bundled |
 
 Tests: `node --test` in `scripts/`.
@@ -60,7 +74,8 @@ Tests: `node --test` in `scripts/`.
 ## What this plugin does not do
 
 - It renders HubL locally as an approximation; HubSpot's own render is the authority. The local render uses the theme's defaults and sample or design-supplied fixtures, not your real pages, posts or HubDB rows, and does not draw CMS React modules.
-- No MCP server, no account, no telemetry. The skills run this plugin's scripts with `node`; HubSpot's CLI (`hs`), `git`, and a browser or capture package for screenshots run only when you allow them. No script makes a network call; a capture tool loads only the pages you point it at. Pages the renderer draws, written to a file or shown by its preview server, may load web fonts, icon scripts and placeholder images from the network when they are opened in a browser. To answer questions about HubSpot, Claude reads HubSpot's documentation on developers.hubspot.com and knowledge.hubspot.com, through your session's web tool or a HubSpot documentation MCP server if you have one, as your permissions allow.
+- No service, no account of its own, no telemetry. Its one MCP server, `hubspot-cli`, runs on your machine and only runs HubSpot's CLI (see "Configure"). The skills run this plugin's scripts with `node`; HubSpot's CLI (`hs`), `git`, and a browser or capture package for screenshots run only when you allow them. No script makes a network call of its own: HubSpot's CLI, when the MCP server runs it, reaches only your HubSpot account, and a capture tool loads only the pages you point it at. Pages the renderer draws, written to a file or shown by its preview server, may load web fonts, icon scripts and placeholder images from the network when they are opened in a browser. To answer questions about HubSpot, Claude reads HubSpot's documentation on developers.hubspot.com and knowledge.hubspot.com, through your session's web tool or a HubSpot documentation MCP server if you have one, as your permissions allow.
+- It never reads your HubSpot key from `~/.hscli/config.yml` or any other file. A key reaches HubSpot's CLI only from the plugin's configuration, through the MCP server's environment, or from the CLI's own sign-in, `hs account auth`, which you run.
 - It does not create, publish or change pages in HubSpot; you do that in HubSpot's page editor.
 - No React (CMS React) theme guidance.
 - This plugin is not for rendering, cloning or recreating a theme from HubSpot's Template Marketplace (formerly the Asset Marketplace), and its skills refuse one as the design to build from. HubSpot's documentation says purchased marketplace themes cannot be cloned, marketplace modules cannot be cloned or redistributed, even in a child theme, and a purchased theme can be in only one account at a time, transferred but not copied. A marketplace theme's licence is its provider's, and it generally does not permit copying.
@@ -80,6 +95,7 @@ Hosted [ThemeSpot](https://themespot.app), on a connected HubSpot portal, does t
   - HubSpot documentation pages Claude reads (developers.hubspot.com and knowledge.hubspot.com, or a HubSpot documentation MCP server if you have one);
   - web fonts, icon scripts and placeholder images that rendered preview pages load when you open them in a browser;
   - your own theme files, sent to your own HubSpot account when you run HubSpot's CLI to upload them;
+  - your HubSpot personal access key, if you enter it in the plugin's configuration: Claude Code keeps it in your system's secure credential store, and HubSpot's CLI sends it only to HubSpot;
   - whatever a capture tool you choose to install (Playwright, Puppeteer or a browser) does when it runs;
   - downloads you agree to: HubSpot's CLI from npm, or HubSpot's latest boilerplate from GitHub.
 - Your Claude Code session's own traffic is Claude Code's, under its terms, not this plugin's.

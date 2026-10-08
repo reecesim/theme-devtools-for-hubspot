@@ -13,52 +13,17 @@
 // Exit codes: 0 when Node is new enough (missing optional pieces are reported,
 // not failed), 1 when Node is older than 20.
 
-import { existsSync, readFileSync, realpathSync, statSync } from 'node:fs';
+import { existsSync, realpathSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { homedir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { envValue, findOnPath, hubspotCliPackage, isFile, readJson } from './lib/hubspot-cli.mjs';
 import { isMainModule } from './lib/is-main.mjs';
 
 export const MIN_NODE_MAJOR = 20;
 export const CAPTURE_PACKAGES = ['playwright', 'playwright-core', 'puppeteer'];
 const PLUGIN_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-
-function readJson(path) {
-  try {
-    return JSON.parse(readFileSync(path, 'utf8'));
-  } catch {
-    return null;
-  }
-}
-
-function isFile(path) {
-  try {
-    return statSync(path).isFile();
-  } catch {
-    return false;
-  }
-}
-
-/** An environment value by name, ignoring case (Windows names are case-insensitive). */
-function envValue(env, name) {
-  if (env[name] !== undefined) return env[name];
-  const key = Object.keys(env).find((k) => k.toLowerCase() === name.toLowerCase());
-  return key === undefined ? undefined : env[key];
-}
-
-function findOnPath(command, { env = process.env, platform = process.platform } = {}) {
-  const dirs = (envValue(env, 'PATH') || '').split(platform === 'win32' ? ';' : ':').filter(Boolean);
-  const extensions =
-    platform === 'win32' ? ['', ...(envValue(env, 'PATHEXT') || '.COM;.EXE;.BAT;.CMD').split(';').filter(Boolean)] : [''];
-  for (const dir of dirs) {
-    for (const extension of extensions) {
-      const candidate = join(dir, command + extension);
-      if (isFile(candidate)) return candidate;
-    }
-  }
-  return null;
-}
 
 /** A key that is equal for two spellings of one file (links resolved; case ignored on Windows). */
 function samePathKey(path, platform = process.platform) {
@@ -69,29 +34,6 @@ function samePathKey(path, platform = process.platform) {
     // keep the spelling given
   }
   return platform === 'win32' ? real.toLowerCase() : real;
-}
-
-/** Locate the @hubspot/cli package that an `hs` executable belongs to. */
-function hubspotCliPackage(executable) {
-  const candidates = [];
-  try {
-    let dir = dirname(realpathSync(executable));
-    for (let i = 0; i < 6; i++) {
-      candidates.push(join(dir, 'package.json'));
-      dir = dirname(dir);
-    }
-  } catch {
-    // unreadable link; fall through to the layout guesses
-  }
-  const bin = dirname(executable);
-  candidates.push(join(bin, 'node_modules', '@hubspot', 'cli', 'package.json'));
-  candidates.push(join(bin, '..', 'lib', 'node_modules', '@hubspot', 'cli', 'package.json'));
-  candidates.push(join(bin, '..', '@hubspot', 'cli', 'package.json'));
-  for (const candidate of candidates) {
-    const json = readJson(candidate);
-    if (json && json.name === '@hubspot/cli') return { version: json.version, packageJson: candidate };
-  }
-  return null;
 }
 
 export function checkNode() {

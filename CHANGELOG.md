@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0
+
+- The HubSpot personal access key can be entered in the plugin's configuration (`/plugin configure theme-devtools-for-hubspot@theme-devtools-for-hubspot`), with the numeric account ID it belongs to. Both options are optional. The key is a sensitive option: Claude Code masks it, keeps it in the system's secure credential store, and substitutes it only into the environment of the plugin's MCP server, so it never appears in the chat, a file Claude can read, or a command line.
+- New `hubspot-cli` MCP server (`scripts/hubspot-cli-server.mjs`, no dependencies), declared in `plugin.json`. It runs HubSpot's CLI with `--use-env` for five tools: `hs_version`, `hs_cms_list`, `hs_cms_upload`, `hs_cms_fetch` and `hs_filemanager_upload`. `hs` is found on PATH and its package's JavaScript entry run with Node, without a shell. It refuses any argument that starts with `-`, offers no `cms lint` (it does not accept `--use-env`; it stays on the `hs account auth` route), `--clean`, `watch`, `--remove`, `theme preview` or `account` command, stops a command after 10 minutes, and replaces the key with `[redacted]` in everything it returns. Without both values, every tool but `hs_version` refuses, runs nothing, and names `/plugin configure` and `hs account auth`.
+- `deploy-to-hubspot` has two sign-in routes: the plugin's configuration, after which every CLI command runs through the `hubspot-cli` tools with no `--account`; or `hs account auth` in the user's own terminal, after which `hs` runs through Bash with `--account`, as before. `hs_version` says which applies. A key is entered in exactly two places, HubSpot's own sign-in prompt or the plugin's configuration dialog, and never in the chat, a file or a command line. Steps 3 to 6 name the tool and the command for each route. What one yes covers, and asking before anything that writes to the account, apply to the tools unchanged.
+- The README has a Configure section, names both routes under Requirements, lists the server under Scripts, and says the plugin never reads a key from `~/.hscli/config.yml` or any other file.
+- `preflight.mjs` and the server share `scripts/lib/hubspot-cli.mjs` to find the CLI. Bundles renderer 1.0.102, unchanged.
+
 ## 0.3.2
 
 - HubSpot's CMS theme boilerplate is bundled: `vendor/boilerplate/src/` is HubSpot's `src/` at v3.14.2 (commit 656aaeb), unchanged, with HubSpot's licence beside it and a MANIFEST of every file's size and sha256. The new `scripts/scaffold.mjs` copies it into a new or empty theme folder, so building and previewing a theme no longer need HubSpot's CLI or Git. `hs cms theme create` and a clone of HubSpot's repository stay as the way to get HubSpot's latest boilerplate instead.

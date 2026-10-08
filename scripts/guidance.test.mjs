@@ -263,6 +263,38 @@ describe('identity', () => {
   });
 });
 
+describe('signing in to HubSpot', () => {
+  const readme = readFileSync(join(pluginRoot, 'README.md'), 'utf8').replace(/\r\n/g, '\n');
+
+  it('the README has a Configure subsection under Install: the /plugin configure command, both fields, and that both are optional', () => {
+    const install = readme.slice(readme.indexOf('\n## Install\n'), readme.indexOf('\n## ', readme.indexOf('\n## Install\n') + 1));
+    const start = install.indexOf('\n### Configure\n');
+    assert.ok(start >= 0, 'no ### Configure under ## Install');
+    const configure = install.slice(start);
+    assert.ok(configure.includes('/plugin configure theme-devtools-for-hubspot@theme-devtools-for-hubspot\n'));
+    const { userConfig } = JSON.parse(readFileSync(join(pluginRoot, '.claude-plugin', 'plugin.json'), 'utf8'));
+    for (const option of Object.values(userConfig)) assert.ok(configure.includes(`**${option.title}**`), `the README does not describe "${option.title}"`);
+    assert.match(configure, /secure credential store/);
+    assert.match(configure, /Claude never sees it/);
+    assert.match(configure, /Both are optional\. Leave them empty to sign in with `hs account auth` in your own terminal instead/);
+  });
+
+  it('the README names both routes under Requirements', () => {
+    const requirements = readmeSection('## Requirements');
+    const upload = requirements.split('\n').find((line) => line.startsWith('- To upload the theme to HubSpot:'));
+    assert.match(upload, /entered in the plugin's configuration \(see "Configure"\)/);
+    assert.match(upload, /`hs account auth` run in your own terminal/);
+  });
+
+  it('the README says, under "What this plugin does not do", that the plugin never reads a key from ~/.hscli/config.yml or any other file', () => {
+    assert.match(readmeSection('## What this plugin does not do'), /It never reads your HubSpot key from `~\/\.hscli\/config\.yml` or any other file\./);
+  });
+
+  it('the README lists the MCP server under Scripts', () => {
+    assert.match(readmeSection('## Scripts'), /^\| `scripts\/hubspot-cli-server\.mjs` \| The `hubspot-cli` MCP server/m);
+  });
+});
+
 // Hosted ThemeSpot is named only where the free tool stops, after saying what it cannot do,
 // and its URL lives in one place (the README) so it changes in one edit.
 const THEMESPOT_URL = /themespot\.app/gi;

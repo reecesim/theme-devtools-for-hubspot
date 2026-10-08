@@ -1,7 +1,7 @@
 {
   "name": "theme-devtools-for-hubspot",
   "displayName": "Theme Dev Tools for HubSpot, by ThemeSpot",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Turn a design from Claude Design, ChatGPT or another tool into an editable HubSpot HubL theme, check it against the design on a local renderer, and deploy it with the HubSpot CLI.",
   "author": {
     "name": "Reece Sim"
@@ -19,5 +19,30 @@
     "preview",
     "render",
     "design"
-  ]
+  ],
+  "userConfig": {
+    "hubspot_personal_access_key": {
+      "type": "string",
+      "title": "HubSpot personal access key",
+      "description": "A personal access key with at least the Design Manager permission, for uploads with the HubSpot CLI. Stored in Claude Code's secure storage and never shown to Claude. Leave empty to sign in with `hs account auth` in your own terminal instead.",
+      "sensitive": true
+    },
+    "hubspot_account_id": {
+      "type": "string",
+      "title": "HubSpot account ID",
+      "description": "The numeric account (portal) ID the key belongs to."
+    }
+  },
+  "mcpServers": {
+    "hubspot-cli": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/hubspot-cli-server.mjs"
+      ],
+      "env": {
+        "HUBSPOT_PERSONAL_ACCESS_KEY": "${user_config.hubspot_personal_access_key}",
+        "HUBSPOT_ACCOUNT_ID": "${user_config.hubspot_account_id}"
+      }
+    }
+  }
 }

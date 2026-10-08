@@ -5,7 +5,7 @@
 // - talk of installing a capture tool appears only under `## Producing the PNGs`;
 // - nothing in the plugin names the two scripts this version removed;
 // - the vendored renderer matches its MANIFEST.json, and the changelog quotes its version;
-// - the README's network sentence.
+// - the README's network sentence, which names the one MCP server and what the CLI it runs reaches.
 // The forbidden strings are assembled at run time so this file does not contain them.
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -154,14 +154,19 @@ describe('the vendored renderer', { skip: vendored ? false : 'vendor/renderer is
 });
 
 describe('README', () => {
-  it('says no script makes a network call', () => {
+  it('says no script makes a network call of its own, and what the CLI the MCP server runs reaches', () => {
     const readme = readFileSync(join(pluginRoot, 'README.md'), 'utf8');
-    assert.ok(readme.includes('No script makes a network call; a capture tool loads only the pages you point it at.'));
+    assert.ok(
+      readme.includes(
+        "No script makes a network call of its own: HubSpot's CLI, when the MCP server runs it, reaches only your HubSpot account, and a capture tool loads only the pages you point it at.",
+      ),
+    );
   });
 
   it('says, in the same paragraph, what runs with permission and that Claude reads HubSpot\'s documentation from the web', () => {
     const readme = readFileSync(join(pluginRoot, 'README.md'), 'utf8').replace(/\r\n/g, '\n');
-    const paragraph = readme.split('\n').find((line) => line.includes('No script makes a network call;'));
+    const paragraph = readme.split('\n').find((line) => line.includes('No script makes a network call of its own:'));
+    assert.match(paragraph, /Its one MCP server, `hubspot-cli`, runs on your machine and only runs HubSpot's CLI/);
     assert.match(paragraph, /HubSpot's CLI \(`hs`\), `git`, and a browser or capture package for screenshots run only when you allow them/);
     assert.match(paragraph, /web fonts, icon scripts and placeholder images from the network/);
     assert.match(paragraph, /HubSpot's documentation on developers\.hubspot\.com and knowledge\.hubspot\.com/);
